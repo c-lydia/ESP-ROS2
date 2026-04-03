@@ -1,16 +1,9 @@
-/* Custom code block and syntax highlighting styles for Wall-E documentation */
-/* Light gray rounded code blocks with professional syntax highlighting */
+/* Wall-E Documentation - Code Block Styling
+   Light gray rounded code blocks with professional syntax highlighting */
 
-/* Main code block styling */
-.highlight,
+/* Main code block container - ALL highlight divs get the light background */
 .rst-content .highlight,
-div.highlight,
-div.highlight-c,
-div.highlight-bash,
-div.highlight-python,
-div.highlight-java,
-div.highlight-yaml,
-div.highlight-json {
+.highlight {
     background-color: #f5f5f5 !important;
     border: 1px solid #d0d0d0 !important;
     border-radius: 8px !important;
@@ -52,7 +45,7 @@ div.highlight code {
 /* RTD theme specific nested overrides */
 .rst-content .highlight {
     background-color: #f5f5f5 !important;
-    border: 1px solid #ccc !important;
+    border: 1px solid #d0d0d0 !important;
     border-radius: 8px !important;
 }
 
@@ -64,8 +57,10 @@ div.highlight code {
 
 .rst-content pre.literal-block {
     background-color: #f5f5f5 !important;
-    border: 1px solid #ccc !important;
+    border: 1px solid #d0d0d0 !important;
     border-radius: 8px !important;
+    padding: 14px 16px !important;
+    margin: 12px 0 !important;
 }
 
 /* Inline code (literals) - Light background with rounded corners */
