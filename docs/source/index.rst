@@ -92,21 +92,29 @@ For a detailed technical overview, see the **Architecture** documentation.
 Technical Stack
 ===============
 
-.. table::
+.. list-table::
+   :widths: 40 60
+   :header-rows: 1
    :align: center
 
-   =========================== ============================
-   Component                   Technology
-   =========================== ============================
-   Host Robotics Framework     ROS 2 Humble (Ubuntu 20.04)
-   Embedded OS                 FreeRTOS + micro-ROS
-   Microcontroller             ESP32 (Espressif Systems)
-   Communication               UDP via micro-ROS agent
-   Build System                colcon, ESP-IDF v5.0+
-   Documentation              Sphinx with RTD theme
-   Containerization            Docker & Docker Compose
-   Version Control             Git
-   =========================== ============================
+   * - Component
+     - Technology
+   * - Host Robotics Framework
+     - ROS 2 Humble (Ubuntu 20.04)
+   * - Embedded OS
+     - FreeRTOS + micro-ROS
+   * - Microcontroller
+     - ESP32 (Espressif Systems)
+   * - Communication
+     - UDP via micro-ROS agent
+   * - Build System
+     - colcon, ESP-IDF v5.0+
+   * - Documentation
+     - Sphinx with RTD theme
+   * - Containerization
+     - Docker & Docker Compose
+   * - Version Control
+     - Git
 
 
 Support & Documentation

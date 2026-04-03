@@ -12,6 +12,13 @@ extensions = [
     'sphinx.ext.viewcode',
 ]
 
+# Syntax highlighting configuration
+highlight_language = 'c'
+pygments_style = 'monokai'
+
+# Code block customization
+html_use_smartquotes = True
+
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 

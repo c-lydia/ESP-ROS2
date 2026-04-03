@@ -74,10 +74,153 @@ Code Structure
 Main Functions
 --------------
 
-- ``app_main()``: Entry point, initializes WiFi, micro-ROS, sensors
-- ``imu_read()``: Reads IMU data and publishes to ROS
-- ``range_read()``: Measures distance and publishes to ROS
-- ``micro_ros_task()``: Core communication loop
+The controller implements several key functions for operation:
+
+**app_main()** - Entry Point
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: c
+
+   void app_main(void) {
+       ESP_LOGI(TAG, "Starting Wall-E ESP32 Controller");
+       
+       // Initialize WiFi
+       wifi_init();
+       
+       // Initialize I2C for IMU
+       i2c_master_init();
+       
+       // Initialize GPIO for ultrasonic
+       ultrasonic_init();
+       
+       // Initialize micro-ROS
+       rcl_allocator_t allocator = rcl_get_default_allocator();
+       rclc_support_init(&support, 0, NULL, &allocator);
+       
+       // Create node
+       rclc_node_init_default(&node, "esp32_node", "", &support);
+       
+       // Create publishers
+       rclc_publisher_init_default(
+           &imu_pub,
+           &node,
+           ROSIDL_GET_MSG_TYPE_SUPPORT(sensor_msgs, msg, Imu),
+           "/imu"
+       );
+       
+       // Create timer for publishing at 10Hz
+       rclc_timer_init_default(&timer, &support, RCL_MS_TO_NS(100), timer_callback);
+       
+       // Start executor
+       rclc_executor_init(&executor, &support.context, 1, &allocator);
+       rclc_executor_add_timer(&executor, &timer);
+       
+       ESP_LOGI(TAG, "Wall-E ESP32 Controller initialized successfully");
+   }
+
+**timer_callback()** - Sensor Publishing Loop
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: c
+
+   void timer_callback(rcl_timer_t *timer, int64_t last_call_time) {
+       if (timer != NULL) {
+           // Read IMU data
+           mpu6050_accel_t accel;
+           mpu6050_gyro_t gyro;
+           mpu6050_read_accel(&accel);
+           mpu6050_read_gyro(&gyro);
+           
+           // Publish IMU message
+           sensor_msgs__msg__Imu imu_msg = {0};
+           imu_msg.linear_acceleration.x = accel.x;
+           imu_msg.linear_acceleration.y = accel.y;
+           imu_msg.linear_acceleration.z = accel.z;
+           imu_msg.angular_velocity.x = gyro.x;
+           imu_msg.angular_velocity.y = gyro.y;
+           imu_msg.angular_velocity.z = gyro.z;
+           
+           rcl_publish(&imu_pub, &imu_msg, NULL);
+           
+           // Read and publish ultrasonic range
+           float distance_m = ultrasonic_read_distance_cm() / 100.0f;
+           sensor_msgs__msg__Range range_msg = {0};
+           range_msg.range = distance_m;
+           range_msg.min_range = 0.02f;
+           range_msg.max_range = 4.0f;
+           
+           rcl_publish(&range_pub, &range_msg, NULL);
+       }
+   }
+
+**WiFi Initialization**
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: c
+
+   void wifi_init(void) {
+       tcpip_adapter_init();
+       ESP_ERROR_CHECK(esp_event_loop_create_default());
+       
+       wifi_init_config_t cfg = WIFI_INIT_CONFIG_DEFAULT();
+       ESP_ERROR_CHECK(esp_wifi_init(&cfg));
+       
+       wifi_config_t wifi_config = {
+           .sta = {
+               .ssid = WIFI_SSID,
+               .password = WIFI_PASS,
+           },
+       };
+       
+       ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_STA));
+       ESP_ERROR_CHECK(esp_wifi_set_config(ESP_IF_WIFI_STA, &wifi_config));
+       ESP_ERROR_CHECK(esp_wifi_start());
+       
+       ESP_LOGI(TAG, "WiFi initialized, connecting to SSID: %s", WIFI_SSID);
+   }
+
+**I2C Master Initialization**
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: c
+
+   void i2c_master_init(void) {
+       const i2c_config_t i2c_config = {
+           .mode = I2C_MODE_MASTER,
+           .sda_io_num = I2C_MASTER_SDA_IO,  // GPIO 21
+           .scl_io_num = I2C_MASTER_SCL_IO,  // GPIO 22
+           .sda_pullup_en = GPIO_PULLUP_ENABLE,
+           .scl_pullup_en = GPIO_PULLUP_ENABLE,
+           .master.clk_speed = I2C_MASTER_FREQ_HZ,  // 100 kHz
+       };
+       
+       ESP_ERROR_CHECK(i2c_param_config(I2C_MASTER_NUM, &i2c_config));
+       ESP_ERROR_CHECK(i2c_driver_install(I2C_MASTER_NUM, i2c_config.mode, 0, 0, 0));
+   }
+
+Key Constants
+~~~~~~~~~~~~~
+
+.. code-block:: c
+
+   // WiFi Configuration
+   #define WIFI_SSID              "your_wifi_ssid"
+   #define WIFI_PASS              "your_wifi_password"
+   
+   // I2C Configuration
+   #define I2C_MASTER_NUM         0
+   #define I2C_MASTER_SDA_IO      21
+   #define I2C_MASTER_SCL_IO      22
+   #define I2C_MASTER_FREQ_HZ     100000
+   
+   // GPIO Configuration  
+   #define ULTRASONIC_TRIGGER_GPIO 9
+   #define ULTRASONIC_ECHO_GPIO    10
+   
+   // micro-ROS Configuration
+   #define RCL_MAX_NODES          1
+   #define RCL_MAX_PUBLISHERS     2
+   #define RCL_HISTORY_DEPTH      4
 
 ROS Publishers
 ==============
