@@ -76,8 +76,8 @@ firmware/freertos_apps/apps/esp32_controller/
 ## WiFi Configuration
 
 ```c
-#define WIFI_SSID "i_need_to_sleep"
-#define WIFI_PASS "12345678"
+#define WIFI_SSID "wifi_ssid"
+#define WIFI_PASS "wifi_password"
 ```
 
 > **Note:** Update WiFi credentials in app.c before building.
