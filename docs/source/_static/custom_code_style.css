@@ -1,14 +1,14 @@
 /* Custom code block and syntax highlighting styles for Wall-E documentation */
 
-/* Code block containers */
+/* Code block containers - Light gray with rounded corners */
 .highlight {
-    background-color: #272822 !important;
-    border: 1px solid #1a5490;
-    border-radius: 4px;
+    background-color: #f5f5f5 !important;
+    border: 1px solid #ccc;
+    border-radius: 8px;
     padding: 12px 14px !important;
     margin: 10px 0;
     overflow-x: auto;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
 }
 
 .highlight pre {
@@ -16,6 +16,7 @@
     padding: 0;
     background-color: transparent;
     border: none;
+    border-radius: 0;
 }
 
 /* Code text styling */
@@ -23,20 +24,20 @@
     font-family: 'Courier New', Courier, monospace;
     font-size: 0.9em;
     line-height: 1.4;
-    color: #f8f8f2;
+    color: #2c3e50;
     background-color: transparent;
     border: none;
     padding: 0;
 }
 
-/* Inline code (literals) */
+/* Inline code (literals) - Light background with rounded corners */
 code.literal,
 code.code,
 tt.xref {
-    background-color: #f4f4f4;
+    background-color: #f0f0f0;
     color: #c7254e;
-    padding: 2px 6px;
-    border-radius: 3px;
+    padding: 3px 6px;
+    border-radius: 4px;
     font-family: 'Courier New', Courier, monospace;
     font-size: 0.9em;
     font-weight: 500;
@@ -47,34 +48,35 @@ tt.xref {
 .dark code.literal,
 .dark code.code,
 .dark tt.xref {
-    background-color: #34495e;
-    color: #a1efe4;
-    border: 0.5px solid #555;
+    background-color: #f5f5f5;
+    color: #c7254e;
+    border: 0.5px solid #ddd;
+    border-radius: 4px;
 }
 
 /* Syntax highlighting tokens */
-.highlight .k { color: #ff79c6; font-weight: bold; } /* Keyword */
-.highlight .kt { color: #ff79c6; font-weight: bold; } /* Keyword Type */
-.highlight .n { color: #f8f8f2; } /* Name */
-.highlight .s { color: #a1efe4; } /* String */
-.highlight .se { color: #a1efe4; } /* String Escape */
-.highlight .nc { color: #50fa7b; font-weight: bold; } /* Class Name */
-.highlight .nf { color: #50fa7b; } /* Function Name */
-.highlight .m { color: #bd93f9; } /* Number */
-.highlight .mf { color: #bd93f9; } /* Float */
-.highlight .mi { color: #bd93f9; } /* Integer */
-.highlight .c { color: #75715e; font-style: italic; } /* Comment */
-.highlight .cp { color: #75715e; } /* Comment Preproc */
-.highlight .o { color: #ff79c6; } /* Operator */
-.highlight .p { color: #f8f8f2; } /* Punctuation */
-.highlight .w { color: #f8f8f2; } /* Whitespace */
+.highlight .k { color: #ff7043; font-weight: bold; } /* Keyword - Orange */
+.highlight .kt { color: #ff7043; font-weight: bold; } /* Keyword Type - Orange */
+.highlight .n { color: #2c3e50; } /* Name - Dark */
+.highlight .s { color: #00897b; } /* String - Teal */
+.highlight .se { color: #00897b; } /* String Escape - Teal */
+.highlight .nc { color: #0288d1; font-weight: bold; } /* Class Name - Blue */
+.highlight .nf { color: #7e57c2; } /* Function Name - Purple */
+.highlight .m { color: #7e57c2; } /* Number - Purple */
+.highlight .mf { color: #7e57c2; } /* Float - Purple */
+.highlight .mi { color: #7e57c2; } /* Integer - Purple */
+.highlight .c { color: #90a4ae; font-style: italic; } /* Comment - Blue-gray */
+.highlight .cp { color: #90a4ae; } /* Comment Preproc - Blue-gray */
+.highlight .o { color: #ff7043; } /* Operator - Orange */
+.highlight .p { color: #2c3e50; } /* Punctuation - Dark */
+.highlight .w { color: #2c3e50; } /* Whitespace - Dark */
 
 /* Line numbers */
 .highlight .lineno {
-    color: #75715e;
+    color: #90a4ae;
     font-size: 0.85em;
     padding-right: 8px;
-    border-right: 1px solid #44475a;
+    border-right: 1px solid #ddd;
     margin-right: 10px;
 }
 
@@ -84,38 +86,39 @@ tt.xref {
 .attention .highlight {
     background-color: #f9f9f9;
     border: 1px solid #ddd;
+    border-radius: 8px;
 }
 
-.note a.highlight code,
+.note .highlight code,
 .warning .highlight code,
 .attention .highlight code {
-    color: #d73a49;
-    background-color: #f6f8fa;
+    color: #2c3e50;
+    background-color: transparent;
 }
 
 /* RTD theme specific styling */
 .rst-content code.literal,
 .rst-content .literal {
-    background-color: #f4f4f4;
+    background-color: #f0f0f0;
     color: #c7254e;
-    padding: 2px 6px;
-    border-radius: 3px;
-    border: 0.5px solid #e0e0e0;
+    padding: 3px 6px;
+    border-radius: 4px;
+    border: 0.5px solid #ddd;
 }
 
 .rst-content pre.literal-block,
 .rst-content div[class*='highlight'] {
-    background-color: #272822;
-    border: 1px solid #1a5490;
-    border-radius: 4px;
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 8px;
     padding: 12px 14px;
     margin: 10px 0;
     overflow-x: auto;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
 }
 
 .rst-content pre code {
-    color: #f8f8f2;
+    color: #2c3e50;
     background-color: transparent;
     border: none;
     padding: 0;
@@ -125,10 +128,11 @@ tt.xref {
 /* Code blocks inside tables */
 td code.literal,
 tr code.literal {
-    background-color: #34495e;
-    color: #a1efe4;
-    padding: 1px 4px;
-    border-radius: 2px;
+    background-color: #f0f0f0;
+    color: #c7254e;
+    padding: 2px 4px;
+    border-radius: 3px;
+    border: 0.5px solid #ddd;
 }
 
 /* Docstrings and code examples */
@@ -137,10 +141,17 @@ tr code.literal {
 }
 
 dt code.literal {
-    background-color: #f4f4f4;
+    background-color: #f0f0f0;
     color: #c7254e;
     padding: 2px 6px;
-    border-radius: 3px;
+    border-radius: 4px;
     border: 0.5px solid #ddd;
     font-weight: 500;
+}
+
+/* Additional styling for better appearance */
+.highlight-default,
+.highlight-python,
+.highlight-c {
+    border-radius: 8px;
 }

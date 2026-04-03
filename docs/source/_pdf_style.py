@@ -12,16 +12,15 @@ DARK_BLUE = Color(0x1a5490)
 ACCENT_TEAL = Color(0x16a085)
 TEXT_DARK = Color(0x2c3e50)
 TEXT_GRAY = Color(0x7f8c8d)
-LIGHT_BG = Color(0xecf0f1)
 
-# Code styling colors
-CODE_BG = Color(0x272822)      # Monokai dark background
-CODE_TEXT = Color(0xf8f8f2)    # Light text
-CODE_KEYWORD = Color(0xff79c6)  # Pink for keywords
-CODE_STRING = Color(0xa1efe4)   # Cyan for strings
-CODE_COMMENT = Color(0x75715e)  # Gray for comments
-CODE_NUMBER = Color(0xbd93f9)   # Purple for numbers
-INLINE_BG = Color(0xf4f4f4)    # Light gray for inline code
+# Code styling colors - Light theme
+CODE_BG = Color(0xf5f5f5)      # Light gray background
+CODE_TEXT = Color(0x2c3e50)    # Dark text
+CODE_KEYWORD = Color(0xff7043) # Orange for keywords
+CODE_STRING = Color(0x00897b)  # Teal for strings
+CODE_COMMENT = Color(0x90a4ae) # Blue-gray for comments
+CODE_NUMBER = Color(0x7e57c2)  # Purple for numbers
+INLINE_BG = Color(0xf0f0f0)    # Very light gray for inline code
 INLINE_TEXT = Color(0xc7254e)  # Dark red for inline code
 
 # Paragraph styles
@@ -82,7 +81,7 @@ stylesheet['literal block'] = dict(
     padding_top=8,
     padding_bottom=8,
     border_width='0.5pt',
-    border_color=DARK_BLUE,
+    border_color=Color(0xcccccc),
     space_above=10,
     space_above_paragraph=10,
     space_below=10,
