@@ -1,6 +1,7 @@
 # micro_ros_ws
 
 A micro-ROS workspace for ESP32 development with ROS 2 Humble integration, featuring:
+
 - **ESP32 Firmware:** FreeRTOS-based micro-ROS nodes
 - **Host Agent:** micro-ROS agent running in Docker for ESP32 communication
 - **ROS 2 Humble:** Native ROS 2 packages and visualization tools
@@ -10,6 +11,7 @@ A micro-ROS workspace for ESP32 development with ROS 2 Humble integration, featu
 ## Quick Start
 
 ### Prerequisites
+
 - Docker and Docker Compose
 - ESP-IDF v5.0+ (for ESP32 firmware)
 - ROS 2 Humble (optional, for native host development)
@@ -26,6 +28,7 @@ idf.py build flash monitor
 ```
 
 The workspace container will:
+
 1. Build your ROS 2 packages via colcon
 2. Mount volumes for `src/`, `build/`, `install/`, and `docs/`
 3. Provide an interactive bash shell for development
@@ -34,7 +37,7 @@ The micro-ROS agent listens on UDP port **9999** for ESP32 connections.
 
 ## Project Structure
 
-```
+```bash
 micro_ros_ws/
 ├── src/                  # ROS 2 packages (colcon workspace)
 ├── firmware/             # ESP32 firmware and micro-ROS client code
