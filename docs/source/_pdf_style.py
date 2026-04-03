@@ -1,67 +1,96 @@
 """Custom rinohtype style for Wall-E documentation."""
 
-from rinoh.style import StyleSheet, Matcher
-from rinoh.styles import style as default_style
-from rinoh.text import Paragraph
-from rinoh.flowable import Code
+from rinoh.style import StyleSheet
+from rinoh.color import Color
 
 # Create a custom stylesheet
-stylesheet = StyleSheet('Wall-E', base=default_style)
+stylesheet = StyleSheet('wall-e')
 
-# Define colors
-primary_blue = '#2980B9'
-dark_blue = '#1a5490'
-light_gray = '#f5f5f5'
-dark_gray = '#333333'
+# Color palette
+PRIMARY_BLUE = Color(0x2980B9)
+DARK_BLUE = Color(0x1a5490)
+ACCENT_TEAL = Color(0x16a085)
+TEXT_DARK = Color(0x2c3e50)
+TEXT_GRAY = Color(0x7f8c8d)
+LIGHT_BG = Color(0xecf0f1)
+CODE_BG = Color(0x34495e)
+CODE_TEXT = Color(0xecf0f1)
 
-# Styling rules
-stylesheet['Paragraph'] = dict(
-    font_size=11,
-    line_spacing=1.2,
-    text_align='justify',
+# Paragraph styles
+stylesheet['paragraph'] = dict(
+    font_size=10,
+    line_spacing=1.3,
+    text_color=TEXT_DARK,
+    space_above=6,
+    space_below=6,
 )
 
-stylesheet['Heading 1'] = dict(
-    font_size=24,
+# Heading styles with professional formatting
+stylesheet['heading'] = dict(
     font_weight='bold',
-    font_color=dark_blue,
+    text_color=DARK_BLUE,
+    space_above=12,
+    space_below=6,
+)
+
+stylesheet['h1'] = dict(
+    base='heading',
+    font_size=28,
+    text_color=PRIMARY_BLUE,
     space_above=18,
     space_below=12,
 )
 
-stylesheet['Heading 2'] = dict(
-    font_size=18,
-    font_weight='bold',
-    font_color=primary_blue,
+stylesheet['h2'] = dict(
+    base='heading',
+    font_size=20,
+    text_color=DARK_BLUE,
     space_above=14,
-    space_below=10,
+    space_below=8,
 )
 
-stylesheet['Heading 3'] = dict(
+stylesheet['h3'] = dict(
+    base='heading',
     font_size=14,
-    font_weight='bold',
-    font_color='#333333',
+    text_color=ACCENT_TEAL,
     space_above=10,
     space_below=6,
 )
 
-stylesheet['Literal'] = dict(
-    font_family='monospace',
-    font_size=10,
-    font_color='#d73a49',
+stylesheet['h4'] = dict(
+    base='heading',
+    font_size=12,
+    text_color=TEXT_DARK,
 )
 
-stylesheet['Code'] = dict(
-    font_family='monospace',
-    font_size=10,
-    background_color=light_gray,
-    padding=5,
+# Code formatting
+stylesheet['literal'] = dict(
+    font_name='monospace',
+    font_size=9,
+    text_color=CODE_TEXT,
+    background_color=CODE_BG,
 )
 
-stylesheet['Emphasis'] = dict(
-    font_style='italic',
+# Lists
+stylesheet['bullet list'] = dict(
+    space_above=6,
+    space_below=6,
 )
 
-stylesheet['Strong'] = dict(
-    font_weight='bold',
+stylesheet['enumerated list'] = dict(
+    space_above=6,
+    space_below=6,
 )
+
+# Block quotes
+stylesheet['block quote'] = dict(
+    margin_left=18,
+    text_color=TEXT_GRAY,
+)
+
+# Tables
+stylesheet['table'] = dict(
+    space_above=8,
+    space_below=8,
+)
+

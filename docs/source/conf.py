@@ -31,27 +31,18 @@ html_theme_options = {
 
 html_static_path = ['_static']
 
-# Rinohtype PDF configuration
+# Rinohtype PDF configuration for beautiful output
 rinohtype_use_pdf_images = True
 
 rinoh_documents = [
-    ('index', 'wall-e', 'Wall-E Documentation', 'Lydia Chheng', 'manual'),
+    ('index', 'wall-e', 'Wall-E: ESP32 micro-ROS Documentation', 'Lydia Chheng', 'manual'),
 ]
 
-# Custom rinohtype stylesheet configuration
-rinoh_style_settings = {
-    'page_break_default': 'any',
-    'page-size': 'A4',
-    'left-margin': '1in',
-    'right-margin': '1in',
-    'top-margin': '1in',
-    'bottom-margin': '1in',
-    'title-color': '#1a5490',
-    'accent-color': '#2980B9',
+# Page layout settings
+latex_elements = {
+    'papersize': 'a4',
+    'fontpkg': r'\usepackage{palatino}',
 }
-
-# Select a cleaner theme
-rinoh_theme = 'modern'
 
 # RST settings
 rst_prolog = """
