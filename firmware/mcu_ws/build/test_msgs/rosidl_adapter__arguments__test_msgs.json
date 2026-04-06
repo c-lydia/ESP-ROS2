@@ -1,0 +1,23 @@
+{
+  "package_name": "test_msgs",
+  "non_idl_tuples": [
+    "/micro_ros_ws/firmware/mcu_ws/install/share/test_interface_files:msg/Arrays.msg",
+    "/micro_ros_ws/firmware/mcu_ws/install/share/test_interface_files:msg/BasicTypes.msg",
+    "/micro_ros_ws/firmware/mcu_ws/install/share/test_interface_files:msg/BoundedPlainSequences.msg",
+    "/micro_ros_ws/firmware/mcu_ws/install/share/test_interface_files:msg/BoundedSequences.msg",
+    "/micro_ros_ws/firmware/mcu_ws/install/share/test_interface_files:msg/Constants.msg",
+    "/micro_ros_ws/firmware/mcu_ws/install/share/test_interface_files:msg/Defaults.msg",
+    "/micro_ros_ws/firmware/mcu_ws/install/share/test_interface_files:msg/Empty.msg",
+    "/micro_ros_ws/firmware/mcu_ws/install/share/test_interface_files:msg/MultiNested.msg",
+    "/micro_ros_ws/firmware/mcu_ws/install/share/test_interface_files:msg/Nested.msg",
+    "/micro_ros_ws/firmware/mcu_ws/install/share/test_interface_files:msg/Strings.msg",
+    "/micro_ros_ws/firmware/mcu_ws/install/share/test_interface_files:msg/UnboundedSequences.msg",
+    "/micro_ros_ws/firmware/mcu_ws/install/share/test_interface_files:msg/WStrings.msg",
+    "/micro_ros_ws/firmware/mcu_ws/install/share/test_interface_files:srv/Arrays.srv",
+    "/micro_ros_ws/firmware/mcu_ws/install/share/test_interface_files:srv/BasicTypes.srv",
+    "/micro_ros_ws/firmware/mcu_ws/install/share/test_interface_files:srv/Empty.srv",
+    "/micro_ros_ws/firmware/mcu_ws/install/share/test_interface_files:action/Fibonacci.action",
+    "/micro_ros_ws/firmware/mcu_ws/ros2/rcl_interfaces/test_msgs:msg/Builtins.msg",
+    "/micro_ros_ws/firmware/mcu_ws/ros2/rcl_interfaces/test_msgs:action/NestedMessage.action"
+  ]
+}

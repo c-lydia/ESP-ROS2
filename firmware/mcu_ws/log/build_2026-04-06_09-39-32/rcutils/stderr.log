@@ -1,0 +1,18 @@
+Traceback (most recent call last):
+  File "/micro_ros_ws/firmware/dev_ws/install/ament_cmake_core/share/ament_cmake_core/cmake/core/package_xml_2_cmake.py", line 22, in <module>
+    from catkin_pkg.package import parse_package_string
+ModuleNotFoundError: No module named 'catkin_pkg'
+[31mCMake Error at /micro_ros_ws/firmware/dev_ws/install/ament_cmake_core/share/ament_cmake_core/cmake/core/ament_package_xml.cmake:95 (message):
+  
+  execute_process(/micro_ros_ws/firmware/toolchain/espressif/python_env/idf4.1_py3.10_env/bin/python3
+  /micro_ros_ws/firmware/dev_ws/install/ament_cmake_core/share/ament_cmake_core/cmake/core/package_xml_2_cmake.py
+  /micro_ros_ws/firmware/mcu_ws/uros/rcutils/package.xml
+  /micro_ros_ws/firmware/mcu_ws/build/rcutils/ament_cmake_core/package.cmake)
+  returned error code 1
+Call Stack (most recent call first):
+  /micro_ros_ws/firmware/dev_ws/install/ament_cmake_core/share/ament_cmake_core/cmake/core/ament_package_xml.cmake:49 (_ament_package_xml)
+  /micro_ros_ws/firmware/dev_ws/install/ament_cmake_python/share/ament_cmake_python/cmake/ament_python_install_package.cmake:60 (ament_package_xml)
+  /micro_ros_ws/firmware/dev_ws/install/ament_cmake_python/share/ament_cmake_python/cmake/ament_python_install_package.cmake:39 (_ament_cmake_python_install_package)
+  CMakeLists.txt:27 (ament_python_install_package)
+
+[0m

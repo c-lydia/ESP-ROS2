@@ -1,0 +1,25 @@
+-- Found ament_cmake_core: 1.3.14 (/media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/ament_cmake_core/share/ament_cmake_core/cmake)
+-- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/build/ament_lint_auto
+-- Install configuration: ""
+-- Installing: /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/ament_lint_auto/share/ament_index/resource_index/package_run_dependencies/ament_lint_auto
+-- Installing: /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/ament_lint_auto/share/ament_index/resource_index/parent_prefix_path/ament_lint_auto
+-- Installing: /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/ament_lint_auto/share/ament_lint_auto/environment/ament_prefix_path.sh
+-- Installing: /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/ament_lint_auto/share/ament_lint_auto/environment/ament_prefix_path.dsv
+-- Installing: /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/ament_lint_auto/share/ament_lint_auto/environment/path.sh
+-- Installing: /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/ament_lint_auto/share/ament_lint_auto/environment/path.dsv
+-- Installing: /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/ament_lint_auto/share/ament_lint_auto/local_setup.bash
+-- Installing: /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/ament_lint_auto/share/ament_lint_auto/local_setup.sh
+-- Installing: /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/ament_lint_auto/share/ament_lint_auto/local_setup.zsh
+-- Installing: /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/ament_lint_auto/share/ament_lint_auto/local_setup.dsv
+-- Installing: /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/ament_lint_auto/share/ament_lint_auto/package.dsv
+-- Installing: /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/ament_lint_auto/share/ament_index/resource_index/packages/ament_lint_auto
+-- Installing: /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/ament_lint_auto/share/ament_lint_auto/cmake/ament_lint_auto-extras.cmake
+-- Installing: /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/ament_lint_auto/share/ament_lint_auto/cmake/ament_lint_autoConfig.cmake
+-- Installing: /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/ament_lint_auto/share/ament_lint_auto/cmake/ament_lint_autoConfig-version.cmake
+-- Installing: /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/ament_lint_auto/share/ament_lint_auto/package.xml
+-- Up-to-date: /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/ament_lint_auto/share/ament_lint_auto/cmake
+-- Installing: /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/ament_lint_auto/share/ament_lint_auto/cmake/ament_lint_auto_find_test_dependencies.cmake
+-- Installing: /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/ament_lint_auto/share/ament_lint_auto/cmake/ament_lint_auto_package_hook.cmake

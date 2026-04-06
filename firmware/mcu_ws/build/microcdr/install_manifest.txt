@@ -1,0 +1,8 @@
+/micro_ros_ws/firmware/mcu_ws/install/lib/libmicrocdr.a
+/micro_ros_ws/firmware/mcu_ws/install/include/ucdr/microcdr.h
+/micro_ros_ws/firmware/mcu_ws/install/include/ucdr/visibility.h
+/micro_ros_ws/firmware/mcu_ws/install/include/ucdr/config.h
+/micro_ros_ws/firmware/mcu_ws/install/share/microcdr/cmake/microcdrTargets.cmake
+/micro_ros_ws/firmware/mcu_ws/install/share/microcdr/cmake/microcdrTargets-debug.cmake
+/micro_ros_ws/firmware/mcu_ws/install/share/microcdr/cmake/microcdrConfig.cmake
+/micro_ros_ws/firmware/mcu_ws/install/share/microcdr/cmake/microcdrConfigVersion.cmake

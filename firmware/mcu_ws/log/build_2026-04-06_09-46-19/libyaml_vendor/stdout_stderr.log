@@ -1,0 +1,42 @@
+Not searching for unused variables given on the command line.
+-- Found ament_cmake: 1.3.14 (/micro_ros_ws/firmware/dev_ws/install/ament_cmake/share/ament_cmake/cmake)
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /micro_ros_ws/firmware/mcu_ws/build/libyaml_vendor
+gmake[4]: Entering directory '/micro_ros_ws/firmware/mcu_ws/build/libyaml_vendor'
+/usr/bin/cmake -S/micro_ros_ws/firmware/mcu_ws/ros2/libyaml_vendor -B/micro_ros_ws/firmware/mcu_ws/build/libyaml_vendor --check-build-system CMakeFiles/Makefile.cmake 0
+/usr/bin/cmake -E cmake_progress_start /micro_ros_ws/firmware/mcu_ws/build/libyaml_vendor/CMakeFiles /micro_ros_ws/firmware/mcu_ws/build/libyaml_vendor//CMakeFiles/progress.marks
+/usr/bin/gmake  -f CMakeFiles/Makefile2 all
+gmake[5]: Entering directory '/micro_ros_ws/firmware/mcu_ws/build/libyaml_vendor'
+/usr/bin/gmake  -f CMakeFiles/libyaml-0.2.5.dir/build.make CMakeFiles/libyaml-0.2.5.dir/depend
+gmake[6]: Entering directory '/micro_ros_ws/firmware/mcu_ws/build/libyaml_vendor'
+cd /micro_ros_ws/firmware/mcu_ws/build/libyaml_vendor && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /micro_ros_ws/firmware/mcu_ws/ros2/libyaml_vendor /micro_ros_ws/firmware/mcu_ws/ros2/libyaml_vendor /micro_ros_ws/firmware/mcu_ws/build/libyaml_vendor /micro_ros_ws/firmware/mcu_ws/build/libyaml_vendor /micro_ros_ws/firmware/mcu_ws/build/libyaml_vendor/CMakeFiles/libyaml-0.2.5.dir/DependInfo.cmake --color=
+gmake[6]: Leaving directory '/micro_ros_ws/firmware/mcu_ws/build/libyaml_vendor'
+/usr/bin/gmake  -f CMakeFiles/libyaml-0.2.5.dir/build.make CMakeFiles/libyaml-0.2.5.dir/build
+gmake[6]: Entering directory '/micro_ros_ws/firmware/mcu_ws/build/libyaml_vendor'
+[ 12%] [34m[1mCreating directories for 'libyaml-0.2.5'[0m
+/usr/bin/cmake -E make_directory /micro_ros_ws/firmware/mcu_ws/build/libyaml_vendor/libyaml-0.2.5-prefix/src/libyaml-0.2.5
+/usr/bin/cmake -E make_directory /micro_ros_ws/firmware/mcu_ws/build/libyaml_vendor/libyaml-0.2.5-prefix/src/libyaml-0.2.5-build
+/usr/bin/cmake -E make_directory /micro_ros_ws/firmware/mcu_ws/build/libyaml_vendor/libyaml-0.2.5-prefix
+/usr/bin/cmake -E make_directory /micro_ros_ws/firmware/mcu_ws/build/libyaml_vendor/libyaml-0.2.5-prefix/tmp
+/usr/bin/cmake -E make_directory /micro_ros_ws/firmware/mcu_ws/build/libyaml_vendor/libyaml-0.2.5-prefix/src/libyaml-0.2.5-stamp
+/usr/bin/cmake -E make_directory /micro_ros_ws/firmware/mcu_ws/build/libyaml_vendor/libyaml-0.2.5-prefix/src
+/usr/bin/cmake -E make_directory /micro_ros_ws/firmware/mcu_ws/build/libyaml_vendor/libyaml-0.2.5-prefix/src/libyaml-0.2.5-stamp
+/usr/bin/cmake -E touch /micro_ros_ws/firmware/mcu_ws/build/libyaml_vendor/libyaml-0.2.5-prefix/src/libyaml-0.2.5-stamp/libyaml-0.2.5-mkdir
+[ 25%] [34m[1mPerforming download step (git clone) for 'libyaml-0.2.5'[0m
+cd /micro_ros_ws/firmware/mcu_ws/build/libyaml_vendor/libyaml-0.2.5-prefix/src && /usr/bin/cmake -P /micro_ros_ws/firmware/mcu_ws/build/libyaml_vendor/libyaml-0.2.5-prefix/tmp/libyaml-0.2.5-gitclone.cmake
+Cloning into 'libyaml-0.2.5'...
+fatal: detected dubious ownership in repository at '/micro_ros_ws/firmware/mcu_ws/build/libyaml_vendor/libyaml-0.2.5-prefix/src/libyaml-0.2.5'
+To add an exception for this directory, call:
+
+	git config --global --add safe.directory /micro_ros_ws/firmware/mcu_ws/build/libyaml_vendor/libyaml-0.2.5-prefix/src/libyaml-0.2.5
+[31mCMake Error at /micro_ros_ws/firmware/mcu_ws/build/libyaml_vendor/libyaml-0.2.5-prefix/tmp/libyaml-0.2.5-gitclone.cmake:40 (message):
+  Failed to checkout tag: '2c891fc7a770e8ba2fec34fc6b545c672beb37e6'
+
+[0m
+gmake[6]: *** [CMakeFiles/libyaml-0.2.5.dir/build.make:101: libyaml-0.2.5-prefix/src/libyaml-0.2.5-stamp/libyaml-0.2.5-download] Error 1
+gmake[6]: Leaving directory '/micro_ros_ws/firmware/mcu_ws/build/libyaml_vendor'
+gmake[5]: *** [CMakeFiles/Makefile2:140: CMakeFiles/libyaml-0.2.5.dir/all] Error 2
+gmake[5]: Leaving directory '/micro_ros_ws/firmware/mcu_ws/build/libyaml_vendor'
+gmake[4]: *** [Makefile:149: all] Error 2
+gmake[4]: Leaving directory '/micro_ros_ws/firmware/mcu_ws/build/libyaml_vendor'

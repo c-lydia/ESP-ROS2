@@ -1,0 +1,22 @@
+{
+  "package_name": "rcl_interfaces",
+  "non_idl_tuples": [
+    "/micro_ros_ws/firmware/mcu_ws/ros2/rcl_interfaces/rcl_interfaces:msg/FloatingPointRange.msg",
+    "/micro_ros_ws/firmware/mcu_ws/ros2/rcl_interfaces/rcl_interfaces:msg/IntegerRange.msg",
+    "/micro_ros_ws/firmware/mcu_ws/ros2/rcl_interfaces/rcl_interfaces:msg/ListParametersResult.msg",
+    "/micro_ros_ws/firmware/mcu_ws/ros2/rcl_interfaces/rcl_interfaces:msg/Log.msg",
+    "/micro_ros_ws/firmware/mcu_ws/ros2/rcl_interfaces/rcl_interfaces:msg/ParameterDescriptor.msg",
+    "/micro_ros_ws/firmware/mcu_ws/ros2/rcl_interfaces/rcl_interfaces:msg/ParameterEventDescriptors.msg",
+    "/micro_ros_ws/firmware/mcu_ws/ros2/rcl_interfaces/rcl_interfaces:msg/ParameterEvent.msg",
+    "/micro_ros_ws/firmware/mcu_ws/ros2/rcl_interfaces/rcl_interfaces:msg/Parameter.msg",
+    "/micro_ros_ws/firmware/mcu_ws/ros2/rcl_interfaces/rcl_interfaces:msg/ParameterType.msg",
+    "/micro_ros_ws/firmware/mcu_ws/ros2/rcl_interfaces/rcl_interfaces:msg/ParameterValue.msg",
+    "/micro_ros_ws/firmware/mcu_ws/ros2/rcl_interfaces/rcl_interfaces:msg/SetParametersResult.msg",
+    "/micro_ros_ws/firmware/mcu_ws/ros2/rcl_interfaces/rcl_interfaces:srv/DescribeParameters.srv",
+    "/micro_ros_ws/firmware/mcu_ws/ros2/rcl_interfaces/rcl_interfaces:srv/GetParameters.srv",
+    "/micro_ros_ws/firmware/mcu_ws/ros2/rcl_interfaces/rcl_interfaces:srv/GetParameterTypes.srv",
+    "/micro_ros_ws/firmware/mcu_ws/ros2/rcl_interfaces/rcl_interfaces:srv/ListParameters.srv",
+    "/micro_ros_ws/firmware/mcu_ws/ros2/rcl_interfaces/rcl_interfaces:srv/SetParametersAtomically.srv",
+    "/micro_ros_ws/firmware/mcu_ws/ros2/rcl_interfaces/rcl_interfaces:srv/SetParameters.srv"
+  ]
+}

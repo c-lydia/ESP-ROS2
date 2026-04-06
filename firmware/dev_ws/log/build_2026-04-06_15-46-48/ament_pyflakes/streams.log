@@ -1,0 +1,37 @@
+[1.035s] Invoking command in '/media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/ament/ament_lint/ament_pyflakes': AMENT_PREFIX_PATH=/media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/ament_pycodestyle PATH=/media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/ament_pycodestyle/bin:${PATH} PYTHONPATH=/media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/build/ament_pyflakes/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/ament_pyflakes/lib/python3.10/site-packages:/media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/ament_pycodestyle/lib/python3.10/site-packages /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../build/ament_pyflakes build --build-base /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/build/ament_pyflakes/build install --record /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/build/ament_pyflakes/install.log --single-version-externally-managed install_data
+[1.323s] running egg_info
+[1.326s] creating ../../../build/ament_pyflakes/ament_pyflakes.egg-info
+[1.330s] writing ../../../build/ament_pyflakes/ament_pyflakes.egg-info/PKG-INFO
+[1.333s] writing dependency_links to ../../../build/ament_pyflakes/ament_pyflakes.egg-info/dependency_links.txt
+[1.334s] writing entry points to ../../../build/ament_pyflakes/ament_pyflakes.egg-info/entry_points.txt
+[1.334s] writing requirements to ../../../build/ament_pyflakes/ament_pyflakes.egg-info/requires.txt
+[1.334s] writing top-level names to ../../../build/ament_pyflakes/ament_pyflakes.egg-info/top_level.txt
+[1.335s] writing manifest file '../../../build/ament_pyflakes/ament_pyflakes.egg-info/SOURCES.txt'
+[1.339s] reading manifest file '../../../build/ament_pyflakes/ament_pyflakes.egg-info/SOURCES.txt'
+[1.344s] writing manifest file '../../../build/ament_pyflakes/ament_pyflakes.egg-info/SOURCES.txt'
+[1.345s] running build
+[1.345s] running build_py
+[1.345s] creating /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/build/ament_pyflakes/build
+[1.346s] creating /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/build/ament_pyflakes/build/lib
+[1.346s] creating /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/build/ament_pyflakes/build/lib/ament_pyflakes
+[1.347s] copying ament_pyflakes/main.py -> /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/build/ament_pyflakes/build/lib/ament_pyflakes
+[1.351s] copying ament_pyflakes/__init__.py -> /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/build/ament_pyflakes/build/lib/ament_pyflakes
+[1.353s] running install
+[1.354s] running install_lib
+[1.355s] creating /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/ament_pyflakes/lib/python3.10/site-packages/ament_pyflakes
+[1.355s] copying /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/build/ament_pyflakes/build/lib/ament_pyflakes/main.py -> /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/ament_pyflakes/lib/python3.10/site-packages/ament_pyflakes
+[1.356s] copying /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/build/ament_pyflakes/build/lib/ament_pyflakes/__init__.py -> /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/ament_pyflakes/lib/python3.10/site-packages/ament_pyflakes
+[1.359s] byte-compiling /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/ament_pyflakes/lib/python3.10/site-packages/ament_pyflakes/main.py to main.cpython-310.pyc
+[1.364s] byte-compiling /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/ament_pyflakes/lib/python3.10/site-packages/ament_pyflakes/__init__.py to __init__.cpython-310.pyc
+[1.369s] running install_data
+[1.369s] copying package.xml -> /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/ament_pyflakes/share/ament_pyflakes
+[1.371s] creating /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/ament_pyflakes/share/ament_index
+[1.371s] creating /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/ament_pyflakes/share/ament_index/resource_index
+[1.372s] creating /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/ament_pyflakes/share/ament_index/resource_index/packages
+[1.373s] copying resource/ament_pyflakes -> /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/ament_pyflakes/share/ament_index/resource_index/packages
+[1.373s] running install_egg_info
+[1.375s] Copying ../../../build/ament_pyflakes/ament_pyflakes.egg-info to /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/ament_pyflakes/lib/python3.10/site-packages/ament_pyflakes-0.12.15-py3.10.egg-info
+[1.390s] running install_scripts
+[1.429s] Installing ament_pyflakes script to /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/ament_pyflakes/bin
+[1.431s] writing list of installed files to '/media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/build/ament_pyflakes/install.log'
+[1.582s] Invoked command in '/media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/ament/ament_lint/ament_pyflakes' returned '0': AMENT_PREFIX_PATH=/media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/ament_pycodestyle PATH=/media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/ament_pycodestyle/bin:${PATH} PYTHONPATH=/media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/build/ament_pyflakes/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/ament_pyflakes/lib/python3.10/site-packages:/media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/ament_pycodestyle/lib/python3.10/site-packages /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../build/ament_pyflakes build --build-base /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/build/ament_pyflakes/build install --record /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/build/ament_pyflakes/install.log --single-version-externally-managed install_data

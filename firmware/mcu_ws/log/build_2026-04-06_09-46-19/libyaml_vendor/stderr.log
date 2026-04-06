@@ -1,0 +1,12 @@
+Cloning into 'libyaml-0.2.5'...
+fatal: detected dubious ownership in repository at '/micro_ros_ws/firmware/mcu_ws/build/libyaml_vendor/libyaml-0.2.5-prefix/src/libyaml-0.2.5'
+To add an exception for this directory, call:
+
+	git config --global --add safe.directory /micro_ros_ws/firmware/mcu_ws/build/libyaml_vendor/libyaml-0.2.5-prefix/src/libyaml-0.2.5
+[31mCMake Error at /micro_ros_ws/firmware/mcu_ws/build/libyaml_vendor/libyaml-0.2.5-prefix/tmp/libyaml-0.2.5-gitclone.cmake:40 (message):
+  Failed to checkout tag: '2c891fc7a770e8ba2fec34fc6b545c672beb37e6'
+
+[0m
+gmake[6]: *** [CMakeFiles/libyaml-0.2.5.dir/build.make:101: libyaml-0.2.5-prefix/src/libyaml-0.2.5-stamp/libyaml-0.2.5-download] Error 1
+gmake[5]: *** [CMakeFiles/Makefile2:140: CMakeFiles/libyaml-0.2.5.dir/all] Error 2
+gmake[4]: *** [Makefile:149: all] Error 2

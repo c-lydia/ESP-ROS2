@@ -1,0 +1,16 @@
+/micro_ros_ws/firmware/mcu_ws/install/share/ament_index/resource_index/package_run_dependencies/rosidl_default_runtime
+/micro_ros_ws/firmware/mcu_ws/install/share/ament_index/resource_index/parent_prefix_path/rosidl_default_runtime
+/micro_ros_ws/firmware/mcu_ws/install/share/rosidl_default_runtime/environment/ament_prefix_path.sh
+/micro_ros_ws/firmware/mcu_ws/install/share/rosidl_default_runtime/environment/ament_prefix_path.dsv
+/micro_ros_ws/firmware/mcu_ws/install/share/rosidl_default_runtime/environment/path.sh
+/micro_ros_ws/firmware/mcu_ws/install/share/rosidl_default_runtime/environment/path.dsv
+/micro_ros_ws/firmware/mcu_ws/install/share/rosidl_default_runtime/local_setup.bash
+/micro_ros_ws/firmware/mcu_ws/install/share/rosidl_default_runtime/local_setup.sh
+/micro_ros_ws/firmware/mcu_ws/install/share/rosidl_default_runtime/local_setup.zsh
+/micro_ros_ws/firmware/mcu_ws/install/share/rosidl_default_runtime/local_setup.dsv
+/micro_ros_ws/firmware/mcu_ws/install/share/rosidl_default_runtime/package.dsv
+/micro_ros_ws/firmware/mcu_ws/install/share/ament_index/resource_index/packages/rosidl_default_runtime
+/micro_ros_ws/firmware/mcu_ws/install/share/rosidl_default_runtime/cmake/rosidl_default_runtime-extras.cmake
+/micro_ros_ws/firmware/mcu_ws/install/share/rosidl_default_runtime/cmake/rosidl_default_runtimeConfig.cmake
+/micro_ros_ws/firmware/mcu_ws/install/share/rosidl_default_runtime/cmake/rosidl_default_runtimeConfig-version.cmake
+/micro_ros_ws/firmware/mcu_ws/install/share/rosidl_default_runtime/package.xml

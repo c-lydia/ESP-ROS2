@@ -1,0 +1,15 @@
+{
+  "package_name": "nav_msgs",
+  "non_idl_tuples": [
+    "/micro_ros_ws/firmware/mcu_ws/ros2/common_interfaces/nav_msgs:msg/Goals.msg",
+    "/micro_ros_ws/firmware/mcu_ws/ros2/common_interfaces/nav_msgs:msg/GridCells.msg",
+    "/micro_ros_ws/firmware/mcu_ws/ros2/common_interfaces/nav_msgs:msg/MapMetaData.msg",
+    "/micro_ros_ws/firmware/mcu_ws/ros2/common_interfaces/nav_msgs:msg/OccupancyGrid.msg",
+    "/micro_ros_ws/firmware/mcu_ws/ros2/common_interfaces/nav_msgs:msg/Odometry.msg",
+    "/micro_ros_ws/firmware/mcu_ws/ros2/common_interfaces/nav_msgs:msg/Path.msg",
+    "/micro_ros_ws/firmware/mcu_ws/ros2/common_interfaces/nav_msgs:srv/GetMap.srv",
+    "/micro_ros_ws/firmware/mcu_ws/ros2/common_interfaces/nav_msgs:srv/GetPlan.srv",
+    "/micro_ros_ws/firmware/mcu_ws/ros2/common_interfaces/nav_msgs:srv/LoadMap.srv",
+    "/micro_ros_ws/firmware/mcu_ws/ros2/common_interfaces/nav_msgs:srv/SetMap.srv"
+  ]
+}

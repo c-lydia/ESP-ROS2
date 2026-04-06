@@ -1,0 +1,18 @@
+{
+  "package_name": "visualization_msgs",
+  "non_idl_tuples": [
+    "/micro_ros_ws/firmware/mcu_ws/ros2/common_interfaces/visualization_msgs:msg/ImageMarker.msg",
+    "/micro_ros_ws/firmware/mcu_ws/ros2/common_interfaces/visualization_msgs:msg/InteractiveMarker.msg",
+    "/micro_ros_ws/firmware/mcu_ws/ros2/common_interfaces/visualization_msgs:msg/InteractiveMarkerControl.msg",
+    "/micro_ros_ws/firmware/mcu_ws/ros2/common_interfaces/visualization_msgs:msg/InteractiveMarkerFeedback.msg",
+    "/micro_ros_ws/firmware/mcu_ws/ros2/common_interfaces/visualization_msgs:msg/InteractiveMarkerInit.msg",
+    "/micro_ros_ws/firmware/mcu_ws/ros2/common_interfaces/visualization_msgs:msg/InteractiveMarkerPose.msg",
+    "/micro_ros_ws/firmware/mcu_ws/ros2/common_interfaces/visualization_msgs:msg/InteractiveMarkerUpdate.msg",
+    "/micro_ros_ws/firmware/mcu_ws/ros2/common_interfaces/visualization_msgs:msg/Marker.msg",
+    "/micro_ros_ws/firmware/mcu_ws/ros2/common_interfaces/visualization_msgs:msg/MarkerArray.msg",
+    "/micro_ros_ws/firmware/mcu_ws/ros2/common_interfaces/visualization_msgs:msg/MenuEntry.msg",
+    "/micro_ros_ws/firmware/mcu_ws/ros2/common_interfaces/visualization_msgs:msg/MeshFile.msg",
+    "/micro_ros_ws/firmware/mcu_ws/ros2/common_interfaces/visualization_msgs:msg/UVCoordinate.msg",
+    "/micro_ros_ws/firmware/mcu_ws/ros2/common_interfaces/visualization_msgs:srv/GetInteractiveMarkers.srv"
+  ]
+}

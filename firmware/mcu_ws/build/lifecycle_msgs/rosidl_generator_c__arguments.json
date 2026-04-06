@@ -1,0 +1,38 @@
+{
+  "package_name": "lifecycle_msgs",
+  "output_dir": "/micro_ros_ws/firmware/mcu_ws/build/lifecycle_msgs/rosidl_generator_c/lifecycle_msgs",
+  "template_dir": "/micro_ros_ws/firmware/mcu_ws/install/share/rosidl_generator_c/cmake/../resource",
+  "idl_tuples": [
+    "/micro_ros_ws/firmware/mcu_ws/build/lifecycle_msgs/rosidl_adapter/lifecycle_msgs:msg/State.idl",
+    "/micro_ros_ws/firmware/mcu_ws/build/lifecycle_msgs/rosidl_adapter/lifecycle_msgs:msg/Transition.idl",
+    "/micro_ros_ws/firmware/mcu_ws/build/lifecycle_msgs/rosidl_adapter/lifecycle_msgs:msg/TransitionDescription.idl",
+    "/micro_ros_ws/firmware/mcu_ws/build/lifecycle_msgs/rosidl_adapter/lifecycle_msgs:msg/TransitionEvent.idl",
+    "/micro_ros_ws/firmware/mcu_ws/build/lifecycle_msgs/rosidl_adapter/lifecycle_msgs:srv/ChangeState.idl",
+    "/micro_ros_ws/firmware/mcu_ws/build/lifecycle_msgs/rosidl_adapter/lifecycle_msgs:srv/GetAvailableStates.idl",
+    "/micro_ros_ws/firmware/mcu_ws/build/lifecycle_msgs/rosidl_adapter/lifecycle_msgs:srv/GetAvailableTransitions.idl",
+    "/micro_ros_ws/firmware/mcu_ws/build/lifecycle_msgs/rosidl_adapter/lifecycle_msgs:srv/GetState.idl"
+  ],
+  "target_dependencies": [
+    "/micro_ros_ws/firmware/mcu_ws/install/share/rosidl_generator_c/cmake/../../../lib/rosidl_generator_c/rosidl_generator_c",
+    "/micro_ros_ws/firmware/mcu_ws/install/share/rosidl_generator_c/cmake/../../../lib/python3.10/site-packages/rosidl_generator_c/__init__.py",
+    "/micro_ros_ws/firmware/mcu_ws/install/share/rosidl_generator_c/cmake/../resource/action__type_support.h.em",
+    "/micro_ros_ws/firmware/mcu_ws/install/share/rosidl_generator_c/cmake/../resource/idl.h.em",
+    "/micro_ros_ws/firmware/mcu_ws/install/share/rosidl_generator_c/cmake/../resource/idl__functions.c.em",
+    "/micro_ros_ws/firmware/mcu_ws/install/share/rosidl_generator_c/cmake/../resource/idl__functions.h.em",
+    "/micro_ros_ws/firmware/mcu_ws/install/share/rosidl_generator_c/cmake/../resource/idl__struct.h.em",
+    "/micro_ros_ws/firmware/mcu_ws/install/share/rosidl_generator_c/cmake/../resource/idl__type_support.h.em",
+    "/micro_ros_ws/firmware/mcu_ws/install/share/rosidl_generator_c/cmake/../resource/msg__functions.c.em",
+    "/micro_ros_ws/firmware/mcu_ws/install/share/rosidl_generator_c/cmake/../resource/msg__functions.h.em",
+    "/micro_ros_ws/firmware/mcu_ws/install/share/rosidl_generator_c/cmake/../resource/msg__struct.h.em",
+    "/micro_ros_ws/firmware/mcu_ws/install/share/rosidl_generator_c/cmake/../resource/msg__type_support.h.em",
+    "/micro_ros_ws/firmware/mcu_ws/install/share/rosidl_generator_c/cmake/../resource/srv__type_support.h.em",
+    "/micro_ros_ws/firmware/mcu_ws/build/lifecycle_msgs/rosidl_adapter/lifecycle_msgs/msg/State.idl",
+    "/micro_ros_ws/firmware/mcu_ws/build/lifecycle_msgs/rosidl_adapter/lifecycle_msgs/msg/Transition.idl",
+    "/micro_ros_ws/firmware/mcu_ws/build/lifecycle_msgs/rosidl_adapter/lifecycle_msgs/msg/TransitionDescription.idl",
+    "/micro_ros_ws/firmware/mcu_ws/build/lifecycle_msgs/rosidl_adapter/lifecycle_msgs/msg/TransitionEvent.idl",
+    "/micro_ros_ws/firmware/mcu_ws/build/lifecycle_msgs/rosidl_adapter/lifecycle_msgs/srv/ChangeState.idl",
+    "/micro_ros_ws/firmware/mcu_ws/build/lifecycle_msgs/rosidl_adapter/lifecycle_msgs/srv/GetAvailableStates.idl",
+    "/micro_ros_ws/firmware/mcu_ws/build/lifecycle_msgs/rosidl_adapter/lifecycle_msgs/srv/GetAvailableTransitions.idl",
+    "/micro_ros_ws/firmware/mcu_ws/build/lifecycle_msgs/rosidl_adapter/lifecycle_msgs/srv/GetState.idl"
+  ]
+}

@@ -1,0 +1,10 @@
+/micro_ros_ws/firmware/mcu_ws/build/nav_msgs/rosidl_adapter/nav_msgs:msg/Goals.idl
+/micro_ros_ws/firmware/mcu_ws/build/nav_msgs/rosidl_adapter/nav_msgs:msg/GridCells.idl
+/micro_ros_ws/firmware/mcu_ws/build/nav_msgs/rosidl_adapter/nav_msgs:msg/MapMetaData.idl
+/micro_ros_ws/firmware/mcu_ws/build/nav_msgs/rosidl_adapter/nav_msgs:msg/OccupancyGrid.idl
+/micro_ros_ws/firmware/mcu_ws/build/nav_msgs/rosidl_adapter/nav_msgs:msg/Odometry.idl
+/micro_ros_ws/firmware/mcu_ws/build/nav_msgs/rosidl_adapter/nav_msgs:msg/Path.idl
+/micro_ros_ws/firmware/mcu_ws/build/nav_msgs/rosidl_adapter/nav_msgs:srv/GetMap.idl
+/micro_ros_ws/firmware/mcu_ws/build/nav_msgs/rosidl_adapter/nav_msgs:srv/GetPlan.idl
+/micro_ros_ws/firmware/mcu_ws/build/nav_msgs/rosidl_adapter/nav_msgs:srv/LoadMap.idl
+/micro_ros_ws/firmware/mcu_ws/build/nav_msgs/rosidl_adapter/nav_msgs:srv/SetMap.idl

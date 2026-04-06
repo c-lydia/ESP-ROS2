@@ -1,88 +1,135 @@
 # Wall-E
 
-A micro-ROS workspace for ESP32 development with ROS 2 Humble integration, featuring:
+micro-ROS workspace for ESP32 (FreeRTOS + ESP-IDF) with ROS 2 Humble.
 
-- **ESP32 Firmware:** FreeRTOS-based micro-ROS nodes
-- **Host Agent:** micro-ROS agent running in Docker for ESP32 communication
-- **ROS 2 Humble:** Native ROS 2 packages and visualization tools
-- **Documentation:** Sphinx-based project documentation
-- **Docker Compose:** Multi-container setup for reproducible builds
+This repository includes:
+
+- ESP32 firmware app: firmware/custom/esp32_controller
+- micro-ROS firmware workspace: firmware/mcu_ws
+- Host ROS 2 workspace: src, build, install
+- micro-ROS agent container (UDP 9999)
+
+## Prerequisites
+
+- Docker
+- Docker Compose
+- USB access for flashing (device usually /dev/ttyUSB0)
 
 ## Quick Start
 
-### Prerequisites
+From the repository root:
 
-- Docker and Docker Compose
-- ESP-IDF v5.0+ (for ESP32 firmware)
-- ROS 2 Humble (optional, for native host development)
+1. Start workspace and agent
 
-### Build and Run
+	docker compose up -d
 
-```bash
-# Start all services (workspace + micro-ROS agent)
-docker compose up
+2. Enter workspace container
 
-# In another terminal, build and flash ESP32
-cd firmware/dev_ws
-idf.py build flash monitor
+	docker exec -it micro_ros_workspace bash
+
+3. Build host ROS 2 workspace (if needed)
+
+	cd /micro_ros_ws
+	colcon build
+
+4. Source the environment
+
+	source /opt/ros/humble/setup.bash
+	source /micro_ros_ws/install/setup.bash
+
+## Build ESP32 Firmware
+
+Inside the workspace container:
+
+1. Configure firmware app and transport
+
+``` bash
+ros2 run micro_ros_setup configure_firmware.sh esp32_controller -t udp -i 192.168.1.2 -p 8888
 ```
 
-The workspace container will:
+2. Build firmware
 
-1. Build your ROS 2 packages via colcon
-2. Mount volumes for `src/`, `build/`, `install/`, and `docs/`
-3. Provide an interactive bash shell for development
-
-The micro-ROS agent listens on UDP port **9999** for ESP32 connections.
-
-## Project Structure
-
-```bash
-micro_ros_ws/
-├── src/                  # ROS 2 packages (colcon workspace)
-├── firmware/
-│   ├── custom/          # Custom ESP32 firmware applications
-│   │   └── esp32_controller/    # Main sensor node (IMU + ultrasonic)
-│   ├── dev_ws/          # ESP-IDF development workspace
-│   └── mcu_ws/          # MCU-specific micro-ROS packages
-├── docs/                # Sphinx documentation
-├── Dockerfile           # Container image for ROS 2 workspace
-├── docker-compose.yaml  # Multi-container orchestration
-└── .gitignore          # Git ignore rules
+``` bash
+ros2 run micro_ros_setup build_firmware.sh
 ```
 
-## Documentation
+3. Firmware output files
 
-Build and serve documentation inside the container:
-
-```bash
-cd /micro_ros_ws/docs
-sphinx-build -b html source _build/html
+``` bash
+firmware/freertos_apps/microros_esp32_extensions/build/esp32_controller.bin
+firmware/freertos_apps/microros_esp32_extensions/build/esp32_controller.elf
 ```
 
-## Services
+## Flash ESP32 Firmware
 
-| Service | Image | Purpose | Port |
-|---------|-------|---------|------|
-| **workspace** | Local build | Builds ROS 2 packages | - |
-| **micro_ros_agent** | microros/micro-ros-agent:humble | ESP32 communication bridge | 9999 (UDP) |
+Inside the workspace container (requires serial device access):
 
-## Development Workflow
+1. Flash
 
-1. **Add ROS 2 packages** to `src/` directory
-2. **Workspace container builds automatically** via colcon
-3. **Edit documentation** in `docs/source/` (mounted volume)
-4. **ESP32 firmware** in `firmware/dev_ws/` uses ESP-IDF build system
-5. **Host processes** on port 9999 are mapped to micro-ROS agent
+``` bash
+ros2 run micro_ros_setup flash_firmware.sh
+```
 
-## Notes
+If your board is not `/dev/ttyUSB0`, update `docker-compose.yaml` device mapping or run a custom docker command with the correct `--device` mapping.
 
-- **Port 9999:** micro-ROS agent UDP port (change in docker-compose.yaml if needed)
-- **venv + Docker:** Use venv locally for Python tools, Docker for ROS 2 builds
-- **Documentation tools:** Sphinx, myst-parser, RTD theme pre-installed
+## Run micro-ROS Agent
 
-For more details, see:
+The compose service starts this automatically:
 
-- Restructured Text Documentation: [Documentation](docs/source/index.rst)
-- HTML Documentation: [HTML Documentation](docs/build/index.html)
-- PDF Documentation: [PDF Documentation](docs/build-pdf/wall-e.pdf)
+``` bash
+microros/micro-ros-agent:humble udp4 --port 9999
+```
+
+You can check logs with:
+
+``` bash
+docker logs -f micro_ros_agent
+```
+
+## Useful Commands
+
+- Rebuild host workspace
+
+``` bash
+docker exec -it micro_ros_workspace bash -lc "cd /micro_ros_ws && colcon build"
+```
+
+- Rebuild firmware
+
+``` bash
+docker exec -it micro_ros_workspace bash -lc "source /opt/ros/humble/setup.bash && source /micro_ros_ws/install/setup.bash && ros2 run micro_ros_setup build_firmware.sh"
+```
+
+- Stop everything
+
+``` bash
+docker compose down
+```
+
+## Troubleshooting
+
+- Package `micro_ros_setup` not found
+  Source both setup files:
+
+``` bash
+source /opt/ros/humble/setup.bash
+source /micro_ros_ws/install/setup.bash
+```
+
+- Docker compose fails on `/dev/ttyUSB0`
+  Your host may expose a different serial device. Adjust `docker-compose.yaml` accordingly.
+
+- Build fails with Git safe.directory for esp-idf
+  Run in container:
+
+``` bash
+git config --global --add safe.directory /micro_ros_ws/firmware/toolchain/esp-idf
+```
+
+## Project Layout
+
+- `src`: ROS 2 packages
+- `firmware/custom/esp32_controller: app source`
+- `firmware/freertos_apps/microros_esp32_extensions`: generated ESP-IDF project
+- `firmware/mcu_ws`: micro-ROS cross-compiled workspace
+- `docs`: Sphinx documentation

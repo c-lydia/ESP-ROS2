@@ -11,6 +11,7 @@ Welcome to Wall-E's comprehensive documentation. This project provides an integr
    :caption: Contents
 
    getting_started
+  workflow_and_commands
    firmware/esp32_controller
    architecture
    troubleshooting

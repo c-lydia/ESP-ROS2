@@ -1,0 +1,8 @@
+/micro_ros_ws/firmware/mcu_ws/build/lifecycle_msgs/rosidl_adapter/lifecycle_msgs:msg/State.idl
+/micro_ros_ws/firmware/mcu_ws/build/lifecycle_msgs/rosidl_adapter/lifecycle_msgs:msg/Transition.idl
+/micro_ros_ws/firmware/mcu_ws/build/lifecycle_msgs/rosidl_adapter/lifecycle_msgs:msg/TransitionDescription.idl
+/micro_ros_ws/firmware/mcu_ws/build/lifecycle_msgs/rosidl_adapter/lifecycle_msgs:msg/TransitionEvent.idl
+/micro_ros_ws/firmware/mcu_ws/build/lifecycle_msgs/rosidl_adapter/lifecycle_msgs:srv/ChangeState.idl
+/micro_ros_ws/firmware/mcu_ws/build/lifecycle_msgs/rosidl_adapter/lifecycle_msgs:srv/GetAvailableStates.idl
+/micro_ros_ws/firmware/mcu_ws/build/lifecycle_msgs/rosidl_adapter/lifecycle_msgs:srv/GetAvailableTransitions.idl
+/micro_ros_ws/firmware/mcu_ws/build/lifecycle_msgs/rosidl_adapter/lifecycle_msgs:srv/GetState.idl

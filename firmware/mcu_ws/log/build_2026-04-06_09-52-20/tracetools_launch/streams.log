@@ -1,0 +1,45 @@
+[2.293s] Invoking command in '/micro_ros_ws/firmware/mcu_ws/uros/tracetools/tracetools_launch': AMENT_PREFIX_PATH=/micro_ros_ws/firmware/mcu_ws/install:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/micro_ros_ws/firmware/mcu_ws/install:${CMAKE_PREFIX_PATH} PATH=/micro_ros_ws/firmware/mcu_ws/install/bin:${PATH} PYTHONPATH=/micro_ros_ws/firmware/mcu_ws/build/tracetools_launch/prefix_override:/micro_ros_ws/firmware/toolchain/espressif/python_env/idf4.1_py3.10_env/lib/python3.10/site-packages/colcon_core/task/python/colcon_distutils_commands:/micro_ros_ws/firmware/mcu_ws/install/lib/python3.10/site-packages:/micro_ros_ws/firmware/mcu_ws/install/lib/python3.10/site-packages:${PYTHONPATH} /micro_ros_ws/firmware/toolchain/espressif/python_env/idf4.1_py3.10_env/bin/python -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../build/tracetools_launch build --build-base /micro_ros_ws/firmware/mcu_ws/build/tracetools_launch/build install --record /micro_ros_ws/firmware/mcu_ws/build/tracetools_launch/install.log --single-version-externally-managed install_data
+[2.913s] /micro_ros_ws/firmware/toolchain/espressif/python_env/idf4.1_py3.10_env/lib/python3.10/site-packages/setuptools/_distutils/dist.py:289: UserWarning: Unknown distribution option: 'tests_require'
+[2.914s]   warnings.warn(msg)
+[3.258s] running egg_info
+[3.315s] creating ../../../build/tracetools_launch/tracetools_launch.egg-info
+[3.316s] writing ../../../build/tracetools_launch/tracetools_launch.egg-info/PKG-INFO
+[3.319s] writing dependency_links to ../../../build/tracetools_launch/tracetools_launch.egg-info/dependency_links.txt
+[3.320s] writing entry points to ../../../build/tracetools_launch/tracetools_launch.egg-info/entry_points.txt
+[3.321s] writing requirements to ../../../build/tracetools_launch/tracetools_launch.egg-info/requires.txt
+[3.322s] writing top-level names to ../../../build/tracetools_launch/tracetools_launch.egg-info/top_level.txt
+[3.323s] writing manifest file '../../../build/tracetools_launch/tracetools_launch.egg-info/SOURCES.txt'
+[3.437s] reading manifest file '../../../build/tracetools_launch/tracetools_launch.egg-info/SOURCES.txt'
+[3.446s] writing manifest file '../../../build/tracetools_launch/tracetools_launch.egg-info/SOURCES.txt'
+[3.446s] running build
+[3.447s] running build_py
+[3.447s] creating /micro_ros_ws/firmware/mcu_ws/build/tracetools_launch/build/lib/tracetools_launch
+[3.449s] copying tracetools_launch/action.py -> /micro_ros_ws/firmware/mcu_ws/build/tracetools_launch/build/lib/tracetools_launch
+[3.452s] copying tracetools_launch/__init__.py -> /micro_ros_ws/firmware/mcu_ws/build/tracetools_launch/build/lib/tracetools_launch
+[3.454s] creating /micro_ros_ws/firmware/mcu_ws/build/tracetools_launch/build/lib/tracetools_launch/actions
+[3.455s] copying tracetools_launch/actions/ld_preload.py -> /micro_ros_ws/firmware/mcu_ws/build/tracetools_launch/build/lib/tracetools_launch/actions
+[3.458s] copying tracetools_launch/actions/__init__.py -> /micro_ros_ws/firmware/mcu_ws/build/tracetools_launch/build/lib/tracetools_launch/actions
+[3.461s] running install
+[3.463s] running install_lib
+[3.514s] creating /micro_ros_ws/firmware/mcu_ws/install/lib/python3.10/site-packages/tracetools_launch
+[3.516s] copying /micro_ros_ws/firmware/mcu_ws/build/tracetools_launch/build/lib/tracetools_launch/action.py -> /micro_ros_ws/firmware/mcu_ws/install/lib/python3.10/site-packages/tracetools_launch
+[3.519s] creating /micro_ros_ws/firmware/mcu_ws/install/lib/python3.10/site-packages/tracetools_launch/actions
+[3.520s] copying /micro_ros_ws/firmware/mcu_ws/build/tracetools_launch/build/lib/tracetools_launch/actions/ld_preload.py -> /micro_ros_ws/firmware/mcu_ws/install/lib/python3.10/site-packages/tracetools_launch/actions
+[3.524s] copying /micro_ros_ws/firmware/mcu_ws/build/tracetools_launch/build/lib/tracetools_launch/actions/__init__.py -> /micro_ros_ws/firmware/mcu_ws/install/lib/python3.10/site-packages/tracetools_launch/actions
+[3.526s] copying /micro_ros_ws/firmware/mcu_ws/build/tracetools_launch/build/lib/tracetools_launch/__init__.py -> /micro_ros_ws/firmware/mcu_ws/install/lib/python3.10/site-packages/tracetools_launch
+[3.537s] byte-compiling /micro_ros_ws/firmware/mcu_ws/install/lib/python3.10/site-packages/tracetools_launch/action.py to action.cpython-310.pyc
+[3.543s] byte-compiling /micro_ros_ws/firmware/mcu_ws/install/lib/python3.10/site-packages/tracetools_launch/actions/ld_preload.py to ld_preload.cpython-310.pyc
+[3.547s] byte-compiling /micro_ros_ws/firmware/mcu_ws/install/lib/python3.10/site-packages/tracetools_launch/actions/__init__.py to __init__.cpython-310.pyc
+[3.551s] byte-compiling /micro_ros_ws/firmware/mcu_ws/install/lib/python3.10/site-packages/tracetools_launch/__init__.py to __init__.cpython-310.pyc
+[3.554s] running install_data
+[3.555s] copying package.xml -> /micro_ros_ws/firmware/mcu_ws/install/share/tracetools_launch
+[3.557s] creating /micro_ros_ws/firmware/mcu_ws/install/share/tracetools_launch/launch
+[3.557s] copying launch/example.launch.py -> /micro_ros_ws/firmware/mcu_ws/install/share/tracetools_launch/launch
+[3.560s] copying launch/example.launch.xml -> /micro_ros_ws/firmware/mcu_ws/install/share/tracetools_launch/launch
+[3.563s] copying launch/example.launch.yaml -> /micro_ros_ws/firmware/mcu_ws/install/share/tracetools_launch/launch
+[3.566s] copying resource/tracetools_launch -> /micro_ros_ws/firmware/mcu_ws/install/share/ament_index/resource_index/packages
+[3.568s] running install_egg_info
+[3.640s] Copying ../../../build/tracetools_launch/tracetools_launch.egg-info to /micro_ros_ws/firmware/mcu_ws/install/lib/python3.10/site-packages/tracetools_launch-4.1.1-py3.10.egg-info
+[3.657s] running install_scripts
+[3.960s] writing list of installed files to '/micro_ros_ws/firmware/mcu_ws/build/tracetools_launch/install.log'
+[4.016s] Invoked command in '/micro_ros_ws/firmware/mcu_ws/uros/tracetools/tracetools_launch' returned '0': AMENT_PREFIX_PATH=/micro_ros_ws/firmware/mcu_ws/install:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/micro_ros_ws/firmware/mcu_ws/install:${CMAKE_PREFIX_PATH} PATH=/micro_ros_ws/firmware/mcu_ws/install/bin:${PATH} PYTHONPATH=/micro_ros_ws/firmware/mcu_ws/build/tracetools_launch/prefix_override:/micro_ros_ws/firmware/toolchain/espressif/python_env/idf4.1_py3.10_env/lib/python3.10/site-packages/colcon_core/task/python/colcon_distutils_commands:/micro_ros_ws/firmware/mcu_ws/install/lib/python3.10/site-packages:/micro_ros_ws/firmware/mcu_ws/install/lib/python3.10/site-packages:${PYTHONPATH} /micro_ros_ws/firmware/toolchain/espressif/python_env/idf4.1_py3.10_env/bin/python -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../build/tracetools_launch build --build-base /micro_ros_ws/firmware/mcu_ws/build/tracetools_launch/build install --record /micro_ros_ws/firmware/mcu_ws/build/tracetools_launch/install.log --single-version-externally-managed install_data

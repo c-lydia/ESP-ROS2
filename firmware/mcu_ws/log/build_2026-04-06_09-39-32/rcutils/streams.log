@@ -1,0 +1,37 @@
+[0.327s] Invoking command in '/micro_ros_ws/firmware/mcu_ws/build/rcutils': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/micro_ros_ws/firmware/dev_ws/install/ament_uncrustify:/micro_ros_ws/firmware/dev_ws/install/domain_coordinator:/micro_ros_ws/firmware/dev_ws/install/ament_xmllint:/micro_ros_ws/firmware/dev_ws/install/ament_pyflakes:/micro_ros_ws/firmware/dev_ws/install/ament_pycodestyle:/micro_ros_ws/firmware/dev_ws/install/ament_pep257:/micro_ros_ws/firmware/dev_ws/install/ament_pclint:/micro_ros_ws/firmware/dev_ws/install/ament_package:/micro_ros_ws/firmware/dev_ws/install/ament_mypy:/micro_ros_ws/firmware/dev_ws/install/ament_lint_cmake:/micro_ros_ws/firmware/dev_ws/install/ament_flake8:/micro_ros_ws/firmware/dev_ws/install/ament_copyright:/micro_ros_ws/firmware/dev_ws/install/ament_lint:/micro_ros_ws/firmware/dev_ws/install/ament_index_python:/micro_ros_ws/firmware/dev_ws/install/ament_cpplint:/micro_ros_ws/firmware/dev_ws/install/ament_cppcheck:/micro_ros_ws/firmware/dev_ws/install/ament_clang_tidy:/micro_ros_ws/firmware/dev_ws/install/ament_clang_format /usr/bin/cmake /micro_ros_ws/firmware/mcu_ws/uros/rcutils --no-warn-unused-cli -DCMAKE_POSITION_INDEPENDENT_CODE:BOOL=OFF -DTHIRDPARTY=ON -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=OFF -DCMAKE_BUILD_TYPE=Debug -DCMAKE_TOOLCHAIN_FILE=/micro_ros_ws/firmware/freertos_apps/microros_esp32_extensions/esp32_toolchain.cmake -DCMAKE_VERBOSE_MAKEFILE=ON -DENABLE_TESTING=OFF -DRCUTILS_NO_FILESYSTEM=ON -DRCUTILS_NO_THREAD_SUPPORT=ON -DRCUTILS_NO_64_ATOMIC=ON -DCMAKE_INSTALL_PREFIX=/micro_ros_ws/firmware/mcu_ws/install
+[1.901s] Not searching for unused variables given on the command line.
+[1.902s] -- The C compiler identification is GNU 8.2.0
+[1.903s] -- The CXX compiler identification is GNU 8.2.0
+[1.903s] -- Detecting C compiler ABI info
+[1.904s] -- Detecting C compiler ABI info - done
+[1.904s] -- Check for working C compiler: /micro_ros_ws/firmware/toolchain/espressif/tools/xtensa-esp32-elf/esp-2020r2-8.2.0/xtensa-esp32-elf/bin/xtensa-esp32-elf-gcc - skipped
+[1.904s] -- Detecting C compile features
+[1.905s] -- Detecting C compile features - done
+[1.905s] -- Detecting CXX compiler ABI info
+[1.905s] -- Detecting CXX compiler ABI info - done
+[1.905s] -- Check for working CXX compiler: /micro_ros_ws/firmware/toolchain/espressif/tools/xtensa-esp32-elf/esp-2020r2-8.2.0/xtensa-esp32-elf/bin/xtensa-esp32-elf-g++ - skipped
+[1.906s] -- Detecting CXX compile features
+[1.906s] -- Detecting CXX compile features - done
+[1.906s] -- Found ament_cmake_python: 1.3.14 (/micro_ros_ws/firmware/dev_ws/install/ament_cmake_python/share/ament_cmake_python/cmake)
+[1.906s] -- Found ament_cmake_ros: 0.10.0 (/micro_ros_ws/firmware/dev_ws/install/ament_cmake_ros/share/ament_cmake_ros/cmake)
+[2.281s] -- Found Python3: /micro_ros_ws/firmware/toolchain/espressif/python_env/idf4.1_py3.10_env/bin/python3 (found version "3.10.12") found components: Interpreter 
+[4.271s] Traceback (most recent call last):
+[4.271s]   File "/micro_ros_ws/firmware/dev_ws/install/ament_cmake_core/share/ament_cmake_core/cmake/core/package_xml_2_cmake.py", line 22, in <module>
+[4.272s]     from catkin_pkg.package import parse_package_string
+[4.272s] ModuleNotFoundError: No module named 'catkin_pkg'
+[4.273s] [31mCMake Error at /micro_ros_ws/firmware/dev_ws/install/ament_cmake_core/share/ament_cmake_core/cmake/core/ament_package_xml.cmake:95 (message):
+[4.274s]   
+[4.274s]   execute_process(/micro_ros_ws/firmware/toolchain/espressif/python_env/idf4.1_py3.10_env/bin/python3
+[4.274s]   /micro_ros_ws/firmware/dev_ws/install/ament_cmake_core/share/ament_cmake_core/cmake/core/package_xml_2_cmake.py
+[4.274s]   /micro_ros_ws/firmware/mcu_ws/uros/rcutils/package.xml
+[4.274s]   /micro_ros_ws/firmware/mcu_ws/build/rcutils/ament_cmake_core/package.cmake)
+[4.274s]   returned error code 1
+[4.275s] Call Stack (most recent call first):
+[4.275s]   /micro_ros_ws/firmware/dev_ws/install/ament_cmake_core/share/ament_cmake_core/cmake/core/ament_package_xml.cmake:49 (_ament_package_xml)
+[4.275s]   /micro_ros_ws/firmware/dev_ws/install/ament_cmake_python/share/ament_cmake_python/cmake/ament_python_install_package.cmake:60 (ament_package_xml)
+[4.275s]   /micro_ros_ws/firmware/dev_ws/install/ament_cmake_python/share/ament_cmake_python/cmake/ament_python_install_package.cmake:39 (_ament_cmake_python_install_package)
+[4.275s]   CMakeLists.txt:27 (ament_python_install_package)
+[4.275s] 
+[4.276s] [0m
+[4.276s] -- Configuring incomplete, errors occurred!
+[4.276s] See also "/micro_ros_ws/firmware/mcu_ws/build/rcutils/CMakeFiles/CMakeOutput.log".

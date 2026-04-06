@@ -1,0 +1,35 @@
+In file included from [01m[K/micro_ros_ws/firmware/mcu_ws/uros/rcutils/include/rcutils/error_handling.h:28[m[K,
+                 from [01m[K/micro_ros_ws/firmware/mcu_ws/uros/rcutils/src/allocator.c:20[m[K:
+[01m[K/micro_ros_ws/firmware/toolchain/esp-idf/components/newlib/platform_include/assert.h:24:2:[m[K [01;35m[Kwarning: [m[K#include_next is a GCC extension
+ #[01;35m[Kinclude_next[m[K <assert.h>
+  [01;35m[K^~~~~~~~~~~~[m[K
+In file included from [01m[K/micro_ros_ws/firmware/mcu_ws/uros/rcutils/src/logging.c:21[m[K:
+[01m[K/micro_ros_ws/firmware/toolchain/esp-idf/components/newlib/platform_include/errno.h:18:2:[m[K [01;35m[Kwarning: [m[K#include_next is a GCC extension
+ #[01;35m[Kinclude_next[m[K "errno.h"
+  [01;35m[K^~~~~~~~~~~~[m[K
+In file included from [01m[K/micro_ros_ws/firmware/mcu_ws/uros/rcutils/include/rcutils/error_handling.h:28[m[K,
+                 from [01m[K/micro_ros_ws/firmware/mcu_ws/uros/rcutils/src/logging.c:47[m[K:
+[01m[K/micro_ros_ws/firmware/toolchain/esp-idf/components/newlib/platform_include/assert.h:24:2:[m[K [01;35m[Kwarning: [m[K#include_next is a GCC extension
+ #[01;35m[Kinclude_next[m[K <assert.h>
+  [01;35m[K^~~~~~~~~~~~[m[K
+In file included from [01m[K/micro_ros_ws/firmware/mcu_ws/uros/rcutils/src/process.c:20[m[K:
+[01m[K/micro_ros_ws/firmware/toolchain/esp-idf/components/newlib/platform_include/errno.h:18:2:[m[K [01;35m[Kwarning: [m[K#include_next is a GCC extension
+ #[01;35m[Kinclude_next[m[K "errno.h"
+  [01;35m[K^~~~~~~~~~~~[m[K
+In file included from [01m[K/micro_ros_ws/firmware/mcu_ws/uros/rcutils/include/rcutils/error_handling.h:28[m[K,
+                 from [01m[K/micro_ros_ws/firmware/mcu_ws/uros/rcutils/src/process.c:43[m[K:
+[01m[K/micro_ros_ws/firmware/toolchain/esp-idf/components/newlib/platform_include/assert.h:24:2:[m[K [01;35m[Kwarning: [m[K#include_next is a GCC extension
+ #[01;35m[Kinclude_next[m[K <assert.h>
+  [01;35m[K^~~~~~~~~~~~[m[K
+In file included from [01m[K/micro_ros_ws/firmware/mcu_ws/uros/rcutils/include/rcutils/error_handling.h:28[m[K,
+                 from [01m[K/micro_ros_ws/firmware/mcu_ws/uros/rcutils/src/qsort.c:22[m[K:
+[01m[K/micro_ros_ws/firmware/toolchain/esp-idf/components/newlib/platform_include/assert.h:24:2:[m[K [01;35m[Kwarning: [m[K#include_next is a GCC extension
+ #[01;35m[Kinclude_next[m[K <assert.h>
+  [01;35m[K^~~~~~~~~~~~[m[K
+[01m[K/micro_ros_ws/firmware/mcu_ws/uros/rcutils/src/shared_library.c:34:10:[m[K [01;31m[Kfatal error: [m[Kdlfcn.h: No such file or directory
+ #include [01;31m[K<dlfcn.h>[m[K
+          [01;31m[K^~~~~~~~~[m[K
+compilation terminated.
+gmake[6]: *** [CMakeFiles/rcutils.dir/build.make:281: CMakeFiles/rcutils.dir/src/shared_library.c.obj] Error 1
+gmake[5]: *** [CMakeFiles/Makefile2:195: CMakeFiles/rcutils.dir/all] Error 2
+gmake[4]: *** [Makefile:149: all] Error 2

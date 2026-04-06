@@ -1,10 +1,5 @@
 {
     "names": {
-        "microros_static_library_freertos": {
-            "cmake-args": [
-                "-DUROS_APP_FOLDER=sensor_node"
-            ]
-        },
         "rmw_microxrcedds": {
             "cmake-args": [
                 "-DRMW_UXRCE_MAX_NODES=1",

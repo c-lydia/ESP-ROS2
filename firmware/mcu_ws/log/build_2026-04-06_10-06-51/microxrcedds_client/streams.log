@@ -1,0 +1,707 @@
+[1.248s] Invoking command in '/micro_ros_ws/firmware/mcu_ws/build/microxrcedds_client': CMAKE_PREFIX_PATH=/micro_ros_ws/firmware/mcu_ws/install:${CMAKE_PREFIX_PATH} PATH=/micro_ros_ws/firmware/mcu_ws/install/bin:${PATH} PYTHONPATH=/micro_ros_ws/firmware/mcu_ws/install/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/cmake --build /micro_ros_ws/firmware/mcu_ws/build/microxrcedds_client -- -j12 -l12
+[1.324s] gmake[4]: Entering directory '/micro_ros_ws/firmware/mcu_ws/build/microxrcedds_client'
+[1.325s] /usr/bin/cmake -S/micro_ros_ws/firmware/mcu_ws/eProsima/Micro-XRCE-DDS-Client -B/micro_ros_ws/firmware/mcu_ws/build/microxrcedds_client --check-build-system CMakeFiles/Makefile.cmake 0
+[1.373s] Re-run cmake file: Makefile older than: /micro_ros_ws/firmware/freertos_apps/microros_esp32_extensions/esp32_toolchain.cmake
+[1.475s] -- Configuring done
+[1.735s] -- Generating done
+[1.781s] -- Build files have been written to: /micro_ros_ws/firmware/mcu_ws/build/microxrcedds_client
+[1.782s] /usr/bin/cmake -E cmake_progress_start /micro_ros_ws/firmware/mcu_ws/build/microxrcedds_client/CMakeFiles /micro_ros_ws/firmware/mcu_ws/build/microxrcedds_client//CMakeFiles/progress.marks
+[1.831s] /usr/bin/gmake  -f CMakeFiles/Makefile2 all
+[1.862s] gmake[5]: Entering directory '/micro_ros_ws/firmware/mcu_ws/build/microxrcedds_client'
+[1.863s] /usr/bin/gmake  -f CMakeFiles/microxrcedds_client.dir/build.make CMakeFiles/microxrcedds_client.dir/depend
+[1.877s] gmake[6]: Entering directory '/micro_ros_ws/firmware/mcu_ws/build/microxrcedds_client'
+[1.877s] cd /micro_ros_ws/firmware/mcu_ws/build/microxrcedds_client && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /micro_ros_ws/firmware/mcu_ws/eProsima/Micro-XRCE-DDS-Client /micro_ros_ws/firmware/mcu_ws/eProsima/Micro-XRCE-DDS-Client /micro_ros_ws/firmware/mcu_ws/build/microxrcedds_client /micro_ros_ws/firmware/mcu_ws/build/microxrcedds_client /micro_ros_ws/firmware/mcu_ws/build/microxrcedds_client/CMakeFiles/microxrcedds_client.dir/DependInfo.cmake --color=
+[1.920s] Dependencies file "CMakeFiles/microxrcedds_client.dir/src/c/core/serialization/xrce_header.c.obj.d" is newer than depends file "/micro_ros_ws/firmware/mcu_ws/build/microxrcedds_client/CMakeFiles/microxrcedds_client.dir/compiler_depend.internal".
+[1.924s] Dependencies file "CMakeFiles/microxrcedds_client.dir/src/c/core/serialization/xrce_subheader.c.obj.d" is newer than depends file "/micro_ros_ws/firmware/mcu_ws/build/microxrcedds_client/CMakeFiles/microxrcedds_client.dir/compiler_depend.internal".
+[1.929s] Dependencies file "CMakeFiles/microxrcedds_client.dir/src/c/core/serialization/xrce_types.c.obj.d" is newer than depends file "/micro_ros_ws/firmware/mcu_ws/build/microxrcedds_client/CMakeFiles/microxrcedds_client.dir/compiler_depend.internal".
+[1.933s] Dependencies file "CMakeFiles/microxrcedds_client.dir/src/c/core/session/common_create_entities.c.obj.d" is newer than depends file "/micro_ros_ws/firmware/mcu_ws/build/microxrcedds_client/CMakeFiles/microxrcedds_client.dir/compiler_depend.internal".
+[1.941s] Dependencies file "CMakeFiles/microxrcedds_client.dir/src/c/core/session/create_entities_bin.c.obj.d" is newer than depends file "/micro_ros_ws/firmware/mcu_ws/build/microxrcedds_client/CMakeFiles/microxrcedds_client.dir/compiler_depend.internal".
+[1.944s] Dependencies file "CMakeFiles/microxrcedds_client.dir/src/c/core/session/create_entities_ref.c.obj.d" is newer than depends file "/micro_ros_ws/firmware/mcu_ws/build/microxrcedds_client/CMakeFiles/microxrcedds_client.dir/compiler_depend.internal".
+[1.948s] Dependencies file "CMakeFiles/microxrcedds_client.dir/src/c/core/session/create_entities_xml.c.obj.d" is newer than depends file "/micro_ros_ws/firmware/mcu_ws/build/microxrcedds_client/CMakeFiles/microxrcedds_client.dir/compiler_depend.internal".
+[1.954s] Dependencies file "CMakeFiles/microxrcedds_client.dir/src/c/core/session/object_id.c.obj.d" is newer than depends file "/micro_ros_ws/firmware/mcu_ws/build/microxrcedds_client/CMakeFiles/microxrcedds_client.dir/compiler_depend.internal".
+[1.958s] Dependencies file "CMakeFiles/microxrcedds_client.dir/src/c/core/session/read_access.c.obj.d" is newer than depends file "/micro_ros_ws/firmware/mcu_ws/build/microxrcedds_client/CMakeFiles/microxrcedds_client.dir/compiler_depend.internal".
+[1.961s] Dependencies file "CMakeFiles/microxrcedds_client.dir/src/c/core/session/session.c.obj.d" is newer than depends file "/micro_ros_ws/firmware/mcu_ws/build/microxrcedds_client/CMakeFiles/microxrcedds_client.dir/compiler_depend.internal".
+[1.966s] Dependencies file "CMakeFiles/microxrcedds_client.dir/src/c/core/session/session_info.c.obj.d" is newer than depends file "/micro_ros_ws/firmware/mcu_ws/build/microxrcedds_client/CMakeFiles/microxrcedds_client.dir/compiler_depend.internal".
+[1.971s] Dependencies file "CMakeFiles/microxrcedds_client.dir/src/c/core/session/stream/input_best_effort_stream.c.obj.d" is newer than depends file "/micro_ros_ws/firmware/mcu_ws/build/microxrcedds_client/CMakeFiles/microxrcedds_client.dir/compiler_depend.internal".
+[1.977s] Dependencies file "CMakeFiles/microxrcedds_client.dir/src/c/core/session/stream/input_reliable_stream.c.obj.d" is newer than depends file "/micro_ros_ws/firmware/mcu_ws/build/microxrcedds_client/CMakeFiles/microxrcedds_client.dir/compiler_depend.internal".
+[1.983s] Dependencies file "CMakeFiles/microxrcedds_client.dir/src/c/core/session/stream/output_best_effort_stream.c.obj.d" is newer than depends file "/micro_ros_ws/firmware/mcu_ws/build/microxrcedds_client/CMakeFiles/microxrcedds_client.dir/compiler_depend.internal".
+[1.986s] Dependencies file "CMakeFiles/microxrcedds_client.dir/src/c/core/session/stream/output_reliable_stream.c.obj.d" is newer than depends file "/micro_ros_ws/firmware/mcu_ws/build/microxrcedds_client/CMakeFiles/microxrcedds_client.dir/compiler_depend.internal".
+[1.988s] Dependencies file "CMakeFiles/microxrcedds_client.dir/src/c/core/session/stream/seq_num.c.obj.d" is newer than depends file "/micro_ros_ws/firmware/mcu_ws/build/microxrcedds_client/CMakeFiles/microxrcedds_client.dir/compiler_depend.internal".
+[1.994s] Dependencies file "CMakeFiles/microxrcedds_client.dir/src/c/core/session/stream/stream_id.c.obj.d" is newer than depends file "/micro_ros_ws/firmware/mcu_ws/build/microxrcedds_client/CMakeFiles/microxrcedds_client.dir/compiler_depend.internal".
+[1.997s] Dependencies file "CMakeFiles/microxrcedds_client.dir/src/c/core/session/stream/stream_storage.c.obj.d" is newer than depends file "/micro_ros_ws/firmware/mcu_ws/build/microxrcedds_client/CMakeFiles/microxrcedds_client.dir/compiler_depend.internal".
+[2.002s] Dependencies file "CMakeFiles/microxrcedds_client.dir/src/c/core/session/submessage.c.obj.d" is newer than depends file "/micro_ros_ws/firmware/mcu_ws/build/microxrcedds_client/CMakeFiles/microxrcedds_client.dir/compiler_depend.internal".
+[2.005s] Dependencies file "CMakeFiles/microxrcedds_client.dir/src/c/core/session/write_access.c.obj.d" is newer than depends file "/micro_ros_ws/firmware/mcu_ws/build/microxrcedds_client/CMakeFiles/microxrcedds_client.dir/compiler_depend.internal".
+[2.008s] Dependencies file "CMakeFiles/microxrcedds_client.dir/src/c/profile/transport/custom/custom_transport.c.obj.d" is newer than depends file "/micro_ros_ws/firmware/mcu_ws/build/microxrcedds_client/CMakeFiles/microxrcedds_client.dir/compiler_depend.internal".
+[2.011s] Dependencies file "CMakeFiles/microxrcedds_client.dir/src/c/profile/transport/ip/ip_posix.c.obj.d" is newer than depends file "/micro_ros_ws/firmware/mcu_ws/build/microxrcedds_client/CMakeFiles/microxrcedds_client.dir/compiler_depend.internal".
+[2.018s] Dependencies file "CMakeFiles/microxrcedds_client.dir/src/c/profile/transport/ip/udp/udp_transport.c.obj.d" is newer than depends file "/micro_ros_ws/firmware/mcu_ws/build/microxrcedds_client/CMakeFiles/microxrcedds_client.dir/compiler_depend.internal".
+[2.023s] Dependencies file "CMakeFiles/microxrcedds_client.dir/src/c/profile/transport/ip/udp/udp_transport_posix_nopoll.c.obj.d" is newer than depends file "/micro_ros_ws/firmware/mcu_ws/build/microxrcedds_client/CMakeFiles/microxrcedds_client.dir/compiler_depend.internal".
+[2.032s] Dependencies file "CMakeFiles/microxrcedds_client.dir/src/c/profile/transport/stream_framing/stream_framing_protocol.c.obj.d" is newer than depends file "/micro_ros_ws/firmware/mcu_ws/build/microxrcedds_client/CMakeFiles/microxrcedds_client.dir/compiler_depend.internal".
+[2.035s] Dependencies file "CMakeFiles/microxrcedds_client.dir/src/c/util/ping.c.obj.d" is newer than depends file "/micro_ros_ws/firmware/mcu_ws/build/microxrcedds_client/CMakeFiles/microxrcedds_client.dir/compiler_depend.internal".
+[2.038s] Dependencies file "CMakeFiles/microxrcedds_client.dir/src/c/util/time.c.obj.d" is newer than depends file "/micro_ros_ws/firmware/mcu_ws/build/microxrcedds_client/CMakeFiles/microxrcedds_client.dir/compiler_depend.internal".
+[2.259s] Consolidate compiler generated dependencies of target microxrcedds_client
+[2.260s] gmake[6]: Leaving directory '/micro_ros_ws/firmware/mcu_ws/build/microxrcedds_client'
+[2.261s] /usr/bin/gmake  -f CMakeFiles/microxrcedds_client.dir/build.make CMakeFiles/microxrcedds_client.dir/build
+[2.466s] gmake[6]: Entering directory '/micro_ros_ws/firmware/mcu_ws/build/microxrcedds_client'
+[2.514s] [  3%] Building C object CMakeFiles/microxrcedds_client.dir/src/c/profile/transport/ip/udp/udp_transport_posix_nopoll.c.obj
+[2.515s] /micro_ros_ws/firmware/toolchain/espressif/tools/xtensa-esp32-elf/esp-2020r2-8.2.0/xtensa-esp32-elf/bin/xtensa-esp32-elf-gcc -DLWIP_IPV4 -DLWIP_IPV6 -I/micro_ros_ws/firmware/freertos_apps/microros_esp32_extensions/build/config -I/micro_ros_ws/firmware/toolchain/esp-idf/components/newlib/platform_include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/protocomm/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/esp_rom/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/driver/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/wear_levelling/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/vfs/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/log/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/freertos/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/wifi_provisioning/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/pthread/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/libsodium/libsodium/src/libsodium/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/coap/port/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/coap/libcoap/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/tcp_transport/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/unity/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/esp32/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/asio/port/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/asio/asio/asio/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/app_update/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/esp_ringbuf/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/soc/esp32/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/soc/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/efuse/test/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/efuse/esp32/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/efuse/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/mbedtls/port/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/mbedtls/mbedtls/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/xtensa/esp32/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/xtensa/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/app_trace/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/nvs_flash/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/jsmn/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/esp_eth/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/spiffs/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/ulp/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/mdns/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/freemodbus/modbus/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/freemodbus/common/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/esp_event/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/expat/port/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/bootloader_support/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/heap/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/wpa_supplicant/port/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/wpa_supplicant/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/tcpip_adapter/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/openssl/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/sdmmc/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/esp_local_ctrl/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/esp_common/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/apps -I/micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/compat/posix -I/micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include -I/micro_ros_ws/firmware/mcu_ws/eProsima/Micro-XRCE-DDS-Client/include -I/micro_ros_ws/firmware/mcu_ws/build/microxrcedds_client/include -I/micro_ros_ws/firmware/mcu_ws/eProsima/Micro-XRCE-DDS-Client/src/c -isystem /micro_ros_ws/firmware/mcu_ws/install/include -mlongcalls -Wno-frame-address -mlongcalls -Wno-frame-address -g -Wall -Wextra -Wshadow -pedantic -Wcast-align -Wunused -Wconversion -Wnull-dereference -Wduplicated-branches -Wduplicated-cond -Wrestrict -Wdouble-promotion -Wsign-conversion -fdata-sections -ffunction-sections -std=gnu99 -MD -MT CMakeFiles/microxrcedds_client.dir/src/c/profile/transport/ip/udp/udp_transport_posix_nopoll.c.obj -MF CMakeFiles/microxrcedds_client.dir/src/c/profile/transport/ip/udp/udp_transport_posix_nopoll.c.obj.d -o CMakeFiles/microxrcedds_client.dir/src/c/profile/transport/ip/udp/udp_transport_posix_nopoll.c.obj -c /micro_ros_ws/firmware/mcu_ws/eProsima/Micro-XRCE-DDS-Client/src/c/profile/transport/ip/udp/udp_transport_posix_nopoll.c
+[2.517s] [  7%] Building C object CMakeFiles/microxrcedds_client.dir/src/c/profile/transport/ip/ip_posix.c.obj
+[2.518s] /micro_ros_ws/firmware/toolchain/espressif/tools/xtensa-esp32-elf/esp-2020r2-8.2.0/xtensa-esp32-elf/bin/xtensa-esp32-elf-gcc -DLWIP_IPV4 -DLWIP_IPV6 -I/micro_ros_ws/firmware/freertos_apps/microros_esp32_extensions/build/config -I/micro_ros_ws/firmware/toolchain/esp-idf/components/newlib/platform_include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/protocomm/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/esp_rom/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/driver/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/wear_levelling/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/vfs/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/log/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/freertos/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/wifi_provisioning/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/pthread/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/libsodium/libsodium/src/libsodium/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/coap/port/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/coap/libcoap/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/tcp_transport/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/unity/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/esp32/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/asio/port/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/asio/asio/asio/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/app_update/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/esp_ringbuf/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/soc/esp32/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/soc/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/efuse/test/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/efuse/esp32/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/efuse/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/mbedtls/port/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/mbedtls/mbedtls/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/xtensa/esp32/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/xtensa/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/app_trace/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/nvs_flash/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/jsmn/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/esp_eth/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/spiffs/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/ulp/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/mdns/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/freemodbus/modbus/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/freemodbus/common/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/esp_event/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/expat/port/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/bootloader_support/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/heap/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/wpa_supplicant/port/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/wpa_supplicant/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/tcpip_adapter/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/openssl/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/sdmmc/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/esp_local_ctrl/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/esp_common/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/apps -I/micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/compat/posix -I/micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include -I/micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include -I/micro_ros_ws/firmware/mcu_ws/eProsima/Micro-XRCE-DDS-Client/include -I/micro_ros_ws/firmware/mcu_ws/build/microxrcedds_client/include -I/micro_ros_ws/firmware/mcu_ws/eProsima/Micro-XRCE-DDS-Client/src/c -isystem /micro_ros_ws/firmware/mcu_ws/install/include -mlongcalls -Wno-frame-address -mlongcalls -Wno-frame-address -g -Wall -Wextra -Wshadow -pedantic -Wcast-align -Wunused -Wconversion -Wnull-dereference -Wduplicated-branches -Wduplicated-cond -Wrestrict -Wdouble-promotion -Wsign-conversion -fdata-sections -ffunction-sections -std=gnu99 -MD -MT CMakeFiles/microxrcedds_client.dir/src/c/profile/transport/ip/ip_posix.c.obj -MF CMakeFiles/microxrcedds_client.dir/src/c/profile/transport/ip/ip_posix.c.obj.d -o CMakeFiles/microxrcedds_client.dir/src/c/profile/transport/ip/ip_posix.c.obj -c /micro_ros_ws/firmware/mcu_ws/eProsima/Micro-XRCE-DDS-Client/src/c/profile/transport/ip/ip_posix.c
+[3.722s] In file included from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/lwipopts.h:36,
+[3.722s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/opt.h:51,
+[3.723s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:42,
+[3.723s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/compat/posix/arpa/inet.h:33,
+[3.723s]                  from /micro_ros_ws/firmware/mcu_ws/eProsima/Micro-XRCE-DDS-Client/src/c/profile/transport/ip/ip_posix.c:18:
+[3.724s] /micro_ros_ws/firmware/toolchain/esp-idf/components/newlib/platform_include/time.h:22:2: warning: #include_next is a GCC extension
+[3.724s]  #include_next <time.h>
+[3.726s]   ^~~~~~~~~~~~
+[4.128s] In file included from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/lwipopts.h:36,
+[4.128s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/opt.h:51,
+[4.130s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:42,
+[4.130s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/compat/posix/sys/socket.h:33,
+[4.131s]                  from /micro_ros_ws/firmware/mcu_ws/eProsima/Micro-XRCE-DDS-Client/src/c/profile/transport/ip/udp/udp_transport_posix_nopoll.c:5:
+[4.131s] /micro_ros_ws/firmware/toolchain/esp-idf/components/newlib/platform_include/time.h:22:2: warning: #include_next is a GCC extension
+[4.131s]  #include_next <time.h>
+[4.132s]   ^~~~~~~~~~~~
+[4.204s] In file included from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/lwipopts.h:38,
+[4.204s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/opt.h:51,
+[4.205s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:42,
+[4.205s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/compat/posix/arpa/inet.h:33,
+[4.205s]                  from /micro_ros_ws/firmware/mcu_ws/eProsima/Micro-XRCE-DDS-Client/src/c/profile/transport/ip/ip_posix.c:18:
+[4.205s] /micro_ros_ws/firmware/toolchain/esp-idf/components/newlib/platform_include/sys/time.h:16:2: warning: #include_next is a GCC extension
+[4.206s]  #include_next <sys/time.h>
+[4.209s]   ^~~~~~~~~~~~
+[4.238s] In file included from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/lwipopts.h:38,
+[4.238s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/opt.h:51,
+[4.238s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:42,
+[4.239s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/compat/posix/sys/socket.h:33,
+[4.239s]                  from /micro_ros_ws/firmware/mcu_ws/eProsima/Micro-XRCE-DDS-Client/src/c/profile/transport/ip/udp/udp_transport_posix_nopoll.c:5:
+[4.239s] /micro_ros_ws/firmware/toolchain/esp-idf/components/newlib/platform_include/sys/time.h:16:2: warning: #include_next is a GCC extension
+[4.239s]  #include_next <sys/time.h>
+[4.239s]   ^~~~~~~~~~~~
+[4.397s] In file included from /micro_ros_ws/firmware/toolchain/esp-idf/components/esp_common/include/esp_err.h:18,
+[4.397s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/esp_common/include/esp_system.h:20,
+[4.398s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/lwipopts.h:44,
+[4.398s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/opt.h:51,
+[4.398s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:42,
+[4.398s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/compat/posix/arpa/inet.h:33,
+[4.399s]                  from /micro_ros_ws/firmware/mcu_ws/eProsima/Micro-XRCE-DDS-Client/src/c/profile/transport/ip/ip_posix.c:18:
+[4.399s] /micro_ros_ws/firmware/toolchain/esp-idf/components/newlib/platform_include/assert.h:24:2: warning: #include_next is a GCC extension
+[4.399s]  #include_next <assert.h>
+[4.400s]   ^~~~~~~~~~~~
+[4.450s] In file included from /micro_ros_ws/firmware/toolchain/esp-idf/components/esp_common/include/esp_err.h:18,
+[4.451s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/esp_common/include/esp_system.h:20,
+[4.451s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/lwipopts.h:44,
+[4.451s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/opt.h:51,
+[4.451s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:42,
+[4.452s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/compat/posix/sys/socket.h:33,
+[4.452s]                  from /micro_ros_ws/firmware/mcu_ws/eProsima/Micro-XRCE-DDS-Client/src/c/profile/transport/ip/udp/udp_transport_posix_nopoll.c:5:
+[4.452s] /micro_ros_ws/firmware/toolchain/esp-idf/components/newlib/platform_include/assert.h:24:2: warning: #include_next is a GCC extension
+[4.452s]  #include_next <assert.h>
+[4.453s]   ^~~~~~~~~~~~
+[4.491s] In file included from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/arch/cc.h:38,
+[4.492s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/arch.h:48,
+[4.492s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/def.h:52,
+[4.492s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/ip_addr.h:41,
+[4.492s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/apps/sntp.h:41,
+[4.493s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/lwipopts.h:46,
+[4.493s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/opt.h:51,
+[4.493s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:42,
+[4.493s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/compat/posix/arpa/inet.h:33,
+[4.494s]                  from /micro_ros_ws/firmware/mcu_ws/eProsima/Micro-XRCE-DDS-Client/src/c/profile/transport/ip/ip_posix.c:18:
+[4.494s] /micro_ros_ws/firmware/toolchain/esp-idf/components/newlib/platform_include/errno.h:18:2: warning: #include_next is a GCC extension
+[4.494s]  #include_next "errno.h"
+[4.494s]   ^~~~~~~~~~~~
+[4.543s] In file included from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/arch/cc.h:38,
+[4.544s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/arch.h:48,
+[4.544s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/def.h:52,
+[4.547s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/ip_addr.h:41,
+[4.547s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/apps/sntp.h:41,
+[4.548s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/lwipopts.h:46,
+[4.548s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/opt.h:51,
+[4.548s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:42,
+[4.548s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/compat/posix/sys/socket.h:33,
+[4.549s]                  from /micro_ros_ws/firmware/mcu_ws/eProsima/Micro-XRCE-DDS-Client/src/c/profile/transport/ip/udp/udp_transport_posix_nopoll.c:5:
+[4.549s] /micro_ros_ws/firmware/toolchain/esp-idf/components/newlib/platform_include/errno.h:18:2: warning: #include_next is a GCC extension
+[4.549s]  #include_next "errno.h"
+[4.549s]   ^~~~~~~~~~~~
+[4.550s] In file included from /micro_ros_ws/firmware/toolchain/esp-idf/components/freertos/include/freertos/portable.h:89,
+[4.550s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/freertos/include/freertos/FreeRTOS.h:107,
+[4.550s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/arch/sys_arch.h:36,
+[4.551s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/arch/cc.h:42,
+[4.551s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/arch.h:48,
+[4.551s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/def.h:52,
+[4.551s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/ip_addr.h:41,
+[4.552s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/apps/sntp.h:41,
+[4.552s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/lwipopts.h:46,
+[4.552s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/opt.h:51,
+[4.553s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:42,
+[4.553s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/compat/posix/arpa/inet.h:33,
+[4.553s]                  from /micro_ros_ws/firmware/mcu_ws/eProsima/Micro-XRCE-DDS-Client/src/c/profile/transport/ip/ip_posix.c:18:
+[4.553s] /micro_ros_ws/firmware/toolchain/esp-idf/components/soc/esp32/include/soc/cpu.h: In function 'cpu_configure_region_protection':
+[4.554s] /micro_ros_ws/firmware/toolchain/esp-idf/components/soc/esp32/include/soc/cpu.h:77:23: warning: comparison of integer expressions of different signedness: 'int' and 'unsigned int' [-Wsign-compare]
+[4.554s]      for (int i = 0; i < sizeof(pages_to_protect)/sizeof(pages_to_protect[0]); ++i) {
+[4.554s]                        ^
+[4.565s] In file included from /micro_ros_ws/firmware/toolchain/esp-idf/components/freertos/include/freertos/portmacro.h:82,
+[4.565s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/freertos/include/freertos/portable.h:96,
+[4.566s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/freertos/include/freertos/FreeRTOS.h:107,
+[4.566s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/arch/sys_arch.h:36,
+[4.566s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/arch/cc.h:42,
+[4.566s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/arch.h:48,
+[4.567s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/def.h:52,
+[4.567s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/ip_addr.h:41,
+[4.567s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/apps/sntp.h:41,
+[4.567s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/lwipopts.h:46,
+[4.568s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/opt.h:51,
+[4.568s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:42,
+[4.568s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/compat/posix/arpa/inet.h:33,
+[4.568s]                  from /micro_ros_ws/firmware/mcu_ws/eProsima/Micro-XRCE-DDS-Client/src/c/profile/transport/ip/ip_posix.c:18:
+[4.569s] /micro_ros_ws/firmware/toolchain/esp-idf/components/xtensa/include/xtensa/xtruntime.h: In function '_xtos_interrupt_enable':
+[4.569s] /micro_ros_ws/firmware/toolchain/esp-idf/components/xtensa/include/xtensa/xtruntime.h:161:21: warning: conversion to 'unsigned int' from 'int' may change the sign of the result [-Wsign-conversion]
+[4.569s]      _xtos_ints_on(1 << intnum);
+[4.570s]                    ~~^~~~~~~~~
+[4.570s] /micro_ros_ws/firmware/toolchain/esp-idf/components/xtensa/include/xtensa/xtruntime.h: In function '_xtos_interrupt_disable':
+[4.570s] /micro_ros_ws/firmware/toolchain/esp-idf/components/xtensa/include/xtensa/xtruntime.h:166:22: warning: conversion to 'unsigned int' from 'int' may change the sign of the result [-Wsign-conversion]
+[4.570s]      _xtos_ints_off(1 << intnum);
+[4.571s]                     ~~^~~~~~~~~
+[4.602s] In file included from /micro_ros_ws/firmware/toolchain/esp-idf/components/freertos/include/freertos/portable.h:89,
+[4.602s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/freertos/include/freertos/FreeRTOS.h:107,
+[4.602s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/arch/sys_arch.h:36,
+[4.603s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/arch/cc.h:42,
+[4.603s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/arch.h:48,
+[4.603s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/def.h:52,
+[4.603s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/ip_addr.h:41,
+[4.604s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/apps/sntp.h:41,
+[4.604s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/lwipopts.h:46,
+[4.604s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/opt.h:51,
+[4.604s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:42,
+[4.605s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/compat/posix/sys/socket.h:33,
+[4.605s]                  from /micro_ros_ws/firmware/mcu_ws/eProsima/Micro-XRCE-DDS-Client/src/c/profile/transport/ip/udp/udp_transport_posix_nopoll.c:5:
+[4.605s] /micro_ros_ws/firmware/toolchain/esp-idf/components/soc/esp32/include/soc/cpu.h: In function 'cpu_configure_region_protection':
+[4.605s] /micro_ros_ws/firmware/toolchain/esp-idf/components/soc/esp32/include/soc/cpu.h:77:23: warning: comparison of integer expressions of different signedness: 'int' and 'unsigned int' [-Wsign-compare]
+[4.605s]      for (int i = 0; i < sizeof(pages_to_protect)/sizeof(pages_to_protect[0]); ++i) {
+[4.606s]                        ^
+[4.619s] In file included from /micro_ros_ws/firmware/toolchain/esp-idf/components/freertos/include/freertos/task.h:80,
+[4.619s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/arch/sys_arch.h:37,
+[4.619s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/arch/cc.h:42,
+[4.620s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/arch.h:48,
+[4.620s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/def.h:52,
+[4.620s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/ip_addr.h:41,
+[4.620s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/apps/sntp.h:41,
+[4.621s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/lwipopts.h:46,
+[4.621s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/opt.h:51,
+[4.621s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:42,
+[4.622s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/compat/posix/arpa/inet.h:33,
+[4.622s]                  from /micro_ros_ws/firmware/mcu_ws/eProsima/Micro-XRCE-DDS-Client/src/c/profile/transport/ip/ip_posix.c:18:
+[4.622s] /micro_ros_ws/firmware/toolchain/esp-idf/components/freertos/include/freertos/list.h: At top level:
+[4.623s] /micro_ros_ws/firmware/toolchain/esp-idf/components/freertos/include/freertos/list.h:194:1: warning: ISO C99 does not support '_Static_assert' [-Wpedantic]
+[4.623s]  _Static_assert(sizeof(StaticListItem_t) == sizeof(ListItem_t), "StaticListItem_t != ListItem_t");
+[4.623s]  ^~~~~~~~~~~~~~
+[4.624s] /micro_ros_ws/firmware/toolchain/esp-idf/components/freertos/include/freertos/list.h:207:1: warning: ISO C99 does not support '_Static_assert' [-Wpedantic]
+[4.624s]  _Static_assert(sizeof(StaticMiniListItem_t) == sizeof(MiniListItem_t), "StaticMiniListItem_t != MiniListItem_t");
+[4.624s]  ^~~~~~~~~~~~~~
+[4.624s] /micro_ros_ws/firmware/toolchain/esp-idf/components/freertos/include/freertos/list.h:224:1: warning: ISO C99 does not support '_Static_assert' [-Wpedantic]
+[4.625s]  _Static_assert(sizeof(StaticList_t) == sizeof(List_t), "StaticList_t != List_t");
+[4.625s]  ^~~~~~~~~~~~~~
+[4.625s] In file included from /micro_ros_ws/firmware/toolchain/esp-idf/components/freertos/include/freertos/portmacro.h:82,
+[4.625s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/freertos/include/freertos/portable.h:96,
+[4.626s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/freertos/include/freertos/FreeRTOS.h:107,
+[4.626s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/arch/sys_arch.h:36,
+[4.626s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/arch/cc.h:42,
+[4.626s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/arch.h:48,
+[4.627s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/def.h:52,
+[4.627s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/ip_addr.h:41,
+[4.627s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/apps/sntp.h:41,
+[4.628s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/lwipopts.h:46,
+[4.628s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/opt.h:51,
+[4.628s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:42,
+[4.628s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/compat/posix/sys/socket.h:33,
+[4.629s]                  from /micro_ros_ws/firmware/mcu_ws/eProsima/Micro-XRCE-DDS-Client/src/c/profile/transport/ip/udp/udp_transport_posix_nopoll.c:5:
+[4.629s] /micro_ros_ws/firmware/toolchain/esp-idf/components/xtensa/include/xtensa/xtruntime.h: In function '_xtos_interrupt_enable':
+[4.629s] /micro_ros_ws/firmware/toolchain/esp-idf/components/xtensa/include/xtensa/xtruntime.h:161:21: warning: conversion to 'unsigned int' from 'int' may change the sign of the result [-Wsign-conversion]
+[4.630s]      _xtos_ints_on(1 << intnum);
+[4.630s]                    ~~^~~~~~~~~
+[4.630s] /micro_ros_ws/firmware/toolchain/esp-idf/components/xtensa/include/xtensa/xtruntime.h: In function '_xtos_interrupt_disable':
+[4.630s] /micro_ros_ws/firmware/toolchain/esp-idf/components/xtensa/include/xtensa/xtruntime.h:166:22: warning: conversion to 'unsigned int' from 'int' may change the sign of the result [-Wsign-conversion]
+[4.631s]      _xtos_ints_off(1 << intnum);
+[4.631s]                     ~~^~~~~~~~~
+[4.641s] In file included from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/def.h:52,
+[4.641s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/ip_addr.h:41,
+[4.642s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/apps/sntp.h:41,
+[4.642s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/lwipopts.h:46,
+[4.642s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/opt.h:51,
+[4.643s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:42,
+[4.643s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/compat/posix/arpa/inet.h:33,
+[4.643s]                  from /micro_ros_ws/firmware/mcu_ws/eProsima/Micro-XRCE-DDS-Client/src/c/profile/transport/ip/ip_posix.c:18:
+[4.644s] /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/arch.h:125:19: warning: redefinition of typedef 'u8_t' [-Wpedantic]
+[4.644s]  typedef uint8_t   u8_t;
+[4.644s]                    ^~~~
+[4.644s] In file included from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/arch.h:48,
+[4.645s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/def.h:52,
+[4.645s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/ip_addr.h:41,
+[4.645s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/apps/sntp.h:41,
+[4.646s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/lwipopts.h:46,
+[4.646s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/opt.h:51,
+[4.646s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:42,
+[4.646s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/compat/posix/arpa/inet.h:33,
+[4.647s]                  from /micro_ros_ws/firmware/mcu_ws/eProsima/Micro-XRCE-DDS-Client/src/c/profile/transport/ip/ip_posix.c:18:
+[4.647s] /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/arch/cc.h:48:18: note: previous declaration of 'u8_t' was here
+[4.647s]  typedef uint8_t  u8_t;
+[4.647s]                   ^~~~
+[4.648s] In file included from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/def.h:52,
+[4.648s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/ip_addr.h:41,
+[4.648s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/apps/sntp.h:41,
+[4.649s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/lwipopts.h:46,
+[4.649s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/opt.h:51,
+[4.649s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:42,
+[4.649s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/compat/posix/arpa/inet.h:33,
+[4.650s]                  from /micro_ros_ws/firmware/mcu_ws/eProsima/Micro-XRCE-DDS-Client/src/c/profile/transport/ip/ip_posix.c:18:
+[4.650s] /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/arch.h:126:19: warning: redefinition of typedef 's8_t' [-Wpedantic]
+[4.650s]  typedef int8_t    s8_t;
+[4.651s]                    ^~~~
+[4.651s] In file included from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/arch.h:48,
+[4.651s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/def.h:52,
+[4.651s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/ip_addr.h:41,
+[4.652s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/apps/sntp.h:41,
+[4.652s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/lwipopts.h:46,
+[4.652s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/opt.h:51,
+[4.653s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:42,
+[4.653s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/compat/posix/arpa/inet.h:33,
+[4.653s]                  from /micro_ros_ws/firmware/mcu_ws/eProsima/Micro-XRCE-DDS-Client/src/c/profile/transport/ip/ip_posix.c:18:
+[4.653s] /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/arch/cc.h:49:18: note: previous declaration of 's8_t' was here
+[4.654s]  typedef int8_t   s8_t;
+[4.654s]                   ^~~~
+[4.654s] In file included from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/def.h:52,
+[4.654s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/ip_addr.h:41,
+[4.655s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/apps/sntp.h:41,
+[4.655s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/lwipopts.h:46,
+[4.655s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/opt.h:51,
+[4.656s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:42,
+[4.656s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/compat/posix/arpa/inet.h:33,
+[4.656s]                  from /micro_ros_ws/firmware/mcu_ws/eProsima/Micro-XRCE-DDS-Client/src/c/profile/transport/ip/ip_posix.c:18:
+[4.657s] /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/arch.h:127:19: warning: redefinition of typedef 'u16_t' [-Wpedantic]
+[4.657s]  typedef uint16_t  u16_t;
+[4.657s]                    ^~~~~
+[4.657s] In file included from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/arch.h:48,
+[4.658s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/def.h:52,
+[4.658s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/ip_addr.h:41,
+[4.658s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/apps/sntp.h:41,
+[4.659s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/lwipopts.h:46,
+[4.659s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/opt.h:51,
+[4.659s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:42,
+[4.659s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/compat/posix/arpa/inet.h:33,
+[4.660s]                  from /micro_ros_ws/firmware/mcu_ws/eProsima/Micro-XRCE-DDS-Client/src/c/profile/transport/ip/ip_posix.c:18:
+[4.660s] /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/arch/cc.h:50:18: note: previous declaration of 'u16_t' was here
+[4.660s]  typedef uint16_t u16_t;
+[4.661s]                   ^~~~~
+[4.661s] In file included from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/def.h:52,
+[4.661s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/ip_addr.h:41,
+[4.661s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/apps/sntp.h:41,
+[4.662s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/lwipopts.h:46,
+[4.662s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/opt.h:51,
+[4.662s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:42,
+[4.663s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/compat/posix/arpa/inet.h:33,
+[4.663s]                  from /micro_ros_ws/firmware/mcu_ws/eProsima/Micro-XRCE-DDS-Client/src/c/profile/transport/ip/ip_posix.c:18:
+[4.663s] /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/arch.h:128:19: warning: redefinition of typedef 's16_t' [-Wpedantic]
+[4.664s]  typedef int16_t   s16_t;
+[4.664s]                    ^~~~~
+[4.664s] In file included from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/arch.h:48,
+[4.664s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/def.h:52,
+[4.665s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/ip_addr.h:41,
+[4.665s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/apps/sntp.h:41,
+[4.665s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/lwipopts.h:46,
+[4.665s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/opt.h:51,
+[4.666s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:42,
+[4.666s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/compat/posix/arpa/inet.h:33,
+[4.666s]                  from /micro_ros_ws/firmware/mcu_ws/eProsima/Micro-XRCE-DDS-Client/src/c/profile/transport/ip/ip_posix.c:18:
+[4.666s] /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/arch/cc.h:51:18: note: previous declaration of 's16_t' was here
+[4.667s]  typedef int16_t  s16_t;
+[4.667s]                   ^~~~~
+[4.667s] In file included from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/def.h:52,
+[4.667s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/ip_addr.h:41,
+[4.668s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/apps/sntp.h:41,
+[4.668s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/lwipopts.h:46,
+[4.668s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/opt.h:51,
+[4.668s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:42,
+[4.669s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/compat/posix/arpa/inet.h:33,
+[4.669s]                  from /micro_ros_ws/firmware/mcu_ws/eProsima/Micro-XRCE-DDS-Client/src/c/profile/transport/ip/ip_posix.c:18:
+[4.669s] /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/arch.h:129:19: warning: redefinition of typedef 'u32_t' [-Wpedantic]
+[4.669s]  typedef uint32_t  u32_t;
+[4.670s]                    ^~~~~
+[4.670s] In file included from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/arch.h:48,
+[4.670s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/def.h:52,
+[4.671s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/ip_addr.h:41,
+[4.671s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/apps/sntp.h:41,
+[4.671s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/lwipopts.h:46,
+[4.671s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/opt.h:51,
+[4.672s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:42,
+[4.672s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/compat/posix/arpa/inet.h:33,
+[4.672s]                  from /micro_ros_ws/firmware/mcu_ws/eProsima/Micro-XRCE-DDS-Client/src/c/profile/transport/ip/ip_posix.c:18:
+[4.673s] /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/arch/cc.h:52:18: note: previous declaration of 'u32_t' was here
+[4.673s]  typedef uint32_t u32_t;
+[4.673s]                   ^~~~~
+[4.673s] In file included from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/def.h:52,
+[4.674s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/ip_addr.h:41,
+[4.674s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/apps/sntp.h:41,
+[4.674s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/lwipopts.h:46,
+[4.674s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/opt.h:51,
+[4.675s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:42,
+[4.675s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/compat/posix/arpa/inet.h:33,
+[4.675s]                  from /micro_ros_ws/firmware/mcu_ws/eProsima/Micro-XRCE-DDS-Client/src/c/profile/transport/ip/ip_posix.c:18:
+[4.676s] /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/arch.h:130:19: warning: redefinition of typedef 's32_t' [-Wpedantic]
+[4.676s]  typedef int32_t   s32_t;
+[4.676s]                    ^~~~~
+[4.677s] In file included from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/arch.h:48,
+[4.677s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/def.h:52,
+[4.677s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/ip_addr.h:41,
+[4.677s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/apps/sntp.h:41,
+[4.678s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/lwipopts.h:46,
+[4.678s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/opt.h:51,
+[4.678s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:42,
+[4.678s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/compat/posix/arpa/inet.h:33,
+[4.679s]                  from /micro_ros_ws/firmware/mcu_ws/eProsima/Micro-XRCE-DDS-Client/src/c/profile/transport/ip/ip_posix.c:18:
+[4.679s] /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/arch/cc.h:53:18: note: previous declaration of 's32_t' was here
+[4.679s]  typedef int32_t  s32_t;
+[4.679s]                   ^~~~~
+[4.689s] In file included from /micro_ros_ws/firmware/toolchain/esp-idf/components/freertos/include/freertos/task.h:80,
+[4.689s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/arch/sys_arch.h:37,
+[4.690s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/arch/cc.h:42,
+[4.690s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/arch.h:48,
+[4.690s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/def.h:52,
+[4.690s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/ip_addr.h:41,
+[4.691s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/apps/sntp.h:41,
+[4.691s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/lwipopts.h:46,
+[4.691s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/opt.h:51,
+[4.692s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:42,
+[4.692s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/compat/posix/sys/socket.h:33,
+[4.692s]                  from /micro_ros_ws/firmware/mcu_ws/eProsima/Micro-XRCE-DDS-Client/src/c/profile/transport/ip/udp/udp_transport_posix_nopoll.c:5:
+[4.692s] /micro_ros_ws/firmware/toolchain/esp-idf/components/freertos/include/freertos/list.h: At top level:
+[4.693s] /micro_ros_ws/firmware/toolchain/esp-idf/components/freertos/include/freertos/list.h:194:1: warning: ISO C99 does not support '_Static_assert' [-Wpedantic]
+[4.693s]  _Static_assert(sizeof(StaticListItem_t) == sizeof(ListItem_t), "StaticListItem_t != ListItem_t");
+[4.693s]  ^~~~~~~~~~~~~~
+[4.693s] /micro_ros_ws/firmware/toolchain/esp-idf/components/freertos/include/freertos/list.h:207:1: warning: ISO C99 does not support '_Static_assert' [-Wpedantic]
+[4.694s]  _Static_assert(sizeof(StaticMiniListItem_t) == sizeof(MiniListItem_t), "StaticMiniListItem_t != MiniListItem_t");
+[4.694s]  ^~~~~~~~~~~~~~
+[4.694s] /micro_ros_ws/firmware/toolchain/esp-idf/components/freertos/include/freertos/list.h:224:1: warning: ISO C99 does not support '_Static_assert' [-Wpedantic]
+[4.694s]  _Static_assert(sizeof(StaticList_t) == sizeof(List_t), "StaticList_t != List_t");
+[4.695s]  ^~~~~~~~~~~~~~
+[4.707s] In file included from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/def.h:52,
+[4.707s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/ip_addr.h:41,
+[4.708s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/apps/sntp.h:41,
+[4.708s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/lwipopts.h:46,
+[4.708s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/opt.h:51,
+[4.708s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:42,
+[4.709s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/compat/posix/sys/socket.h:33,
+[4.709s]                  from /micro_ros_ws/firmware/mcu_ws/eProsima/Micro-XRCE-DDS-Client/src/c/profile/transport/ip/udp/udp_transport_posix_nopoll.c:5:
+[4.709s] /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/arch.h:125:19: warning: redefinition of typedef 'u8_t' [-Wpedantic]
+[4.709s]  typedef uint8_t   u8_t;
+[4.710s]                    ^~~~
+[4.710s] In file included from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/arch.h:48,
+[4.710s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/def.h:52,
+[4.710s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/ip_addr.h:41,
+[4.711s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/apps/sntp.h:41,
+[4.711s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/lwipopts.h:46,
+[4.711s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/opt.h:51,
+[4.711s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:42,
+[4.712s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/compat/posix/sys/socket.h:33,
+[4.712s]                  from /micro_ros_ws/firmware/mcu_ws/eProsima/Micro-XRCE-DDS-Client/src/c/profile/transport/ip/udp/udp_transport_posix_nopoll.c:5:
+[4.713s] /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/arch/cc.h:48:18: note: previous declaration of 'u8_t' was here
+[4.713s]  typedef uint8_t  u8_t;
+[4.713s]                   ^~~~
+[4.714s] In file included from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/def.h:52,
+[4.714s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/ip_addr.h:41,
+[4.714s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/apps/sntp.h:41,
+[4.715s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/lwipopts.h:46,
+[4.715s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/opt.h:51,
+[4.715s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:42,
+[4.716s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/compat/posix/sys/socket.h:33,
+[4.716s]                  from /micro_ros_ws/firmware/mcu_ws/eProsima/Micro-XRCE-DDS-Client/src/c/profile/transport/ip/udp/udp_transport_posix_nopoll.c:5:
+[4.716s] /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/arch.h:126:19: warning: redefinition of typedef 's8_t' [-Wpedantic]
+[4.717s]  typedef int8_t    s8_t;
+[4.718s]                    ^~~~
+[4.718s] In file included from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/arch.h:48,
+[4.719s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/def.h:52,
+[4.719s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/ip_addr.h:41,
+[4.719s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/apps/sntp.h:41,
+[4.720s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/lwipopts.h:46,
+[4.720s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/opt.h:51,
+[4.720s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:42,
+[4.721s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/compat/posix/sys/socket.h:33,
+[4.721s]                  from /micro_ros_ws/firmware/mcu_ws/eProsima/Micro-XRCE-DDS-Client/src/c/profile/transport/ip/udp/udp_transport_posix_nopoll.c:5:
+[4.721s] /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/arch/cc.h:49:18: note: previous declaration of 's8_t' was here
+[4.722s]  typedef int8_t   s8_t;
+[4.722s]                   ^~~~
+[4.722s] In file included from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/def.h:52,
+[4.723s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/ip_addr.h:41,
+[4.723s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/apps/sntp.h:41,
+[4.723s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/lwipopts.h:46,
+[4.724s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/opt.h:51,
+[4.724s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:42,
+[4.724s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/compat/posix/sys/socket.h:33,
+[4.725s]                  from /micro_ros_ws/firmware/mcu_ws/eProsima/Micro-XRCE-DDS-Client/src/c/profile/transport/ip/udp/udp_transport_posix_nopoll.c:5:
+[4.725s] /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/arch.h:127:19: warning: redefinition of typedef 'u16_t' [-Wpedantic]
+[4.725s]  typedef uint16_t  u16_t;
+[4.726s]                    ^~~~~
+[4.726s] In file included from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/arch.h:48,
+[4.726s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/def.h:52,
+[4.727s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/ip_addr.h:41,
+[4.727s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/apps/sntp.h:41,
+[4.727s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/lwipopts.h:46,
+[4.727s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/opt.h:51,
+[4.728s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:42,
+[4.728s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/compat/posix/sys/socket.h:33,
+[4.728s]                  from /micro_ros_ws/firmware/mcu_ws/eProsima/Micro-XRCE-DDS-Client/src/c/profile/transport/ip/udp/udp_transport_posix_nopoll.c:5:
+[4.728s] /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/arch/cc.h:50:18: note: previous declaration of 'u16_t' was here
+[4.729s]  typedef uint16_t u16_t;
+[4.729s]                   ^~~~~
+[4.729s] In file included from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/def.h:52,
+[4.729s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/ip_addr.h:41,
+[4.730s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/apps/sntp.h:41,
+[4.730s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/lwipopts.h:46,
+[4.730s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/opt.h:51,
+[4.730s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:42,
+[4.731s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/compat/posix/sys/socket.h:33,
+[4.731s]                  from /micro_ros_ws/firmware/mcu_ws/eProsima/Micro-XRCE-DDS-Client/src/c/profile/transport/ip/udp/udp_transport_posix_nopoll.c:5:
+[4.731s] /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/arch.h:128:19: warning: redefinition of typedef 's16_t' [-Wpedantic]
+[4.731s]  typedef int16_t   s16_t;
+[4.732s]                    ^~~~~
+[4.733s] In file included from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/arch.h:48,
+[4.734s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/def.h:52,
+[4.734s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/ip_addr.h:41,
+[4.734s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/apps/sntp.h:41,
+[4.736s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/lwipopts.h:46,
+[4.736s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/opt.h:51,
+[4.736s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:42,
+[4.737s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/compat/posix/sys/socket.h:33,
+[4.737s]                  from /micro_ros_ws/firmware/mcu_ws/eProsima/Micro-XRCE-DDS-Client/src/c/profile/transport/ip/udp/udp_transport_posix_nopoll.c:5:
+[4.738s] /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/arch/cc.h:51:18: note: previous declaration of 's16_t' was here
+[4.738s]  typedef int16_t  s16_t;
+[4.738s]                   ^~~~~
+[4.738s] In file included from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/def.h:52,
+[4.739s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/ip_addr.h:41,
+[4.739s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/apps/sntp.h:41,
+[4.739s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/lwipopts.h:46,
+[4.740s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/opt.h:51,
+[4.740s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:42,
+[4.740s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/compat/posix/sys/socket.h:33,
+[4.740s]                  from /micro_ros_ws/firmware/mcu_ws/eProsima/Micro-XRCE-DDS-Client/src/c/profile/transport/ip/udp/udp_transport_posix_nopoll.c:5:
+[4.741s] /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/arch.h:129:19: warning: redefinition of typedef 'u32_t' [-Wpedantic]
+[4.741s]  typedef uint32_t  u32_t;
+[4.741s]                    ^~~~~
+[4.742s] In file included from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/arch.h:48,
+[4.742s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/def.h:52,
+[4.742s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/ip_addr.h:41,
+[4.742s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/apps/sntp.h:41,
+[4.743s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/lwipopts.h:46,
+[4.743s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/opt.h:51,
+[4.744s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:42,
+[4.744s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/compat/posix/sys/socket.h:33,
+[4.744s]                  from /micro_ros_ws/firmware/mcu_ws/eProsima/Micro-XRCE-DDS-Client/src/c/profile/transport/ip/udp/udp_transport_posix_nopoll.c:5:
+[4.745s] /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/arch/cc.h:52:18: note: previous declaration of 'u32_t' was here
+[4.745s]  typedef uint32_t u32_t;
+[4.745s]                   ^~~~~
+[4.745s] In file included from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/def.h:52,
+[4.746s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/ip_addr.h:41,
+[4.746s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/apps/sntp.h:41,
+[4.746s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/lwipopts.h:46,
+[4.747s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/opt.h:51,
+[4.747s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:42,
+[4.747s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/compat/posix/sys/socket.h:33,
+[4.747s]                  from /micro_ros_ws/firmware/mcu_ws/eProsima/Micro-XRCE-DDS-Client/src/c/profile/transport/ip/udp/udp_transport_posix_nopoll.c:5:
+[4.748s] /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/arch.h:130:19: warning: redefinition of typedef 's32_t' [-Wpedantic]
+[4.748s]  typedef int32_t   s32_t;
+[4.748s]                    ^~~~~
+[4.748s] In file included from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/arch.h:48,
+[4.749s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/def.h:52,
+[4.749s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/ip_addr.h:41,
+[4.749s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/apps/sntp.h:41,
+[4.750s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/lwipopts.h:46,
+[4.750s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/opt.h:51,
+[4.750s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:42,
+[4.750s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/compat/posix/sys/socket.h:33,
+[4.751s]                  from /micro_ros_ws/firmware/mcu_ws/eProsima/Micro-XRCE-DDS-Client/src/c/profile/transport/ip/udp/udp_transport_posix_nopoll.c:5:
+[4.751s] /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/arch/cc.h:53:18: note: previous declaration of 's32_t' was here
+[4.751s]  typedef int32_t  s32_t;
+[4.752s]                   ^~~~~
+[4.752s] In file included from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/opt.h:51,
+[4.752s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:42,
+[4.752s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/compat/posix/arpa/inet.h:33,
+[4.752s]                  from /micro_ros_ws/firmware/mcu_ws/eProsima/Micro-XRCE-DDS-Client/src/c/profile/transport/ip/ip_posix.c:18:
+[4.753s] /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/lwipopts.h:866: warning: "SNTP_SERVER_DNS" redefined
+[4.753s]  #define SNTP_SERVER_DNS            1
+[4.753s]  
+[4.753s] In file included from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/apps/sntp.h:40,
+[4.754s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/lwipopts.h:46,
+[4.754s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/opt.h:51,
+[4.754s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:42,
+[4.754s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/compat/posix/arpa/inet.h:33,
+[4.755s]                  from /micro_ros_ws/firmware/mcu_ws/eProsima/Micro-XRCE-DDS-Client/src/c/profile/transport/ip/ip_posix.c:18:
+[4.755s] /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/apps/sntp_opts.h:81: note: this is the location of the previous definition
+[4.755s]  #define SNTP_SERVER_DNS            0
+[4.756s]  
+[4.756s] In file included from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/opt.h:51,
+[4.756s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:42,
+[4.756s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/compat/posix/arpa/inet.h:33,
+[4.757s]                  from /micro_ros_ws/firmware/mcu_ws/eProsima/Micro-XRCE-DDS-Client/src/c/profile/transport/ip/ip_posix.c:18:
+[4.757s] /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/lwipopts.h:871: warning: "SNTP_UPDATE_DELAY" redefined
+[4.757s]  #define SNTP_UPDATE_DELAY              (sntp_get_sync_interval())
+[4.758s]  
+[4.758s] In file included from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/apps/sntp.h:40,
+[4.758s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/lwipopts.h:46,
+[4.758s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/opt.h:51,
+[4.759s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:42,
+[4.759s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/compat/posix/arpa/inet.h:33,
+[4.759s]                  from /micro_ros_ws/firmware/mcu_ws/eProsima/Micro-XRCE-DDS-Client/src/c/profile/transport/ip/ip_posix.c:18:
+[4.759s] /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/apps/sntp_opts.h:171: note: this is the location of the previous definition
+[4.760s]  #define SNTP_UPDATE_DELAY           3600000
+[4.760s]  
+[4.760s] In file included from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/opt.h:51,
+[4.761s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:42,
+[4.761s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/compat/posix/arpa/inet.h:33,
+[4.761s]                  from /micro_ros_ws/firmware/mcu_ws/eProsima/Micro-XRCE-DDS-Client/src/c/profile/transport/ip/ip_posix.c:18:
+[4.762s] /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/lwipopts.h:879: warning: "SNTP_GET_SYSTEM_TIME" redefined
+[4.762s]  #define SNTP_GET_SYSTEM_TIME(sec, us) \
+[4.762s]  
+[4.763s] In file included from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/apps/sntp.h:40,
+[4.763s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/lwipopts.h:46,
+[4.763s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/opt.h:51,
+[4.763s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:42,
+[4.764s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/compat/posix/arpa/inet.h:33,
+[4.764s]                  from /micro_ros_ws/firmware/mcu_ws/eProsima/Micro-XRCE-DDS-Client/src/c/profile/transport/ip/ip_posix.c:18:
+[4.764s] /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/apps/sntp_opts.h:181: note: this is the location of the previous definition
+[4.764s]  #define SNTP_GET_SYSTEM_TIME(sec, us)     do { (sec) = 0; (us) = 0; } while(0)
+[4.765s]  
+[4.804s] In file included from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/opt.h:51,
+[4.806s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:42,
+[4.806s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/compat/posix/sys/socket.h:33,
+[4.807s]                  from /micro_ros_ws/firmware/mcu_ws/eProsima/Micro-XRCE-DDS-Client/src/c/profile/transport/ip/udp/udp_transport_posix_nopoll.c:5:
+[4.807s] /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/lwipopts.h:866: warning: "SNTP_SERVER_DNS" redefined
+[4.808s]  #define SNTP_SERVER_DNS            1
+[4.808s]  
+[4.809s] In file included from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/apps/sntp.h:40,
+[4.809s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/lwipopts.h:46,
+[4.810s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/opt.h:51,
+[4.810s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:42,
+[4.810s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/compat/posix/sys/socket.h:33,
+[4.811s]                  from /micro_ros_ws/firmware/mcu_ws/eProsima/Micro-XRCE-DDS-Client/src/c/profile/transport/ip/udp/udp_transport_posix_nopoll.c:5:
+[4.811s] /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/apps/sntp_opts.h:81: note: this is the location of the previous definition
+[4.812s]  #define SNTP_SERVER_DNS            0
+[4.812s]  
+[4.812s] In file included from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/opt.h:51,
+[4.813s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:42,
+[4.813s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/compat/posix/sys/socket.h:33,
+[4.813s]                  from /micro_ros_ws/firmware/mcu_ws/eProsima/Micro-XRCE-DDS-Client/src/c/profile/transport/ip/udp/udp_transport_posix_nopoll.c:5:
+[4.814s] /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/lwipopts.h:871: warning: "SNTP_UPDATE_DELAY" redefined
+[4.814s]  #define SNTP_UPDATE_DELAY              (sntp_get_sync_interval())
+[4.815s]  
+[4.815s] In file included from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/apps/sntp.h:40,
+[4.815s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/lwipopts.h:46,
+[4.816s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/opt.h:51,
+[4.816s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:42,
+[4.816s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/compat/posix/sys/socket.h:33,
+[4.817s]                  from /micro_ros_ws/firmware/mcu_ws/eProsima/Micro-XRCE-DDS-Client/src/c/profile/transport/ip/udp/udp_transport_posix_nopoll.c:5:
+[4.817s] /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/apps/sntp_opts.h:171: note: this is the location of the previous definition
+[4.817s]  #define SNTP_UPDATE_DELAY           3600000
+[4.818s]  
+[4.818s] In file included from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/opt.h:51,
+[4.818s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:42,
+[4.818s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/compat/posix/sys/socket.h:33,
+[4.819s]                  from /micro_ros_ws/firmware/mcu_ws/eProsima/Micro-XRCE-DDS-Client/src/c/profile/transport/ip/udp/udp_transport_posix_nopoll.c:5:
+[4.819s] /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/lwipopts.h:879: warning: "SNTP_GET_SYSTEM_TIME" redefined
+[4.819s]  #define SNTP_GET_SYSTEM_TIME(sec, us) \
+[4.820s]  
+[4.820s] In file included from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/apps/sntp.h:40,
+[4.822s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/port/esp32/include/lwipopts.h:46,
+[4.822s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/opt.h:51,
+[4.825s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:42,
+[4.825s]                  from /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/compat/posix/sys/socket.h:33,
+[4.826s]                  from /micro_ros_ws/firmware/mcu_ws/eProsima/Micro-XRCE-DDS-Client/src/c/profile/transport/ip/udp/udp_transport_posix_nopoll.c:5:
+[4.826s] /micro_ros_ws/firmware/toolchain/esp-idf/components/lwip/lwip/src/include/lwip/apps/sntp_opts.h:181: note: this is the location of the previous definition
+[4.826s]  #define SNTP_GET_SYSTEM_TIME(sec, us)     do { (sec) = 0; (us) = 0; } while(0)
+[4.826s]  
+[5.403s] [ 10%] Linking C static library libmicroxrcedds_client.a
+[5.404s] /usr/bin/cmake -P CMakeFiles/microxrcedds_client.dir/cmake_clean_target.cmake
+[5.404s] /usr/bin/cmake -E cmake_link_script CMakeFiles/microxrcedds_client.dir/link.txt --verbose=1
+[5.404s] /micro_ros_ws/firmware/toolchain/espressif/tools/xtensa-esp32-elf/esp-2020r2-8.2.0/xtensa-esp32-elf/bin/xtensa-esp32-elf-ar qc libmicroxrcedds_client.a CMakeFiles/microxrcedds_client.dir/src/c/core/session/stream/input_best_effort_stream.c.obj CMakeFiles/microxrcedds_client.dir/src/c/core/session/stream/input_reliable_stream.c.obj CMakeFiles/microxrcedds_client.dir/src/c/core/session/stream/output_best_effort_stream.c.obj CMakeFiles/microxrcedds_client.dir/src/c/core/session/stream/output_reliable_stream.c.obj CMakeFiles/microxrcedds_client.dir/src/c/core/session/stream/stream_storage.c.obj CMakeFiles/microxrcedds_client.dir/src/c/core/session/stream/stream_id.c.obj CMakeFiles/microxrcedds_client.dir/src/c/core/session/stream/seq_num.c.obj CMakeFiles/microxrcedds_client.dir/src/c/core/session/session.c.obj CMakeFiles/microxrcedds_client.dir/src/c/core/session/session_info.c.obj CMakeFiles/microxrcedds_client.dir/src/c/core/session/submessage.c.obj CMakeFiles/microxrcedds_client.dir/src/c/core/session/object_id.c.obj CMakeFiles/microxrcedds_client.dir/src/c/core/serialization/xrce_types.c.obj CMakeFiles/microxrcedds_client.dir/src/c/core/serialization/xrce_header.c.obj CMakeFiles/microxrcedds_client.dir/src/c/core/serialization/xrce_subheader.c.obj CMakeFiles/microxrcedds_client.dir/src/c/util/time.c.obj CMakeFiles/microxrcedds_client.dir/src/c/util/ping.c.obj CMakeFiles/microxrcedds_client.dir/src/c/core/session/common_create_entities.c.obj CMakeFiles/microxrcedds_client.dir/src/c/core/session/create_entities_ref.c.obj CMakeFiles/microxrcedds_client.dir/src/c/core/session/create_entities_xml.c.obj CMakeFiles/microxrcedds_client.dir/src/c/core/session/create_entities_bin.c.obj CMakeFiles/microxrcedds_client.dir/src/c/core/session/read_access.c.obj CMakeFiles/microxrcedds_client.dir/src/c/core/session/write_access.c.obj CMakeFiles/microxrcedds_client.dir/src/c/profile/transport/stream_framing/stream_framing_protocol.c.obj CMakeFiles/microxrcedds_client.dir/src/c/profile/transport/ip/udp/udp_transport.c.obj CMakeFiles/microxrcedds_client.dir/src/c/profile/transport/ip/udp/udp_transport_posix_nopoll.c.obj CMakeFiles/microxrcedds_client.dir/src/c/profile/transport/ip/ip_posix.c.obj CMakeFiles/microxrcedds_client.dir/src/c/profile/transport/custom/custom_transport.c.obj
+[5.405s] /micro_ros_ws/firmware/toolchain/espressif/tools/xtensa-esp32-elf/esp-2020r2-8.2.0/xtensa-esp32-elf/bin/xtensa-esp32-elf-ranlib libmicroxrcedds_client.a
+[5.422s] gmake[6]: Leaving directory '/micro_ros_ws/firmware/mcu_ws/build/microxrcedds_client'
+[5.451s] [100%] Built target microxrcedds_client
+[5.451s] gmake[5]: Leaving directory '/micro_ros_ws/firmware/mcu_ws/build/microxrcedds_client'
+[5.451s] /usr/bin/cmake -E cmake_progress_start /micro_ros_ws/firmware/mcu_ws/build/microxrcedds_client/CMakeFiles 0
+[5.475s] gmake[4]: Leaving directory '/micro_ros_ws/firmware/mcu_ws/build/microxrcedds_client'
+[5.480s] Invoked command in '/micro_ros_ws/firmware/mcu_ws/build/microxrcedds_client' returned '0': CMAKE_PREFIX_PATH=/micro_ros_ws/firmware/mcu_ws/install:${CMAKE_PREFIX_PATH} PATH=/micro_ros_ws/firmware/mcu_ws/install/bin:${PATH} PYTHONPATH=/micro_ros_ws/firmware/mcu_ws/install/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/cmake --build /micro_ros_ws/firmware/mcu_ws/build/microxrcedds_client -- -j12 -l12
+[5.487s] Invoking command in '/micro_ros_ws/firmware/mcu_ws/build/microxrcedds_client': CMAKE_PREFIX_PATH=/micro_ros_ws/firmware/mcu_ws/install:${CMAKE_PREFIX_PATH} PATH=/micro_ros_ws/firmware/mcu_ws/install/bin:${PATH} PYTHONPATH=/micro_ros_ws/firmware/mcu_ws/install/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/cmake --install /micro_ros_ws/firmware/mcu_ws/build/microxrcedds_client
+[5.502s] -- Install configuration: "Debug"
+[5.503s] -- Installing: /micro_ros_ws/firmware/mcu_ws/install/lib/libmicroxrcedds_client.a
+[5.521s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/include/uxr/client
+[5.523s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/include/uxr/client/client.h
+[5.525s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/include/uxr/client/core
+[5.528s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/include/uxr/client/core/communication
+[5.531s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/include/uxr/client/core/communication/communication.h
+[5.533s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/include/uxr/client/core/session
+[5.536s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/include/uxr/client/core/session/common_create_entities.h
+[5.539s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/include/uxr/client/core/session/create_entities_bin.h
+[5.541s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/include/uxr/client/core/session/create_entities_ref.h
+[5.543s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/include/uxr/client/core/session/create_entities_xml.h
+[5.545s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/include/uxr/client/core/session/object_id.h
+[5.547s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/include/uxr/client/core/session/read_access.h
+[5.548s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/include/uxr/client/core/session/session.h
+[5.550s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/include/uxr/client/core/session/session_info.h
+[5.552s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/include/uxr/client/core/session/stream
+[5.555s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/include/uxr/client/core/session/stream/input_best_effort_stream.h
+[5.558s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/include/uxr/client/core/session/stream/input_reliable_stream.h
+[5.561s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/include/uxr/client/core/session/stream/output_best_effort_stream.h
+[5.564s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/include/uxr/client/core/session/stream/output_reliable_stream.h
+[5.566s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/include/uxr/client/core/session/stream/reliable_stream.h
+[5.568s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/include/uxr/client/core/session/stream/seq_num.h
+[5.570s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/include/uxr/client/core/session/stream/stream_id.h
+[5.573s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/include/uxr/client/core/session/stream/stream_storage.h
+[5.575s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/include/uxr/client/core/session/time_sync.h
+[5.578s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/include/uxr/client/core/session/write_access.h
+[5.580s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/include/uxr/client/core/type
+[5.586s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/include/uxr/client/core/type/xrce_types.h
+[5.588s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/include/uxr/client/defines.h
+[5.590s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/include/uxr/client/profile
+[5.592s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/include/uxr/client/profile/discovery
+[5.594s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/include/uxr/client/profile/discovery/discovery.h
+[5.595s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/include/uxr/client/profile/multithread
+[5.597s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/include/uxr/client/profile/multithread/multithread.h
+[5.599s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/include/uxr/client/profile/transport
+[5.601s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/include/uxr/client/profile/transport/can
+[5.604s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/include/uxr/client/profile/transport/can/can_transport.h
+[5.607s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/include/uxr/client/profile/transport/can/can_transport_posix.h
+[5.609s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/include/uxr/client/profile/transport/custom
+[5.612s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/include/uxr/client/profile/transport/custom/custom_transport.h
+[5.614s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/include/uxr/client/profile/transport/ip
+[5.617s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/include/uxr/client/profile/transport/ip/ip.h
+[5.619s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/include/uxr/client/profile/transport/ip/tcp
+[5.622s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/include/uxr/client/profile/transport/ip/tcp/tcp_transport.h
+[5.624s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/include/uxr/client/profile/transport/ip/tcp/tcp_transport_freertos_plus_tcp.h
+[5.626s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/include/uxr/client/profile/transport/ip/tcp/tcp_transport_posix.h
+[5.629s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/include/uxr/client/profile/transport/ip/tcp/tcp_transport_posix_nopoll.h
+[5.631s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/include/uxr/client/profile/transport/ip/tcp/tcp_transport_rtems_bsd_net.h
+[5.633s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/include/uxr/client/profile/transport/ip/tcp/tcp_transport_windows.h
+[5.635s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/include/uxr/client/profile/transport/ip/udp
+[5.638s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/include/uxr/client/profile/transport/ip/udp/udp_transport.h
+[5.640s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/include/uxr/client/profile/transport/ip/udp/udp_transport_freertos_plus_tcp.h
+[5.642s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/include/uxr/client/profile/transport/ip/udp/udp_transport_posix.h
+[5.644s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/include/uxr/client/profile/transport/ip/udp/udp_transport_posix_nopoll.h
+[5.646s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/include/uxr/client/profile/transport/ip/udp/udp_transport_rtems_bsd_net.h
+[5.648s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/include/uxr/client/profile/transport/ip/udp/udp_transport_windows.h
+[5.650s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/include/uxr/client/profile/transport/serial
+[5.655s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/include/uxr/client/profile/transport/serial/serial_transport.h
+[5.658s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/include/uxr/client/profile/transport/serial/serial_transport_platform.h
+[5.663s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/include/uxr/client/profile/transport/serial/serial_transport_posix.h
+[5.666s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/include/uxr/client/profile/transport/serial/serial_transport_rtems_bsd_net.h
+[5.668s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/include/uxr/client/profile/transport/stream_framing
+[5.673s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/include/uxr/client/profile/transport/stream_framing/stream_framing_protocol.h
+[5.675s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/include/uxr/client/transport.h
+[5.676s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/include/uxr/client/util
+[5.679s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/include/uxr/client/util/ping.h
+[5.680s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/include/uxr/client/util/time.h
+[5.681s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/include/uxr/client/visibility.h
+[5.683s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/include/uxr/client/config.h
+[5.688s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/share/microxrcedds_client/cmake/microxrcedds_clientTargets.cmake
+[5.690s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/share/microxrcedds_client/cmake/microxrcedds_clientTargets-debug.cmake
+[5.692s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/share/microxrcedds_client/cmake/microxrcedds_clientConfig.cmake
+[5.693s] -- Up-to-date: /micro_ros_ws/firmware/mcu_ws/install/share/microxrcedds_client/cmake/microxrcedds_clientConfigVersion.cmake
+[5.696s] Invoked command in '/micro_ros_ws/firmware/mcu_ws/build/microxrcedds_client' returned '0': CMAKE_PREFIX_PATH=/micro_ros_ws/firmware/mcu_ws/install:${CMAKE_PREFIX_PATH} PATH=/micro_ros_ws/firmware/mcu_ws/install/bin:${PATH} PYTHONPATH=/micro_ros_ws/firmware/mcu_ws/install/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/cmake --install /micro_ros_ws/firmware/mcu_ws/build/microxrcedds_client

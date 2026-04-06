@@ -1,0 +1,9 @@
+{
+  "package_name": "shape_msgs",
+  "non_idl_tuples": [
+    "/micro_ros_ws/firmware/mcu_ws/ros2/common_interfaces/shape_msgs:msg/Mesh.msg",
+    "/micro_ros_ws/firmware/mcu_ws/ros2/common_interfaces/shape_msgs:msg/MeshTriangle.msg",
+    "/micro_ros_ws/firmware/mcu_ws/ros2/common_interfaces/shape_msgs:msg/Plane.msg",
+    "/micro_ros_ws/firmware/mcu_ws/ros2/common_interfaces/shape_msgs:msg/SolidPrimitive.msg"
+  ]
+}

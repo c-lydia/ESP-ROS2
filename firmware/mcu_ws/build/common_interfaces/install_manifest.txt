@@ -1,0 +1,15 @@
+/micro_ros_ws/firmware/mcu_ws/install/share/ament_index/resource_index/package_run_dependencies/common_interfaces
+/micro_ros_ws/firmware/mcu_ws/install/share/ament_index/resource_index/parent_prefix_path/common_interfaces
+/micro_ros_ws/firmware/mcu_ws/install/share/common_interfaces/environment/ament_prefix_path.sh
+/micro_ros_ws/firmware/mcu_ws/install/share/common_interfaces/environment/ament_prefix_path.dsv
+/micro_ros_ws/firmware/mcu_ws/install/share/common_interfaces/environment/path.sh
+/micro_ros_ws/firmware/mcu_ws/install/share/common_interfaces/environment/path.dsv
+/micro_ros_ws/firmware/mcu_ws/install/share/common_interfaces/local_setup.bash
+/micro_ros_ws/firmware/mcu_ws/install/share/common_interfaces/local_setup.sh
+/micro_ros_ws/firmware/mcu_ws/install/share/common_interfaces/local_setup.zsh
+/micro_ros_ws/firmware/mcu_ws/install/share/common_interfaces/local_setup.dsv
+/micro_ros_ws/firmware/mcu_ws/install/share/common_interfaces/package.dsv
+/micro_ros_ws/firmware/mcu_ws/install/share/ament_index/resource_index/packages/common_interfaces
+/micro_ros_ws/firmware/mcu_ws/install/share/common_interfaces/cmake/common_interfacesConfig.cmake
+/micro_ros_ws/firmware/mcu_ws/install/share/common_interfaces/cmake/common_interfacesConfig-version.cmake
+/micro_ros_ws/firmware/mcu_ws/install/share/common_interfaces/package.xml

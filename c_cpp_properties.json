@@ -4,6 +4,10 @@
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/**",
+                "${workspaceFolder}/firmware/**",
+                "${workspaceFolder}/install/**",
+                "${env:IDF_PATH}/**",
+                "${env:IDF_PATH}/components/**",
                 "/opt/ros/humble/include",
                 "/usr/include",
                 "/usr/local/include"
@@ -12,8 +16,7 @@
             "compilerPath": "/usr/bin/gcc",
             "cStandard": "c17",
             "cppStandard": "c++17",
-            "intelliSenseMode": "linux-gcc-x64",
-            "configurationProvider": "ms-vscode.cmake-tools"
+            "intelliSenseMode": "linux-gcc-x64"
         }
     ],
     "version": 4

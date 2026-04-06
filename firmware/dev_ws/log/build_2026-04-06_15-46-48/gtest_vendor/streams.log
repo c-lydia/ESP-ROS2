@@ -1,0 +1,52 @@
+[0.487s] Invoking command in '/media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/build/gtest_vendor': /usr/bin/cmake /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/ament/googletest/googletest -DCMAKE_INSTALL_PREFIX=/media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/gtest_vendor
+[0.691s] -- Configuring done
+[0.692s] -- Generating done
+[0.692s] -- Build files have been written to: /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/build/gtest_vendor
+[0.944s] Invoked command in '/media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/build/gtest_vendor' returned '0': /usr/bin/cmake /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/ament/googletest/googletest -DCMAKE_INSTALL_PREFIX=/media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/gtest_vendor
+[0.946s] Invoking command in '/media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/build/gtest_vendor': /usr/bin/cmake --build /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/build/gtest_vendor -- -j12 -l12
+[0.988s] Invoked command in '/media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/build/gtest_vendor' returned '0': /usr/bin/cmake --build /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/build/gtest_vendor -- -j12 -l12
+[1.000s] Invoking command in '/media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/build/gtest_vendor': /usr/bin/cmake --install /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/build/gtest_vendor
+[1.008s] -- Install configuration: ""
+[1.011s] -- Installing: /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/gtest_vendor/share/gtest_vendor/cmake/gtest_vendorConfig.cmake
+[1.017s] -- Installing: /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/gtest_vendor/share/gtest_vendor/package.xml
+[1.024s] -- Installing: /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/gtest_vendor/src/gtest_vendor/CMakeLists.txt
+[1.027s] -- Installing: /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/gtest_vendor/src/gtest_vendor/include/gtest
+[1.029s] -- Installing: /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/gtest_vendor/src/gtest_vendor/include/gtest/gtest-death-test.h
+[1.031s] -- Installing: /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/gtest_vendor/src/gtest_vendor/include/gtest/gtest-matchers.h
+[1.036s] -- Installing: /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/gtest_vendor/src/gtest_vendor/include/gtest/gtest-message.h
+[1.038s] -- Installing: /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/gtest_vendor/src/gtest_vendor/include/gtest/gtest-param-test.h
+[1.041s] -- Installing: /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/gtest_vendor/src/gtest_vendor/include/gtest/gtest-printers.h
+[1.044s] -- Installing: /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/gtest_vendor/src/gtest_vendor/include/gtest/gtest-spi.h
+[1.048s] -- Installing: /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/gtest_vendor/src/gtest_vendor/include/gtest/gtest-test-part.h
+[1.054s] -- Installing: /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/gtest_vendor/src/gtest_vendor/include/gtest/gtest-typed-test.h
+[1.063s] -- Installing: /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/gtest_vendor/src/gtest_vendor/include/gtest/gtest.h
+[1.070s] -- Installing: /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/gtest_vendor/src/gtest_vendor/include/gtest/gtest_pred_impl.h
+[1.073s] -- Installing: /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/gtest_vendor/src/gtest_vendor/include/gtest/gtest_prod.h
+[1.076s] -- Installing: /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/gtest_vendor/src/gtest_vendor/include/gtest/internal
+[1.078s] -- Installing: /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/gtest_vendor/src/gtest_vendor/include/gtest/internal/custom
+[1.080s] -- Installing: /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/gtest_vendor/src/gtest_vendor/include/gtest/internal/custom/gtest-port.h
+[1.086s] -- Installing: /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/gtest_vendor/src/gtest_vendor/include/gtest/internal/custom/gtest-printers.h
+[1.091s] -- Installing: /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/gtest_vendor/src/gtest_vendor/include/gtest/internal/custom/gtest.h
+[1.095s] -- Installing: /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/gtest_vendor/src/gtest_vendor/include/gtest/internal/custom/README.md
+[1.099s] -- Installing: /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/gtest_vendor/src/gtest_vendor/include/gtest/internal/gtest-death-test-internal.h
+[1.102s] -- Installing: /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/gtest_vendor/src/gtest_vendor/include/gtest/internal/gtest-filepath.h
+[1.105s] -- Installing: /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/gtest_vendor/src/gtest_vendor/include/gtest/internal/gtest-internal.h
+[1.109s] -- Installing: /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/gtest_vendor/src/gtest_vendor/include/gtest/internal/gtest-param-util.h
+[1.112s] -- Installing: /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/gtest_vendor/src/gtest_vendor/include/gtest/internal/gtest-port-arch.h
+[1.115s] -- Installing: /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/gtest_vendor/src/gtest_vendor/include/gtest/internal/gtest-port.h
+[1.119s] -- Installing: /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/gtest_vendor/src/gtest_vendor/include/gtest/internal/gtest-string.h
+[1.122s] -- Installing: /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/gtest_vendor/src/gtest_vendor/include/gtest/internal/gtest-type-util.h
+[1.126s] -- Installing: /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/gtest_vendor/src/gtest_vendor/include/gtest/internal/gtest-type-util.h.pump
+[1.128s] -- Installing: /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/gtest_vendor/src/gtest_vendor/src
+[1.129s] -- Installing: /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/gtest_vendor/src/gtest_vendor/src/gtest-all.cc
+[1.132s] -- Installing: /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/gtest_vendor/src/gtest_vendor/src/gtest-death-test.cc
+[1.135s] -- Installing: /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/gtest_vendor/src/gtest_vendor/src/gtest-filepath.cc
+[1.138s] -- Installing: /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/gtest_vendor/src/gtest_vendor/src/gtest-internal-inl.h
+[1.140s] -- Installing: /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/gtest_vendor/src/gtest_vendor/src/gtest-matchers.cc
+[1.143s] -- Installing: /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/gtest_vendor/src/gtest_vendor/src/gtest-port.cc
+[1.147s] -- Installing: /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/gtest_vendor/src/gtest_vendor/src/gtest-printers.cc
+[1.150s] -- Installing: /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/gtest_vendor/src/gtest_vendor/src/gtest-test-part.cc
+[1.154s] -- Installing: /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/gtest_vendor/src/gtest_vendor/src/gtest-typed-test.cc
+[1.156s] -- Installing: /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/gtest_vendor/src/gtest_vendor/src/gtest.cc
+[1.162s] -- Installing: /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/install/gtest_vendor/src/gtest_vendor/src/gtest_main.cc
+[1.165s] Invoked command in '/media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/build/gtest_vendor' returned '0': /usr/bin/cmake --install /media/lydia-chheng/0EF23A80F23A6BD91/micro_ros_ws/firmware/dev_ws/build/gtest_vendor

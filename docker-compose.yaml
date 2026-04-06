@@ -7,10 +7,14 @@ services:
       - ./build:/micro_ros_ws/build
       - ./install:/micro_ros_ws/install
       - ./docs:/micro_ros_ws/docs
+      - ./firmware:/micro_ros_ws/firmware
+      - ./wall_e_ws:/micro_ros_ws/wall_e_ws
     working_dir: /micro_ros_ws
     command: bash -c "rosdep install --from-paths src --ignore-src -y 2>/dev/null || true && colcon build && bash"
     stdin_open: true
     tty: true
+    devices:
+      - /dev/ttyUSB0:/dev/ttyUSB0
     networks:
       - micro_ros_net
 

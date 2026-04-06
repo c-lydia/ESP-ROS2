@@ -1,0 +1,35 @@
+[0.472s] Invoking command in '/micro_ros_ws/firmware/mcu_ws/build/tracetools': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/micro_ros_ws/firmware/dev_ws/install/ament_uncrustify:/micro_ros_ws/firmware/dev_ws/install/domain_coordinator:/micro_ros_ws/firmware/dev_ws/install/ament_xmllint:/micro_ros_ws/firmware/dev_ws/install/ament_pyflakes:/micro_ros_ws/firmware/dev_ws/install/ament_pycodestyle:/micro_ros_ws/firmware/dev_ws/install/ament_pep257:/micro_ros_ws/firmware/dev_ws/install/ament_pclint:/micro_ros_ws/firmware/dev_ws/install/ament_package:/micro_ros_ws/firmware/dev_ws/install/ament_mypy:/micro_ros_ws/firmware/dev_ws/install/ament_lint_cmake:/micro_ros_ws/firmware/dev_ws/install/ament_flake8:/micro_ros_ws/firmware/dev_ws/install/ament_copyright:/micro_ros_ws/firmware/dev_ws/install/ament_lint:/micro_ros_ws/firmware/dev_ws/install/ament_index_python:/micro_ros_ws/firmware/dev_ws/install/ament_cpplint:/micro_ros_ws/firmware/dev_ws/install/ament_cppcheck:/micro_ros_ws/firmware/dev_ws/install/ament_clang_tidy:/micro_ros_ws/firmware/dev_ws/install/ament_clang_format /usr/bin/cmake /micro_ros_ws/firmware/mcu_ws/uros/tracetools/tracetools --no-warn-unused-cli -DCMAKE_POSITION_INDEPENDENT_CODE:BOOL=OFF -DTHIRDPARTY=ON -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=OFF -DCMAKE_BUILD_TYPE=Debug -DCMAKE_TOOLCHAIN_FILE=/micro_ros_ws/firmware/freertos_apps/microros_esp32_extensions/esp32_toolchain.cmake -DCMAKE_VERBOSE_MAKEFILE=ON -DTRACETOOLS_DISABLED=ON -DTRACETOOLS_STATUS_CHECKING_TOOL=OFF -DCMAKE_INSTALL_PREFIX=/micro_ros_ws/firmware/mcu_ws/install
+[1.711s] Not searching for unused variables given on the command line.
+[1.712s] -- The C compiler identification is GNU 8.2.0
+[1.712s] -- The CXX compiler identification is GNU 8.2.0
+[1.713s] -- Detecting C compiler ABI info
+[1.713s] -- Detecting C compiler ABI info - done
+[1.715s] -- Check for working C compiler: /micro_ros_ws/firmware/toolchain/espressif/tools/xtensa-esp32-elf/esp-2020r2-8.2.0/xtensa-esp32-elf/bin/xtensa-esp32-elf-gcc - skipped
+[1.716s] -- Detecting C compile features
+[1.716s] -- Detecting C compile features - done
+[1.716s] -- Detecting CXX compiler ABI info
+[1.718s] -- Detecting CXX compiler ABI info - done
+[1.719s] -- Check for working CXX compiler: /micro_ros_ws/firmware/toolchain/espressif/tools/xtensa-esp32-elf/esp-2020r2-8.2.0/xtensa-esp32-elf/bin/xtensa-esp32-elf-g++ - skipped
+[1.722s] -- Detecting CXX compile features
+[1.723s] -- Detecting CXX compile features - done
+[1.723s] -- Found ament_cmake_ros: 0.10.0 (/micro_ros_ws/firmware/dev_ws/install/ament_cmake_ros/share/ament_cmake_ros/cmake)
+[3.076s] -- Found Python3: /micro_ros_ws/firmware/toolchain/espressif/python_env/idf4.1_py3.10_env/bin/python3 (found version "3.10.12") found components: Interpreter 
+[4.177s] Traceback (most recent call last):
+[4.177s]   File "/micro_ros_ws/firmware/dev_ws/install/ament_cmake_core/share/ament_cmake_core/cmake/core/package_xml_2_cmake.py", line 22, in <module>
+[4.178s]     from catkin_pkg.package import parse_package_string
+[4.178s] ModuleNotFoundError: No module named 'catkin_pkg'
+[4.179s] [31mCMake Error at /micro_ros_ws/firmware/dev_ws/install/ament_cmake_core/share/ament_cmake_core/cmake/core/ament_package_xml.cmake:95 (message):
+[4.179s]   
+[4.179s]   execute_process(/micro_ros_ws/firmware/toolchain/espressif/python_env/idf4.1_py3.10_env/bin/python3
+[4.180s]   /micro_ros_ws/firmware/dev_ws/install/ament_cmake_core/share/ament_cmake_core/cmake/core/package_xml_2_cmake.py
+[4.180s]   /micro_ros_ws/firmware/mcu_ws/uros/tracetools/tracetools/package.xml
+[4.180s]   /micro_ros_ws/firmware/mcu_ws/build/tracetools/ament_cmake_core/package.cmake)
+[4.180s]   returned error code 1
+[4.180s] Call Stack (most recent call first):
+[4.180s]   /micro_ros_ws/firmware/dev_ws/install/ament_cmake_core/share/ament_cmake_core/cmake/core/ament_package_xml.cmake:49 (_ament_package_xml)
+[4.180s]   /micro_ros_ws/firmware/dev_ws/install/ament_cmake_core/share/ament_cmake_core/cmake/core/ament_package.cmake:63 (ament_package_xml)
+[4.181s]   CMakeLists.txt:186 (ament_package)
+[4.181s] 
+[4.181s] [0m
+[4.181s] -- Configuring incomplete, errors occurred!
+[4.181s] See also "/micro_ros_ws/firmware/mcu_ws/build/tracetools/CMakeFiles/CMakeOutput.log".

@@ -1,0 +1,34 @@
+Not searching for unused variables given on the command line.
+-- The C compiler identification is GNU 8.2.0
+-- The CXX compiler identification is GNU 8.2.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /micro_ros_ws/firmware/toolchain/espressif/tools/xtensa-esp32-elf/esp-2020r2-8.2.0/xtensa-esp32-elf/bin/xtensa-esp32-elf-gcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /micro_ros_ws/firmware/toolchain/espressif/tools/xtensa-esp32-elf/esp-2020r2-8.2.0/xtensa-esp32-elf/bin/xtensa-esp32-elf-g++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found ament_cmake_ros: 0.10.0 (/micro_ros_ws/firmware/dev_ws/install/ament_cmake_ros/share/ament_cmake_ros/cmake)
+-- Found Python3: /micro_ros_ws/firmware/toolchain/espressif/python_env/idf4.1_py3.10_env/bin/python3 (found version "3.10.12") found components: Interpreter 
+Traceback (most recent call last):
+  File "/micro_ros_ws/firmware/dev_ws/install/ament_cmake_core/share/ament_cmake_core/cmake/core/package_xml_2_cmake.py", line 22, in <module>
+    from catkin_pkg.package import parse_package_string
+ModuleNotFoundError: No module named 'catkin_pkg'
+[31mCMake Error at /micro_ros_ws/firmware/dev_ws/install/ament_cmake_core/share/ament_cmake_core/cmake/core/ament_package_xml.cmake:95 (message):
+  
+  execute_process(/micro_ros_ws/firmware/toolchain/espressif/python_env/idf4.1_py3.10_env/bin/python3
+  /micro_ros_ws/firmware/dev_ws/install/ament_cmake_core/share/ament_cmake_core/cmake/core/package_xml_2_cmake.py
+  /micro_ros_ws/firmware/mcu_ws/uros/tracetools/tracetools/package.xml
+  /micro_ros_ws/firmware/mcu_ws/build/tracetools/ament_cmake_core/package.cmake)
+  returned error code 1
+Call Stack (most recent call first):
+  /micro_ros_ws/firmware/dev_ws/install/ament_cmake_core/share/ament_cmake_core/cmake/core/ament_package_xml.cmake:49 (_ament_package_xml)
+  /micro_ros_ws/firmware/dev_ws/install/ament_cmake_core/share/ament_cmake_core/cmake/core/ament_package.cmake:63 (ament_package_xml)
+  CMakeLists.txt:186 (ament_package)
+
+[0m
+-- Configuring incomplete, errors occurred!
+See also "/micro_ros_ws/firmware/mcu_ws/build/tracetools/CMakeFiles/CMakeOutput.log".

@@ -1,9 +1,15 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <math.h>
+#include <string.h>
+
+#include "sdkconfig.h"
 
 #include "esp_wifi.h"
 #include "esp_event.h"
+#include "esp_netif.h"
+#include "esp_timer.h"
+#include "rom/ets_sys.h"
 #include "nvs_flash.h"
 
 #include <rcl/rcl.h>
@@ -15,14 +21,28 @@
 
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
+#include "freertos/event_groups.h"
 #include "driver/i2c.h"
 #include "driver/gpio.h"
 
-#include <rmw_microros/rmw_microros.h>
+static EventGroupHandle_t wifi_event_group;
+#define WIFI_CONNECTED_BIT BIT0
 
 // Error checking macros
-#define RCCHECK(fn) { rcl_ret_t temp_rc = fn; if((temp_rc != RCL_RET_OK)){printf("Failed status on line %d: %d. Aborting.\n",__LINE__,(int)temp_rc);vTaskDelete(NULL);}}
-#define RCSOFTCHECK(fn) { rcl_ret_t temp_rc = fn; if((temp_rc != RCL_RET_OK)){printf("Failed status on line %d: %d. Continuing.\n",__LINE__,(int)temp_rc);}}
+#define RCCHECK(fn) do { \
+    rcl_ret_t temp_rc = (fn); \
+    if ((temp_rc != RCL_RET_OK)) { \
+        printf("Failed status on line %d: %d. Aborting.\\n", __LINE__, (int)temp_rc); \
+        vTaskDelete(NULL); \
+    } \
+} while (0)
+
+#define RCSOFTCHECK(fn) do { \
+    rcl_ret_t temp_rc = (fn); \
+    if ((temp_rc != RCL_RET_OK)) { \
+        printf("Failed status on line %d: %d. Continuing.\\n", __LINE__, (int)temp_rc); \
+    } \
+} while (0)
 
 // MPU6050 I2C Configuration
 #define I2C_MASTER_SCL_IO           22      // GPIO for I2C SCL
@@ -58,11 +78,13 @@ static void wifi_event_handler(void* arg, esp_event_base_t event_base, int32_t e
         esp_wifi_connect();
         printf("Retrying WiFi connection...\n");
     } else if (event_base == IP_EVENT && event_id == IP_EVENT_STA_GOT_IP) {
+        xEventGroupSetBits(wifi_event_group, WIFI_CONNECTED_BIT);
         printf("WiFi Connected! Got IP\n");
     }
 }
 
 void wifi_init(void) {
+    wifi_event_group = xEventGroupCreate();
     nvs_flash_init();
     esp_netif_init();
     esp_event_loop_create_default();
@@ -82,7 +104,7 @@ void wifi_init(void) {
     };
    
     esp_wifi_set_mode(WIFI_MODE_STA);
-    esp_wifi_set_config(ESP_IF_WIFI_STA, &wifi_config);
+    esp_wifi_set_config(WIFI_IF_STA, &wifi_config);
     esp_wifi_start();
 
     printf("WiFi initialization complete\n");
@@ -257,7 +279,7 @@ void timer_callback(rcl_timer_t * timer, int64_t last_call_time) {
     }
 }
 
-void appMain(void * arg) {
+void app_main(void) {
     wifi_init(); 
     
     // Initialize hardware

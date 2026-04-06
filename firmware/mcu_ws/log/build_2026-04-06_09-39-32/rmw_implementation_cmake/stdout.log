@@ -1,0 +1,5 @@
+Not searching for unused variables given on the command line.
+-- Found ament_cmake: 1.3.14 (/micro_ros_ws/firmware/dev_ws/install/ament_cmake/share/ament_cmake/cmake)
+-- Found Python3: /micro_ros_ws/firmware/toolchain/espressif/python_env/idf4.1_py3.10_env/bin/python3 (found version "3.10.12") found components: Interpreter 
+-- Configuring incomplete, errors occurred!
+See also "/micro_ros_ws/firmware/mcu_ws/build/rmw_implementation_cmake/CMakeFiles/CMakeOutput.log".

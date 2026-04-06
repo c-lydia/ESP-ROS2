@@ -1,0 +1,43 @@
+[2.250s] Invoking command in '/micro_ros_ws/firmware/mcu_ws/uros/tracetools/ros2trace': AMENT_PREFIX_PATH=/micro_ros_ws/firmware/mcu_ws/install:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/micro_ros_ws/firmware/mcu_ws/install:${CMAKE_PREFIX_PATH} PATH=/micro_ros_ws/firmware/mcu_ws/install/bin:${PATH} PYTHONPATH=/micro_ros_ws/firmware/mcu_ws/build/ros2trace/prefix_override:/micro_ros_ws/firmware/toolchain/espressif/python_env/idf4.1_py3.10_env/lib/python3.10/site-packages/colcon_core/task/python/colcon_distutils_commands:/micro_ros_ws/firmware/mcu_ws/install/lib/python3.10/site-packages:/micro_ros_ws/firmware/mcu_ws/install/lib/python3.10/site-packages:${PYTHONPATH} /micro_ros_ws/firmware/toolchain/espressif/python_env/idf4.1_py3.10_env/bin/python -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../build/ros2trace build --build-base /micro_ros_ws/firmware/mcu_ws/build/ros2trace/build install --record /micro_ros_ws/firmware/mcu_ws/build/ros2trace/install.log --single-version-externally-managed install_data
+[2.875s] /micro_ros_ws/firmware/toolchain/espressif/python_env/idf4.1_py3.10_env/lib/python3.10/site-packages/setuptools/_distutils/dist.py:289: UserWarning: Unknown distribution option: 'tests_require'
+[2.876s]   warnings.warn(msg)
+[3.213s] running egg_info
+[3.265s] creating ../../../build/ros2trace/ros2trace.egg-info
+[3.266s] writing ../../../build/ros2trace/ros2trace.egg-info/PKG-INFO
+[3.270s] writing dependency_links to ../../../build/ros2trace/ros2trace.egg-info/dependency_links.txt
+[3.271s] writing entry points to ../../../build/ros2trace/ros2trace.egg-info/entry_points.txt
+[3.272s] writing requirements to ../../../build/ros2trace/ros2trace.egg-info/requires.txt
+[3.272s] writing top-level names to ../../../build/ros2trace/ros2trace.egg-info/top_level.txt
+[3.274s] writing manifest file '../../../build/ros2trace/ros2trace.egg-info/SOURCES.txt'
+[3.394s] reading manifest file '../../../build/ros2trace/ros2trace.egg-info/SOURCES.txt'
+[3.401s] writing manifest file '../../../build/ros2trace/ros2trace.egg-info/SOURCES.txt'
+[3.401s] running build
+[3.402s] running build_py
+[3.402s] creating /micro_ros_ws/firmware/mcu_ws/build/ros2trace/build/lib/ros2trace
+[3.404s] copying ros2trace/__init__.py -> /micro_ros_ws/firmware/mcu_ws/build/ros2trace/build/lib/ros2trace
+[3.406s] creating /micro_ros_ws/firmware/mcu_ws/build/ros2trace/build/lib/ros2trace/api
+[3.407s] copying ros2trace/api/__init__.py -> /micro_ros_ws/firmware/mcu_ws/build/ros2trace/build/lib/ros2trace/api
+[3.410s] creating /micro_ros_ws/firmware/mcu_ws/build/ros2trace/build/lib/ros2trace/command
+[3.411s] copying ros2trace/command/trace.py -> /micro_ros_ws/firmware/mcu_ws/build/ros2trace/build/lib/ros2trace/command
+[3.414s] copying ros2trace/command/__init__.py -> /micro_ros_ws/firmware/mcu_ws/build/ros2trace/build/lib/ros2trace/command
+[3.419s] running install
+[3.422s] running install_lib
+[3.476s] creating /micro_ros_ws/firmware/mcu_ws/install/lib/python3.10/site-packages/ros2trace
+[3.477s] creating /micro_ros_ws/firmware/mcu_ws/install/lib/python3.10/site-packages/ros2trace/api
+[3.479s] copying /micro_ros_ws/firmware/mcu_ws/build/ros2trace/build/lib/ros2trace/api/__init__.py -> /micro_ros_ws/firmware/mcu_ws/install/lib/python3.10/site-packages/ros2trace/api
+[3.482s] creating /micro_ros_ws/firmware/mcu_ws/install/lib/python3.10/site-packages/ros2trace/command
+[3.483s] copying /micro_ros_ws/firmware/mcu_ws/build/ros2trace/build/lib/ros2trace/command/trace.py -> /micro_ros_ws/firmware/mcu_ws/install/lib/python3.10/site-packages/ros2trace/command
+[3.487s] copying /micro_ros_ws/firmware/mcu_ws/build/ros2trace/build/lib/ros2trace/command/__init__.py -> /micro_ros_ws/firmware/mcu_ws/install/lib/python3.10/site-packages/ros2trace/command
+[3.490s] copying /micro_ros_ws/firmware/mcu_ws/build/ros2trace/build/lib/ros2trace/__init__.py -> /micro_ros_ws/firmware/mcu_ws/install/lib/python3.10/site-packages/ros2trace
+[3.497s] byte-compiling /micro_ros_ws/firmware/mcu_ws/install/lib/python3.10/site-packages/ros2trace/api/__init__.py to __init__.cpython-310.pyc
+[3.500s] byte-compiling /micro_ros_ws/firmware/mcu_ws/install/lib/python3.10/site-packages/ros2trace/command/trace.py to trace.cpython-310.pyc
+[3.504s] byte-compiling /micro_ros_ws/firmware/mcu_ws/install/lib/python3.10/site-packages/ros2trace/command/__init__.py to __init__.cpython-310.pyc
+[3.507s] byte-compiling /micro_ros_ws/firmware/mcu_ws/install/lib/python3.10/site-packages/ros2trace/__init__.py to __init__.cpython-310.pyc
+[3.510s] running install_data
+[3.511s] copying package.xml -> /micro_ros_ws/firmware/mcu_ws/install/share/ros2trace
+[3.514s] copying resource/ros2trace -> /micro_ros_ws/firmware/mcu_ws/install/share/ament_index/resource_index/packages
+[3.516s] running install_egg_info
+[3.591s] Copying ../../../build/ros2trace/ros2trace.egg-info to /micro_ros_ws/firmware/mcu_ws/install/lib/python3.10/site-packages/ros2trace-4.1.1-py3.10.egg-info
+[3.613s] running install_scripts
+[3.922s] writing list of installed files to '/micro_ros_ws/firmware/mcu_ws/build/ros2trace/install.log'
+[3.948s] Invoked command in '/micro_ros_ws/firmware/mcu_ws/uros/tracetools/ros2trace' returned '0': AMENT_PREFIX_PATH=/micro_ros_ws/firmware/mcu_ws/install:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/micro_ros_ws/firmware/mcu_ws/install:${CMAKE_PREFIX_PATH} PATH=/micro_ros_ws/firmware/mcu_ws/install/bin:${PATH} PYTHONPATH=/micro_ros_ws/firmware/mcu_ws/build/ros2trace/prefix_override:/micro_ros_ws/firmware/toolchain/espressif/python_env/idf4.1_py3.10_env/lib/python3.10/site-packages/colcon_core/task/python/colcon_distutils_commands:/micro_ros_ws/firmware/mcu_ws/install/lib/python3.10/site-packages:/micro_ros_ws/firmware/mcu_ws/install/lib/python3.10/site-packages:${PYTHONPATH} /micro_ros_ws/firmware/toolchain/espressif/python_env/idf4.1_py3.10_env/bin/python -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../build/ros2trace build --build-base /micro_ros_ws/firmware/mcu_ws/build/ros2trace/build install --record /micro_ros_ws/firmware/mcu_ws/build/ros2trace/install.log --single-version-externally-managed install_data

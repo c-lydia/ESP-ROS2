@@ -1,0 +1,17 @@
+/micro_ros_ws/firmware/mcu_ws/install/share/ament_index/resource_index/package_run_dependencies/rosidl_default_generators
+/micro_ros_ws/firmware/mcu_ws/install/share/ament_index/resource_index/parent_prefix_path/rosidl_default_generators
+/micro_ros_ws/firmware/mcu_ws/install/share/rosidl_default_generators/environment/ament_prefix_path.sh
+/micro_ros_ws/firmware/mcu_ws/install/share/rosidl_default_generators/environment/ament_prefix_path.dsv
+/micro_ros_ws/firmware/mcu_ws/install/share/rosidl_default_generators/environment/path.sh
+/micro_ros_ws/firmware/mcu_ws/install/share/rosidl_default_generators/environment/path.dsv
+/micro_ros_ws/firmware/mcu_ws/install/share/rosidl_default_generators/local_setup.bash
+/micro_ros_ws/firmware/mcu_ws/install/share/rosidl_default_generators/local_setup.sh
+/micro_ros_ws/firmware/mcu_ws/install/share/rosidl_default_generators/local_setup.zsh
+/micro_ros_ws/firmware/mcu_ws/install/share/rosidl_default_generators/local_setup.dsv
+/micro_ros_ws/firmware/mcu_ws/install/share/rosidl_default_generators/package.dsv
+/micro_ros_ws/firmware/mcu_ws/install/share/ament_index/resource_index/packages/rosidl_default_generators
+/micro_ros_ws/firmware/mcu_ws/install/share/rosidl_default_generators/cmake/rosidl_default_generators-extras.cmake
+/micro_ros_ws/firmware/mcu_ws/install/share/rosidl_default_generators/cmake/ament_cmake_export_dependencies-extras.cmake
+/micro_ros_ws/firmware/mcu_ws/install/share/rosidl_default_generators/cmake/rosidl_default_generatorsConfig.cmake
+/micro_ros_ws/firmware/mcu_ws/install/share/rosidl_default_generators/cmake/rosidl_default_generatorsConfig-version.cmake
+/micro_ros_ws/firmware/mcu_ws/install/share/rosidl_default_generators/package.xml
