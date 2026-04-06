@@ -4,6 +4,8 @@ Wall-E
 
 Welcome to Wall-E's comprehensive documentation. This project provides an integrated development environment combining ESP32 firmware, FreeRTOS, and ROS 2 Humble for advanced embedded robotics applications.
 
+The published site is built automatically from this source tree on pushes to `main`.
+
 .. toctree::
    :maxdepth: 2
    :caption: Contents
