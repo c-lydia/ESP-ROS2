@@ -1,0 +1,51 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from custom_interfaces/msg/Gamepad.msg
+// generated code does not contain a copyright notice
+
+#include "std_msgs/msg/Header.idl"
+
+module custom_interfaces {
+  module msg {
+    struct Gamepad {
+      std_msgs::msg::Header header;
+
+      float left_stick_x;
+
+      float left_stick_y;
+
+      float right_stick_x;
+
+      float right_stick_y;
+
+      float left_trigger;
+
+      float right_trigger;
+
+      int8 dpad_x;
+
+      int8 dpad_y;
+
+      boolean a;
+
+      boolean b;
+
+      boolean x;
+
+      boolean y;
+
+      boolean lb;
+
+      boolean rb;
+
+      boolean back;
+
+      boolean start;
+
+      boolean home;
+
+      boolean left_stick_press;
+
+      boolean right_stick_press;
+    };
+  };
+};

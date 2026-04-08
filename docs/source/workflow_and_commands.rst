@@ -86,3 +86,34 @@ Notes
 - The ESP32 app source lives in ``firmware/custom/esp32_controller/app.c``.
 - The workspace uses Docker for reproducible builds.
 - The firmware creation step downloads and prepares the ESP-IDF toolchain, so it can take several minutes.
+
+Host Runtime Commands
+=====================
+
+After building and sourcing:
+
+.. code-block:: bash
+
+   ros2 run control gamepad_node
+   ros2 run control robot_control_node
+   ros2 run localization odometry_node
+   ros2 run localization inverse_kinematic_node
+
+Topic checks:
+
+.. code-block:: bash
+
+   ros2 topic echo /gamepad
+   ros2 topic echo /cmd_vel
+   ros2 topic echo /servo_cmd
+   ros2 topic echo /odom
+   ros2 topic echo /motor_cmd
+
+Operator Mapping (Default)
+==========================
+
+- Hold ``LB`` to enable motion commands.
+- Move left stick Y for linear speed (internally ``-left_stick_y``).
+- Move left stick X for angular speed.
+- Hold ``A`` to engage hold/PI mode.
+- Move right stick Y to drive servo angle output on ``/servo_cmd`` (default axis).

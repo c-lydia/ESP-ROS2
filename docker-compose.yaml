@@ -10,11 +10,15 @@ services:
       - ./firmware:/micro_ros_ws/firmware
       - ./wall_e_ws:/micro_ros_ws/wall_e_ws
     working_dir: /micro_ros_ws
-    command: bash -c "rosdep install --from-paths src --ignore-src -y 2>/dev/null || true && colcon build && bash"
+    command: >
+      bash -c "rosdep install --from-paths src --ignore-src -y 2>/dev/null || true 
+      && colcon build || echo 'Build failed, keeping container alive...'
+      && tail -f /dev/null"
     stdin_open: true
     tty: true
     devices:
       - /dev/ttyUSB0:/dev/ttyUSB0
+      - /dev/input:/dev/input
     networks:
       - micro_ros_net
 

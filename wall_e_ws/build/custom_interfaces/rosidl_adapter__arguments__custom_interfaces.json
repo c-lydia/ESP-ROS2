@@ -1,0 +1,6 @@
+{
+  "package_name": "custom_interfaces",
+  "non_idl_tuples": [
+    "/micro_ros_ws/wall_e_ws/src/custom_interfaces:msg/Gamepad.msg"
+  ]
+}

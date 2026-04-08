@@ -31,6 +31,7 @@
 #include "freertos/event_groups.h"
 #include "freertos/portmacro.h"
 #include "freertos/FreeRTOSConfig.h"
+#include "freertos/portable.h"
 #include "driver/i2c.h"
 #include "driver/gpio.h"
 #include "driver/ledc.h"

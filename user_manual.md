@@ -9,9 +9,9 @@ The main firmware in `firmware/custom/esp32_controller` provides:
 - Micro-ROS connectivity over WiFi
 - IMU publishing on `imu/data`
 - Ultrasonic range publishing on `range/data`
-- Motor control on `motor-cmd`
-- Servo control on `servo-cmd`
-- Emergency stop handling on `e-stop`
+- Motor control on `/motor_cmd`
+- Servo control on `/servo_cmd`
+- Emergency stop handling on `/e_stop`
 - Firmware status publishing on `firmware/status`
 
 The host feedback stack in `wall_e_ws/src/feedback/feedback` can additionally provide:
@@ -120,9 +120,9 @@ Wokwi uses the compiled `.bin` and `.elf` files directly.
 
 The controller listens to these ROS 2 topics:
 
-- `motor-cmd`: `std_msgs/msg/Float32MultiArray`, one value per motor
-- `servo-cmd`: `std_msgs/msg/Float32`, servo angle in degrees
-- `e-stop`: `std_msgs/msg/Bool`, true enables emergency stop
+- `/motor_cmd`: `std_msgs/msg/Float32MultiArray`, one value per motor
+- `/servo_cmd`: `std_msgs/msg/Float32`, servo angle in degrees
+- `/e_stop`: `std_msgs/msg/Bool`, true enables emergency stop
 
 Published topics include:
 
@@ -132,7 +132,7 @@ Published topics include:
 
 ### Topic Details
 
-#### `motor-cmd`
+#### `/motor_cmd`
 
 This topic drives the four motor outputs.
 
@@ -150,7 +150,7 @@ Example array values:
 
 The firmware also rate-limits motor changes, so sudden jumps are softened instead of being applied instantly.
 
-#### `servo-cmd`
+#### `/servo_cmd`
 
 This topic sets the servo target angle.
 
@@ -161,7 +161,7 @@ This topic sets the servo target angle.
 
 The servo motion is rate-limited, so it moves toward the target at a controlled speed instead of jumping immediately.
 
-#### `e-stop`
+#### `/e_stop`
 
 This topic enables or clears emergency stop.
 
@@ -245,9 +245,60 @@ Open `menuconfig` from the ESP-IDF project if you want to change these values.
 
 1. Boot the board.
 2. Connect WiFi or provision it from the browser if needed.
-3. Start publishing motor and servo commands from ROS 2.
-4. Watch `imu/data`, `range/data`, and `firmware/status` for feedback.
-5. Use `e-stop` if you need to stop the robot immediately.
+3. Start host control stack (`gamepad_node`, `robot_control_node`, `inverse_kinematic_node`, `odometry_node`).
+4. Verify command paths: `/gamepad` -> `/cmd_vel` -> `/motor_cmd` and `/gamepad` -> `/servo_cmd`.
+5. Watch `imu/data`, `range/data`, `/odom`, and `firmware/status` for feedback.
+6. Use `/e_stop` if you need to stop the robot immediately.
+
+## Host Control Stack
+
+- `gamepad_node` publishes `/gamepad`
+- `robot_control_node` publishes `/cmd_vel` in manual mode (stick inputs) and cascaded closed-loop mode using `/range/filter`, `/imu/filter`, `/odom`.
+- `robot_control_node` closed-loop details: outer loop is P/PD over position error (range/heading) to speed setpoint.
+- `robot_control_node` closed-loop details: inner loop is PI over speed error with speed saturation and setpoint rate limiting.
+- `robot_control_node` publishes `/servo_cmd` (`std_msgs/msg/Float32`, angle in degrees) from configurable gamepad axis mapping.
+- `inverse_kinematic_node` maps `/cmd_vel` to four-wheel `/motor_cmd`
+- `odometry_node` publishes `/odom` from available sensors and command flow
+
+### Servo Mapping in `robot_control_node`
+
+- Servo publish topic: `/servo_cmd`
+- Servo message type: `std_msgs/msg/Float32`
+- Default axis: `right_stick_y`
+- Default mapping: normalized axis value `[-1, 1]` to angle range `[servo_min_angle_deg, servo_max_angle_deg]`
+- Default behavior when drive enable is not held: publish `servo_default_angle_deg` (when `servo_only_when_enabled=true`)
+
+Key parameters:
+
+- `servo_enabled`
+- `servo_axis`
+- `servo_axis_invert`
+- `servo_min_angle_deg`
+- `servo_max_angle_deg`
+- `servo_default_angle_deg`
+- `servo_only_when_enabled`
+
+### Gamepad Input Mapping
+
+The current host control mapping is:
+
+- Enable motion gate: `LB` (must be held, default `enable_button=lb`)
+- Hold/PI mode button: `A` (default `pi_mode_button=a`)
+- Manual linear command (`/cmd_vel.linear.x`): `-left_stick_y` with deadband and scaling by `max_linear_speed`
+- Manual angular command (`/cmd_vel.angular.z`): `left_stick_x` with deadband and scaling by `max_angular_speed`
+- Servo command (`/servo_cmd`): selected axis (default `right_stick_y`) mapped from `[-1, 1]` to `[servo_min_angle_deg, servo_max_angle_deg]`
+
+Defaults and behavior notes:
+
+- Servo axis inversion is enabled by default (`servo_axis_invert=true`)
+- If `servo_only_when_enabled=true` and enable is not held, servo command falls back to `servo_default_angle_deg`
+- Triggers and D-pad are published in `/gamepad`, but are not used by `robot_control_node` motion logic by default
+
+### Control Loop Note
+
+- PI is intentionally applied to speed tracking.
+- Position regulation is done by P/PD in the outer loop.
+- This avoids integral windup directly on position while keeping responsive speed control.
 
 ## Troubleshooting
 

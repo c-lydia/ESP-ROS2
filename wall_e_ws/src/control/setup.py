@@ -25,6 +25,7 @@ setup(
     entry_points={
         'console_scripts': [
             'gamepad_node = control.gamepad:main',
+            'robot_control_node = control.robot_control:main',
         ],
     },
 )

@@ -2,7 +2,7 @@
 
 This page explains the core ideas behind the Wall-E stack and how data moves through control, feedback, and firmware.
 
-## 1. Layered Architecture
+## Layered Architecture
 
 The system is organized into four roles:
 
@@ -11,11 +11,25 @@ The system is organized into four roles:
 - localization: state estimation and motion representation
 - control: command generation from operator input or autonomy logic
 
-## 2. System Diagram
+## System Diagram
 
 ![Wall-E system architecture](docs/source/_static/wall_e_arch-dark.png)
 
-## 3. Raw vs Filtered Signals
+Current command and state loop:
+
+- `/gamepad` from `gamepad_node`
+- `/cmd_vel` and `/servo_cmd` from `robot_control_node`
+- `/motor_cmd` from `inverse_kinematic_node`
+- `/odom` from `odometry_node`
+
+Control topology in `robot_control_node`:
+
+- outer loop: position error (`range`, `heading`) to speed setpoint via P/PD
+- inner loop: PI over speed error using odometry/IMU feedback
+- speed setpoints are clamped and rate-limited before PI tracking
+- parallel actuator path: gamepad axis to `/servo_cmd` angle mapping with configurable min/max/default
+
+## Raw vs Filtered Signals
 
 Raw data from `/imu/data` and `/range/data` can be noisy or jumpy. The host-side filtering stage improves stability:
 
@@ -24,7 +38,7 @@ Raw data from `/imu/data` and `/range/data` can be noisy or jumpy. The host-side
 
 Filtered streams are then easier to use for odometry and control loops.
 
-## 4. Fusion Without Kalman Complexity
+## Fusion Without Kalman Complexity
 
 The current `sensor_fusion.py` is a practical observer-style approach:
 
@@ -33,7 +47,19 @@ The current `sensor_fusion.py` is a practical observer-style approach:
 
 This keeps tuning simple and computational cost low while giving robust behavior for real-time operation.
 
-## 5. Safety and Reliability Concepts
+For this ground robot, `/fusion/height` is best interpreted as a local fused vertical/clearance signal, not global altitude.
+
+## Odometry for Ground Robot
+
+Current odometry is command-plus-sensor dead reckoning:
+
+- translational integration from `/cmd_vel`
+- heading from IMU yaw (with fallback integration)
+- optional use of range/fusion channels for safety and vertical terms
+
+It is practical for control and monitoring, but it will drift without wheel encoders.
+
+## Safety and Reliability Concepts
 
 Firmware enforces hard safety constraints independently from host nodes:
 
@@ -44,7 +70,7 @@ Firmware enforces hard safety constraints independently from host nodes:
 
 The key design idea is that host-side filtering can fail or restart without removing firmware-side safety guarantees.
 
-## 6. Where to Tune
+## Where to Tune
 
 Tune the pipeline at the right layer:
 

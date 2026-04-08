@@ -209,6 +209,26 @@ Host-side ROS 2 nodes can process these into cleaner and fused signals:
 
 This keeps firmware responsibilities focused on sensor I/O and control while allowing filter tuning on the host.
 
+## Control and Localization Pipeline (Host)
+
+Current host-side runtime flow:
+
+- `control/gamepad_node`
+  - Publishes `/gamepad`
+- `control/robot_control_node`
+  - Inputs: `/gamepad`, `/range/filter`, `/imu/filter`, `/odom`
+  - Outputs: `/cmd_vel`, `/servo_cmd`
+  - Supports manual mode and cascaded closed-loop mode:
+    - outer P/PD position-to-speed setpoint
+    - inner PI speed tracking loop
+  - Also maps a gamepad axis to `/servo_cmd` (`std_msgs/msg/Float32`, angle in degrees)
+- `localization/odometry_node`
+  - Inputs: `/cmd_vel`, `/imu/filter`, `/range/filter`, `/fusion/height`, `/fusion/vertical_velocity`
+  - Output: `/odom`
+- `localization/inverse_kinematic_node`
+  - Input: `/cmd_vel`
+  - Output: `/motor_cmd` (4-wheel command array)
+
 ## System Architecture Diagram
 
 ![Wall-E system architecture](docs/source/_static/wall_e_arch-dark.png)
@@ -218,7 +238,11 @@ Flow summary:
 - `esp32_controller` publishes raw IMU and range data to ROS 2.
 - `imu_filter` and `ultrasonic_filter` produce cleaner feedback streams.
 - `sensor_fusion` combines filtered streams for downstream state estimation.
-- `odometry` and `inverse_kinematic` close the loop back into control outputs.
+- `odometry_node` estimates vehicle state and publishes `/odom`.
+- `robot_control_node` generates `/cmd_vel` using gamepad + safety + PI hold.
+- `robot_control_node` also publishes `/servo_cmd` from gamepad axis input (with configurable limits/default).
+- In closed-loop mode, PI acts on speed error (not direct position error).
+- `inverse_kinematic_node` converts `/cmd_vel` into `/motor_cmd` for firmware actuation.
 
 ## Useful Commands
 
