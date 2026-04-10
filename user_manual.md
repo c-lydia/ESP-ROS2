@@ -309,6 +309,26 @@ Defaults and behavior notes:
 - If the servo does not move, confirm the PWM GPIO matches your wiring and the topic message is a single floating point angle.
 - If a motor spins the wrong way, swap the direction GPIO logic in hardware or adjust the motor wiring.
 
+### Interpreting Current Debug Logs
+
+- `NVS open for read failed: 0x1102`
+  - Means no credentials are stored yet in namespace `wifi_creds`.
+  - This is expected on first boot before successful provisioning.
+
+- `Ultrasonic timeout(wait high)`
+  - Trigger was sent but ECHO never went high.
+  - Check hardware in order: shared GND, TRIG/ECHO wiring, sensor power, and ECHO level shifting to 3.3V-safe GPIO input.
+
+- `Starting ROS node setup...` then immediate reboot
+  - Startup entered micro-ROS initialization path but reset before completion.
+  - Use monitor logs around watchdog messages (`WDT delete current task`, `WDT add current task`) to isolate failure stage.
+
+### Verified Sensor Output Snapshot (From Real Device Logs)
+
+- IMU values are publishing with corrected gyro terms after startup calibration.
+- Ultrasonic was verified with pulse widths around `344-401 us`, corresponding to `~0.059-0.069 m`.
+- If ultrasonic values disappear and timeouts return, treat it as hardware-edge detection loss, not a filter issue.
+
 ## Project Entry Points
 
 - Main controller firmware: `firmware/custom/esp32_controller`

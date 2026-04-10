@@ -156,6 +156,18 @@ Ultrasonic echo distance:
 $$d = \frac{v_s t}{2}, \; v_s \approx 343 \text{ m/s}$$
 $$d = \frac{343 \cdot (t \times 10^{-6})}{2} = t \times 1.715 \times 10^{-4} \text{ m}$$
 
+Observed debug values (2026-04-10):
+
+- `t = 344 us` gives:
+   $$d \approx 344 \times 1.715 \times 10^{-4} = 0.0590\text{ m}$$
+- `t = 401 us` gives:
+   $$d \approx 401 \times 1.715 \times 10^{-4} = 0.0688\text{ m}$$
+
+These match monitor output (`~0.059-0.069 m`).
+
+If `Ultrasonic timeout(wait high)` repeats, no ECHO rising edge is being detected.
+That indicates an input-electrical issue before any filtering stage.
+
 ### IMU register scaling
 
 Acceleration (for $\pm 2g$):
@@ -163,6 +175,18 @@ $$a\,[\text{m/s}^2] = \left(\frac{\text{raw}}{16384.0}\right) \cdot 9.81$$
 
 Gyroscope (for $\pm 250^\circ/\text{s}$):
 $$\omega\,[\text{rad/s}] = \left(\frac{\text{raw}}{131.0}\right) \cdot \frac{\pi}{180}$$
+
+### Gyro Bias Compensation at Boot
+
+Firmware now computes a startup gyro bias from multiple stationary samples:
+
+$$b_x = \frac{1}{N}\sum_{k=1}^{N} g_{x,k},\; b_y = \frac{1}{N}\sum_{k=1}^{N} g_{y,k},\; b_z = \frac{1}{N}\sum_{k=1}^{N} g_{z,k}$$
+
+Corrected gyro raw values are then:
+
+$$g'_{x} = g_x - b_x,\; g'_{y} = g_y - b_y,\; g'_{z} = g_z - b_z$$
+
+This reduces static drift in angular velocity when the platform is still.
 
 ### Servo angle to PWM
 

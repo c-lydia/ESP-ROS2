@@ -43,10 +43,29 @@ ESP32 Firmware Issues
 
 **Problem**: Ultrasonic sensor readings are incorrect
 
-- Verify GPIO 9 (Trigger) and GPIO 10 (Echo) are connected
+- Verify GPIO 5 (Trigger) and GPIO 18 (Echo) are connected
 - Check power supply voltage (5V needed for HC-SR04)
-- Ensure no interference from other GPIO operations
+- Ensure ECHO line is 3.3V-safe for ESP32 input (use divider/level shifter if sensor drives 5V)
+- Ensure common ground between ESP32 and sensor
 - Test with a simple GPIO toggle program first
+
+**Problem**: `Ultrasonic timeout(wait high)` appears repeatedly
+
+- Trigger pulses are being generated, but no ECHO rising edge is detected
+- Re-check TRIG/ECHO wiring order and continuity
+- Confirm sensor power stability under load
+- Move a target to 5-20 cm in front of sensor to force a measurable echo
+
+**Problem**: Device resets after `Starting ROS node setup...`
+
+- Check serial output for watchdog markers around ROS init
+- Verify middleware/transport configuration is valid before node startup
+- Keep startup sensor diagnostics before ROS setup to separate hardware faults from middleware faults
+
+**Problem**: `NVS open for read failed: 0x1102`
+
+- No WiFi credentials are present yet in NVS namespace `wifi_creds`
+- Provision credentials through SoftAP flow and reboot
 
 **Problem**: ESP32 won't flash
 

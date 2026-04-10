@@ -224,6 +224,8 @@ static volatile int emergency_stop = 0;
 static float servo_angle_deg = SERVO_DEFAULT_ANGLE_DEG;
 static float servo_target_deg = SERVO_DEFAULT_ANGLE_DEG;
 static float filtered_range_m = -1.0f;
+static float gyro_bias_raw[3] = {0.0f, 0.0f, 0.0f};
+static int mpu_log_enabled = 1;
 
 sensor_msgs__msg__Imu imu_msg;
 sensor_msgs__msg__Range range_msg;
@@ -635,8 +637,8 @@ void wifi_init(void) {
     EventBits_t bits = xEventGroupWaitBits(
         wifi_event_group,
         WIFI_CONNECTED_BIT,
-        pdFALSE,
-        pdTRUE,
+        0,
+        1,
         pdMS_TO_TICKS(15000));
 
     if ((bits & WIFI_CONNECTED_BIT) == 0) {
@@ -690,22 +692,92 @@ esp_err_t mpu6050_read_bytes(uint8_t reg_addr, uint8_t *data, size_t len) {
 }
 
 void mpu6050_init(void) {
-    mpu6050_write_byte(MPU6050_PWR_MGMT_1, 0x00);
+    esp_err_t ret = mpu6050_write_byte(MPU6050_PWR_MGMT_1, 0x00);
+    if (ret == ESP_OK) {
+        printf("MPU6050 init: wake command sent (PWR_MGMT_1=0x00)\n");
+    } else {
+        printf("MPU6050 init failed: write to PWR_MGMT_1 error 0x%02x\n", ret);
+    }
     vTaskDelay(pdMS_TO_TICKS(100));
+}
+
+static void mpu6050_calibrate_gyro(int sample_count) {
+    if (sample_count <= 0) {
+        return;
+    }
+
+    float sum_x = 0.0f;
+    float sum_y = 0.0f;
+    float sum_z = 0.0f;
+    int valid_samples = 0;
+
+    printf("MPU calibration: keep robot still, collecting %d gyro samples...\n", sample_count);
+    for (int i = 0; i < sample_count; i++) {
+        uint8_t data[14] = {0};
+        esp_err_t ret = mpu6050_read_bytes(MPU6050_ACCEL_XOUT_H, data, 14);
+        if (ret == ESP_OK) {
+            int16_t gx = (int16_t)((data[8] << 8) | data[9]);
+            int16_t gy = (int16_t)((data[10] << 8) | data[11]);
+            int16_t gz = (int16_t)((data[12] << 8) | data[13]);
+            sum_x += (float)gx;
+            sum_y += (float)gy;
+            sum_z += (float)gz;
+            valid_samples++;
+        }
+
+        if (((i + 1) % 50) == 0) {
+            printf("MPU calibration progress: %d/%d\n", i + 1, sample_count);
+        }
+
+        vTaskDelay(pdMS_TO_TICKS(5));
+    }
+
+    if (valid_samples > 0) {
+        gyro_bias_raw[0] = sum_x / (float)valid_samples;
+        gyro_bias_raw[1] = sum_y / (float)valid_samples;
+        gyro_bias_raw[2] = sum_z / (float)valid_samples;
+        printf("MPU gyro bias raw set: (%.2f, %.2f, %.2f) from %d samples\n",
+               gyro_bias_raw[0], gyro_bias_raw[1], gyro_bias_raw[2], valid_samples);
+    } else {
+        printf("MPU calibration failed: no valid samples\n");
+    }
 }
 
 void mpu6050_read_data(int16_t *accel, int16_t *gyro) {
     uint8_t data[14];
-    
-    mpu6050_read_bytes(MPU6050_ACCEL_XOUT_H, data, 14);
+
+    esp_err_t ret = mpu6050_read_bytes(MPU6050_ACCEL_XOUT_H, data, 14);
+    if (ret != ESP_OK) {
+        printf("MPU6050 read error: reg 0x%02x len 14, err=0x%02x\n", MPU6050_ACCEL_XOUT_H, ret);
+        accel[0] = accel[1] = accel[2] = 0;
+        gyro[0] = gyro[1] = gyro[2] = 0;
+        return;
+    }
 
     accel[0] = (int16_t)((data[0] << 8) | data[1]);
     accel[1] = (int16_t)((data[2] << 8) | data[3]);
     accel[2] = (int16_t)((data[4] << 8) | data[5]);
 
-    gyro[0] = (int16_t)((data[8] << 8) | data[9]);
-    gyro[1] = (int16_t)((data[10] << 8) | data[11]);
-    gyro[2] = (int16_t)((data[12] << 8) | data[13]);
+    int16_t gyro_raw_x = (int16_t)((data[8] << 8) | data[9]);
+    int16_t gyro_raw_y = (int16_t)((data[10] << 8) | data[11]);
+    int16_t gyro_raw_z = (int16_t)((data[12] << 8) | data[13]);
+
+    gyro[0] = (int16_t)((float)gyro_raw_x - gyro_bias_raw[0]);
+    gyro[1] = (int16_t)((float)gyro_raw_y - gyro_bias_raw[1]);
+    gyro[2] = (int16_t)((float)gyro_raw_z - gyro_bias_raw[2]);
+
+    if (mpu_log_enabled) {
+        printf("MPU values: A_raw=(%d,%d,%d) G_raw=(%d,%d,%d) G_corr=(%d,%d,%d) | A_mps2=(%.2f,%.2f,%.2f) G_rads=(%.2f,%.2f,%.2f)\n",
+               accel[0], accel[1], accel[2],
+               gyro_raw_x, gyro_raw_y, gyro_raw_z,
+               gyro[0], gyro[1], gyro[2],
+               (accel[0] / 16384.0f) * 9.81f,
+               (accel[1] / 16384.0f) * 9.81f,
+               (accel[2] / 16384.0f) * 9.81f,
+               (gyro[0] / 131.0f) * (M_PI / 180.0f),
+               (gyro[1] / 131.0f) * (M_PI / 180.0f),
+               (gyro[2] / 131.0f) * (M_PI / 180.0f));
+    }
 }
 
 void ultrasonic_init(void) {
@@ -721,9 +793,14 @@ void ultrasonic_init(void) {
     io_conf.mode = GPIO_MODE_INPUT;
     io_conf.pin_bit_mask = (1ULL << ULTRASONIC_ECHO_PIN);
     gpio_config(&io_conf);
+
+    printf("Ultrasonic init: TRIG GPIO=%d, ECHO GPIO=%d\n", ULTRASONIC_TRIG_PIN, ULTRASONIC_ECHO_PIN);
 }
 
 float ultrasonic_read_distance(void) {
+    static uint32_t ultrasonic_read_count = 0;
+    ultrasonic_read_count++;
+
     gpio_set_level(ULTRASONIC_TRIG_PIN, 0);
     ets_delay_us(2);
     gpio_set_level(ULTRASONIC_TRIG_PIN, 1);
@@ -734,6 +811,10 @@ float ultrasonic_read_distance(void) {
 
     while (gpio_get_level(ULTRASONIC_ECHO_PIN) == 0) {
         if ((esp_timer_get_time() - start_time) > 30000) {
+            int64_t elapsed = esp_timer_get_time() - start_time;
+            printf("Ultrasonic timeout(wait high): sample=%lu elapsed=%lld us\n",
+                   (unsigned long)ultrasonic_read_count,
+                   (long long)elapsed);
             return -1.0;
         }
     }
@@ -742,6 +823,10 @@ float ultrasonic_read_distance(void) {
 
     while (gpio_get_level(ULTRASONIC_ECHO_PIN) == 1) {
         if ((esp_timer_get_time() - pulse_start) > 30000) {
+            int64_t elapsed = esp_timer_get_time() - pulse_start;
+            printf("Ultrasonic timeout(wait low): sample=%lu elapsed=%lld us\n",
+                   (unsigned long)ultrasonic_read_count,
+                   (long long)elapsed);
             return -1.0;
         }
     }
@@ -750,7 +835,13 @@ float ultrasonic_read_distance(void) {
     
     long duration = pulse_end - pulse_start;
 
-    return duration * 0.0001715;
+    float distance = duration * 0.0001715f;
+    printf("Ultrasonic values: sample=%lu pulse=%ld us distance=%.3f m\n",
+           (unsigned long)ultrasonic_read_count,
+           duration,
+           distance);
+
+    return distance;
 }
 
 void motor_init(void) {
@@ -801,19 +892,23 @@ static float clampf(float value, float min_value, float max_value) {
 
 static void apply_motor_output(int id, float value) {
     float out = clampf(value, -1.0f, 1.0f);
+
     if (fabsf(out) < 0.05f) {
         out = 0.0f;
     }
 
     int dir = 0;
+
     if (out > 0.0f) {
         dir = 1;
     }
+
     int pwm = (int)(fabsf(out) * 255.0f);
 
     gpio_set_level(MOTOR_DIR_PIN[id], dir);
     ledc_set_duty(0, (ledc_channel_t) id, pwm);
     ledc_update_duty(0, (ledc_channel_t) id);
+    
     motor_outputs[id] = out;
 }
 
@@ -1087,10 +1182,12 @@ void appMain(void *arg) {
     esp_task_wdt_reset();
 
     esp_err_t err = nvs_flash_init();
+
     if (err == ESP_ERR_NVS_NO_FREE_PAGES || err == ESP_ERR_NVS_NEW_VERSION_FOUND) {
         ESP_ERROR_CHECK(nvs_flash_erase());
         err = nvs_flash_init();
     }
+
     if (err != ESP_OK) {
         printf("NVS init failed: 0x%02x\n", err);
     }
@@ -1099,6 +1196,7 @@ void appMain(void *arg) {
     esp_task_wdt_reset();
 
     wifi_ap_record_t ap_info;
+
     int sta_already_connected = (esp_wifi_sta_get_ap_info(&ap_info) == ESP_OK);
 
     int has_stored_creds = (strlen(stored_ssid) > 0 && strlen(stored_pass) > 0);
@@ -1111,6 +1209,7 @@ void appMain(void *arg) {
         start_provisioning_server();
 
         printf("Waiting for WiFi provisioning (60s timeout)...\n");
+
         for (int i = 0; i < 60; i++) {
             if (provisioning_complete) {
                 printf("Credentials provisioned successfully!\n");
@@ -1135,7 +1234,9 @@ void appMain(void *arg) {
     printf("I2C initialized, checking sensor presence...\n");
 
     uint8_t test_data = 0;
+
     esp_err_t ret = mpu6050_read_bytes(MPU6050_PWR_MGMT_1, &test_data, 1);
+
     if (ret != ESP_OK) {
         printf("ERROR: MPU6050 not detected on I2C bus (address 0x%02x)\n", MPU6050_ADDR);
         printf("Check hardware connections and I2C wiring\n");
@@ -1144,23 +1245,68 @@ void appMain(void *arg) {
     }
     
     mpu6050_init();
+    mpu_log_enabled = 0;
+    mpu6050_calibrate_gyro(200);
+    mpu_log_enabled = 1;
     ultrasonic_init();
     motor_init();
     servo_init();
-    esp_task_wdt_reset();
+
+    printf("Pre-ROS sensor check: collecting 5 samples...\n");
+    for (int i = 0; i < 5; i++) {
+        int16_t accel[3] = {0};
+        int16_t gyro[3] = {0};
+        float distance_m = -1.0f;
+
+        mpu6050_read_data(accel, gyro);
+        distance_m = ultrasonic_read_distance();
+
+        printf("Pre-ROS sample %d | IMU A_raw=(%d,%d,%d) G_raw=(%d,%d,%d) | A_mps2=(%.2f,%.2f,%.2f) G_rads=(%.2f,%.2f,%.2f) | US=%.3f m\n",
+               i + 1,
+               accel[0], accel[1], accel[2],
+               gyro[0], gyro[1], gyro[2],
+               (accel[0] / 16384.0f) * 9.81f,
+               (accel[1] / 16384.0f) * 9.81f,
+               (accel[2] / 16384.0f) * 9.81f,
+               (gyro[0] / 131.0f) * (M_PI / 180.0f),
+               (gyro[1] / 131.0f) * (M_PI / 180.0f),
+               (gyro[2] / 131.0f) * (M_PI / 180.0f),
+               distance_m);
+
+        esp_task_wdt_reset();
+        vTaskDelay(pdMS_TO_TICKS(300));
+    }
+
+    printf("Starting ROS node setup...\n");
+
+    esp_err_t wdt_ret = esp_task_wdt_delete(NULL);
+    printf("WDT delete current task: 0x%02x\n", wdt_ret);
     
     rcl_allocator_t allocator = rcl_get_default_allocator();
     rclc_support_t support;
 
     rcl_init_options_t init_options = rcl_get_zero_initialized_init_options();
+
     esp_task_wdt_reset();
+
+    printf("Calling rcl_init_options_init...\n");
     RCCHECK(rcl_init_options_init(&init_options, allocator));
+
     esp_task_wdt_reset();
+
+    printf("Calling rclc_support_init_with_options...\n");
     RCCHECK(rclc_support_init_with_options(&support, 0, NULL, &init_options, &allocator));
+    printf("ROS support init done\n");
+
     esp_task_wdt_reset();
 
     rcl_node_t node;
+
+    printf("Calling rclc_node_init_default...\n");
     RCCHECK(rclc_node_init_default(&node, "sensor_node", "", &support));
+    printf("ROS node init done\n");
+    wdt_ret = esp_task_wdt_add(NULL);
+    printf("WDT add current task: 0x%02x\n", wdt_ret);
     esp_task_wdt_reset();
 
     RCCHECK(rclc_publisher_init_default(
@@ -1225,8 +1371,11 @@ void appMain(void *arg) {
     range_msg.max_range = 4.0; 
 
     std_msgs__msg__Bool__init(&estop_msg);
+
     rcl_timer_t timer;
+
     const unsigned int timer_timeout = 100;
+
     RCCHECK(rclc_timer_init_default(
         &timer,
         &support,
@@ -1234,11 +1383,13 @@ void appMain(void *arg) {
         timer_callback));
 
     rclc_executor_t executor;
+
     RCCHECK(rclc_executor_init(&executor, &support.context, 4, &allocator));
     RCCHECK(rclc_executor_add_timer(&executor, &timer));
     RCCHECK(rclc_executor_add_subscription(&executor, &estop_sub, &estop_msg, estop_callback, ON_NEW_DATA));
     RCCHECK(rclc_executor_add_subscription(&executor, &motor_sub, &motor_msg, motor_callback, ON_NEW_DATA));
     RCCHECK(rclc_executor_add_subscription(&executor, &servo_sub, &servo_cmd_msg, servo_callback, ON_NEW_DATA));
+
     esp_task_wdt_reset();
 
     printf("Sensor node started!\n");

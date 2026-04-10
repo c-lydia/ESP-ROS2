@@ -79,3 +79,23 @@ Tune the pipeline at the right layer:
 - localization/control: controller gains and kinematic assumptions
 
 This separation reduces coupling and keeps debugging localized.
+
+## Runtime Fault Interpretation
+
+When debugging from serial logs, treat these messages as distinct fault classes:
+
+- `Ultrasonic timeout(wait high)`:
+  - Trigger pulse was sent, but ECHO never rose.
+  - Typical causes are electrical (wiring, level shifting, power, shared ground), not filter math.
+
+- `Starting ROS node setup...` followed by reset:
+  - Startup entered middleware initialization but did not complete cleanly.
+  - This path is sensitive to watchdog management and transport readiness.
+
+- `NVS open for read failed: 0x1102`:
+  - No stored WiFi credentials yet in NVS namespace.
+  - This is expected before first successful provisioning write.
+
+Practical design point:
+
+- Keep early sensor checks before ROS startup so hardware faults are visible even if middleware setup blocks or restarts.

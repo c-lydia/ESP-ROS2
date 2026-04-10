@@ -17,6 +17,9 @@ RUN apt-get update && apt-get install -y \
     python3-rosdep \
     && rm -rf /var/lib/apt/lists/*
 
+RUN apt-get update && apt-get install -y python3 python3-pip && \
+    update-alternatives --install /usr/bin/python python /usr/bin/python3 10
+
 # Install documentation tools
 RUN python3 -m pip install --no-cache-dir sphinx sphinx_rtd_theme myst-parser
 

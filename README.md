@@ -259,6 +259,15 @@ docker exec -it micro_ros_workspace bash -lc "cd /micro_ros_ws && colcon build"
 docker exec -it micro_ros_workspace bash -lc "source /opt/ros/humble/setup.bash && source /micro_ros_ws/install/setup.bash && ros2 run micro_ros_setup build_firmware.sh"
 ```
 
+## Latest Firmware Debug Notes (2026-04-10)
+
+- Confirmed firmware path in use is `firmware/custom/esp32_controller`.
+- MPU startup now includes gyro bias calibration (`200` samples). Keep robot still at boot for best drift reduction.
+- Ultrasonic timeout message `Ultrasonic timeout(wait high)` means no rising edge was seen on ECHO.
+- After wiring/level correction, ultrasonic produced valid pulse widths around `344-401 us` (`~0.059-0.069 m` in test setup).
+- Reboot right after `Starting ROS node setup...` was traced to watchdog interaction in startup; the firmware now logs watchdog delete/add status around ROS init.
+- `NVS open for read failed: 0x1102` is expected when WiFi credentials are not yet stored in namespace `wifi_creds`.
+
 - Stop everything
 
 ``` bash
