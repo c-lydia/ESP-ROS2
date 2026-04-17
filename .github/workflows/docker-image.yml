@@ -28,6 +28,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
-          context: .  # Build from the local files checked out in the runner
+          context: .
           push: true
-          tags: your-username/wall-e:latest
+          # Note: Ensure these are lowercase
+          tags: clydia/wall_e:latest, clydia/wall_e:${{ github.sha }}
