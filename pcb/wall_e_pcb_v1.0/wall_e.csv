@@ -1,0 +1,8 @@
+"Id";"Designator";"Footprint";"Quantity";"Designation";"Supplier and ref";
+1;"J1,J6,J5,J2";"TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal";4;"Screw_Terminal_01x02";;;
+2;"U2,U3";"SSOP-24_5.3x8.2mm_P0.65mm";2;"TB6612FNG";;;
+3;"U1";"ESP32-WROOM-32";1;"ESP32-WROOM-32";;;
+4;"U8,U6";"PinHeader_1x03_P2.54mm_Vertical";2;"~";;;
+5;"M1";"PinHeader_1x03_P2.54mm_Vertical";1;"Motor_Servo";;;
+6;"U4";"PinHeader_1x04_P2.54mm_Vertical";1;"HC-SR04";;;
+7;"U5";"InvenSense_QFN-24_4x4mm_P0.5mm";1;"MPU-6050";;;

@@ -81,3 +81,4 @@ Visualization and TF Notes
 - When ``joint_state_publisher`` is enabled, fallback static rear-wheel publishers are disabled.
 
 This preserves a complete RViz RobotModel tree while preventing duplicate transform sources.
+git 

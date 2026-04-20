@@ -108,6 +108,7 @@ class SensorFusion(Node):
 
 		if dt <= 0.0:
 			return 0.0
+
 		if dt > self.max_dt_s:
 			return self.max_dt_s
 		return dt
@@ -186,7 +187,6 @@ def main():
 		sensor_fusion.destroy_node()
 		if rclpy.ok():
 			rclpy.shutdown()
-
 
 if __name__ == '__main__':
 	main()

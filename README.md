@@ -73,6 +73,39 @@ If your currently running container was created before these package updates, re
 docker compose up --build -d
 ```
 
+## KiCad In Docker
+
+KiCad is available in the `workspace` container and the PCB project is mounted at:
+
+``` bash
+/micro_ros_ws/pcb/wall_e_pcb_v1.0
+```
+
+1. Verify KiCad CLI:
+
+``` bash
+docker exec micro_ros_workspace kicad-cli version
+```
+
+2. Run DRC report:
+
+``` bash
+docker exec micro_ros_workspace kicad-cli pcb drc /micro_ros_ws/pcb/wall_e_pcb_v1.0/wall_e.kicad_pcb
+```
+
+3. Export Gerbers:
+
+``` bash
+docker exec micro_ros_workspace kicad-cli pcb export gerbers /micro_ros_ws/pcb/wall_e_pcb_v1.0/wall_e.kicad_pcb --output /micro_ros_ws/pcb/wall_e_pcb_v1.0/gerbers
+```
+
+4. Launch KiCad GUI from container (host X11):
+
+``` bash
+xhost +si:localuser:root
+docker exec -it micro_ros_workspace kicad
+```
+
 ## Build ESP32 Firmware
 
 Inside the workspace container:

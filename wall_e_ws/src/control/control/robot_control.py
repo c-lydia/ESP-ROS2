@@ -8,7 +8,6 @@ from sensor_msgs.msg import Imu
 from sensor_msgs.msg import Range
 from std_msgs.msg import Float32
 from custom_interfaces.msg import Gamepad
-
 class RobotControl(Node):
     def __init__(self):
         super().__init__('robot_control_node')

@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <unistd.h>
+#include <stdint.h>
 #include <math.h>
 #include <string.h>
 #include <ctype.h>
@@ -188,6 +189,25 @@ static int wifi_handlers_registered = 0;
 #define SERVO_MAX_PULSE_US 2500.0f
 #define SERVO_PERIOD_US 20000.0f
 
+#define HALL_EFFECT_SENSOR_DO_1 4
+#define HALL_EFFECT_SENSOR_DO_2 16
+
+#define HALL_SENSOR_COUNT 2
+
+#ifdef CONFIG_ESP_HALL_PULSES_PER_REV
+#define HALL_PULSES_PER_REV ((float)CONFIG_ESP_HALL_PULSES_PER_REV)
+#else
+#define HALL_PULSES_PER_REV 20.0f
+#endif
+
+#ifdef CONFIG_ESP_WHEEL_CIRCUMFERENCE_MM
+#define HALL_WHEEL_CIRCUMFERENCE_M (((float)CONFIG_ESP_WHEEL_CIRCUMFERENCE_MM) / 1000.0f)
+#else
+#define HALL_WHEEL_CIRCUMFERENCE_M 0.210f
+#endif
+
+#define HALL_SPEED_FILTER_ALPHA 0.35f
+
 #ifdef CONFIG_ESP_SERVO_MAX_RATE_DEG_S
 #define SERVO_MAX_RATE_DEG_S ((float)CONFIG_ESP_SERVO_MAX_RATE_DEG_S)
 #else
@@ -208,9 +228,15 @@ static const int MOTOR_DIR_PIN[MOTOR_COUNT] = {
     MOTOR4_DIR,
 };
 
+static const int HALL_SENSOR_PIN[HALL_SENSOR_COUNT] = {
+    HALL_EFFECT_SENSOR_DO_1,
+    HALL_EFFECT_SENSOR_DO_2,
+};
+
 rcl_publisher_t imu_pub;
 rcl_publisher_t range_pub;
 rcl_publisher_t status_pub;
+rcl_publisher_t wheel_speed_pub;
 rcl_subscription_t motor_sub;
 rcl_subscription_t estop_sub;
 rcl_subscription_t servo_sub;
@@ -225,11 +251,16 @@ static float servo_angle_deg = SERVO_DEFAULT_ANGLE_DEG;
 static float servo_target_deg = SERVO_DEFAULT_ANGLE_DEG;
 static float filtered_range_m = -1.0f;
 static float gyro_bias_raw[3] = {0.0f, 0.0f, 0.0f};
+static volatile uint32_t hall_pulse_count[HALL_SENSOR_COUNT] = {0};
+static float hall_speed_mps[HALL_SENSOR_COUNT] = {0.0f};
+static float hall_speed_mps_avg = 0.0f;
+static portMUX_TYPE hall_pulse_lock = portMUX_INITIALIZER_UNLOCKED;
 static int mpu_log_enabled = 1;
 
 sensor_msgs__msg__Imu imu_msg;
 sensor_msgs__msg__Range range_msg;
 std_msgs__msg__Float32MultiArray motor_msg;
+std_msgs__msg__Float32MultiArray wheel_speed_msg;
 std_msgs__msg__Float32 servo_cmd_msg;
 std_msgs__msg__String status_msg;
 std_msgs__msg__Bool estop_msg;
@@ -432,7 +463,7 @@ static void start_provisioning_server(void) {
         if (provisioning_server != NULL) {
             httpd_stop(provisioning_server);
             provisioning_server = NULL;
-}
+        }
         return;
     }
     
@@ -797,6 +828,71 @@ void ultrasonic_init(void) {
     printf("Ultrasonic init: TRIG GPIO=%d, ECHO GPIO=%d\n", ULTRASONIC_TRIG_PIN, ULTRASONIC_ECHO_PIN);
 }
 
+static void IRAM_ATTR hall_gpio_isr_handler(void *arg) {
+    int sensor_id = (int)(intptr_t)arg;
+    if (sensor_id < 0 || sensor_id >= HALL_SENSOR_COUNT) {
+        return;
+    }
+
+    portENTER_CRITICAL_ISR(&hall_pulse_lock);
+    hall_pulse_count[sensor_id]++;
+    portEXIT_CRITICAL_ISR(&hall_pulse_lock);
+}
+
+void hall_sensor_init(void) {
+    gpio_config_t hall_conf = {
+        .intr_type = GPIO_INTR_NEGEDGE,
+        .mode = GPIO_MODE_INPUT,
+        .pin_bit_mask = (1ULL << HALL_SENSOR_PIN[0]) | (1ULL << HALL_SENSOR_PIN[1]),
+        .pull_down_en = 0,
+        .pull_up_en = 1,
+    };
+    gpio_config(&hall_conf);
+
+    esp_err_t err = gpio_install_isr_service(ESP_INTR_FLAG_IRAM);
+    if (err != ESP_OK && err != ESP_ERR_INVALID_STATE) {
+        printf("Hall ISR service install failed: 0x%02x\n", err);
+        return;
+    }
+
+    for (int i = 0; i < HALL_SENSOR_COUNT; i++) {
+        gpio_isr_handler_remove(HALL_SENSOR_PIN[i]);
+        err = gpio_isr_handler_add(HALL_SENSOR_PIN[i], hall_gpio_isr_handler, (void *)(intptr_t)i);
+        if (err != ESP_OK) {
+            printf("Hall ISR attach failed for GPIO %d: 0x%02x\n", HALL_SENSOR_PIN[i], err);
+        }
+    }
+
+    printf("Hall sensors initialized on GPIO %d and GPIO %d\n", HALL_SENSOR_PIN[0], HALL_SENSOR_PIN[1]);
+}
+
+static void update_hall_speed_estimate(float dt_s) {
+    if (dt_s <= 0.0f || HALL_PULSES_PER_REV <= 0.0f || HALL_WHEEL_CIRCUMFERENCE_M <= 0.0f) {
+        return;
+    }
+
+    uint32_t pulse_snapshot[HALL_SENSOR_COUNT] = {0};
+
+    portENTER_CRITICAL(&hall_pulse_lock);
+    for (int i = 0; i < HALL_SENSOR_COUNT; i++) {
+        pulse_snapshot[i] = hall_pulse_count[i];
+        hall_pulse_count[i] = 0;
+    }
+    portEXIT_CRITICAL(&hall_pulse_lock);
+
+    float distance_per_pulse_m = HALL_WHEEL_CIRCUMFERENCE_M / HALL_PULSES_PER_REV;
+    float speed_sum = 0.0f;
+
+    for (int i = 0; i < HALL_SENSOR_COUNT; i++) {
+        float raw_speed = ((float)pulse_snapshot[i] * distance_per_pulse_m) / dt_s;
+        hall_speed_mps[i] = (HALL_SPEED_FILTER_ALPHA * raw_speed) +
+            ((1.0f - HALL_SPEED_FILTER_ALPHA) * hall_speed_mps[i]);
+        speed_sum += hall_speed_mps[i];
+    }
+
+    hall_speed_mps_avg = speed_sum / (float)HALL_SENSOR_COUNT;
+}
+
 float ultrasonic_read_distance(void) {
     static uint32_t ultrasonic_read_count = 0;
     ultrasonic_read_count++;
@@ -1076,6 +1172,7 @@ void timer_callback(rcl_timer_t * timer, int64_t last_call_time) {
         last_control_update_time_ms = current_time;
         update_motor_outputs(dt_s);
         update_servo_output(dt_s);
+        update_hall_speed_estimate(dt_s);
 
         if (last_motor_cmd_time > 0 && (current_time - last_motor_cmd_time) > MOTOR_TIMEOUT_MS) {
             printf("Motor timeout! Stopping motors (no command for %lld ms)\n", 
@@ -1120,8 +1217,13 @@ void timer_callback(rcl_timer_t * timer, int64_t last_call_time) {
             range_msg.range = INFINITY;
         }
         RCSOFTCHECK(rcl_publish(&range_pub, &range_msg, NULL));
+
+        wheel_speed_msg.data.data[0] = hall_speed_mps_avg;
+        wheel_speed_msg.data.data[1] = hall_speed_mps[0];
+        wheel_speed_msg.data.data[2] = hall_speed_mps[1];
+        RCSOFTCHECK(rcl_publish(&wheel_speed_pub, &wheel_speed_msg, NULL));
         
-        static char status_buf[128]; 
+        static char status_buf[192]; 
         
         int64_t motor_timeout_ms = -1LL;
         if (last_motor_cmd_time > 0) {
@@ -1134,7 +1236,7 @@ void timer_callback(rcl_timer_t * timer, int64_t last_call_time) {
         }
 
         int status_len = snprintf(status_buf, sizeof(status_buf),
-            "Accel:%.2f,%.2f,%.2f|Gyro:%.2f,%.2f,%.2f|Range:%.2f|MotorTimeout:%lld",
+            "Accel:%.2f,%.2f,%.2f|Gyro:%.2f,%.2f,%.2f|Range:%.2f|Speed:%.2f,%.2f,%.2f|MotorTimeout:%lld",
             imu_msg.linear_acceleration.x,
             imu_msg.linear_acceleration.y,
             imu_msg.linear_acceleration.z,
@@ -1142,6 +1244,9 @@ void timer_callback(rcl_timer_t * timer, int64_t last_call_time) {
             imu_msg.angular_velocity.y,
             imu_msg.angular_velocity.z,
             status_range_value,
+            hall_speed_mps_avg,
+            hall_speed_mps[0],
+            hall_speed_mps[1],
             (long long)motor_timeout_ms);
 
         if (status_len < 0) {
@@ -1161,14 +1266,17 @@ void timer_callback(rcl_timer_t * timer, int64_t last_call_time) {
             print_range_value = reported_distance;
         }
 
-        printf("IMU - Accel: %.2f, %.2f, %.2f | Gyro: %.2f, %.2f, %.2f | Range: %.2f\n",
+         printf("IMU - Accel: %.2f, %.2f, %.2f | Gyro: %.2f, %.2f, %.2f | Range: %.2f | Speed(m/s): avg=%.2f s1=%.2f s2=%.2f\n",
                imu_msg.linear_acceleration.x,
                imu_msg.linear_acceleration.y,
                imu_msg.linear_acceleration.z,
                imu_msg.angular_velocity.x,
                imu_msg.angular_velocity.y,
                imu_msg.angular_velocity.z,
-               print_range_value);
+             print_range_value,
+             hall_speed_mps_avg,
+             hall_speed_mps[0],
+             hall_speed_mps[1]);
     }
 }
 
@@ -1249,6 +1357,7 @@ void appMain(void *arg) {
     mpu6050_calibrate_gyro(200);
     mpu_log_enabled = 1;
     ultrasonic_init();
+    hall_sensor_init();
     motor_init();
     servo_init();
 
@@ -1337,6 +1446,13 @@ void appMain(void *arg) {
         "/firmware/status"
     ));
 
+    RCCHECK(rclc_publisher_init_default(
+        &wheel_speed_pub,
+        &node,
+        ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Float32MultiArray),
+        "/wheel_speed"
+    ));
+
     RCCHECK(rclc_subscription_init_default(
         &estop_sub,
         &node,
@@ -1354,8 +1470,14 @@ void appMain(void *arg) {
     sensor_msgs__msg__Imu__init(&imu_msg);
     sensor_msgs__msg__Range__init(&range_msg);
     std_msgs__msg__Float32MultiArray__init(&motor_msg);
+    std_msgs__msg__Float32MultiArray__init(&wheel_speed_msg);
     std_msgs__msg__Float32__init(&servo_cmd_msg);
     std_msgs__msg__String__init(&status_msg);
+
+    static float wheel_speed_data[3] = {0.0f, 0.0f, 0.0f};
+    wheel_speed_msg.data.data = wheel_speed_data;
+    wheel_speed_msg.data.size = 3;
+    wheel_speed_msg.data.capacity = 3;
  
     imu_msg.header.frame_id.data = "imu_link";
     imu_msg.header.frame_id.size = strlen("imu_link");
@@ -1403,6 +1525,7 @@ void appMain(void *arg) {
 
     RCCHECK(rcl_publisher_fini(&imu_pub, &node));
     RCCHECK(rcl_publisher_fini(&range_pub, &node));
+    RCCHECK(rcl_publisher_fini(&wheel_speed_pub, &node));
     RCCHECK(rcl_node_fini(&node));
 
     vTaskDelete(NULL);
