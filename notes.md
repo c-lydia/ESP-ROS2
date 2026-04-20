@@ -225,3 +225,19 @@ Wheel visual orientation uses a fixed $\frac{\pi}{2}$ roll, with quaternion:
 $$q = [x, y, z, w] = [\sin(\pi/4),\; 0,\; 0,\; \cos(\pi/4)] \approx [0.7071,\; 0,\; 0,\; 0.7071]$$
 
 These static publishers are conditionally disabled when `joint_state_publisher` is enabled.
+
+## Hall-Effect Wheel Speed Conversion
+
+Source: PCB hall-effect sensors in [pcb/wall_e_pcb_v1.0](pcb/wall_e_pcb_v1.0)
+
+The PCB includes paired hall-effect sensors that can be used for wheel-speed or rotation feedback.
+
+If the sensor produces a pulse train with pulse frequency $f$ and the wheel produces $PPR$ pulses per revolution, wheel speed in revolutions per minute is:
+
+$$rpm = \frac{60 f}{PPR}$$
+
+Linear wheel speed can then be derived from wheel diameter $D$:
+
+$$v = \frac{\pi D \cdot rpm}{60}$$
+
+Use the actual wheel geometry and pulse-per-revolution count from the KiCad design or assembly notes when calibrating this path.

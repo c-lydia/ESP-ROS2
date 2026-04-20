@@ -16,6 +16,7 @@ This repository includes:
 - User guide: [user_manual.md](user_manual.md)
 - Concepts guide: [concepts.md](concepts.md)
 - Theoretical calculation summary: [notes.md](notes.md)
+- PCB and KiCad sources: [pcb/wall_e_pcb_v1.0](pcb/wall_e_pcb_v1.0)
 - Sphinx docs index: `docs/source/index.rst`
 
 The Sphinx site includes the same high-level concepts and firmware details in a published format.
@@ -257,6 +258,14 @@ Host-side ROS 2 nodes can process these into cleaner and fused signals:
 - `wall_e_ws/src/feedback/feedback/sensor_fusion.py`
   - Inputs: `/imu/filter`, `/range/filter`
   - Outputs: `/fusion/height`, `/fusion/vertical_velocity`, `/fusion/debug`
+
+## PCB and Speed Sensing
+
+The board design lives in [pcb/wall_e_pcb_v1.0](pcb/wall_e_pcb_v1.0).
+
+The current schematic includes the ESP32 module, motor driver stages, the MPU6050, the HC-SR04 range sensor, and paired hall-effect sensors for wheel-speed or rotation feedback.
+
+Use the KiCad project as the source of truth for connector pinouts, board placement, and DRC/GERBER work before changing firmware wiring assumptions.
 
 This keeps firmware responsibilities focused on sensor I/O and control while allowing filter tuning on the host.
 

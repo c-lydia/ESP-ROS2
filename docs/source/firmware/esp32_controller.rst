@@ -6,6 +6,8 @@ ESP32 Controller
 
 The ESP32 controller runs FreeRTOS with micro-ROS micro-sage communication. Two variants are provided: a full-featured **motor controller** with safety systems, and a lightweight **sensor-only** reference implementation for validation.
 
+The board-level design also includes paired hall-effect sensors for wheel-speed or rotation feedback, so the firmware and localization notes should stay aligned with the PCB wiring.
+
 Application Variants
 ====================
 
@@ -33,6 +35,8 @@ Features:
 - Same WiFi provisioning system as motor variant
 - Lightweight for simulation and validation
 - Publishing: /imu/data, /range/data
+
+Use this app as the reference when you want the raw sensor path without the motor-control layer.
 
 Overview
 ========
@@ -63,6 +67,13 @@ Ultrasonic Sensor
 
 - **Trigger Pin**: GPIO 5 (motor variant) / GPIO 9 (sensor-only variant)
 - **Echo Pin**: GPIO 18 (motor variant) / GPIO 10 (sensor-only variant)
+
+Hall-Effect Speed Sensors
+-------------------------
+
+The PCB schematic includes paired hall-effect sensors for wheel-speed or rotation feedback.
+
+They are board-level inputs rather than part of the IMU or ultrasonic path, so document their GPIO routing and pulse-to-speed conversion wherever they are wired into firmware or localization.
 
 Motor Control (Motor Variant Only)
 ----------------------------------

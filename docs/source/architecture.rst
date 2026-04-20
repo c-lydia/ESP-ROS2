@@ -43,6 +43,7 @@ ESP32 Firmware
 - **FreeRTOS**: Real-time operating system
 - **micro-ROS Client**: Lightweight ROS 2 client library
 - **Sensor drivers**: I2C for IMU, GPIO for ultrasonic sensor
+- **Board-level speed sensing**: hall-effect sensors are available on the PCB for wheel-speed or rotation feedback
 
 Communication Flow
 ==================

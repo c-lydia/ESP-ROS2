@@ -123,3 +123,13 @@ When debugging from serial logs, treat these messages as distinct fault classes:
 Practical design point:
 
 - Keep early sensor checks before ROS startup so hardware faults are visible even if middleware setup blocks or restarts.
+
+## Board-Level Hardware
+
+The PCB design in [pcb/wall_e_pcb_v1.0](pcb/wall_e_pcb_v1.0) is the hardware reference for the current build.
+
+It includes the ESP32 carrier, motor drivers, the MPU6050, the HC-SR04 sensor path, and paired hall-effect sensors that can be used for wheel-speed or rotation feedback.
+
+This matters for the software stack because the firmware and localization layers should describe the same physical wiring and sensor roles as the board project.
+
+If wheel-speed or rotation pulses are added from the hall-effect sensors, treat them as another raw input stream and document whether they feed odometry directly or are only used for calibration.

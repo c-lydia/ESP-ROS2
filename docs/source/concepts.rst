@@ -147,3 +147,14 @@ Related Reading
 - :doc:`architecture`
 - :doc:`firmware/esp32_controller`
 - :doc:`workflow_and_commands`
+
+Board-Level Hardware
+====================
+
+The PCB project in ``pcb/wall_e_pcb_v1.0`` is the hardware reference for the current build.
+
+It includes the ESP32 carrier, motor drivers, the MPU6050, the HC-SR04 sensor path, and paired hall-effect sensors that can be used for wheel-speed or rotation feedback.
+
+The software stack should keep its wiring assumptions aligned with the board project so firmware, localization, and documentation describe the same hardware layout.
+
+If wheel-speed or rotation pulses are added from the hall-effect sensors, treat them as another raw input stream and document whether they feed odometry directly or are only used for calibration.

@@ -366,3 +366,16 @@ Defaults and behavior notes:
 
 - Main controller firmware: `firmware/custom/esp32_controller`
 - Reference firmware variant: `firmware/freertos_apps/apps/esp32_controller`
+
+## PCB, KiCad, and Speed Sensing
+
+The hardware design lives in [pcb/wall_e_pcb_v1.0](pcb/wall_e_pcb_v1.0).
+
+The KiCad schematic and PCB describe the current carrier board, including:
+
+- ESP32 module placement and power wiring
+- Motor driver connections
+- MPU6050 and HC-SR04 sensor connectors
+- Paired hall-effect sensors for wheel-speed or rotation feedback
+
+Treat the PCB project as the source of truth when checking connector pinouts or planning sensor wiring changes.
