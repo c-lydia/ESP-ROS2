@@ -1,5 +1,12 @@
 # Wall-E
 
+![Stars](https://img.shields.io/github/stars/c-lydia/wall_e?style=flat)
+![Forks](https://img.shields.io/github/forks/c-lydia/wall_e?style=flat)
+![Watchers](https://img.shields.io/github/watchers/c-lydia/wall_e?style=flat)
+![Release](https://img.shields.io/github/v/release/c-lydia/wall_e)
+![Issues](https://img.shields.io/github/issues/c-lydia/wall_e?color=yellow)
+![Visitors](https://visitor-badge.laobi.icu/badge?page_id=c-lydia.wall_e)
+
 micro-ROS workspace for ESP32 (FreeRTOS + ESP-IDF) with ROS 2 Humble.
 
 For a user-focused setup and operation guide, see [user_manual.md](user_manual.md).
