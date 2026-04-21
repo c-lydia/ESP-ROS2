@@ -1,0 +1,218 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Architecture &mdash; Wall-E 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=01f34227"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Troubleshooting" href="troubleshooting.html" />
+    <link rel="prev" title="WiFi Provisioning" href="wifi_provisioning.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #2980B9" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Wall-E
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="concepts.html">Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="workflow_and_commands.html">Workflow and Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="firmware/esp32_controller.html">ESP32 Controller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wifi_provisioning.html">WiFi Provisioning</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Architecture</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#system-overview">System Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#component-descriptions">Component Descriptions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#host-system-docker">Host System (Docker)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#esp32-firmware">ESP32 Firmware</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#communication-flow">Communication Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#data-types">Data Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#primary-topic-paths">Primary Topic Paths</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#visualization-and-tf-notes">Visualization and TF Notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #2980B9" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Wall-E</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Architecture</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/architecture.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="wifi_provisioning.html" class="btn btn-neutral float-left" title="WiFi Provisioning" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="troubleshooting.html" class="btn btn-neutral float-right" title="Troubleshooting" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="architecture">
+<span id="id1"></span><h1>Architecture<a class="headerlink" href="#architecture" title="Link to this heading"></a></h1>
+<section id="system-overview">
+<h2>System Overview<a class="headerlink" href="#system-overview" title="Link to this heading"></a></h2>
+<p>The micro_ros_ws system consists of firmware and host ROS 2 components with explicit feedback, localization, and control stages:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>ROS 2
+├─ control
+│  ├─ Gamepad
+│  └─ robot_control
+├─ feedback
+│  ├─ imu_filter
+│  ├─ ultrasonic_filter
+│  └─ sensor_fusion
+└─ localization
+   ├─ inverse_kinematic
+   └─ odometry
+
+firmware
+└─ esp32_controller
+</pre></div>
+</div>
+</section>
+<section id="component-descriptions">
+<h2>Component Descriptions<a class="headerlink" href="#component-descriptions" title="Link to this heading"></a></h2>
+<section id="host-system-docker">
+<h3>Host System (Docker)<a class="headerlink" href="#host-system-docker" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>workspace container</strong>: Builds and runs ROS 2 packages</p></li>
+<li><p><strong>micro_ros_agent</strong>: Handles communication with ESP32</p></li>
+<li><p><strong>Volume mounts</strong>: For persistent src/, build/, install/, docs/</p></li>
+</ul>
+</section>
+<section id="esp32-firmware">
+<h3>ESP32 Firmware<a class="headerlink" href="#esp32-firmware" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>FreeRTOS</strong>: Real-time operating system</p></li>
+<li><p><strong>micro-ROS Client</strong>: Lightweight ROS 2 client library</p></li>
+<li><p><strong>Sensor drivers</strong>: I2C for IMU, GPIO for ultrasonic sensor</p></li>
+<li><p><strong>Board-level speed sensing</strong>: hall-effect sensors are available on the PCB for wheel-speed or rotation feedback</p></li>
+</ul>
+</section>
+</section>
+<section id="communication-flow">
+<h2>Communication Flow<a class="headerlink" href="#communication-flow" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">esp32_controller</span></code> publishes raw IMU and range data via micro-ROS over UDP.</p></li>
+<li><p>Host feedback nodes (<code class="docutils literal notranslate"><span class="pre">imu_filter</span></code> and <code class="docutils literal notranslate"><span class="pre">ultrasonic_filter</span></code>) clean raw streams.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sensor_fusion</span></code> combines filtered streams into more stable state outputs.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">odometry_node</span></code> produces <code class="docutils literal notranslate"><span class="pre">/odom</span></code> from command and sensor streams.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">robot_control_node</span></code> publishes <code class="docutils literal notranslate"><span class="pre">/cmd_vel</span></code> from operator intent, safety logic, and cascaded control (P/PD outer loop, PI speed inner loop).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">robot_control_node</span></code> also publishes <code class="docutils literal notranslate"><span class="pre">/servo_cmd</span></code> (angle command in degrees) from configurable gamepad axis mapping.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">inverse_kinematic_node</span></code> converts <code class="docutils literal notranslate"><span class="pre">/cmd_vel</span></code> into <code class="docutils literal notranslate"><span class="pre">/motor_cmd</span></code> for firmware.</p></li>
+</ol>
+</section>
+<section id="data-types">
+<h2>Data Types<a class="headerlink" href="#data-types" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">sensor_msgs/msg/Imu</span></code>: 6-axis IMU data</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sensor_msgs/msg/Range</span></code>: Ultrasonic distance measurements</p></li>
+</ul>
+</section>
+<section id="primary-topic-paths">
+<h2>Primary Topic Paths<a class="headerlink" href="#primary-topic-paths" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">/imu/data</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">/imu/filter</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/range/data</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">/range/filter</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/imu/filter</span></code> + <code class="docutils literal notranslate"><span class="pre">/range/filter</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">/fusion/height</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/imu/filter</span></code> + <code class="docutils literal notranslate"><span class="pre">/range/filter</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">/fusion/vertical_velocity</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/gamepad</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">/cmd_vel</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/gamepad</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">/servo_cmd</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/cmd_vel</span></code> + sensors -&gt; <code class="docutils literal notranslate"><span class="pre">/odom</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/cmd_vel</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">/motor_cmd</span></code></p></li>
+</ul>
+</section>
+<section id="visualization-and-tf-notes">
+<h2>Visualization and TF Notes<a class="headerlink" href="#visualization-and-tf-notes" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Wheel links are part of robot description as continuous joints.</p></li>
+<li><p>In default minimal launch mode, rear wheel transforms are provided by static TF fallback.</p></li>
+<li><p>When <code class="docutils literal notranslate"><span class="pre">joint_state_publisher</span></code> is enabled, fallback static rear-wheel publishers are disabled.</p></li>
+</ul>
+<p>This preserves a complete RViz RobotModel tree while preventing duplicate transform sources.</p>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading"></a></h2>
+<p>The documentation uses IEEE-style references listed in <a class="reference internal" href="references.html"><span class="doc">References</span></a>.</p>
+<p>Key citations used in this page include [1], [4], [5], and [6].</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="wifi_provisioning.html" class="btn btn-neutral float-left" title="WiFi Provisioning" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="troubleshooting.html" class="btn btn-neutral float-right" title="Troubleshooting" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Lydia Chheng.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

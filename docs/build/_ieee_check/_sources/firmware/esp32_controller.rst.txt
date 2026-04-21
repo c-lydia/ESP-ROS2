@@ -1,0 +1,540 @@
+.. _esp32_controller:
+
+================
+ESP32 Controller
+================
+
+The ESP32 controller runs FreeRTOS with micro-ROS micro-sage communication. Two variants are provided: a full-featured **motor controller** with safety systems, and a lightweight **sensor-only** reference implementation for validation.
+
+The board-level design also includes paired hall-effect sensors for wheel-speed or rotation feedback, so the firmware and localization notes should stay aligned with the PCB wiring.
+
+Application Variants
+====================
+
+Motor Controller (Full-Featured)
+--------------------------------
+
+**Location**: ``firmware/custom/esp32_controller/``
+
+Features:
+- 4x BLDC motor control via PWM + GPIO direction
+- IMU (MPU6050) and ultrasonic range sensing
+- Emergency stop subscription (ROS Bool topic)
+- Motor safety: deadband, soft-start ramping, command timeout
+- Watchdog timer (30 seconds)
+- WiFi credential provisioning via SoftAP + HTTP form
+- Status publisher (/firmware/status)
+
+Sensor-Only Reference
+----------------------
+
+**Location**: ``firmware/freertos_apps/apps/esp32_controller/``
+
+Features:
+- IMU and ultrasonic range sensing only
+- Same WiFi provisioning system as motor variant
+- Lightweight for simulation and validation
+- Publishing: /imu/data, /range/data
+
+Use this app as the reference when you want the raw sensor path without the motor-control layer.
+
+Overview
+========
+
+The controller manages:
+
+- **IMU (MPU6050)**: 6-axis accelerometer and gyroscope via I2C
+- **Ultrasonic Sensor (HC-SR04)**: Distance/range measurements  
+- **Motor Control** (motor variant): 4 BLDC motors with LEDC PWM + GPIO direction pins
+- **Safety Systems**: Watchdog timer, motor timeout, deadband, soft-start ramping
+- **Emergency Stop**: ROS subscription for immediate motor cutoff
+- **WiFi Provisioning**: SoftAP + HTTP server for credential setup
+- **micro-ROS Agent**: UDP communication with host ROS 2 system
+
+Hardware Configuration
+======================
+
+I2C (Sensors)
+-------------
+
+- **SCL (GPIO 22)**: Serial Clock
+- **SDA (GPIO 21)**: Serial Data
+- **Device Address**: 0x68 (MPU6050)
+- **Frequency**: 100 kHz
+
+Ultrasonic Sensor
+-----------------
+
+- **Trigger Pin**: GPIO 5 (motor variant) / GPIO 9 (sensor-only variant)
+- **Echo Pin**: GPIO 18 (motor variant) / GPIO 10 (sensor-only variant)
+
+Hall-Effect Speed Sensors
+-------------------------
+
+The PCB schematic includes paired hall-effect sensors for wheel-speed or rotation feedback.
+
+They are board-level inputs rather than part of the IMU or ultrasonic path, so document their GPIO routing and pulse-to-speed conversion wherever they are wired into firmware or localization.
+
+Motor Control (Motor Variant Only)
+----------------------------------
+
+4x BLDC motors with PWM and GPIO direction control:
+
+.. table::
+   :align: center
+
+   ====================== =========== ============
+   Motor                  PWM Pin     Direction Pin
+   ====================== =========== ============
+   Motor 1 (Front-Right)  GPIO 25     GPIO 26
+   Motor 2 (Front-Left)   GPIO 27     GPIO 14
+   Motor 3 (Back-Right)   GPIO 12     GPIO 13
+   Motor 4 (Back-Left)    GPIO 33     GPIO 32
+   ====================== =========== ============
+
+- **LEDC Timer**: Timer 0
+- **Frequency**: 1 kHz
+- **Resolution**: 8-bit (0-255 duty cycle)
+
+Build and Flash
+===============
+
+Both app variants are built and flashed using the same micro_ros_setup commands.
+
+Inside workspace container:
+
+**Configure for motor controller:**
+
+.. code-block:: bash
+
+   ros2 run micro_ros_setup configure_firmware.sh esp32_controller -t udp -i 192.168.1.2 -p 8888
+
+**Configure for sensor-only variant:**
+
+.. code-block:: bash
+
+   ros2 run micro_ros_setup configure_firmware.sh esp32_controller_sim -t udp -i 192.168.1.2 -p 8888
+
+**Build:**
+
+.. code-block:: bash
+
+   ros2 run micro_ros_setup build_firmware.sh
+
+**Flash:**
+
+.. code-block:: bash
+
+   ros2 run micro_ros_setup flash_firmware.sh
+
+**Monitor Serial Output:**
+
+.. code-block:: bash
+
+   cd /micro_ros_ws/firmware/freertos_apps/microros_esp32_extensions
+   source /micro_ros_ws/firmware/toolchain/esp-idf/export.sh
+   idf.py -p /dev/ttyUSB0 monitor
+
+Code Structure
+==============
+
+Motor Variant
+-------------
+
+.. code-block:: text
+
+   firmware/custom/esp32_controller/
+   ├── app.c                     # Main application with motors + safety + WiFi provisioning
+   ├── Kconfig.projbuild          # WiFi SSID/password configuration
+   └── CMakeLists.txt
+
+Sensor-Only Variant
+-------------------
+
+.. code-block:: text
+
+   firmware/freertos_apps/apps/esp32_controller/
+   ├── app.c                     # Sensor-only variant with WiFi provisioning
+   ├── Kconfig.projbuild          # WiFi SSID/password configuration
+   └── CMakeLists.txt
+
+Application Flow
+================
+
+Boot Sequence
+-------------
+
+1. **Watchdog Initialization** (30 second timeout)
+   - Task added to watchdog; reset periodically in executor loop
+
+2. **NVS Initialization**
+   - Read stored WiFi credentials from flash (namespace: "wifi_creds")
+
+3. **WiFi Provisioning Check**
+   - If credentials empty → Start SoftAP ("ESP32-Setup") + HTTP server
+   - User provisions via browser at http://192.168.4.1/
+   - Device saves to NVS, restarts with new credentials
+   - If credentials found → Proceed to normal operation
+
+4. **Hardware Initialization** (Normal Operation)
+   - I2C master (sensors)
+   - GPIO (ultrasonic trigger, motor direction pins)
+   - LEDC PWM (motor control, motor variant only)
+
+5. **Sensor Validation**
+   - Attempt I2C read from MPU6050 (address 0x68)
+   - Log error if sensor not detected; continue anyway
+
+6. **Micro-ROS Initialization**
+   - RCL allocator and context
+   - Node creation
+   - Publisher/subscription registration
+
+7. **Executor Loop** (10 Hz timer)
+   - Publish IMU data
+   - Publish range data
+   - Check motor timeout and emergency stop
+   - Reset watchdog
+   - Process ROS subscriptions
+
+ROS Topics & Subscriptions
+===========================
+
+Publishers (Both Variants)
+--------------------------
+
+.. table::
+   :align: center
+
+   ======================= =============================== ==========================
+   Topic                   Message Type                    Description
+   ======================= =============================== ==========================
+   ``/imu/data``           ``sensor_msgs/msg/Imu``         6-axis IMU (accel + gyro)
+   ``/range/data``         ``sensor_msgs/msg/Range``       Ultrasonic distance (m)
+   ======================= =============================== ==========================
+
+Publishers (Motor Variant Only)
+-------------------------------
+
+.. table::
+   :align: center
+
+   ======================= =============================== ==========================
+   Topic                   Message Type                    Description
+   ======================= =============================== ==========================
+   ``/firmware/status``    ``std_msgs/msg/String``         Status string with sensor + motor data
+   ======================= =============================== ==========================
+
+Subscriptions (Motor Variant Only)
+----------------------------------
+
+.. table::
+   :align: center
+
+   ================ ================================== ============================================
+   Topic            Message Type                       Purpose
+   ================ ================================== ============================================
+   ``/motor_cmd``   ``std_msgs/msg/Float32MultiArray`` Motor commands [M1-M4] in [-1.0, +1.0]
+   ``/servo_cmd``   ``std_msgs/msg/Float32``           Servo angle target in degrees
+   ``/e_stop``      ``std_msgs/msg/Bool``              Emergency stop: true=cut, false=clear
+   ================ ================================== ============================================
+
+Motor Control (Motor Variant)
+=============================
+
+Motor Commands
+--------------
+
+Motor commands are float arrays in range ``[-1.0, 1.0]``:
+- **+1.0**: Full forward (clockwise)
+- **-1.0**: Full reverse (counter-clockwise)
+- **0**: Stop
+
+Example ROS 2 publish:
+
+.. code-block:: bash
+
+    ros2 topic pub /motor_cmd std_msgs/msg/Float32MultiArray \
+     "data: [0.5, 0.5, 0.5, 0.5]"
+
+Motor Safety Features
+~~~~~~~~~~~~~~~~~~~~~
+
+1. **Deadband (0.05)**
+   - Commands in range [-0.05, +0.05] treated as zero
+   - Prevents motor drift from noisy control signals
+
+2. **Soft-Start Ramping (0.1 units/100ms)**
+   - Maximum change per timer tick: 0.1
+   - Prevents sudden acceleration
+   - Protects motor mechanism and power supply
+
+3. **Command Timeout (500 ms)**
+   - If no command received for 500ms, motors stop automatically
+   - Prevents runaway if communication is lost
+   - Timestamp updated on each received command
+
+4. **Emergency Stop (volatile flag)**
+   - Subscribed to ``/e_stop`` Bool topic
+   - **True**: Immediately cuts all motors to zero duty cycle; cancels all commands
+   - **False**: Clears emergency stop; normal command processing resumes
+   - Volatile flag prevents compiler optimizations
+
+Example emergency stop:
+
+.. code-block:: bash
+
+   ros2 topic pub /e_stop std_msgs/msg/Bool "data: true"
+
+Safety Features (All Variants)
+==============================
+
+Watchdog Timer
+--------------
+
+- **Timeout**: 30 seconds
+- **Behavior**: Resets ESP32 if watchdog not reset within timeout
+- **Reset Location**: Main executor loop (after each ROS spin)
+- **Purpose**: Protect against firmware hangs or deadlocks
+
+I2C Sensor Validation
+---------------------
+
+On boot, the firmware attempts to detect the MPU6050 sensor:
+
+.. code-block:: text
+
+   I2C initialized, checking sensor presence...
+   MPU6050 detected on I2C bus
+
+If not detected, error is logged but boot continues, allowing operation without IMU.
+
+WiFi Provisioning System
+=========================
+
+Overview
+--------
+
+The WiFi provisioning system allows users to configure WiFi credentials via a temporary HTTP server without editing source code or using menuconfig.
+
+Boot Flow
+~~~~~~~~~
+
+.. code-block:: text
+
+   Boot
+    ↓
+   NVS Init
+    ↓
+   Check NVS for stored SSID/password
+    ↓
+   [Credentials Empty]          [Credentials Found]
+    ↓                            ↓
+   Start SoftAP                Connect to WiFi
+   "ESP32-Setup"               (Normal Operation)
+    ↓
+   Start HTTP Server
+   http://192.168.4.1/
+    ↓
+   Wait 60s for user
+   provisioning
+    ↓
+   User submits form
+    ↓
+   Save to NVS
+    ↓
+   Restart Device
+
+NVS Storage
+~~~~~~~~~~~
+
+- **Namespace**: ``"wifi_creds"``
+- **Keys**:
+  - ``"ssid"``: WiFi network name (max 32 chars)
+  - ``"password"``: WiFi password (max 63 chars)
+- **Persistence**: Data survives power cycles, factory resets erase NVS
+
+Provisioning HTTP Interface
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**SoftAP Configuration**:
+- SSID: ``ESP32-Setup``
+- Security: Open (no password)
+- IP: 192.168.4.1 (auto-assigned to clients)
+
+**Endpoints**:
+
+1. **GET /** - Returns HTML form
+
+   .. code-block:: html
+
+      <form method="post" action="/provision">
+        <input type="text" name="ssid" 
+               placeholder="WiFi SSID" required maxlength="32">
+        <input type="password" name="password" 
+               placeholder="WiFi Password" required maxlength="63">
+        <button type="submit">Connect</button>
+      </form>
+
+2. **POST /provision** - Accepts form data
+
+   Parameters:
+   - ``ssid``: Network name
+   - ``password``: Network password
+
+   Response:
+   - **Success (200)**: Credentials saved; device will restart
+   - **Error (400)**: Invalid form data; missing SSID or password
+
+Fallback Configuration
+~~~~~~~~~~~~~~~~~~~~~~
+
+If NVS is empty or erased, the system falls back to Kconfig symbols:
+
+.. code-block:: c
+
+   #ifdef CONFIG_ESP_WIFI_SSID
+   #define WIFI_SSID CONFIG_ESP_WIFI_SSID
+   #else
+   #define WIFI_SSID ""
+   #endif
+
+This allows build-time defaults while preserving easy provisioning setup.
+
+Troubleshooting
+===============
+
+WiFi Provisioning Issues
+------------------------
+
+**Device doesn't start SoftAP on first boot**
+   - Ensure NVS is erased or contains empty SSID/password
+   - Device will start SoftAP only if credentials are missing
+   - Check serial logs: "No WiFi credentials stored. Starting provisioning mode..."
+
+**Can't connect to ESP32-Setup network**
+   - Verify device has powered on and completed boot sequence
+   - Check if WiFi radio is functional (inspect hardware)
+   - Wait 5-10 seconds after power-on for SoftAP to start
+
+**HTTP provisioning form not loading (http://192.168.4.1/)**
+   - Verify you're on the ESP32-Setup network (not your home WiFi)
+   - Try http://192.168.4.1 or 192.168.4.1 in address bar
+   - Check device is still in provisioning mode (not yet restarted)
+
+**Credentials are saved but device won't connect to WiFi**
+   - Verify SSID and password are correct (no extra spaces or typos)
+   - Check WiFi network is 2.4 GHz (ESP32 does not support 5 GHz)
+   - Verify network uses WPA2 or WPA3 (no legacy WEP)
+   - Check WiFi signal strength near device
+
+**Device restarts repeatedly in provisioning mode**
+   - NVS might be corrupted; try factory reset: ``idf.py erase-flash``
+   - Check HTTP server logs in serial output for errors
+   - Ensure device is powered steadily (not brownout)
+
+Motor Control Issues (Motor Variant)
+------------------------------------
+
+**Motors don't respond to commands**
+   - Verify motor topic name is correct: ``/motor-cmd``
+   - Check message type is ``Float32MultiArray``
+   - Verify array has 4 elements [M1, M2, M3, M4]
+   - Check watchdog is not rebooting device
+
+**Motors move but are jerky or unresponsive**
+   - Check PWM pins are functioning (GPIO 25, 27, 12, 33)
+   - Verify LEDC timer is properly initialized in logs
+   - Check power supply voltage (motors need stable 5V+)
+   - Try increasing soft-start ramp time if mechanical vibration occurs
+
+**Motor emergency stop not working**
+   - Verify topic name: ``/e-stop``
+   - Check message type: ``std_msgs/msg/Bool``
+   - Motor should stop immediately when ``data: true``
+   - Clear emergency stop with ``data: false``
+
+**Motor timeout stopping motors unexpectedly**
+   - Default timeout is 500ms without receiving a motor command
+   - Publish regular commands (e.g., 10 Hz) to prevent timeout
+   - Check ``/firmware/status`` topic for timeout messages in logs
+
+Sensor Issues
+-------------
+
+**IMU data looks wrong (all zeros or constant)**
+   - Check I2C connections (GPIO 21 SDA, GPIO 22 SCL)
+   - Verify MPU6050 device address (0x68) with ``i2cdetect``
+   - Look for error in logs: "MPU6050 not detected on I2C bus"
+   - Confirm pull-up resistors on I2C lines (typically 4.7 kΩ)
+
+**Ultrasonic sensor returns invalid distance (-1.0)**
+   - Check trigger and echo GPIO pins (see Hardware Configuration)
+   - Verify sensor power supply (typically 5V)
+   - Ensure sensor is at least 2 cm from object (minimum range)
+   - Check for noisy echo signal if range fluctuates wildly
+
+**ROS topics not publishing**
+   - Verify micro-ROS agent is running: ``docker logs -f micro_ros_agent``
+   - Check UDP connection is working (correct IP and port)
+   - Look for ROS initialization errors in serial logs
+   - Try ``ros2 topic list`` to see available topics
+
+Watchdog Issues
+---------------
+
+**Device spontaneously restarts every 30 seconds**
+   - Watchdog timeout is 30 seconds; device must reset within this window
+   - Check executor loop is running and resetting watchdog
+   - Look for blocking I/O or infinite loops in custom code
+   - Verify ROS subscriptions don't block (use ON_NEW_DATA mode)
+
+Firmware Build Issues
+---------------------
+
+**Build fails: "app.c: No such file or directory"**
+   - Ensure you configured the correct app variant
+   - Motor variant: ``configure_firmware.sh esp32_controller``
+   - Sensor-only: ``configure_firmware.sh esp32_controller_sim``
+
+**Build fails: missing NVS or HTTP server headers**
+   - Ensure headers are in app.c: ``#include "nvs_flash.h"`` and ``#include "esp_http_server.h"``
+   - Rebuild with ``colcon build --packages-select esp32_controller`` or similar
+
+**Compilation errors in motor/I2C code**
+   - Verify all GPIO pins are defined (check #define statements)
+   - Ensure LEDC and GPIO driver headers are included
+   - Check for undefined MOTOR_COUNT constant
+
+Troubleshooting
+===============
+
+I2C Communication Fails
+-----------------------
+
+- Check pull-up resistors on SCL/SDA
+- Verify I2C frequency (100 kHz default)
+- Confirm MPU6050 address matches (0x68)
+
+Ultrasonic Measurements Are Erratic
+------------------------------------
+
+- Ensure GPIO 9/10 are not used elsewhere
+- Check sensor power supply (5V recommended)
+- Verify echo pin is connected to an ADC-capable GPIO
+
+micro-ROS Connection Issues
+----------------------------
+
+- Confirm WiFi SSID/password are correct
+- Check micro-ROS agent is running (``docker compose up``)
+- Verify UDP port 9999 is accessible
+- Ensure ESP32 can reach the host machine on the network
+
+Future Enhancements
+===================
+
+- [ ] Add magnetometer (compass) support
+- [ ] Implement sensor fusion (Kalman filter)
+- [ ] Add servo/motor control
+- [ ] SD card logging for offline recording

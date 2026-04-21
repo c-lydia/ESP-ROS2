@@ -241,3 +241,11 @@ Linear wheel speed can then be derived from wheel diameter $D$:
 $$v = \frac{\pi D \cdot rpm}{60}$$
 
 Use the actual wheel geometry and pulse-per-revolution count from the KiCad design or assembly notes when calibrating this path.
+
+## References (Books and Research Papers)
+
+- Mahony, R., Hamel, T., and Pflimlin, J.-M. (2008). Nonlinear Complementary Filters on the Special Orthogonal Group. *IEEE Transactions on Automatic Control*, 53(5), 1203-1218.
+- Madgwick, S. O. H. (2010). *An efficient orientation filter for inertial and inertial/magnetic sensor arrays*. University of Bristol, Technical Report.
+- Welch, G., and Bishop, G. (2006). *An Introduction to the Kalman Filter*. University of North Carolina at Chapel Hill, TR 95-041.
+- Thrun, S., Burgard, W., and Fox, D. (2005). *Probabilistic Robotics*. MIT Press.
+- Astrom, K. J., and Hagglund, T. (2006). *Advanced PID Control*. ISA.

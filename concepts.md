@@ -133,3 +133,11 @@ It includes the ESP32 carrier, motor drivers, the MPU6050, the HC-SR04 sensor pa
 This matters for the software stack because the firmware and localization layers should describe the same physical wiring and sensor roles as the board project.
 
 If wheel-speed or rotation pulses are added from the hall-effect sensors, treat them as another raw input stream and document whether they feed odometry directly or are only used for calibration.
+
+## References (Books and Research Papers)
+
+- Mahony, R., Hamel, T., and Pflimlin, J.-M. (2008). Nonlinear Complementary Filters on the Special Orthogonal Group. *IEEE Transactions on Automatic Control*, 53(5), 1203-1218.
+- Madgwick, S. O. H. (2010). *An efficient orientation filter for inertial and inertial/magnetic sensor arrays*. University of Bristol, Technical Report.
+- Thrun, S., Burgard, W., and Fox, D. (2005). *Probabilistic Robotics*. MIT Press.
+- Siciliano, B., Sciavicco, L., Villani, L., and Oriolo, G. (2009). *Robotics: Modelling, Planning and Control*. Springer.
+- Astrom, K. J., and Murray, R. M. (2008). *Feedback Systems: An Introduction for Scientists and Engineers*. Princeton University Press.

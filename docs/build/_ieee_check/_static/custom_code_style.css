@@ -1,0 +1,27 @@
+/* Aggressive Syntax Highlighting - Monokai Colors */
+
+/* Keywords */
+.rst-content .highlight .k, .rst-content .highlight .kc, .rst-content .highlight .kd,
+.rst-content .highlight .kn, .rst-content .highlight .kp, .rst-content .highlight .kr,
+.rst-content .highlight .kt { color: #f92672 !important; font-weight: bold !important; }
+
+/* Strings */
+.rst-content .highlight .s, .rst-content .highlight .s1, .rst-content .highlight .s2,
+.rst-content .highlight .sb, .rst-content .highlight .sc, .rst-content .highlight .se,
+.rst-content .highlight .sh, .rst-content .highlight .si, .rst-content .highlight .sr,
+.rst-content .highlight .ss { color: #a6e22e !important; }
+
+/* Comments */
+.rst-content .highlight .c, .rst-content .highlight .c1, .rst-content .highlight .cm,
+.rst-content .highlight .cp { color: #fd971f !important; font-style: italic !important; }
+
+/* Numbers */
+.rst-content .highlight .m, .rst-content .highlight .mf, .rst-content .highlight .mh,
+.rst-content .highlight .mi, .rst-content .highlight .mo { color: #ae81ff !important; }
+
+/* Functions and Classes */
+.rst-content .highlight .nf, .rst-content .highlight .nc { color: #66d9ef !important; }
+
+/* Code Block */
+.rst-content .highlight { background-color: #f8f8f8 !important; border: 1px solid #ddd !important; border-radius: 6px !important; padding: 14px 16px !important; }
+.rst-content .highlight pre { color: #1f1f1f !important; margin: 0 !important; }
