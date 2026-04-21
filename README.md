@@ -1,5 +1,27 @@
 # Wall-E
 
+![License](https://img.shields.io/badge/license-Apache%202.0-blue)
+![ROS2](https://img.shields.io/badge/ROS2-humble-22314E?logo=ros&logoColor=white)
+![micro-ROS](https://img.shields.io/badge/micro--ROS-humble-22314E?logo=ros&logoColor=white)
+![FreeRTOS](https://img.shields.io/badge/FreeRTOS-green?logo=freertos&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3.10-3776ab?logo=python&logoColor=white)
+![C++](https://img.shields.io/badge/C%2B%2B-std-00599C?logo=c%2B%2B&logoColor=white)
+![C](https://img.shields.io/badge/C-std-A8B9CC?logo=c&logoColor=white)
+![ESP-IDF](https://img.shields.io/badge/ESP--IDF-v5.2-E7352C?logo=espressif&logoColor=white)
+![Arduino](https://img.shields.io/badge/Arduino-00979D?logo=arduino&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white)
+![Docker Compose](https://img.shields.io/badge/Docker%20Compose-2496ED?logo=docker&logoColor=white)
+![KiCad](https://img.shields.io/badge/KiCad-314CB0?logo=kicad&logoColor=white)
+![STEP](https://img.shields.io/badge/CAD-STEP%20%2F%20KiCad-orange)
+![Docs](https://img.shields.io/badge/docs-RST-8CA1AF?logo=readthedocs&logoColor=white)
+![venv](https://img.shields.io/badge/venv-enabled-4B8BBE?logo=python&logoColor=white)
+![Stars](https://img.shields.io/github/stars/c-lydia/wall_e?style=flat)
+![Forks](https://img.shields.io/github/forks/c-lydia/wall_e?style=flat)
+![Watchers](https://img.shields.io/github/watchers/c-lydia/wall_e?style=flat)
+![Release](https://img.shields.io/github/v/release/c-lydia/wall_e)
+![Issues](https://img.shields.io/github/issues/c-lydia/wall_e?color=yellow)
+![Visitors](https://visitor-badge.laobi.icu/badge?page_id=c-lydia.wall_e)
+
 micro-ROS workspace for ESP32 (FreeRTOS + ESP-IDF) with ROS 2 Humble.
 
 For a user-focused setup and operation guide, see [user_manual.md](user_manual.md).
