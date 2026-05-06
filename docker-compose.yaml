@@ -17,6 +17,7 @@ services:
       - ./firmware:/micro_ros_ws/firmware
       - ./pcb:/micro_ros_ws/pcb
       - ./wall_e_ws:/micro_ros_ws/wall_e_ws
+      - ./gas_robot_ws:/micro_ros_ws/gas_robot_ws
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
     working_dir: /micro_ros_ws
     command: >

@@ -257,6 +257,19 @@
     </sensor>
   </gazebo>
 
+  <!-- Gas sensor -->
+  <link name="gas_sensor_link">
+    <visual>
+      <geometry><box size="0.02 0.02 0.02"/></geometry>
+    </visual>
+  </link>
+  
+  <joint name="gas_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="gas_sensor_link"/>
+    <origin xyz="0 0 0.05"/>
+  </joint>
+
   <!-- Camera sensor (monocular — for ORB-SLAM3 later) -->
   <gazebo reference="camera_link">
     <sensor name="camera_sensor" type="camera">

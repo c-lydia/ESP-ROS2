@@ -6,12 +6,21 @@ This guide explains how to set up, build, flash, and use the ESP32-based Wall-E 
 
 The main firmware in `firmware/custom/esp32_controller` provides:
 
+- Micro-ROS connectivity over WiFi
+- IMU publishing on `imu/data`
+- Ultrasonic range publishing on `range/data`
+- Motor control on `/motor_cmd`
+- Servo control on `/servo_cmd`
+- Emergency stop handling on `/e_stop`
+- Firmware status publishing on `firmware/status`
 
 The host feedback stack in `wall_e_ws/src/feedback/feedback` can additionally provide:
 
+- IMU filtered topic on `/imu/filter`
+- Ultrasonic filtered topic on `/range/filter`
+- Fused state outputs on `/fusion/height` and `/fusion/vertical_velocity`
 
 If no WiFi credentials are stored, the device starts a provisioning access point so you can enter credentials from a browser.
-
 
 ## References (Books and Research Papers)
 
@@ -20,6 +29,7 @@ If no WiFi credentials are stored, the device starts a provisioning access point
 - Thrun, S., Burgard, W., and Fox, D. (2005). *Probabilistic Robotics*. MIT Press.
 - Siciliano, B., Sciavicco, L., Villani, L., and Oriolo, G. (2009). *Robotics: Modelling, Planning and Control*. Springer.
 - Astrom, K. J., and Murray, R. M. (2008). *Feedback Systems: An Introduction for Scientists and Engineers*. Princeton University Press.
+  
 ## System Diagram
 
 ![Wall-E system architecture](docs/source/_static/wall_e_arch-dark.png)
