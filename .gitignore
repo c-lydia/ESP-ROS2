@@ -65,3 +65,5 @@ firmware/mcu_ws/build/
 firmware/mcu_ws/install/
 firmware/mcu_ws/log/
 firmware/freertos_apps/microros_esp32_extensions/build/
+
+wall_e_ws/
