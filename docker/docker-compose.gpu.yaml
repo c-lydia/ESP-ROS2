@@ -1,0 +1,15 @@
+services:
+  workspace:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        INSTALL_CUDA: "true"
+        INSTALL_GPU_PYTHON: "true"
+        INSTALL_TENSORRT: "true"
+        TENSORRT_PIP_SPEC: "tensorrt==8.6.1"
+        ONNXRUNTIME_GPU_PIP_SPEC: "onnxruntime-gpu==1.18.1"
+    gpus: all
+    environment:
+      NVIDIA_VISIBLE_DEVICES: all
+      NVIDIA_DRIVER_CAPABILITIES: compute,utility,graphics,video
