@@ -6,6 +6,8 @@ ESP32 Controller
 
 The ESP32 controller runs FreeRTOS with micro-ROS micro-sage communication. Two variants are provided: a full-featured **motor controller** with safety systems, and a lightweight **sensor-only** reference implementation for validation.
 
+The board-level design also includes paired hall-effect sensors for wheel-speed or rotation feedback, so the firmware and localization notes should stay aligned with the PCB wiring.
+
 Application Variants
 ====================
 
@@ -33,6 +35,8 @@ Features:
 - Same WiFi provisioning system as motor variant
 - Lightweight for simulation and validation
 - Publishing: /imu/data, /range/data
+
+Use this app as the reference when you want the raw sensor path without the motor-control layer.
 
 Overview
 ========
@@ -63,6 +67,13 @@ Ultrasonic Sensor
 
 - **Trigger Pin**: GPIO 5 (motor variant) / GPIO 9 (sensor-only variant)
 - **Echo Pin**: GPIO 18 (motor variant) / GPIO 10 (sensor-only variant)
+
+Hall-Effect Speed Sensors
+-------------------------
+
+The PCB schematic includes paired hall-effect sensors for wheel-speed or rotation feedback.
+
+They are board-level inputs rather than part of the IMU or ultrasonic path, so document their GPIO routing and pulse-to-speed conversion wherever they are wired into firmware or localization.
 
 Motor Control (Motor Variant Only)
 ----------------------------------
@@ -223,8 +234,9 @@ Subscriptions (Motor Variant Only)
    ================ ================================== ============================================
    Topic            Message Type                       Purpose
    ================ ================================== ============================================
-   ``/motor-cmd``   ``std_msgs/msg/Float32MultiArray`` Motor commands [M1-M4] in [-1.0, +1.0]
-   ``/e-stop``      ``std_msgs/msg/Bool``              Emergency stop: true=cut, false=clear
+   ``/motor_cmd``   ``std_msgs/msg/Float32MultiArray`` Motor commands [M1-M4] in [-1.0, +1.0]
+   ``/servo_cmd``   ``std_msgs/msg/Float32``           Servo angle target in degrees
+   ``/e_stop``      ``std_msgs/msg/Bool``              Emergency stop: true=cut, false=clear
    ================ ================================== ============================================
 
 Motor Control (Motor Variant)
@@ -242,7 +254,7 @@ Example ROS 2 publish:
 
 .. code-block:: bash
 
-   ros2 topic pub /motor-cmd std_msgs/msg/Float32MultiArray \
+    ros2 topic pub /motor_cmd std_msgs/msg/Float32MultiArray \
      "data: [0.5, 0.5, 0.5, 0.5]"
 
 Motor Safety Features
@@ -263,7 +275,7 @@ Motor Safety Features
    - Timestamp updated on each received command
 
 4. **Emergency Stop (volatile flag)**
-   - Subscribed to ``/e-stop`` Bool topic
+   - Subscribed to ``/e_stop`` Bool topic
    - **True**: Immediately cuts all motors to zero duty cycle; cancels all commands
    - **False**: Clears emergency stop; normal command processing resumes
    - Volatile flag prevents compiler optimizations
@@ -272,7 +284,7 @@ Example emergency stop:
 
 .. code-block:: bash
 
-   ros2 topic pub /e-stop std_msgs/msg/Bool "data: true"
+   ros2 topic pub /e_stop std_msgs/msg/Bool "data: true"
 
 Safety Features (All Variants)
 ==============================

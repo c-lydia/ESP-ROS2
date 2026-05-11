@@ -1,0 +1,227 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>State Estimation &mdash; Wall-E 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Perception" href="perception.html" />
+    <link rel="prev" title="Hardware Interfaces" href="hardware_interfaces.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #2980B9" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            Wall-E
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Shared Core Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../development/workflow_and_commands.html">Workflow and Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../firmware/esp32_controller.html">ESP32 Controller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../hardware/architecture.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../hardware/communication_model.html">Communication Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../hardware/system_contract.html">System Contract</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../deployment/wifi_provisioning.html">WiFi Provisioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../references/index.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../references/troubleshooting.html">Troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Robot Variants</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../wall_e/index.html">Wall-E Robot</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Gas Robot Variant</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../setup.html">Gas Robot Setup</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Gas Robot Subsystems</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="index.html#system-flow">System Flow</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="hardware_interfaces.html">Hardware Interfaces</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">State Estimation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="perception.html">Perception</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mapping.html">Mapping</a></li>
+<li class="toctree-l4"><a class="reference internal" href="navigation.html">Navigation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="communication.html">Communication</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cv_pipeline.html">CV Pipeline</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#module-roles">Module Roles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#design-intent">Design Intent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#related-documentation">Related Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#getting-started-with-gas-robot">Getting Started with Gas Robot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#core-subsystems">Core Subsystems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#shared-platform-firmware">Shared Platform &amp; Firmware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#development-deployment">Development &amp; Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#related-documentation">Related Documentation</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #2980B9" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Wall-E</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Gas Robot Variant</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Gas Robot Subsystems</a></li>
+      <li class="breadcrumb-item active">State Estimation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/variants/gas_robot/subsystems/state_estimation.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="hardware_interfaces.html" class="btn btn-neutral float-left" title="Hardware Interfaces" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="perception.html" class="btn btn-neutral float-right" title="Perception" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="state-estimation">
+<h1>State Estimation<a class="headerlink" href="#state-estimation" title="Link to this heading"></a></h1>
+<p>Odometry and pose tracking for Gas Robot.</p>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>This package answers one question: <strong>where is the robot now?</strong></p>
+<p>It is separated from perception on purpose. Perception cleans gas data; state
+estimation tracks motion and pose.</p>
+</section>
+<section id="responsibilities">
+<h2>Responsibilities<a class="headerlink" href="#responsibilities" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>integrate wheel odometry</p></li>
+<li><p>fuse IMU heading information</p></li>
+<li><p>publish pose and TF transforms</p></li>
+<li><p>provide a stable base for mapping and navigation</p></li>
+</ul>
+</section>
+<section id="state-model">
+<h2>State Model<a class="headerlink" href="#state-model" title="Link to this heading"></a></h2>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">wheel</span><span class="w"> </span><span class="n">motion</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">IMU</span>
+<span class="w">  </span><span class="o">-&gt;</span>
+<span class="n">odometry</span><span class="w"> </span><span class="n">integration</span>
+<span class="w">  </span><span class="o">-&gt;</span>
+<span class="n">pose</span><span class="w"> </span><span class="n">estimate</span>
+<span class="w">  </span><span class="o">-&gt;</span>
+<span class="n">tf</span><span class="w"> </span><span class="n">tree</span><span class="w"> </span><span class="n">output</span>
+</pre></div>
+</div>
+</section>
+<section id="output-topics">
+<h2>Output Topics<a class="headerlink" href="#output-topics" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 35.7%" />
+<col style="width: 64.3%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Topic</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/odometry/wheels</span></code></p></td>
+<td><p>Wheel-based odometry estimate</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/state/pose</span></code></p></td>
+<td><p>Estimated robot pose</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/state/velocity</span></code></p></td>
+<td><p>Linear and angular velocity estimate</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/tf</span></code></p></td>
+<td><p>Transform tree for other nodes</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Link to this heading"></a></h2>
+<p>Parameters live in <code class="docutils literal notranslate"><span class="pre">gas_robot_ws/src/state_estimation/config/</span></code>.</p>
+<p>Common tuning values:</p>
+<ul class="simple">
+<li><p>wheel radius</p></li>
+<li><p>wheelbase</p></li>
+<li><p>IMU heading offset</p></li>
+<li><p>update rate</p></li>
+</ul>
+</section>
+<section id="related-documentation">
+<h2>Related Documentation<a class="headerlink" href="#related-documentation" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="hardware_interfaces.html"><span class="doc">Hardware Interfaces</span></a> - Raw sensor inputs</p></li>
+<li><p><a class="reference internal" href="perception.html"><span class="doc">Perception</span></a> - Clean gas input is separate</p></li>
+<li><p><a class="reference internal" href="mapping.html"><span class="doc">Mapping</span></a> - Pose is consumed by the heat map</p></li>
+<li><p><a class="reference internal" href="navigation.html"><span class="doc">Navigation</span></a> - Patrol uses pose estimates</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="hardware_interfaces.html" class="btn btn-neutral float-left" title="Hardware Interfaces" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="perception.html" class="btn btn-neutral float-right" title="Perception" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Lydia Chheng.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

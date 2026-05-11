@@ -1,0 +1,292 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Concepts &mdash; Wall-E 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="References" href="references.html" />
+    <link rel="prev" title="References" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #2980B9" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Wall-E
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Shared Core Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/workflow_and_commands.html">Workflow and Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../firmware/esp32_controller.html">ESP32 Controller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/architecture.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/communication_model.html">Communication Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/system_contract.html">System Contract</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deployment/wifi_provisioning.html">WiFi Provisioning</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">References</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Concepts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#layered-roles">Layered Roles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#architecture-flow-text-diagram">Architecture Flow (Text Diagram)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#control-loop-topology">Control Loop Topology</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gamepad-input-mapping">Gamepad Input Mapping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#raw-vs-filtered-signals">Raw vs Filtered Signals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fusion-strategy">Fusion Strategy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#odometry-model">Odometry Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#launch-dependency-strategy">Launch Dependency Strategy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#safety-model">Safety Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tf-completeness-for-visualization">TF Completeness for Visualization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#related-reading">Related Reading</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#board-level-hardware">Board-Level Hardware</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="references.html">References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#quick-links-to-documentation">Quick Links to Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Robot Variants</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../variants/wall_e/index.html">Wall-E Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../variants/gas_robot/index.html">Gas Robot Variant</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #2980B9" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Wall-E</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">References</a></li>
+      <li class="breadcrumb-item active">Concepts</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/references/concepts.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="index.html" class="btn btn-neutral float-left" title="References" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="references.html" class="btn btn-neutral float-right" title="References" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="concepts">
+<span id="id1"></span><h1>Concepts<a class="headerlink" href="#concepts" title="Link to this heading"></a></h1>
+<p>This page describes the core system concepts used in Wall-E and how data flows through firmware, feedback, localization, and control.</p>
+<section id="layered-roles">
+<h2>Layered Roles<a class="headerlink" href="#layered-roles" title="Link to this heading"></a></h2>
+<p>The stack is organized into four responsibilities:</p>
+<ul class="simple">
+<li><p><strong>firmware</strong>: hardware I/O, real-time safety, and actuator output on ESP32</p></li>
+<li><p><strong>feedback</strong>: filtering and fusion of raw sensor streams</p></li>
+<li><p><strong>localization</strong>: state estimation from fused signals</p></li>
+<li><p><strong>control</strong>: converting operator/autonomy intent into actuator commands</p></li>
+</ul>
+</section>
+<section id="architecture-flow-text-diagram">
+<h2>Architecture Flow (Text Diagram)<a class="headerlink" href="#architecture-flow-text-diagram" title="Link to this heading"></a></h2>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>ROS 2
+├─ control
+│  ├─ Gamepad
+│  └─ robot_control
+├─ feedback
+│  ├─ imu_filter
+│  ├─ ultrasonic_filter
+│  └─ sensor_fusion
+└─ localization
+   ├─ inverse_kinematic
+   └─ odometry
+
+firmware
+└─ esp32_controller
+</pre></div>
+</div>
+<p>Main flow:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">esp32_controller</span></code> publishes raw <code class="docutils literal notranslate"><span class="pre">/imu/data</span></code> and <code class="docutils literal notranslate"><span class="pre">/range/data</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">imu_filter</span></code> and <code class="docutils literal notranslate"><span class="pre">ultrasonic_filter</span></code> clean those signals.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sensor_fusion</span></code> combines filtered streams for stable state signals.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">odometry</span></code> publishes platform state on <code class="docutils literal notranslate"><span class="pre">/odom</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">robot_control</span></code> consumes gamepad + filtered sensors + odometry and publishes <code class="docutils literal notranslate"><span class="pre">/cmd_vel</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">robot_control</span></code> also maps a selected gamepad axis to <code class="docutils literal notranslate"><span class="pre">/servo_cmd</span></code> (degrees).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">inverse_kinematic</span></code> converts <code class="docutils literal notranslate"><span class="pre">/cmd_vel</span></code> to <code class="docutils literal notranslate"><span class="pre">/motor_cmd</span></code>.</p></li>
+</ol>
+</section>
+<section id="control-loop-topology">
+<h2>Control Loop Topology<a class="headerlink" href="#control-loop-topology" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">robot_control</span></code> uses a cascaded design:</p>
+<ul class="simple">
+<li><p>outer loop: P/PD on range/heading position error to generate speed setpoints</p></li>
+<li><p>inner loop: PI on speed error to generate <code class="docutils literal notranslate"><span class="pre">/cmd_vel</span></code> outputs</p></li>
+<li><p>speed setpoints are saturated and rate-limited before PI tracking</p></li>
+<li><p>servo path: axis value in <code class="docutils literal notranslate"><span class="pre">[-1,</span> <span class="pre">1]</span></code> maps to <code class="docutils literal notranslate"><span class="pre">[servo_min_angle_deg,</span> <span class="pre">servo_max_angle_deg]</span></code></p></li>
+</ul>
+<p>This keeps PI where it is most stable in this architecture: speed control.</p>
+</section>
+<section id="gamepad-input-mapping">
+<h2>Gamepad Input Mapping<a class="headerlink" href="#gamepad-input-mapping" title="Link to this heading"></a></h2>
+<p>Default operator mapping in <code class="docutils literal notranslate"><span class="pre">robot_control</span></code>:</p>
+<ul class="simple">
+<li><p>enable gate: <code class="docutils literal notranslate"><span class="pre">LB</span></code> (parameter <code class="docutils literal notranslate"><span class="pre">enable_button=lb</span></code>)</p></li>
+<li><p>hold/PI button: <code class="docutils literal notranslate"><span class="pre">A</span></code> (parameter <code class="docutils literal notranslate"><span class="pre">pi_mode_button=a</span></code>)</p></li>
+<li><p>manual linear command: <code class="docutils literal notranslate"><span class="pre">-left_stick_y</span></code></p></li>
+<li><p>manual angular command: <code class="docutils literal notranslate"><span class="pre">left_stick_x</span></code></p></li>
+<li><p>servo command: <code class="docutils literal notranslate"><span class="pre">servo_axis</span></code> (default <code class="docutils literal notranslate"><span class="pre">right_stick_y</span></code>) mapped to angle range</p></li>
+</ul>
+<p>Servo mapping details:</p>
+<ul class="simple">
+<li><p>axis value is clamped to <code class="docutils literal notranslate"><span class="pre">[-1,</span> <span class="pre">1]</span></code></p></li>
+<li><p>optional inversion when <code class="docutils literal notranslate"><span class="pre">servo_axis_invert=true</span></code></p></li>
+<li><p>mapped into <code class="docutils literal notranslate"><span class="pre">[servo_min_angle_deg,</span> <span class="pre">servo_max_angle_deg]</span></code></p></li>
+<li><p>if <code class="docutils literal notranslate"><span class="pre">servo_only_when_enabled=true</span></code> and enable is not held, command falls back to <code class="docutils literal notranslate"><span class="pre">servo_default_angle_deg</span></code></p></li>
+</ul>
+<p>By default, triggers and D-pad are available on <code class="docutils literal notranslate"><span class="pre">/gamepad</span></code> but are not consumed by motion logic.</p>
+</section>
+<section id="raw-vs-filtered-signals">
+<h2>Raw vs Filtered Signals<a class="headerlink" href="#raw-vs-filtered-signals" title="Link to this heading"></a></h2>
+<p>Raw sensors are noisy and may contain spikes or short dropouts.
+The host feedback stage improves signal quality before localization or control:</p>
+<ul class="simple">
+<li><p>IMU path: bias-aware fusion in <code class="docutils literal notranslate"><span class="pre">imu_filter.py</span></code></p></li>
+<li><p>Range path: validity checks + median + EMA in <code class="docutils literal notranslate"><span class="pre">ultrasonic_filter.py</span></code></p></li>
+</ul>
+</section>
+<section id="fusion-strategy">
+<h2>Fusion Strategy<a class="headerlink" href="#fusion-strategy" title="Link to this heading"></a></h2>
+<p>The current fusion approach prioritizes practical deployment over model-heavy complexity:</p>
+<ul class="simple">
+<li><p>prediction from IMU-derived motion trend</p></li>
+<li><p>correction from filtered range observations</p></li>
+</ul>
+<p>This gives robust behavior with straightforward parameter tuning.</p>
+<p>For this ground robot, fusion outputs are practical local state signals for control, not global altitude estimates.</p>
+</section>
+<section id="odometry-model">
+<h2>Odometry Model<a class="headerlink" href="#odometry-model" title="Link to this heading"></a></h2>
+<p>Current odometry combines command inputs and available sensors:</p>
+<p>This is intentionally lightweight and suitable for short-horizon control.</p>
+</section>
+<section id="launch-dependency-strategy">
+<h2>Launch Dependency Strategy<a class="headerlink" href="#launch-dependency-strategy" title="Link to this heading"></a></h2>
+<p>The launch path is designed to be resilient in containerized setups:</p>
+<ul class="simple">
+<li><p>robot description generation is performed through Python xacro processing</p></li>
+<li><p>Gazebo integration is optional when <code class="docutils literal notranslate"><span class="pre">gazebo_ros</span></code> is not installed</p></li>
+<li><p>runtime GUI/model packages are expected from image provisioning</p></li>
+</ul>
+<p>This reduces failures due to PATH differences and minimal base images.</p>
+</section>
+<section id="safety-model">
+<h2>Safety Model<a class="headerlink" href="#safety-model" title="Link to this heading"></a></h2>
+<p>Safety remains firmware-local and independent from host nodes:</p>
+<p>If host nodes are restarted, firmware safety constraints still apply.</p>
+<p>Tuning Guidance
+- firmware layer: motor/servo limits, GPIO mapping, timing
+- feedback layer: filter alpha, window size, jump gate, fusion gains</p>
+</section>
+<section id="tf-completeness-for-visualization">
+<h2>TF Completeness for Visualization<a class="headerlink" href="#tf-completeness-for-visualization" title="Link to this heading"></a></h2>
+<p>Rear wheels are modeled as continuous joints. In minimal launch modes, only the driven front joints may receive live joint states.</p>
+<p>To avoid incomplete TF trees in RViz:</p>
+<ul class="simple">
+<li><p>launch publishes rear-wheel static transforms when <code class="docutils literal notranslate"><span class="pre">joint_state_publisher</span></code> is disabled</p></li>
+<li><p>those static publishers are disabled automatically when <code class="docutils literal notranslate"><span class="pre">joint_state_publisher</span></code> is enabled</p></li>
+</ul>
+<p>This keeps RobotModel visualization complete without introducing duplicate transform sources.
+- localization/control layer: kinematic assumptions and controller gains</p>
+</section>
+<section id="related-reading">
+<h2>Related Reading<a class="headerlink" href="#related-reading" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><span class="xref std std-doc">architecture</span></p></li>
+<li><p><span class="xref std std-doc">firmware/esp32_controller</span></p></li>
+<li><p><span class="xref std std-doc">workflow_and_commands</span></p></li>
+<li><p><a class="reference internal" href="references.html"><span class="doc">References</span></a></p></li>
+</ul>
+</section>
+<section id="board-level-hardware">
+<h2>Board-Level Hardware<a class="headerlink" href="#board-level-hardware" title="Link to this heading"></a></h2>
+<p>The PCB project in <code class="docutils literal notranslate"><span class="pre">pcb/wall_e_pcb_v1.0</span></code> is the hardware reference for the current build.</p>
+<p>It includes the ESP32 carrier, motor drivers, the MPU6050, the HC-SR04 sensor path, and paired hall-effect sensors that can be used for wheel-speed or rotation feedback.</p>
+<p>The software stack should keep its wiring assumptions aligned with the board project so firmware, localization, and documentation describe the same hardware layout.</p>
+<p>If wheel-speed or rotation pulses are added from the hall-effect sensors, treat them as another raw input stream and document whether they feed odometry directly or are only used for calibration.</p>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading"></a></h2>
+<p>This page follows the IEEE bibliography in <a class="reference internal" href="references.html"><span class="doc">References</span></a>.</p>
+<p>Concepts in this page are primarily aligned with [1], [2], [4], [5], and [6].</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="References" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="references.html" class="btn btn-neutral float-right" title="References" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Lydia Chheng.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

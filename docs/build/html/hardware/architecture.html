@@ -1,0 +1,335 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Architecture &mdash; Wall-E 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Communication Model" href="communication_model.html" />
+    <link rel="prev" title="ESP32 Controller" href="../firmware/esp32_controller.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #2980B9" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Wall-E
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Shared Core Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/workflow_and_commands.html">Workflow and Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../firmware/esp32_controller.html">ESP32 Controller</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Architecture</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#system-overview">System Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#high-level-system-diagram">High-Level System Diagram</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#platform-layer">Platform Layer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#esp32-firmware">ESP32 Firmware</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#host-ros-2-middleware">Host ROS 2 Middleware</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#subsystem-layer">Subsystem Layer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#perception">Perception</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#state-estimation">State Estimation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mapping">Mapping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#navigation">Navigation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#ros-2-stack-layer">ROS 2 Stack Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#data-flow-architecture">Data Flow Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#communication-model">Communication Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#design-principles">Design Principles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#extensibility">Extensibility</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="communication_model.html">Communication Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="system_contract.html">System Contract</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deployment/wifi_provisioning.html">WiFi Provisioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/index.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/troubleshooting.html">Troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Robot Variants</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../variants/wall_e/index.html">Wall-E Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../variants/gas_robot/index.html">Gas Robot Variant</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #2980B9" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Wall-E</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Architecture</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/hardware/architecture.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="../firmware/esp32_controller.html" class="btn btn-neutral float-left" title="ESP32 Controller" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="communication_model.html" class="btn btn-neutral float-right" title="Communication Model" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="architecture">
+<span id="id1"></span><h1>Architecture<a class="headerlink" href="#architecture" title="Link to this heading"></a></h1>
+<section id="system-overview">
+<h2>System Overview<a class="headerlink" href="#system-overview" title="Link to this heading"></a></h2>
+<p>This project is a modular robotics platform composed of four independent layers:</p>
+<ol class="arabic simple">
+<li><p><strong>Platform Layer</strong> – Hardware, firmware, and communication bridge</p></li>
+<li><p><strong>ROS 2 Stack Layer</strong> – Robot-specific behavior systems</p></li>
+<li><p><strong>Subsystem Layer</strong> – Reusable perception, mapping, and estimation algorithms</p></li>
+<li><p><strong>Development Layer</strong> – Build, simulation, and tooling infrastructure</p></li>
+</ol>
+<p>Each layer communicates through strictly defined ROS 2 interfaces.</p>
+<p>—</p>
+</section>
+<section id="high-level-system-diagram">
+<h2>High-Level System Diagram<a class="headerlink" href="#high-level-system-diagram" title="Link to this heading"></a></h2>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>+----------------------+
+|   ROS 2 Stacks       |
+|----------------------|
+| Wall-E (manual)      |
+| Gas Robot (autonomy) |
++----------+-----------+
+           |
+           v
++----------------------+
+|   Subsystems         |
+|----------------------|
+| perception           |
+| state_estimation     |
+| mapping              |
+| navigation           |
++----------+-----------+
+           |
+           v
++----------------------+
+|   Platform Layer     |
+|----------------------|
+| ROS 2 middleware     |
+| micro-ROS agent      |
+| message contracts    |
++----------+-----------+
+           |
+           v
++----------------------+
+|  ESP32 Firmware      |
+|----------------------|
+| FreeRTOS controller  |
+| sensors (IMU, range) |
+| motor interface      |
++----------------------+
+</pre></div>
+</div>
+<p>—</p>
+</section>
+<section id="platform-layer">
+<h2>Platform Layer<a class="headerlink" href="#platform-layer" title="Link to this heading"></a></h2>
+<p>The platform layer defines the physical and communication boundary of the system.</p>
+<section id="esp32-firmware">
+<h3>ESP32 Firmware<a class="headerlink" href="#esp32-firmware" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Runs FreeRTOS</p></li>
+<li><p>Hosts micro-ROS client</p></li>
+<li><p>Publishes raw sensor data:
+- IMU (MPU6050 or equivalent)
+- Range sensor (ultrasonic or LiDAR)</p></li>
+<li><p>Receives actuator commands:
+- motor velocity commands
+- servo commands (if available)</p></li>
+</ul>
+</section>
+<section id="host-ros-2-middleware">
+<h3>Host ROS 2 Middleware<a class="headerlink" href="#host-ros-2-middleware" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>micro-ROS agent bridges ESP32 to ROS 2</p></li>
+<li><p>Ensures reliable UDP communication</p></li>
+<li><p>Converts embedded data into ROS 2 message types</p></li>
+</ul>
+<p>—</p>
+</section>
+</section>
+<section id="subsystem-layer">
+<h2>Subsystem Layer<a class="headerlink" href="#subsystem-layer" title="Link to this heading"></a></h2>
+<p>Subsystems are reusable algorithmic modules independent of robot identity.</p>
+<section id="perception">
+<h3>Perception<a class="headerlink" href="#perception" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Camera processing pipeline</p></li>
+<li><p>Gas concentration filtering</p></li>
+<li><p>Feature extraction (e.g., ArUco, object detection)</p></li>
+</ul>
+</section>
+<section id="state-estimation">
+<h3>State Estimation<a class="headerlink" href="#state-estimation" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Sensor fusion (IMU + odometry + encoder if available)</p></li>
+<li><p>Pose estimation</p></li>
+<li><p>Velocity estimation</p></li>
+</ul>
+</section>
+<section id="mapping">
+<h3>Mapping<a class="headerlink" href="#mapping" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Occupancy grid mapping</p></li>
+<li><p>Gas concentration heatmap generation</p></li>
+</ul>
+</section>
+<section id="navigation">
+<h3>Navigation<a class="headerlink" href="#navigation" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Motion planning</p></li>
+<li><p>Mission planning</p></li>
+<li><p>Path execution interface</p></li>
+</ul>
+<p>—</p>
+</section>
+</section>
+<section id="ros-2-stack-layer">
+<h2>ROS 2 Stack Layer<a class="headerlink" href="#ros-2-stack-layer" title="Link to this heading"></a></h2>
+<p>This layer defines robot-specific behavior.</p>
+<p>Each robot stack is a <strong>composition of subsystems</strong>, not new algorithms.</p>
+<p>Example stacks:</p>
+<ul class="simple">
+<li><p>Wall-E Stack → manual teleoperation system</p></li>
+<li><p>Gas Robot Stack → autonomous exploration system</p></li>
+</ul>
+<p>Each stack defines:
+- node composition
+- control policy
+- behavior logic
+- mission structure</p>
+<p>IMPORTANT:
+Subsystems must remain robot-agnostic.</p>
+<p>—</p>
+</section>
+<section id="data-flow-architecture">
+<h2>Data Flow Architecture<a class="headerlink" href="#data-flow-architecture" title="Link to this heading"></a></h2>
+<p>Sensor Flow:</p>
+<ol class="arabic simple">
+<li><p>ESP32 publishes raw sensor data</p></li>
+<li><p>Optional hardware-level filtering (lightweight only)</p></li>
+<li><p>Subsystems perform full filtering + fusion</p></li>
+<li><p>State estimation produces <cite>/odom</cite> and pose estimates</p></li>
+</ol>
+<p>Control Flow:</p>
+<ol class="arabic simple">
+<li><p>ROS 2 Stack generates intent (<cite>cmd_vel</cite>, mission goals)</p></li>
+<li><p>Navigation converts intent → motion commands</p></li>
+<li><p>Platform layer forwards commands to firmware</p></li>
+<li><p>ESP32 executes motor control</p></li>
+</ol>
+<p>—</p>
+</section>
+<section id="communication-model">
+<h2>Communication Model<a class="headerlink" href="#communication-model" title="Link to this heading"></a></h2>
+<p>All inter-layer communication uses ROS 2 topics and messages:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">sensor_msgs/msg/Imu</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sensor_msgs/msg/Range</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">geometry_msgs/msg/Twist</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nav_msgs/msg/Odometry</span></code></p></li>
+</ul>
+<p>Custom messages are allowed only in:
+<code class="docutils literal notranslate"><span class="pre">robot_interfaces</span></code> package.</p>
+<p>—</p>
+</section>
+<section id="design-principles">
+<h2>Design Principles<a class="headerlink" href="#design-principles" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Hardware is isolated in firmware layer</p></li>
+<li><p>Algorithms are isolated in subsystem layer</p></li>
+<li><p>Robot behavior is isolated in ROS 2 stack layer</p></li>
+<li><p>No cross-layer logic leakage allowed</p></li>
+</ul>
+<p>—</p>
+</section>
+<section id="extensibility">
+<h2>Extensibility<a class="headerlink" href="#extensibility" title="Link to this heading"></a></h2>
+<p>This architecture supports:</p>
+<ul class="simple">
+<li><p>Multiple robots (Wall-E, Gas Robot, future systems)</p></li>
+<li><p>Swappable subsystems (e.g., different SLAM methods)</p></li>
+<li><p>Hardware abstraction (ESP32 or alternative controllers)</p></li>
+<li><p>Simulation and real hardware parity</p></li>
+</ul>
+<p>—</p>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading"></a></h2>
+<p>All theoretical and implementation references are listed in <span class="xref std std-doc">references</span>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../firmware/esp32_controller.html" class="btn btn-neutral float-left" title="ESP32 Controller" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="communication_model.html" class="btn btn-neutral float-right" title="Communication Model" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Lydia Chheng.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

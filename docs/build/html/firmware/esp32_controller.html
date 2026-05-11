@@ -19,8 +19,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="WiFi Provisioning" href="../wifi_provisioning.html" />
-    <link rel="prev" title="Workflow and Commands" href="../workflow_and_commands.html" /> 
+    <link rel="next" title="Architecture" href="../hardware/architecture.html" />
+    <link rel="prev" title="Workflow and Commands" href="../development/workflow_and_commands.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -42,10 +42,10 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Shared Core Documentation</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting Started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../workflow_and_commands.html">Workflow and Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/workflow_and_commands.html">Workflow and Commands</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">ESP32 Controller</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#application-variants">Application Variants</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#motor-controller-full-featured">Motor Controller (Full-Featured)</a></li>
@@ -56,6 +56,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#hardware-configuration">Hardware Configuration</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#i2c-sensors">I2C (Sensors)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#ultrasonic-sensor">Ultrasonic Sensor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hall-effect-speed-sensors">Hall-Effect Speed Sensors</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#motor-control-motor-variant-only">Motor Control (Motor Variant Only)</a></li>
 </ul>
 </li>
@@ -114,9 +115,17 @@
 <li class="toctree-l2"><a class="reference internal" href="#future-enhancements">Future Enhancements</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../wifi_provisioning.html">WiFi Provisioning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../architecture.html">Architecture</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/architecture.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/communication_model.html">Communication Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/system_contract.html">System Contract</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deployment/wifi_provisioning.html">WiFi Provisioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/index.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/troubleshooting.html">Troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Robot Variants</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../variants/wall_e/index.html">Wall-E Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../variants/gas_robot/index.html">Gas Robot Variant</a></li>
 </ul>
 
         </div>
@@ -138,8 +147,8 @@
             <a href="../_sources/firmware/esp32_controller.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
-        <a href="../workflow_and_commands.html" class="btn btn-neutral float-left" title="Workflow and Commands" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../wifi_provisioning.html" class="btn btn-neutral float-right" title="WiFi Provisioning" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../development/workflow_and_commands.html" class="btn btn-neutral float-left" title="Workflow and Commands" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../hardware/architecture.html" class="btn btn-neutral float-right" title="Architecture" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
   </div>
   <hr/>
 </div>
@@ -149,6 +158,7 @@
   <section id="esp32-controller">
 <span id="id1"></span><h1>ESP32 Controller<a class="headerlink" href="#esp32-controller" title="Link to this heading"></a></h1>
 <p>The ESP32 controller runs FreeRTOS with micro-ROS micro-sage communication. Two variants are provided: a full-featured <strong>motor controller</strong> with safety systems, and a lightweight <strong>sensor-only</strong> reference implementation for validation.</p>
+<p>The board-level design also includes paired hall-effect sensors for wheel-speed or rotation feedback, so the firmware and localization notes should stay aligned with the PCB wiring.</p>
 <section id="application-variants">
 <h2>Application Variants<a class="headerlink" href="#application-variants" title="Link to this heading"></a></h2>
 <section id="motor-controller-full-featured">
@@ -171,6 +181,7 @@
 - Same WiFi provisioning system as motor variant
 - Lightweight for simulation and validation
 - Publishing: /imu/data, /range/data</p>
+<p>Use this app as the reference when you want the raw sensor path without the motor-control layer.</p>
 </section>
 </section>
 <section id="overview">
@@ -203,6 +214,11 @@
 <li><p><strong>Trigger Pin</strong>: GPIO 5 (motor variant) / GPIO 9 (sensor-only variant)</p></li>
 <li><p><strong>Echo Pin</strong>: GPIO 18 (motor variant) / GPIO 10 (sensor-only variant)</p></li>
 </ul>
+</section>
+<section id="hall-effect-speed-sensors">
+<h3>Hall-Effect Speed Sensors<a class="headerlink" href="#hall-effect-speed-sensors" title="Link to this heading"></a></h3>
+<p>The PCB schematic includes paired hall-effect sensors for wheel-speed or rotation feedback.</p>
+<p>They are board-level inputs rather than part of the IMU or ultrasonic path, so document their GPIO routing and pulse-to-speed conversion wherever they are wired into firmware or localization.</p>
 </section>
 <section id="motor-control-motor-variant-only">
 <h3>Motor Control (Motor Variant Only)<a class="headerlink" href="#motor-control-motor-variant-only" title="Link to this heading"></a></h3>
@@ -372,11 +388,15 @@ idf.py<span class="w"> </span>-p<span class="w"> </span>/dev/ttyUSB0<span class=
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/motor-cmd</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/motor_cmd</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">std_msgs/msg/Float32MultiArray</span></code></p></td>
 <td><p>Motor commands [M1-M4] in [-1.0, +1.0]</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/e-stop</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/servo_cmd</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">std_msgs/msg/Float32</span></code></p></td>
+<td><p>Servo angle target in degrees</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/e_stop</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">std_msgs/msg/Bool</span></code></p></td>
 <td><p>Emergency stop: true=cut, false=clear</p></td>
 </tr>
@@ -393,8 +413,8 @@ idf.py<span class="w"> </span>-p<span class="w"> </span>/dev/ttyUSB0<span class=
 - <strong>-1.0</strong>: Full reverse (counter-clockwise)
 - <strong>0</strong>: Stop</p>
 <p>Example ROS 2 publish:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>topic<span class="w"> </span>pub<span class="w"> </span>/motor-cmd<span class="w"> </span>std_msgs/msg/Float32MultiArray<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span><span class="s2">&quot;data: [0.5, 0.5, 0.5, 0.5]&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>topic<span class="w"> </span>pub<span class="w"> </span>/motor_cmd<span class="w"> </span>std_msgs/msg/Float32MultiArray<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span><span class="s2">&quot;data: [0.5, 0.5, 0.5, 0.5]&quot;</span>
 </pre></div>
 </div>
 <section id="motor-safety-features">
@@ -412,13 +432,13 @@ idf.py<span class="w"> </span>-p<span class="w"> </span>/dev/ttyUSB0<span class=
 - Prevents runaway if communication is lost
 - Timestamp updated on each received command</p></li>
 <li><p><strong>Emergency Stop (volatile flag)</strong>
-- Subscribed to <code class="docutils literal notranslate"><span class="pre">/e-stop</span></code> Bool topic
+- Subscribed to <code class="docutils literal notranslate"><span class="pre">/e_stop</span></code> Bool topic
 - <strong>True</strong>: Immediately cuts all motors to zero duty cycle; cancels all commands
 - <strong>False</strong>: Clears emergency stop; normal command processing resumes
 - Volatile flag prevents compiler optimizations</p></li>
 </ol>
 <p>Example emergency stop:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>topic<span class="w"> </span>pub<span class="w"> </span>/e-stop<span class="w"> </span>std_msgs/msg/Bool<span class="w"> </span><span class="s2">&quot;data: true&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>topic<span class="w"> </span>pub<span class="w"> </span>/e_stop<span class="w"> </span>std_msgs/msg/Bool<span class="w"> </span><span class="s2">&quot;data: true&quot;</span>
 </pre></div>
 </div>
 </section>
@@ -704,8 +724,8 @@ Restart Device
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../workflow_and_commands.html" class="btn btn-neutral float-left" title="Workflow and Commands" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../wifi_provisioning.html" class="btn btn-neutral float-right" title="WiFi Provisioning" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../development/workflow_and_commands.html" class="btn btn-neutral float-left" title="Workflow and Commands" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../hardware/architecture.html" class="btn btn-neutral float-right" title="Architecture" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

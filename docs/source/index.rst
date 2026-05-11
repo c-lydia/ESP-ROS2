@@ -1,28 +1,41 @@
-========
-Wall-E
-========
+========================
+Robotics Workspace
+========================
 
-Welcome to Wall-E's comprehensive documentation. This project provides an integrated development environment combining ESP32 firmware, FreeRTOS, and ROS 2 Humble for advanced embedded robotics applications.
+Welcome to the comprehensive documentation for multiple robot variants. This project provides an integrated development environment combining ESP32 firmware, FreeRTOS, and ROS 2 Humble for advanced embedded robotics applications.
 
 The published site is built automatically from the ``docs/source`` tree on pushes to ``main``.
 
 .. toctree::
   :maxdepth: 2
-  :caption: Contents
+  :caption: Shared Core Documentation
 
-  getting_started
-  concepts
-  workflow_and_commands
+  getting_started/index
+  development/workflow_and_commands
   firmware/esp32_controller
-  wifi_provisioning
-  architecture
-  troubleshooting
-  references
+  hardware/architecture
+  hardware/communication_model
+  hardware/system_contract
+  deployment/wifi_provisioning
+  references/index
+  references/troubleshooting
+
+.. toctree::
+  :maxdepth: 2
+  :caption: Robot Variants
+
+  variants/wall_e/index
+  variants/gas_robot/index
 
 Project Overview
 ================
 
-Wall-E is a complete, production-ready workspace for developing intelligent embedded robot systems. It seamlessly integrates:
+This workspace provides a production-ready platform for developing intelligent embedded robot systems using multiple variants:
+
+- **Wall-E**: Original robot variant with full ROS 2 ecosystem and sensor integration
+- **Gas Robot**: Experimental variant for gas-related applications
+
+The project seamlessly integrates:
 
 - **Modern Robotics**: Full ROS 2 Humble support on host systems
 - **Embedded Systems**: FreeRTOS-based ESP32 controller firmware
@@ -69,13 +82,12 @@ Key Features & Benefits
 Quick Start
 ===========
 
-To get started with Wall-E:
+To get started:
 
-1. Clone the repository and navigate to the workspace
-2. Start the Docker containers: ``docker compose up -d``
-3. Build packages in the workspace container: ``colcon build``
-4. Build and flash the ESP32 firmware
-5. Monitor the micro-ROS agent and ESP32 communication
+1. Choose your robot variant: :doc:`variants/wall_e/index` or :doc:`variants/gas_robot/index`
+2. Follow the :doc:`getting_started/index` guide for setup
+3. Refer to :doc:`development/workflow_and_commands` for development workflows
+4. See variant-specific documentation for customization
 
 For detailed instructions, see the **Getting Started** guide.
 
@@ -83,14 +95,14 @@ For detailed instructions, see the **Getting Started** guide.
 System Architecture
 ===================
 
-Wall-E's architecture consists of:
+The shared platform architecture consists of:
 
 - **Host System**: ROS 2 Humble development environment with visualization tools
 - **Middleware**: micro-ROS agent for reliable UDP communication
 - **Embedded Controller**: FreeRTOS-based ESP32 with sensor interface
 - **Documentation**: Complete guides and API references
 
-For a detailed technical overview, see the **Architecture** documentation.
+Each robot variant may include additional subsystems. For a detailed technical overview, see the **Architecture** documentation.
 
 
 Technical Stack

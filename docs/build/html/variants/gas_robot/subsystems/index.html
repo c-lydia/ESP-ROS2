@@ -1,0 +1,202 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gas Robot Subsystems &mdash; Wall-E 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Hardware Interfaces" href="hardware_interfaces.html" />
+    <link rel="prev" title="Gas Robot Setup" href="../setup.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #2980B9" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            Wall-E
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Shared Core Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../development/workflow_and_commands.html">Workflow and Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../firmware/esp32_controller.html">ESP32 Controller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../hardware/architecture.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../hardware/communication_model.html">Communication Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../hardware/system_contract.html">System Contract</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../deployment/wifi_provisioning.html">WiFi Provisioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../references/index.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../references/troubleshooting.html">Troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Robot Variants</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../wall_e/index.html">Wall-E Robot</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Gas Robot Variant</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../setup.html">Gas Robot Setup</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Gas Robot Subsystems</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#system-flow">System Flow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="hardware_interfaces.html">Hardware Interfaces</a></li>
+<li class="toctree-l4"><a class="reference internal" href="state_estimation.html">State Estimation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="perception.html">Perception</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mapping.html">Mapping</a></li>
+<li class="toctree-l4"><a class="reference internal" href="navigation.html">Navigation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="communication.html">Communication</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cv_pipeline.html">CV Pipeline</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-roles">Module Roles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#design-intent">Design Intent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#related-documentation">Related Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#getting-started-with-gas-robot">Getting Started with Gas Robot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#core-subsystems">Core Subsystems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#shared-platform-firmware">Shared Platform &amp; Firmware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#development-deployment">Development &amp; Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#related-documentation">Related Documentation</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #2980B9" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Wall-E</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Gas Robot Variant</a></li>
+      <li class="breadcrumb-item active">Gas Robot Subsystems</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/variants/gas_robot/subsystems/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="../setup.html" class="btn btn-neutral float-left" title="Gas Robot Setup" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="hardware_interfaces.html" class="btn btn-neutral float-right" title="Hardware Interfaces" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="gas-robot-subsystems">
+<h1>Gas Robot Subsystems<a class="headerlink" href="#gas-robot-subsystems" title="Link to this heading"></a></h1>
+<p>Gas Robot is a <strong>gas-leak mapping robot</strong>, not a full autonomy stack.
+The docs below follow the architecture you described: raw sensing, state estimation,
+gas filtering, heat-map mapping, simple patrol navigation, and alerts.</p>
+<section id="system-flow">
+<h2>System Flow<a class="headerlink" href="#system-flow" title="Link to this heading"></a></h2>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">hardware_interfaces</span>
+<span class="w">  </span><span class="o">-&gt;</span>
+<span class="n">state_estimation</span>
+<span class="w">  </span><span class="o">-&gt;</span>
+<span class="n">perception</span>
+<span class="w">  </span><span class="o">-&gt;</span>
+<span class="n">mapping</span>
+<span class="w">  </span><span class="o">-&gt;</span>
+<span class="n">navigation</span>
+<span class="w">  </span><span class="o">-&gt;</span>
+<span class="n">communication</span>
+</pre></div>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="hardware_interfaces.html">Hardware Interfaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="state_estimation.html">State Estimation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="perception.html">Perception</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mapping.html">Mapping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="navigation.html">Navigation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="communication.html">Communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cv_pipeline.html">CV Pipeline</a></li>
+</ul>
+</div>
+</section>
+<section id="module-roles">
+<h2>Module Roles<a class="headerlink" href="#module-roles" title="Link to this heading"></a></h2>
+</section>
+<section id="design-intent">
+<h2>Design Intent<a class="headerlink" href="#design-intent" title="Link to this heading"></a></h2>
+<p>This architecture is intentionally narrow:</p>
+<ul class="simple">
+<li><p>keep the gas sensor path easy to debug</p></li>
+<li><p>separate pose estimation from sensor filtering</p></li>
+<li><p>treat mapping as a gas-intensity field, not classic SLAM</p></li>
+<li><p>keep navigation simple and mission-driven</p></li>
+<li><p>use communication for alerts and operator feedback</p></li>
+</ul>
+</section>
+<section id="related-documentation">
+<h2>Related Documentation<a class="headerlink" href="#related-documentation" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="../setup.html"><span class="doc">Gas Robot Setup</span></a> - Workspace setup and configuration</p></li>
+<li><p><a class="reference internal" href="../../../hardware/system_contract.html"><span class="doc">System Contract</span></a> - Message interfaces</p></li>
+<li><p><a class="reference internal" href="../../../hardware/communication_model.html"><span class="doc">Communication Model</span></a> - Data flow model</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../setup.html" class="btn btn-neutral float-left" title="Gas Robot Setup" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="hardware_interfaces.html" class="btn btn-neutral float-right" title="Hardware Interfaces" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Lydia Chheng.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

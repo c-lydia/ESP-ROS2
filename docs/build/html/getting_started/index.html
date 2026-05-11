@@ -1,0 +1,454 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Getting Started &mdash; Wall-E 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Workflow and Commands" href="../development/workflow_and_commands.html" />
+    <link rel="prev" title="Robotics Workspace" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #2980B9" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Wall-E
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Shared Core Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#system-requirements">System Requirements</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#minimum-requirements">Minimum Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hardware-requirements">Hardware Requirements</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#quick-start-5-minutes">Quick Start (5 minutes)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#detailed-setup">Detailed Setup</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#environment-configuration">Environment Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#building-the-workspace">Building the Workspace</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#esp32-firmware-setup">ESP32 Firmware Setup</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#prerequisites-for-firmware">Prerequisites for Firmware</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configure-and-build-firmware">Configure and Build Firmware</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#wifi-provisioning">WiFi Provisioning</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#docker-container-setup">Docker Container Setup</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#x11-display-setup-gui">X11 Display Setup (GUI)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#choosing-your-robot-variant">Choosing Your Robot Variant</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#wall-e-variant">Wall-E Variant</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gas-robot-variant">Gas Robot Variant</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#workspace-structure">Workspace Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#building-without-docker">Building Without Docker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#common-issues-solutions">Common Issues &amp; Solutions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../development/workflow_and_commands.html">Workflow and Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../firmware/esp32_controller.html">ESP32 Controller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/architecture.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/communication_model.html">Communication Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/system_contract.html">System Contract</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deployment/wifi_provisioning.html">WiFi Provisioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/index.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/troubleshooting.html">Troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Robot Variants</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../variants/wall_e/index.html">Wall-E Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../variants/gas_robot/index.html">Gas Robot Variant</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #2980B9" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Wall-E</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Getting Started</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/getting_started/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="../index.html" class="btn btn-neutral float-left" title="Robotics Workspace" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../development/workflow_and_commands.html" class="btn btn-neutral float-right" title="Workflow and Commands" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="getting-started">
+<span id="id1"></span><h1>Getting Started<a class="headerlink" href="#getting-started" title="Link to this heading"></a></h1>
+<p>Welcome! This guide will help you set up the robotics workspace for either the Wall-E or Gas Robot variant.</p>
+<section id="system-requirements">
+<h2>System Requirements<a class="headerlink" href="#system-requirements" title="Link to this heading"></a></h2>
+<section id="minimum-requirements">
+<h3>Minimum Requirements<a class="headerlink" href="#minimum-requirements" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Operating System</strong>: Ubuntu 20.04 LTS (Linux host recommended)</p></li>
+<li><p><strong>Docker &amp; Docker Compose</strong>: Latest stable version</p></li>
+<li><p><strong>Git</strong>: For cloning the repository</p></li>
+<li><p><strong>Memory</strong>: 8GB RAM minimum (16GB recommended for Gas Robot)</p></li>
+<li><p><strong>Disk Space</strong>: 20GB free space for build artifacts</p></li>
+<li><p><strong>Python</strong>: Python 3.8+</p></li>
+</ul>
+</section>
+<section id="hardware-requirements">
+<h3>Hardware Requirements<a class="headerlink" href="#hardware-requirements" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>ESP32 Development Board</strong>: ESP32-S3 recommended</p></li>
+<li><p><strong>USB Cable</strong>: For programming and debugging</p></li>
+<li><p><strong>Optional Sensors</strong>:
+- IMU Sensor (MPU6050) - I2C
+- Ultrasonic Range Sensor (HC-SR04) - GPIO
+- Gas Sensors (for Gas Robot variant)
+- Camera Module (optional, for vision-based navigation)</p></li>
+</ul>
+</section>
+</section>
+<section id="quick-start-5-minutes">
+<h2>Quick Start (5 minutes)<a class="headerlink" href="#quick-start-5-minutes" title="Link to this heading"></a></h2>
+<ol class="arabic">
+<li><p><strong>Clone the Repository</strong></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">git</span><span class="w"> </span><span class="n">clone</span><span class="w"> </span><span class="n">https</span><span class="o">:</span><span class="c1">//github.com/c-lydia/wall_e.git</span>
+<span class="n">cd</span><span class="w"> </span><span class="n">wall_e</span><span class="o">/</span><span class="n">micro_ros_ws</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Start Docker Services</strong></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span><span class="w"> </span><span class="n">compose</span><span class="w"> </span><span class="n">up</span><span class="w"> </span><span class="o">-</span><span class="n">d</span>
+</pre></div>
+</div>
+<p>Verify services are running:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span><span class="w"> </span><span class="n">compose</span><span class="w"> </span><span class="n">ps</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Enter Workspace Container</strong></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span><span class="w"> </span><span class="n">compose</span><span class="w"> </span><span class="n">exec</span><span class="w"> </span><span class="n">workspace</span><span class="w"> </span><span class="n">bash</span>
+<span class="n">cd</span><span class="w"> </span><span class="o">/</span><span class="n">micro_ros_ws</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Source ROS 2 and Build</strong></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">source</span><span class="w"> </span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">ros</span><span class="o">/</span><span class="n">humble</span><span class="o">/</span><span class="n">setup</span><span class="p">.</span><span class="n">bash</span>
+<span class="n">colcon</span><span class="w"> </span><span class="n">build</span>
+<span class="n">source</span><span class="w"> </span><span class="n">install</span><span class="o">/</span><span class="n">setup</span><span class="p">.</span><span class="n">bash</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Choose Your Robot Variant</strong></p>
+<p>For Wall-E:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">ros2</span><span class="w"> </span><span class="n">launch</span><span class="w"> </span><span class="n">wall_e_description</span><span class="w"> </span><span class="n">wall_e</span><span class="p">.</span><span class="n">launch</span><span class="p">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>For Gas Robot:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">colcon</span><span class="w"> </span><span class="n">build</span><span class="w"> </span><span class="o">--</span><span class="n">packages</span><span class="o">-</span><span class="n">select</span><span class="w"> </span><span class="n">gas_robot_description</span>
+<span class="n">ros2</span><span class="w"> </span><span class="n">launch</span><span class="w"> </span><span class="n">gas_robot_description</span><span class="w"> </span><span class="n">gas_robot</span><span class="p">.</span><span class="n">launch</span><span class="p">.</span><span class="n">py</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="detailed-setup">
+<h2>Detailed Setup<a class="headerlink" href="#detailed-setup" title="Link to this heading"></a></h2>
+<section id="environment-configuration">
+<h3>Environment Configuration<a class="headerlink" href="#environment-configuration" title="Link to this heading"></a></h3>
+<p>Set up your environment variables before working:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp"># ROS 2 domain ID (for multi-robot networks, use different IDs)</span>
+<span class="n">export</span><span class="w"> </span><span class="n">ROS_DOMAIN_ID</span><span class="o">=</span><span class="mi">1</span>
+
+<span class="cp"># Optional: set middleware to cyclonedds for better performance</span>
+<span class="n">export</span><span class="w"> </span><span class="n">RMW_IMPLEMENTATION</span><span class="o">=</span><span class="n">rmw_cyclonedds_cpp</span>
+</pre></div>
+</div>
+</section>
+<section id="building-the-workspace">
+<h3>Building the Workspace<a class="headerlink" href="#building-the-workspace" title="Link to this heading"></a></h3>
+<p><strong>Build all packages:</strong></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span><span class="w"> </span><span class="o">/</span><span class="n">micro_ros_ws</span>
+<span class="n">colcon</span><span class="w"> </span><span class="n">build</span>
+</pre></div>
+</div>
+<p><strong>Build specific packages:</strong></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">colcon</span><span class="w"> </span><span class="n">build</span><span class="w"> </span><span class="o">--</span><span class="n">packages</span><span class="o">-</span><span class="n">select</span><span class="w"> </span><span class="n">custom_interfaces</span><span class="w"> </span><span class="n">wall_e_description</span>
+</pre></div>
+</div>
+<p><strong>Clean build (remove build artifacts):</strong></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">colcon</span><span class="w"> </span><span class="n">build</span><span class="w"> </span><span class="o">--</span><span class="n">cmake</span><span class="o">-</span><span class="n">target</span><span class="w"> </span><span class="n">clean</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="esp32-firmware-setup">
+<h2>ESP32 Firmware Setup<a class="headerlink" href="#esp32-firmware-setup" title="Link to this heading"></a></h2>
+<section id="prerequisites-for-firmware">
+<h3>Prerequisites for Firmware<a class="headerlink" href="#prerequisites-for-firmware" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>ESP32 development board connected via USB</p></li>
+<li><p>ESP-IDF tools installed (or use Docker container)</p></li>
+</ul>
+</section>
+<section id="configure-and-build-firmware">
+<h3>Configure and Build Firmware<a class="headerlink" href="#configure-and-build-firmware" title="Link to this heading"></a></h3>
+<ol class="arabic">
+<li><p><strong>Configure for your robot and transport:</strong></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">ros2</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="n">micro_ros_setup</span><span class="w"> </span><span class="n">configure_firmware</span><span class="p">.</span><span class="n">sh</span><span class="w"> </span><span class="n">esp32_controller</span><span class="w"> </span>\
+<span class="w">  </span><span class="o">-</span><span class="n">t</span><span class="w"> </span><span class="n">udp</span><span class="w"> </span>\
+<span class="w">  </span><span class="o">-</span><span class="n">i</span><span class="w"> </span><span class="mf">192.168.1.2</span><span class="w"> </span>\
+<span class="w">  </span><span class="o">-</span><span class="n">p</span><span class="w"> </span><span class="mi">8888</span>
+</pre></div>
+</div>
+<p>Parameters:
+- <code class="docutils literal notranslate"><span class="pre">-t</span> <span class="pre">udp</span></code>: Use UDP transport (change to <code class="docutils literal notranslate"><span class="pre">tcp</span></code> if needed)
+- <code class="docutils literal notranslate"><span class="pre">-i</span></code>: IP address of ROS 2 host (docker container IP)
+- <code class="docutils literal notranslate"><span class="pre">-p</span></code>: Port number for micro-ROS agent</p>
+</li>
+<li><p><strong>Build the firmware:</strong></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">ros2</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="n">micro_ros_setup</span><span class="w"> </span><span class="n">build_firmware</span><span class="p">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Flash to ESP32:</strong></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">ros2</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="n">micro_ros_setup</span><span class="w"> </span><span class="n">flash_firmware</span><span class="p">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Monitor serial output:</strong></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">ros2</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="n">micro_ros_setup</span><span class="w"> </span><span class="n">monitor_serial</span><span class="p">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="wifi-provisioning">
+<h3>WiFi Provisioning<a class="headerlink" href="#wifi-provisioning" title="Link to this heading"></a></h3>
+<p>On first boot with no stored WiFi credentials:</p>
+<ol class="arabic simple">
+<li><p>ESP32 creates SoftAP (access point) named <code class="docutils literal notranslate"><span class="pre">ESP32-Setup</span></code></p></li>
+<li><p>Connect your device to this open network</p></li>
+<li><p>Open <code class="docutils literal notranslate"><span class="pre">http://192.168.4.1/</span></code> in your browser</p></li>
+<li><p>Enter your WiFi SSID and password</p></li>
+<li><p>Device saves credentials and reboots</p></li>
+<li><p>Automatically connects to your WiFi on next boot</p></li>
+</ol>
+<p>See <a class="reference internal" href="../deployment/wifi_provisioning.html"><span class="doc">WiFi Provisioning</span></a> for detailed instructions.</p>
+</section>
+</section>
+<section id="docker-container-setup">
+<h2>Docker Container Setup<a class="headerlink" href="#docker-container-setup" title="Link to this heading"></a></h2>
+<p>The Docker environment provides:</p>
+<ul class="simple">
+<li><p><strong>ROS 2 Humble</strong> development environment</p></li>
+<li><p><strong>Python</strong> with required packages</p></li>
+<li><p><strong>colcon</strong> build system</p></li>
+<li><p><strong>micro-ROS</strong> agent</p></li>
+<li><p><strong>Development tools</strong> (git, nano, etc.)</p></li>
+</ul>
+<p><strong>Start services:</strong></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span><span class="w"> </span><span class="n">compose</span><span class="w"> </span><span class="n">up</span><span class="w"> </span><span class="o">-</span><span class="n">d</span>
+</pre></div>
+</div>
+<p><strong>View logs:</strong></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span><span class="w"> </span><span class="n">compose</span><span class="w"> </span><span class="n">logs</span><span class="w"> </span><span class="o">-</span><span class="n">f</span><span class="w"> </span><span class="n">workspace</span>
+</pre></div>
+</div>
+<p><strong>Stop services:</strong></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span><span class="w"> </span><span class="n">compose</span><span class="w"> </span><span class="n">down</span>
+</pre></div>
+</div>
+<p><strong>Reset database (removes persistent data):</strong></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span><span class="w"> </span><span class="n">compose</span><span class="w"> </span><span class="n">down</span><span class="w"> </span><span class="o">-</span><span class="n">v</span>
+</pre></div>
+</div>
+<section id="x11-display-setup-gui">
+<h3>X11 Display Setup (GUI)<a class="headerlink" href="#x11-display-setup-gui" title="Link to this heading"></a></h3>
+<p>For visualization tools (RViz, Gazebo):</p>
+<p><strong>On Linux host before launching GUI apps:</strong></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">xhost</span><span class="w"> </span><span class="o">+</span><span class="n">si</span><span class="o">:</span><span class="n">localuser</span><span class="o">:</span><span class="n">root</span>
+</pre></div>
+</div>
+<p><strong>Inside container, any GUI app will display on your desktop.</strong></p>
+</section>
+</section>
+<section id="choosing-your-robot-variant">
+<h2>Choosing Your Robot Variant<a class="headerlink" href="#choosing-your-robot-variant" title="Link to this heading"></a></h2>
+<section id="wall-e-variant">
+<h3>Wall-E Variant<a class="headerlink" href="#wall-e-variant" title="Link to this heading"></a></h3>
+<p>Original robot with manual control and sensor integration:</p>
+<ul class="simple">
+<li><p>Built-in motion control</p></li>
+<li><p>Sensor feedback (IMU, range, encoders)</p></li>
+<li><p>Manual teleoperation support</p></li>
+<li><p>Suitable for learning ROS 2 basics</p></li>
+</ul>
+<p><strong>Start with</strong>: <a class="reference internal" href="../variants/wall_e/index.html"><span class="doc">Wall-E Robot</span></a></p>
+</section>
+<section id="gas-robot-variant">
+<h3>Gas Robot Variant<a class="headerlink" href="#gas-robot-variant" title="Link to this heading"></a></h3>
+<p>Advanced robot with autonomous navigation:</p>
+<ul class="simple">
+<li><p>Full autonomous navigation stack</p></li>
+<li><p>Computer vision processing</p></li>
+<li><p>SLAM and mapping</p></li>
+<li><p>Environmental sensing</p></li>
+<li><p>Suitable for advanced robotics projects</p></li>
+</ul>
+<p><strong>Start with</strong>: <a class="reference internal" href="../variants/gas_robot/index.html"><span class="doc">Gas Robot Variant</span></a></p>
+</section>
+</section>
+<section id="workspace-structure">
+<h2>Workspace Structure<a class="headerlink" href="#workspace-structure" title="Link to this heading"></a></h2>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">micro_ros_ws</span><span class="o">/</span>
+<span class="err">├──</span><span class="w"> </span><span class="n">src</span><span class="o">/</span>
+<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">micro_ros_setup</span><span class="o">/</span><span class="w">        </span><span class="err">#</span><span class="w"> </span><span class="n">Firmware</span><span class="w"> </span><span class="n">build</span><span class="w"> </span><span class="n">tools</span>
+<span class="err">│</span><span class="w">   </span><span class="err">└──</span><span class="w"> </span><span class="n">uros</span><span class="o">/</span><span class="w">                   </span><span class="err">#</span><span class="w"> </span><span class="n">micro</span><span class="o">-</span><span class="n">ROS</span><span class="w"> </span><span class="n">packages</span>
+<span class="err">├──</span><span class="w"> </span><span class="n">wall_e_ws</span><span class="o">/</span>
+<span class="err">│</span><span class="w">   </span><span class="err">└──</span><span class="w"> </span><span class="n">src</span><span class="o">/</span><span class="w">                    </span><span class="err">#</span><span class="w"> </span><span class="n">Wall</span><span class="o">-</span><span class="n">E</span><span class="w"> </span><span class="n">packages</span>
+<span class="err">├──</span><span class="w"> </span><span class="n">gas_robot_ws</span><span class="o">/</span>
+<span class="err">│</span><span class="w">   </span><span class="err">└──</span><span class="w"> </span><span class="n">src</span><span class="o">/</span><span class="w">                    </span><span class="err">#</span><span class="w"> </span><span class="n">Gas</span><span class="w"> </span><span class="n">Robot</span><span class="w"> </span><span class="n">packages</span>
+<span class="err">├──</span><span class="w"> </span><span class="n">firmware</span><span class="o">/</span>
+<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">custom</span><span class="o">/</span><span class="w">                 </span><span class="err">#</span><span class="w"> </span><span class="n">Custom</span><span class="w"> </span><span class="n">firmware</span><span class="w"> </span><span class="n">apps</span>
+<span class="err">│</span><span class="w">   </span><span class="err">├──</span><span class="w"> </span><span class="n">freertos_apps</span><span class="o">/</span><span class="w">          </span><span class="err">#</span><span class="w"> </span><span class="n">FreeRTOS</span><span class="w"> </span><span class="n">reference</span><span class="w"> </span><span class="n">apps</span>
+<span class="err">│</span><span class="w">   </span><span class="err">└──</span><span class="w"> </span><span class="n">esp32</span><span class="o">/</span><span class="w">                  </span><span class="err">#</span><span class="w"> </span><span class="n">ESP</span><span class="o">-</span><span class="n">IDF</span><span class="w"> </span><span class="n">configurations</span>
+<span class="err">├──</span><span class="w"> </span><span class="n">docs</span><span class="o">/</span><span class="w">                       </span><span class="err">#</span><span class="w"> </span><span class="n">Documentation</span><span class="w"> </span><span class="p">(</span><span class="n">you</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">here</span><span class="p">)</span>
+<span class="err">└──</span><span class="w"> </span><span class="n">docker</span><span class="o">/</span><span class="w">                     </span><span class="err">#</span><span class="w"> </span><span class="n">Docker</span><span class="w"> </span><span class="n">configuration</span>
+</pre></div>
+</div>
+</section>
+<section id="building-without-docker">
+<h2>Building Without Docker<a class="headerlink" href="#building-without-docker" title="Link to this heading"></a></h2>
+<p><strong>If you prefer native development:</strong></p>
+<ol class="arabic">
+<li><p>Install ROS 2 Humble: <a class="reference external" href="https://docs.ros.org/en/humble/Installation.html">https://docs.ros.org/en/humble/Installation.html</a></p></li>
+<li><p>Install colcon: <a class="reference external" href="https://colcon.readthedocs.io/">https://colcon.readthedocs.io/</a></p></li>
+<li><p>Install micro-ROS dependencies</p></li>
+<li><p>Build the workspace normally:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">source</span><span class="w"> </span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">ros</span><span class="o">/</span><span class="n">humble</span><span class="o">/</span><span class="n">setup</span><span class="p">.</span><span class="n">bash</span>
+<span class="n">colcon</span><span class="w"> </span><span class="n">build</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="common-issues-solutions">
+<h2>Common Issues &amp; Solutions<a class="headerlink" href="#common-issues-solutions" title="Link to this heading"></a></h2>
+<p><strong>Docker container fails to start:</strong></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span><span class="w"> </span><span class="n">compose</span><span class="w"> </span><span class="n">logs</span><span class="w"> </span><span class="n">workspace</span>
+</pre></div>
+</div>
+<p><strong>ROS 2 nodes can’t communicate:</strong></p>
+<ul class="simple">
+<li><p>Check <code class="docutils literal notranslate"><span class="pre">ROS_DOMAIN_ID</span></code> is consistent (default: 1)</p></li>
+<li><p>Verify network connectivity between components</p></li>
+<li><p>Ensure DDS middleware is compatible</p></li>
+</ul>
+<p><strong>Firmware won’t compile:</strong></p>
+<ul class="simple">
+<li><p>Verify ESP-IDF version matches firmware requirements</p></li>
+<li><p>Clean and rebuild: <code class="docutils literal notranslate"><span class="pre">colcon</span> <span class="pre">build</span> <span class="pre">--cmake-target</span> <span class="pre">clean</span></code></p></li>
+<li><p>Check serial port is properly connected</p></li>
+</ul>
+<p><strong>GUI apps don’t display:</strong></p>
+<ul class="simple">
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">xhost</span> <span class="pre">+si:localuser:root</span></code> on host before launching</p></li>
+<li><p>Verify <code class="docutils literal notranslate"><span class="pre">DISPLAY</span></code> environment variable is set</p></li>
+</ul>
+<p>See <a class="reference internal" href="../references/troubleshooting.html"><span class="doc">Troubleshooting</span></a> for more solutions.</p>
+</section>
+<section id="next-steps">
+<h2>Next Steps<a class="headerlink" href="#next-steps" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p><strong>Choose your variant:</strong>
+- <a class="reference internal" href="../variants/wall_e/index.html"><span class="doc">Wall-E Robot</span></a> for Wall-E
+- <a class="reference internal" href="../variants/gas_robot/index.html"><span class="doc">Gas Robot Variant</span></a> for Gas Robot</p></li>
+<li><p><strong>Read the architecture:</strong>
+- <a class="reference internal" href="../hardware/architecture.html"><span class="doc">Architecture</span></a> - System overview
+- <a class="reference internal" href="../hardware/communication_model.html"><span class="doc">Communication Model</span></a> - Communication layer</p></li>
+<li><p><strong>Explore subsystems:</strong>
+- <a class="reference internal" href="../variants/wall_e/subsystems/index.html"><span class="doc">Wall-E Subsystems</span></a> - Wall-E subsystems
+- <a class="reference internal" href="../variants/gas_robot/subsystems/index.html"><span class="doc">Gas Robot Subsystems</span></a> - Gas Robot subsystems</p></li>
+<li><p><strong>Development:</strong>
+- <a class="reference internal" href="../development/workflow_and_commands.html"><span class="doc">Workflow and Commands</span></a> - Day-to-day commands
+- <a class="reference internal" href="../firmware/esp32_controller.html"><span class="doc">ESP32 Controller</span></a> - Firmware documentation</p></li>
+<li><p><strong>Reference:</strong>
+- <a class="reference internal" href="../references/index.html"><span class="doc">References</span></a> - Concepts, papers, and resources
+- <a class="reference internal" href="../references/troubleshooting.html"><span class="doc">Troubleshooting</span></a> - Common issues</p></li>
+</ol>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../index.html" class="btn btn-neutral float-left" title="Robotics Workspace" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../development/workflow_and_commands.html" class="btn btn-neutral float-right" title="Workflow and Commands" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Lydia Chheng.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

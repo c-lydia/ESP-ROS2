@@ -1,4 +1,4 @@
-# Wall-E
+# ESP-ROS2
 
 ![License](https://img.shields.io/badge/license-Apache%202.0-blue)
 ![ROS2](https://img.shields.io/badge/ROS2-humble-22314E?logo=ros&logoColor=white)
@@ -21,14 +21,14 @@
 ![STEP](https://img.shields.io/badge/CAD-STEP%20%2F%20KiCad-orange)
 ![Docs](https://img.shields.io/badge/docs-RST-8CA1AF?logo=readthedocs&logoColor=white)
 ![venv](https://img.shields.io/badge/venv-enabled-4B8BBE?logo=python&logoColor=white)
-![Stars](https://img.shields.io/github/stars/c-lydia/wall_e?style=flat)
-![Forks](https://img.shields.io/github/forks/c-lydia/wall_e?style=flat)
-![Watchers](https://img.shields.io/github/watchers/c-lydia/wall_e?style=flat)
-![Release](https://img.shields.io/github/v/release/c-lydia/wall_e)
-![Issues](https://img.shields.io/github/issues/c-lydia/wall_e?color=yellow)
-![Visitors](https://visitor-badge.laobi.icu/badge?page_id=c-lydia.wall_e)
+![Stars](https://img.shields.io/github/stars/c-lydia/ESP-ROS2?style=flat)
+![Forks](https://img.shields.io/github/forks/c-lydia/ESP-ROS2?style=flat)
+![Watchers](https://img.shields.io/github/watchers/c-lydia/ESP-ROS2?style=flat)
+![Release](https://img.shields.io/github/v/release/c-lydia/ESP-ROS2)
+![Issues](https://img.shields.io/github/issues/c-lydia/ESP-ROS2?color=yellow)
+![Visitors](https://visitor-badge.laobi.icu/badge?page_id=c-lydia.ESP-ROS2)
 
-micro-ROS workspace for ESP32 (FreeRTOS + ESP-IDF) with ROS 2 Humble.
+micro-ROS workspace for ESP32 (FreeRTOS + ESP-IDF) with ROS 2 Humble, including both the Wall-E control stack and the Gassify gas-robot stack.
 
 For a user-focused setup and operation guide, see [user_manual.md](user_manual.md).
 
@@ -38,14 +38,27 @@ This repository includes:
 - micro-ROS firmware workspace: `firmware/mcu_ws`
 - Host ROS 2 workspace: `src`, `build`, `install`
 - micro-ROS agent container (UDP 9999)
+- Gas robot ROS 2 workspace: `gas_robot_ws/src`
+- Gassify system model: `gassify_model.md`
 
 ## Documentation Map
 
 - User guide: [user_manual.md](user_manual.md)
 - Concepts guide: [concepts.md](concepts.md)
 - Theoretical calculation summary: [notes.md](notes.md)
+- Gassify mathematical model: [gassify_model.md](gassify_model.md)
 - PCB and KiCad sources: [pcb/wall_e_pcb_v1.0](pcb/wall_e_pcb_v1.0)
 - Sphinx docs index: `docs/source/index.rst`
+
+## Gassify Stack Overview
+
+The Gassify part of this repository focuses on gas-robot modeling and robot description assets alongside the existing Wall-E stack.
+
+- ROS 2 package set location: `gas_robot_ws/src`
+- Robot description package: `gas_robot_ws/src/gas_robot_description`
+- URDF/Xacro model includes a dedicated gas sensor link (`gas_sensor_link`) in:
+  - `gas_robot_ws/src/gas_robot_description/gas_robot_description/src/description/gas_robot.urdf.xacro`
+- Full mathematical and control model reference: `gassify_model.md`
 
 The Sphinx site includes the same high-level concepts and firmware details in a published format.
 

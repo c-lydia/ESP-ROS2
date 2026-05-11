@@ -1,0 +1,617 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>System Contract &mdash; Wall-E 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="WiFi Provisioning" href="../deployment/wifi_provisioning.html" />
+    <link rel="prev" title="Communication Model" href="communication_model.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #2980B9" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Wall-E
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Shared Core Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/workflow_and_commands.html">Workflow and Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../firmware/esp32_controller.html">ESP32 Controller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="communication_model.html">Communication Model</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">System Contract</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#core-contract-principles">Core Contract Principles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#firmware-to-host-contract">Firmware-to-Host Contract</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#published-topics-firmware-host">Published Topics (Firmware → Host)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#subscribed-topics-host-firmware">Subscribed Topics (Host → Firmware)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#host-to-host-ros-2-contract">Host-to-Host ROS 2 Contract</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#standard-navigation-topics">Standard Navigation Topics</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#coordinate-frames">Coordinate Frames</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#standard-tf-tree">Standard TF Tree</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#frame-descriptions">Frame Descriptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#transform-rates">Transform Rates</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#service-contracts">Service Contracts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#configuration-services">Configuration Services</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#action-contracts">Action Contracts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#navigation-actions">Navigation Actions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#gas-robot-extension">Gas Robot Extension</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#additional-topics">Additional Topics</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#subsystem-contracts">Subsystem Contracts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#wall-e-control-subsystem">Wall-E Control Subsystem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#wall-e-feedback-subsystem">Wall-E Feedback Subsystem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#wall-e-localization-subsystem">Wall-E Localization Subsystem</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#version-management">Version Management</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#message-versioning">Message Versioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#compatibility-policy">Compatibility Policy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#deprecation">Deprecation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#error-handling">Error Handling</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#communication-failures">Communication Failures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#recovery-strategies">Recovery Strategies</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#monitoring-and-diagnostics">Monitoring and Diagnostics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#diagnostic-topics">Diagnostic Topics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#logging">Logging</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#contract-compliance-testing">Contract Compliance Testing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#automated-checks">Automated Checks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#manual-verification">Manual Verification</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#related-documentation">Related Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../deployment/wifi_provisioning.html">WiFi Provisioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/index.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/troubleshooting.html">Troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Robot Variants</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../variants/wall_e/index.html">Wall-E Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../variants/gas_robot/index.html">Gas Robot Variant</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #2980B9" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Wall-E</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">System Contract</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/hardware/system_contract.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="communication_model.html" class="btn btn-neutral float-left" title="Communication Model" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../deployment/wifi_provisioning.html" class="btn btn-neutral float-right" title="WiFi Provisioning" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="system-contract">
+<span id="id1"></span><h1>System Contract<a class="headerlink" href="#system-contract" title="Link to this heading"></a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>The system contract defines the formal interface and message specifications between system components. It ensures all modules communicate consistently and reliably.</p>
+</section>
+<section id="core-contract-principles">
+<h2>Core Contract Principles<a class="headerlink" href="#core-contract-principles" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p><strong>Message Semantics</strong>: Each message has a well-defined type and purpose</p></li>
+<li><p><strong>Data Flow</strong>: Clearly defined publisher/subscriber relationships</p></li>
+<li><p><strong>Reliability</strong>: QoS policies ensure critical data delivery</p></li>
+<li><p><strong>Versioning</strong>: Backward compatibility maintained between versions</p></li>
+<li><p><strong>Extensibility</strong>: New messages can be added without breaking existing code</p></li>
+</ol>
+</section>
+<section id="firmware-to-host-contract">
+<h2>Firmware-to-Host Contract<a class="headerlink" href="#firmware-to-host-contract" title="Link to this heading"></a></h2>
+<section id="published-topics-firmware-host">
+<h3>Published Topics (Firmware → Host)<a class="headerlink" href="#published-topics-firmware-host" title="Link to this heading"></a></h3>
+<p><strong>Sensor Data Topics</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33.3%" />
+<col style="width: 46.7%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Topic</p></th>
+<th class="head"><p>Message Type</p></th>
+<th class="head"><p>Rate</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/imu/data</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">sensor_msgs/Imu</span></code></p></td>
+<td><p>50 Hz</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/range/front</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">sensor_msgs/Range</span></code></p></td>
+<td><p>20 Hz</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/firmware/status</span></code></p></td>
+<td><p>Custom status message</p></td>
+<td><p>10 Hz</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/odom</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">nav_msgs/Odometry</span></code></p></td>
+<td><p>50 Hz</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Message Specifications</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">/imu/data</span></code> (sensor_msgs/Imu)</dt><dd><ul class="simple">
+<li><p>Header: Timestamp, frame_id = “imu_link”</p></li>
+<li><p>Linear acceleration (m/s²)</p></li>
+<li><p>Angular velocity (rad/s)</p></li>
+<li><p>Orientation (quaternion)</p></li>
+<li><p>Covariance matrices for uncertainty</p></li>
+</ul>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">/range/front</span></code> (sensor_msgs/Range)</dt><dd><ul class="simple">
+<li><p>Header: Timestamp</p></li>
+<li><p>Radiation type: ULTRASOUND</p></li>
+<li><p>Field of view: ~15 degrees</p></li>
+<li><p>Min/max range: 0.02-4.0 meters</p></li>
+<li><p>Range reading: Distance in meters</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+<section id="subscribed-topics-host-firmware">
+<h3>Subscribed Topics (Host → Firmware)<a class="headerlink" href="#subscribed-topics-host-firmware" title="Link to this heading"></a></h3>
+<p><strong>Command Topics</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 38.5%" />
+<col style="width: 61.5%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Topic</p></th>
+<th class="head"><p>Message Type</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/cmd_vel</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">geometry_msgs/Twist</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/emergency_stop</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">std_msgs/Bool</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Message Specifications</strong></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">/cmd_vel</span></code> (geometry_msgs/Twist)</dt><dd><ul class="simple">
+<li><p>linear.x: Forward velocity (m/s), range [-1.0, 1.0]</p></li>
+<li><p>angular.z: Rotation velocity (rad/s), range [-2π, 2π]</p></li>
+<li><p>Other fields: Ignored</p></li>
+</ul>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">/emergency_stop</span></code> (std_msgs/Bool)</dt><dd><ul class="simple">
+<li><p>data: true = stop immediately, false = resume</p></li>
+<li><p>Triggers motor safety cutoff</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+</section>
+<section id="host-to-host-ros-2-contract">
+<h2>Host-to-Host ROS 2 Contract<a class="headerlink" href="#host-to-host-ros-2-contract" title="Link to this heading"></a></h2>
+<section id="standard-navigation-topics">
+<h3>Standard Navigation Topics<a class="headerlink" href="#standard-navigation-topics" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33.3%" />
+<col style="width: 66.7%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Topic</p></th>
+<th class="head"><p>Message Type</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/move_base/goal</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">geometry_msgs/PoseStamped</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/move_base/feedback</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">move_base_msgs/MoveBaseFeedback</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/tf</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">tf2_msgs/TFMessage</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="coordinate-frames">
+<h2>Coordinate Frames<a class="headerlink" href="#coordinate-frames" title="Link to this heading"></a></h2>
+<section id="standard-tf-tree">
+<h3>Standard TF Tree<a class="headerlink" href="#standard-tf-tree" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">map</span>
+<span class="w">  </span><span class="err">└──</span><span class="w"> </span><span class="n">odom</span>
+<span class="w">        </span><span class="err">└──</span><span class="w"> </span><span class="n">base_link</span>
+<span class="w">              </span><span class="err">├──</span><span class="w"> </span><span class="n">imu_link</span>
+<span class="w">              </span><span class="err">├──</span><span class="w"> </span><span class="n">wheel_left</span>
+<span class="w">              </span><span class="err">├──</span><span class="w"> </span><span class="n">wheel_right</span>
+<span class="w">              </span><span class="err">└──</span><span class="w"> </span><span class="n">range_link</span>
+</pre></div>
+</div>
+</section>
+<section id="frame-descriptions">
+<h3>Frame Descriptions<a class="headerlink" href="#frame-descriptions" title="Link to this heading"></a></h3>
+<p><strong>map</strong>: Global fixed frame (origin at first known position)</p>
+<p><strong>odom</strong>: Odometry frame (resets on power-on, drifts over time)</p>
+<p><strong>base_link</strong>: Robot center, origin at wheel midpoint</p>
+<p><strong>imu_link</strong>: IMU sensor frame</p>
+<p><strong>wheel_left/wheel_right</strong>: Individual wheel frames</p>
+<p><strong>range_link</strong>: Range sensor frame</p>
+</section>
+<section id="transform-rates">
+<h3>Transform Rates<a class="headerlink" href="#transform-rates" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>base_link → odom: 50 Hz (from odometry)</p></li>
+<li><p>base_link → imu_link: Static transform</p></li>
+<li><p>base_link → range_link: Static transform</p></li>
+<li><p>odom → map: 10 Hz (from localization)</p></li>
+</ul>
+</section>
+</section>
+<section id="service-contracts">
+<h2>Service Contracts<a class="headerlink" href="#service-contracts" title="Link to this heading"></a></h2>
+<section id="configuration-services">
+<h3>Configuration Services<a class="headerlink" href="#configuration-services" title="Link to this heading"></a></h3>
+<p>Services for runtime parameter changes:</p>
+<p><strong>Service: /set_robot_config</strong></p>
+<dl class="simple">
+<dt>Request:</dt><dd><ul class="simple">
+<li><p>config_name: string</p></li>
+<li><p>value: variant (int/float/string/bool)</p></li>
+</ul>
+</dd>
+<dt>Response:</dt><dd><ul class="simple">
+<li><p>success: bool</p></li>
+<li><p>message: string</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Service: /get_robot_status</strong></p>
+<p>Request: (empty)</p>
+<dl class="simple">
+<dt>Response:</dt><dd><ul class="simple">
+<li><p>battery_voltage: float</p></li>
+<li><p>cpu_temp: float</p></li>
+<li><p>motor_status: array of bool</p></li>
+<li><p>wifi_signal: int</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+</section>
+<section id="action-contracts">
+<h2>Action Contracts<a class="headerlink" href="#action-contracts" title="Link to this heading"></a></h2>
+<section id="navigation-actions">
+<h3>Navigation Actions<a class="headerlink" href="#navigation-actions" title="Link to this heading"></a></h3>
+<p><strong>Action: /move_base/move</strong></p>
+<dl class="simple">
+<dt>Goal:</dt><dd><ul class="simple">
+<li><p>target_pose: geometry_msgs/PoseStamped</p></li>
+<li><p>timeout: duration</p></li>
+</ul>
+</dd>
+<dt>Feedback:</dt><dd><ul class="simple">
+<li><p>current_pose: geometry_msgs/PoseStamped</p></li>
+<li><p>distance_remaining: float</p></li>
+</ul>
+</dd>
+<dt>Result:</dt><dd><ul class="simple">
+<li><p>success: bool</p></li>
+<li><p>final_pose: geometry_msgs/PoseStamped</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+</section>
+<section id="gas-robot-extension">
+<h2>Gas Robot Extension<a class="headerlink" href="#gas-robot-extension" title="Link to this heading"></a></h2>
+<section id="additional-topics">
+<h3>Additional Topics<a class="headerlink" href="#additional-topics" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 38.5%" />
+<col style="width: 61.5%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Topic</p></th>
+<th class="head"><p>Message Type</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/perception/objects</span></code></p></td>
+<td><p>Custom object list</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/slam/map</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">nav_msgs/OccupancyGrid</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">/gas_sensor/reading</span></code></p></td>
+<td><p>Custom gas sensor msg</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="simple">
+<dt><strong>Message: /gas_sensor/reading</strong> (Custom)</dt><dd><ul class="simple">
+<li><p>Header: Timestamp</p></li>
+<li><p>gas_concentration: float (ppm or %)</p></li>
+<li><p>sensor_id: uint8</p></li>
+<li><p>quality: uint8 (confidence 0-100)</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+</section>
+<section id="subsystem-contracts">
+<h2>Subsystem Contracts<a class="headerlink" href="#subsystem-contracts" title="Link to this heading"></a></h2>
+<section id="wall-e-control-subsystem">
+<h3>Wall-E Control Subsystem<a class="headerlink" href="#wall-e-control-subsystem" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>Inputs:</dt><dd><ul class="simple">
+<li><p>/cmd_vel (geometry_msgs/Twist)</p></li>
+</ul>
+</dd>
+<dt>Outputs:</dt><dd><ul class="simple">
+<li><p>/motor/feedback (motor speed feedback)</p></li>
+<li><p>/motor/status (safety status)</p></li>
+</ul>
+</dd>
+<dt>Behavior:</dt><dd><ul class="simple">
+<li><p>Implements differential drive kinematics</p></li>
+<li><p>Applies deadband to small velocities</p></li>
+<li><p>Limits acceleration for smooth motion</p></li>
+<li><p>Timeout: stops motors if no command for 500ms</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+<section id="wall-e-feedback-subsystem">
+<h3>Wall-E Feedback Subsystem<a class="headerlink" href="#wall-e-feedback-subsystem" title="Link to this heading"></a></h3>
+<p>Inputs: (None - pure sensor data)</p>
+<dl class="simple">
+<dt>Outputs:</dt><dd><ul class="simple">
+<li><p>/imu/data</p></li>
+<li><p>/range/front</p></li>
+<li><p>/odom</p></li>
+</ul>
+</dd>
+<dt>Behavior:</dt><dd><ul class="simple">
+<li><p>IMU: Raw + filtered orientation</p></li>
+<li><p>Range: Distance updates</p></li>
+<li><p>Odometry: Integrated from wheel encoders</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+<section id="wall-e-localization-subsystem">
+<h3>Wall-E Localization Subsystem<a class="headerlink" href="#wall-e-localization-subsystem" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt>Inputs:</dt><dd><ul class="simple">
+<li><p>/imu/data</p></li>
+<li><p>/odom</p></li>
+<li><p>/range/front</p></li>
+</ul>
+</dd>
+<dt>Outputs:</dt><dd><ul class="simple">
+<li><p>/tf (base_link → odom)</p></li>
+<li><p>/pose (estimated position)</p></li>
+<li><p>/pose_covariance (uncertainty estimate)</p></li>
+</ul>
+</dd>
+<dt>Behavior:</dt><dd><ul class="simple">
+<li><p>Fuses multiple sensor streams</p></li>
+<li><p>Maintains uncertainty estimate</p></li>
+<li><p>Corrects odometry drift</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+</section>
+<section id="version-management">
+<h2>Version Management<a class="headerlink" href="#version-management" title="Link to this heading"></a></h2>
+<section id="message-versioning">
+<h3>Message Versioning<a class="headerlink" href="#message-versioning" title="Link to this heading"></a></h3>
+<p>Use custom interface package for versioning:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">custom_interfaces</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span>
+<span class="w">  </span><span class="err">├──</span><span class="w"> </span><span class="n">SensorData</span><span class="p">.</span><span class="n">msg</span>
+<span class="w">  </span><span class="err">└──</span><span class="w"> </span><span class="n">Command</span><span class="p">.</span><span class="n">msg</span>
+
+<span class="n">custom_interfaces</span><span class="o">/</span><span class="n">msg</span><span class="o">/</span><span class="n">v2</span><span class="o">/</span>
+<span class="w">  </span><span class="err">├──</span><span class="w"> </span><span class="n">SensorData</span><span class="p">.</span><span class="n">msg</span><span class="w">  </span><span class="err">#</span><span class="w"> </span><span class="n">Extended</span><span class="w"> </span><span class="n">format</span>
+<span class="w">  </span><span class="err">└──</span><span class="w"> </span><span class="n">Command</span><span class="p">.</span><span class="n">msg</span><span class="w">     </span><span class="err">#</span><span class="w"> </span><span class="n">New</span><span class="w"> </span><span class="n">fields</span>
+</pre></div>
+</div>
+</section>
+<section id="compatibility-policy">
+<h3>Compatibility Policy<a class="headerlink" href="#compatibility-policy" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Major version change</strong>: Breaking changes allowed</p></li>
+<li><p><strong>Minor version change</strong>: Backward-compatible additions only</p></li>
+<li><p><strong>Patch version change</strong>: Bug fixes, no API changes</p></li>
+</ul>
+</section>
+<section id="deprecation">
+<h3>Deprecation<a class="headerlink" href="#deprecation" title="Link to this heading"></a></h3>
+<p>Old message types remain available for 2 minor versions:</p>
+<ol class="arabic simple">
+<li><p>Add new improved message type</p></li>
+<li><p>Deprecate old type (mark in docs)</p></li>
+<li><p>Support both for 2 versions</p></li>
+<li><p>Remove old type in next major release</p></li>
+</ol>
+</section>
+</section>
+<section id="error-handling">
+<h2>Error Handling<a class="headerlink" href="#error-handling" title="Link to this heading"></a></h2>
+<section id="communication-failures">
+<h3>Communication Failures<a class="headerlink" href="#communication-failures" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Firmware disconnect</strong>: Nodes should handle missing firmware gracefully</p></li>
+<li><p><strong>Network latency</strong>: Use timeouts on critical commands</p></li>
+<li><p><strong>Message corruption</strong>: Rely on DDS/UDP checksums</p></li>
+</ul>
+</section>
+<section id="recovery-strategies">
+<h3>Recovery Strategies<a class="headerlink" href="#recovery-strategies" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Automatic reconnection</strong>: micro-ROS agent auto-reconnects firmware</p></li>
+<li><p><strong>State replication</strong>: Important state republished periodically</p></li>
+<li><p><strong>Heartbeat monitoring</strong>: Detect stale connections</p></li>
+<li><p><strong>Graceful degradation</strong>: Continue with available data</p></li>
+</ol>
+</section>
+</section>
+<section id="monitoring-and-diagnostics">
+<h2>Monitoring and Diagnostics<a class="headerlink" href="#monitoring-and-diagnostics" title="Link to this heading"></a></h2>
+<section id="diagnostic-topics">
+<h3>Diagnostic Topics<a class="headerlink" href="#diagnostic-topics" title="Link to this heading"></a></h3>
+<p>Monitor system health via <code class="docutils literal notranslate"><span class="pre">/diagnostics</span></code>:</p>
+<ul class="simple">
+<li><p>Firmware connectivity</p></li>
+<li><p>Message latency</p></li>
+<li><p>Network bandwidth usage</p></li>
+<li><p>Battery status</p></li>
+<li><p>Temperature sensors</p></li>
+</ul>
+</section>
+<section id="logging">
+<h3>Logging<a class="headerlink" href="#logging" title="Link to this heading"></a></h3>
+<p>Enable debug logging for troubleshooting:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">ros2</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="o">&lt;</span><span class="n">node</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="n">executable</span><span class="o">&gt;</span><span class="w"> </span><span class="o">--</span><span class="n">ros</span><span class="o">-</span><span class="n">args</span><span class="w"> </span><span class="o">--</span><span class="n">log</span><span class="o">-</span><span class="n">level</span><span class="w"> </span><span class="n">DEBUG</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="contract-compliance-testing">
+<h2>Contract Compliance Testing<a class="headerlink" href="#contract-compliance-testing" title="Link to this heading"></a></h2>
+<section id="automated-checks">
+<h3>Automated Checks<a class="headerlink" href="#automated-checks" title="Link to this heading"></a></h3>
+<p>Verify contract compliance:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">colcon</span><span class="w"> </span><span class="n">test</span><span class="w"> </span><span class="o">--</span><span class="n">packages</span><span class="o">-</span><span class="n">select</span><span class="w"> </span><span class="o">&lt;</span><span class="n">package</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="manual-verification">
+<h3>Manual Verification<a class="headerlink" href="#manual-verification" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp"># Check message types</span>
+<span class="n">ros2</span><span class="w"> </span><span class="n">topic</span><span class="w"> </span><span class="n">info</span><span class="w"> </span><span class="o">/</span><span class="n">imu</span><span class="o">/</span><span class="n">data</span>
+
+<span class="cp"># Verify message content</span>
+<span class="n">ros2</span><span class="w"> </span><span class="n">topic</span><span class="w"> </span><span class="n">echo</span><span class="w"> </span><span class="o">/</span><span class="n">imu</span><span class="o">/</span><span class="n">data</span>
+
+<span class="cp"># Check rates</span>
+<span class="n">ros2</span><span class="w"> </span><span class="n">topic</span><span class="w"> </span><span class="n">hz</span><span class="w"> </span><span class="o">/</span><span class="n">imu</span><span class="o">/</span><span class="n">data</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="related-documentation">
+<h2>Related Documentation<a class="headerlink" href="#related-documentation" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="communication_model.html"><span class="doc">Communication Model</span></a> - Communication architecture</p></li>
+<li><p><a class="reference internal" href="../firmware/esp32_controller.html"><span class="doc">ESP32 Controller</span></a> - Firmware implementation</p></li>
+<li><p><a class="reference internal" href="../variants/wall_e/subsystems/index.html"><span class="doc">Wall-E Subsystems</span></a> - Wall-E subsystems</p></li>
+<li><p><a class="reference internal" href="../variants/gas_robot/subsystems/index.html"><span class="doc">Gas Robot Subsystems</span></a> - Gas Robot subsystems</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="communication_model.html" class="btn btn-neutral float-left" title="Communication Model" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../deployment/wifi_provisioning.html" class="btn btn-neutral float-right" title="WiFi Provisioning" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Lydia Chheng.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

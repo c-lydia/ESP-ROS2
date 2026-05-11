@@ -1,0 +1,644 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Workflow and Commands &mdash; Wall-E 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="ESP32 Controller" href="../firmware/esp32_controller.html" />
+    <link rel="prev" title="Getting Started" href="../getting_started/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #2980B9" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Wall-E
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Shared Core Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting Started</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Workflow and Commands</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#development-workflow-overview">Development Workflow Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#standard-development-cycle">Standard Development Cycle</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#docker-environment">Docker Environment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#starting-services">Starting Services</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#stopping-services">Stopping Services</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#viewing-service-status">Viewing Service Status</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#workspace-container-access">Workspace Container Access</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#multi-window-development">Multi-window Development</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#ros-2-environment-setup">ROS 2 Environment Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#building-packages">Building Packages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#build-all-packages">Build All Packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#clean-build">Clean Build</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#launching-nodes-and-systems">Launching Nodes and Systems</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#wall-e-launch">Wall-E Launch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gas-robot-launch">Gas Robot Launch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#individual-node-launch">Individual Node Launch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#debugging-nodes">Debugging Nodes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#firmware-development">Firmware Development</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#create-firmware-workspace-one-time-setup">Create Firmware Workspace (One-Time Setup)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configure-for-your-board">Configure for Your Board</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#build-firmware">Build Firmware</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#flash-to-esp32">Flash to ESP32</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#monitor-serial-output">Monitor Serial Output</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#ros-2-development-tools">ROS 2 Development Tools</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#topic-monitoring">Topic Monitoring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#service-calls">Service Calls</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#parameter-management">Parameter Management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#node-introspection">Node Introspection</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#visualization">Visualization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#starting-rviz">Starting RViz</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#common-rviz-displays">Common RViz Displays</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#testing">Testing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#run-all-tests">Run All Tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#unit-testing">Unit Testing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#integration-testing">Integration Testing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#common-commands-summary">Common Commands Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tips-and-tricks">Tips and Tricks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#related-documentation">Related Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../firmware/esp32_controller.html">ESP32 Controller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/architecture.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/communication_model.html">Communication Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../hardware/system_contract.html">System Contract</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deployment/wifi_provisioning.html">WiFi Provisioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/index.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references/troubleshooting.html">Troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Robot Variants</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../variants/wall_e/index.html">Wall-E Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../variants/gas_robot/index.html">Gas Robot Variant</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #2980B9" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Wall-E</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Workflow and Commands</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/development/workflow_and_commands.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="../getting_started/index.html" class="btn btn-neutral float-left" title="Getting Started" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../firmware/esp32_controller.html" class="btn btn-neutral float-right" title="ESP32 Controller" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="workflow-and-commands">
+<h1>Workflow and Commands<a class="headerlink" href="#workflow-and-commands" title="Link to this heading"></a></h1>
+<p>This page documents the complete development workflow and common commands for both Wall-E and Gas Robot variants.</p>
+<section id="development-workflow-overview">
+<h2>Development Workflow Overview<a class="headerlink" href="#development-workflow-overview" title="Link to this heading"></a></h2>
+<section id="standard-development-cycle">
+<h3>Standard Development Cycle<a class="headerlink" href="#standard-development-cycle" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Start Development Environment</strong>
+- Launch Docker containers
+- Enter workspace container
+- Source ROS 2 environment</p></li>
+<li><p><strong>Develop/Modify Code</strong>
+- Edit source files in your host editor (automatically synced via Docker volume)
+- Create new ROS 2 packages or modify existing subsystems</p></li>
+<li><p><strong>Build Packages</strong>
+- Build incrementally or rebuild all
+- Watch for compilation errors</p></li>
+<li><p><strong>Test and Validate</strong>
+- Run individual nodes
+- Monitor topics and services
+- Use RViz for visualization</p></li>
+<li><p><strong>Debug Issues</strong>
+- Check logs and diagnostics
+- Monitor hardware (firmware) via serial
+- Trace communication via ROS 2 tools</p></li>
+<li><p><strong>Iterate</strong>
+- Make changes and rebuild
+- Test modified components</p></li>
+</ol>
+</section>
+</section>
+<section id="docker-environment">
+<h2>Docker Environment<a class="headerlink" href="#docker-environment" title="Link to this heading"></a></h2>
+<section id="starting-services">
+<h3>Starting Services<a class="headerlink" href="#starting-services" title="Link to this heading"></a></h3>
+<p>Start all services in background:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span><span class="w"> </span><span class="n">compose</span><span class="w"> </span><span class="n">up</span><span class="w"> </span><span class="o">-</span><span class="n">d</span>
+</pre></div>
+</div>
+<p>Start with output to console (useful for debugging):</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span><span class="w"> </span><span class="n">compose</span><span class="w"> </span><span class="n">up</span>
+</pre></div>
+</div>
+<p>Rebuild images (if Dockerfile changed):</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span><span class="w"> </span><span class="n">compose</span><span class="w"> </span><span class="n">up</span><span class="w"> </span><span class="o">--</span><span class="n">build</span><span class="w"> </span><span class="o">-</span><span class="n">d</span>
+</pre></div>
+</div>
+</section>
+<section id="stopping-services">
+<h3>Stopping Services<a class="headerlink" href="#stopping-services" title="Link to this heading"></a></h3>
+<p>Stop all services (containers persist):</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span><span class="w"> </span><span class="n">compose</span><span class="w"> </span><span class="n">stop</span>
+</pre></div>
+</div>
+<p>Stop and remove all containers:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span><span class="w"> </span><span class="n">compose</span><span class="w"> </span><span class="n">down</span>
+</pre></div>
+</div>
+<p>Stop and remove all data (WARNING: deletes volumes):</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span><span class="w"> </span><span class="n">compose</span><span class="w"> </span><span class="n">down</span><span class="w"> </span><span class="o">-</span><span class="n">v</span>
+</pre></div>
+</div>
+</section>
+<section id="viewing-service-status">
+<h3>Viewing Service Status<a class="headerlink" href="#viewing-service-status" title="Link to this heading"></a></h3>
+<p>List running services:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span><span class="w"> </span><span class="n">compose</span><span class="w"> </span><span class="n">ps</span>
+</pre></div>
+</div>
+<p>View service logs:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span><span class="w"> </span><span class="n">compose</span><span class="w"> </span><span class="n">logs</span><span class="w"> </span><span class="o">-</span><span class="n">f</span><span class="w"> </span><span class="n">workspace</span>
+</pre></div>
+</div>
+<p>View logs for specific service:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span><span class="w"> </span><span class="n">compose</span><span class="w"> </span><span class="n">logs</span><span class="w"> </span><span class="o">-</span><span class="n">f</span><span class="w"> </span><span class="n">workspace</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="workspace-container-access">
+<h2>Workspace Container Access<a class="headerlink" href="#workspace-container-access" title="Link to this heading"></a></h2>
+<p>Enter the workspace container:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span><span class="w"> </span><span class="n">compose</span><span class="w"> </span><span class="n">exec</span><span class="w"> </span><span class="n">workspace</span><span class="w"> </span><span class="n">bash</span>
+</pre></div>
+</div>
+<p>Execute a single command inside container:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span><span class="w"> </span><span class="n">compose</span><span class="w"> </span><span class="n">exec</span><span class="w"> </span><span class="n">workspace</span><span class="w"> </span><span class="n">colcon</span><span class="w"> </span><span class="n">build</span>
+</pre></div>
+</div>
+<p>Exit container:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">exit</span>
+</pre></div>
+</div>
+<section id="multi-window-development">
+<h3>Multi-window Development<a class="headerlink" href="#multi-window-development" title="Link to this heading"></a></h3>
+<p>Open multiple terminals to the workspace:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp"># Terminal 1: Enter workspace</span>
+<span class="n">docker</span><span class="w"> </span><span class="n">compose</span><span class="w"> </span><span class="n">exec</span><span class="w"> </span><span class="n">workspace</span><span class="w"> </span><span class="n">bash</span>
+
+<span class="cp"># Terminal 2: Monitor logs</span>
+<span class="n">docker</span><span class="w"> </span><span class="n">compose</span><span class="w"> </span><span class="n">logs</span><span class="w"> </span><span class="o">-</span><span class="n">f</span><span class="w"> </span><span class="n">workspace</span>
+
+<span class="cp"># Terminal 3: Run ROS tools</span>
+<span class="n">docker</span><span class="w"> </span><span class="n">compose</span><span class="w"> </span><span class="n">exec</span><span class="w"> </span><span class="n">workspace</span><span class="w"> </span><span class="n">ros2</span><span class="w"> </span><span class="n">topic</span><span class="w"> </span><span class="n">list</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="ros-2-environment-setup">
+<h2>ROS 2 Environment Setup<a class="headerlink" href="#ros-2-environment-setup" title="Link to this heading"></a></h2>
+<p>Inside the container, set up your ROS 2 environment:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp"># Source the ROS 2 installation</span>
+<span class="n">source</span><span class="w"> </span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">ros</span><span class="o">/</span><span class="n">humble</span><span class="o">/</span><span class="n">setup</span><span class="p">.</span><span class="n">bash</span>
+
+<span class="cp"># Source the workspace overlay</span>
+<span class="n">source</span><span class="w"> </span><span class="o">/</span><span class="n">micro_ros_ws</span><span class="o">/</span><span class="n">install</span><span class="o">/</span><span class="n">setup</span><span class="p">.</span><span class="n">bash</span>
+
+<span class="cp"># Set domain ID for robot identification</span>
+<span class="n">export</span><span class="w"> </span><span class="n">ROS_DOMAIN_ID</span><span class="o">=</span><span class="mi">1</span>
+</pre></div>
+</div>
+<p>These commands are typically added to your shell profile for convenience.</p>
+</section>
+<section id="building-packages">
+<h2>Building Packages<a class="headerlink" href="#building-packages" title="Link to this heading"></a></h2>
+<section id="build-all-packages">
+<h3>Build All Packages<a class="headerlink" href="#build-all-packages" title="Link to this heading"></a></h3>
+<p>Full rebuild of entire workspace:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span><span class="w"> </span><span class="o">/</span><span class="n">micro_ros_ws</span>
+<span class="n">colcon</span><span class="w"> </span><span class="n">build</span>
+</pre></div>
+</div>
+<p>Build with verbose output:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">colcon</span><span class="w"> </span><span class="n">build</span><span class="w"> </span><span class="o">--</span><span class="n">verbose</span>
+</pre></div>
+</div>
+<p>Build specific packages:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">colcon</span><span class="w"> </span><span class="n">build</span><span class="w"> </span><span class="o">--</span><span class="n">packages</span><span class="o">-</span><span class="n">select</span><span class="w"> </span><span class="n">custom_interfaces</span><span class="w"> </span><span class="n">wall_e_description</span>
+</pre></div>
+</div>
+<p>Build single package with dependencies:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">colcon</span><span class="w"> </span><span class="n">build</span><span class="w"> </span><span class="o">--</span><span class="n">packages</span><span class="o">-</span><span class="n">up</span><span class="o">-</span><span class="n">to</span><span class="w"> </span><span class="n">control</span>
+</pre></div>
+</div>
+<p>Parallel builds (faster on multi-core):</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">colcon</span><span class="w"> </span><span class="n">build</span><span class="w"> </span><span class="o">--</span><span class="n">parallel</span><span class="o">-</span><span class="n">workers</span><span class="w"> </span><span class="mi">4</span>
+</pre></div>
+</div>
+</section>
+<section id="clean-build">
+<h3>Clean Build<a class="headerlink" href="#clean-build" title="Link to this heading"></a></h3>
+<p>Clean intermediate build files:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">colcon</span><span class="w"> </span><span class="n">build</span><span class="w"> </span><span class="o">--</span><span class="n">cmake</span><span class="o">-</span><span class="n">target</span><span class="w"> </span><span class="n">clean</span>
+</pre></div>
+</div>
+<p>Remove all build artifacts:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">rm</span><span class="w"> </span><span class="o">-</span><span class="n">rf</span><span class="w"> </span><span class="n">build</span><span class="o">/</span><span class="w"> </span><span class="n">install</span><span class="o">/</span><span class="w"> </span><span class="n">log</span><span class="o">/</span>
+<span class="n">colcon</span><span class="w"> </span><span class="n">build</span>
+</pre></div>
+</div>
+<p>Build with sanitizers (detect memory issues):</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">colcon</span><span class="w"> </span><span class="n">build</span><span class="w"> </span><span class="o">--</span><span class="n">cmake</span><span class="o">-</span><span class="n">args</span><span class="w"> </span><span class="o">-</span><span class="n">DCMAKE_CXX_FLAGS</span><span class="o">=</span><span class="s">&quot;-fsanitize=address&quot;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="launching-nodes-and-systems">
+<h2>Launching Nodes and Systems<a class="headerlink" href="#launching-nodes-and-systems" title="Link to this heading"></a></h2>
+<section id="wall-e-launch">
+<h3>Wall-E Launch<a class="headerlink" href="#wall-e-launch" title="Link to this heading"></a></h3>
+<p>Integrated launch with visualization:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">ros2</span><span class="w"> </span><span class="n">launch</span><span class="w"> </span><span class="n">wall_e_description</span><span class="w"> </span><span class="n">wall_e</span><span class="p">.</span><span class="n">launch</span><span class="p">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>RViz only (no simulation):</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">ros2</span><span class="w"> </span><span class="n">launch</span><span class="w"> </span><span class="n">wall_e_description</span><span class="w"> </span><span class="n">wall_e</span><span class="p">.</span><span class="n">launch</span><span class="p">.</span><span class="n">py</span><span class="w"> </span><span class="n">use_gazebo</span><span class="o">:=</span><span class="nb">false</span><span class="w"> </span><span class="n">use_rviz</span><span class="o">:=</span><span class="nb">true</span>
+</pre></div>
+</div>
+<p>With joint state publisher:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">ros2</span><span class="w"> </span><span class="n">launch</span><span class="w"> </span><span class="n">wall_e_description</span><span class="w"> </span><span class="n">wall_e</span><span class="p">.</span><span class="n">launch</span><span class="p">.</span><span class="n">py</span><span class="w"> </span><span class="n">use_joint_state_publisher</span><span class="o">:=</span><span class="nb">true</span>
+</pre></div>
+</div>
+</section>
+<section id="gas-robot-launch">
+<h3>Gas Robot Launch<a class="headerlink" href="#gas-robot-launch" title="Link to this heading"></a></h3>
+<p>Start Gas Robot with all subsystems:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">ros2</span><span class="w"> </span><span class="n">launch</span><span class="w"> </span><span class="n">gas_robot_description</span><span class="w"> </span><span class="n">gas_robot</span><span class="p">.</span><span class="n">launch</span><span class="p">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>With specific parameters:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">ros2</span><span class="w"> </span><span class="n">launch</span><span class="w"> </span><span class="n">gas_robot_description</span><span class="w"> </span><span class="n">gas_robot</span><span class="p">.</span><span class="n">launch</span><span class="p">.</span><span class="n">py</span><span class="w"> </span><span class="n">use_nav</span><span class="o">:=</span><span class="nb">true</span><span class="w"> </span><span class="n">use_slam</span><span class="o">:=</span><span class="nb">true</span>
+</pre></div>
+</div>
+</section>
+<section id="individual-node-launch">
+<h3>Individual Node Launch<a class="headerlink" href="#individual-node-launch" title="Link to this heading"></a></h3>
+<p>Run a single node:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">ros2</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="o">&lt;</span><span class="n">package</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="n">executable</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Example - run control node:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">ros2</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="n">control</span><span class="w"> </span><span class="n">robot_control_node</span>
+</pre></div>
+</div>
+<p>Example - run perception node:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">ros2</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="n">perception</span><span class="w"> </span><span class="n">perception_node</span>
+</pre></div>
+</div>
+</section>
+<section id="debugging-nodes">
+<h3>Debugging Nodes<a class="headerlink" href="#debugging-nodes" title="Link to this heading"></a></h3>
+<p>Run node with debugger attached:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">ros2</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="o">--</span><span class="n">prefix</span><span class="w"> </span><span class="err">&#39;</span><span class="n">gdb</span><span class="w"> </span><span class="o">-</span><span class="n">ex</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="o">--</span><span class="n">args</span><span class="err">&#39;</span><span class="w"> </span><span class="o">&lt;</span><span class="n">package</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="n">executable</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Run node with verbose logging:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">ros2</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="o">&lt;</span><span class="n">package</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="n">executable</span><span class="o">&gt;</span><span class="w"> </span><span class="o">--</span><span class="n">ros</span><span class="o">-</span><span class="n">args</span><span class="w"> </span><span class="o">--</span><span class="n">log</span><span class="o">-</span><span class="n">level</span><span class="w"> </span><span class="n">DEBUG</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="firmware-development">
+<h2>Firmware Development<a class="headerlink" href="#firmware-development" title="Link to this heading"></a></h2>
+<section id="create-firmware-workspace-one-time-setup">
+<h3>Create Firmware Workspace (One-Time Setup)<a class="headerlink" href="#create-firmware-workspace-one-time-setup" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">ros2</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="n">micro_ros_setup</span><span class="w"> </span><span class="n">create_firmware_ws</span><span class="p">.</span><span class="n">sh</span><span class="w"> </span><span class="n">freertos</span><span class="w"> </span><span class="n">esp32</span>
+</pre></div>
+</div>
+</section>
+<section id="configure-for-your-board">
+<h3>Configure for Your Board<a class="headerlink" href="#configure-for-your-board" title="Link to this heading"></a></h3>
+<p>Configure target ESP32 and transport:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">ros2</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="n">micro_ros_setup</span><span class="w"> </span><span class="n">configure_firmware</span><span class="p">.</span><span class="n">sh</span><span class="w"> </span><span class="n">esp32_controller</span><span class="w"> </span>\
+<span class="w">  </span><span class="o">--</span><span class="n">transport</span><span class="w"> </span><span class="n">udp</span><span class="w"> </span>\
+<span class="w">  </span><span class="o">--</span><span class="n">ip</span><span class="w"> </span><span class="mf">192.168.1.100</span><span class="w"> </span>\
+<span class="w">  </span><span class="o">--</span><span class="n">port</span><span class="w"> </span><span class="mi">8888</span>
+</pre></div>
+</div>
+<p>Parameters:
+- <code class="docutils literal notranslate"><span class="pre">--transport</span></code>: <code class="docutils literal notranslate"><span class="pre">udp</span></code> or <code class="docutils literal notranslate"><span class="pre">tcp</span></code> (UDP recommended for WiFi)
+- <code class="docutils literal notranslate"><span class="pre">--ip</span></code>: IP of ROS 2 host/agent
+- <code class="docutils literal notranslate"><span class="pre">--port</span></code>: Port number</p>
+</section>
+<section id="build-firmware">
+<h3>Build Firmware<a class="headerlink" href="#build-firmware" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">ros2</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="n">micro_ros_setup</span><span class="w"> </span><span class="n">build_firmware</span><span class="p">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>Build with verbose output:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">ros2</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="n">micro_ros_setup</span><span class="w"> </span><span class="n">build_firmware</span><span class="p">.</span><span class="n">sh</span><span class="w"> </span><span class="o">--</span><span class="n">verbose</span>
+</pre></div>
+</div>
+</section>
+<section id="flash-to-esp32">
+<h3>Flash to ESP32<a class="headerlink" href="#flash-to-esp32" title="Link to this heading"></a></h3>
+<p>Set serial port and flash:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">export</span><span class="w"> </span><span class="n">ESPPORT</span><span class="o">=/</span><span class="n">dev</span><span class="o">/</span><span class="n">ttyUSB0</span>
+<span class="n">ros2</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="n">micro_ros_setup</span><span class="w"> </span><span class="n">flash_firmware</span><span class="p">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+</section>
+<section id="monitor-serial-output">
+<h3>Monitor Serial Output<a class="headerlink" href="#monitor-serial-output" title="Link to this heading"></a></h3>
+<p>View real-time firmware output:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">ros2</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="n">micro_ros_setup</span><span class="w"> </span><span class="n">monitor_serial</span><span class="p">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>Or use miniterm directly:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">python</span><span class="w"> </span><span class="o">-</span><span class="n">m</span><span class="w"> </span><span class="n">serial</span><span class="p">.</span><span class="n">tools</span><span class="p">.</span><span class="n">miniterm</span><span class="w"> </span><span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">ttyUSB0</span><span class="w"> </span><span class="mi">115200</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="ros-2-development-tools">
+<h2>ROS 2 Development Tools<a class="headerlink" href="#ros-2-development-tools" title="Link to this heading"></a></h2>
+<section id="topic-monitoring">
+<h3>Topic Monitoring<a class="headerlink" href="#topic-monitoring" title="Link to this heading"></a></h3>
+<p>List all active topics:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">ros2</span><span class="w"> </span><span class="n">topic</span><span class="w"> </span><span class="n">list</span>
+</pre></div>
+</div>
+<p>Show topic details (message type, publishers, subscribers):</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">ros2</span><span class="w"> </span><span class="n">topic</span><span class="w"> </span><span class="n">info</span><span class="w"> </span><span class="o">/</span><span class="n">cmd_vel</span>
+</pre></div>
+</div>
+<p>Echo topic messages in real-time:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">ros2</span><span class="w"> </span><span class="n">topic</span><span class="w"> </span><span class="n">echo</span><span class="w"> </span><span class="o">/</span><span class="n">cmd_vel</span>
+</pre></div>
+</div>
+<p>Get topic message rate:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">ros2</span><span class="w"> </span><span class="n">topic</span><span class="w"> </span><span class="n">hz</span><span class="w"> </span><span class="o">/</span><span class="n">cmd_vel</span>
+</pre></div>
+</div>
+</section>
+<section id="service-calls">
+<h3>Service Calls<a class="headerlink" href="#service-calls" title="Link to this heading"></a></h3>
+<p>List available services:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">ros2</span><span class="w"> </span><span class="n">service</span><span class="w"> </span><span class="n">list</span>
+</pre></div>
+</div>
+<p>Call a service:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">ros2</span><span class="w"> </span><span class="n">service</span><span class="w"> </span><span class="n">call</span><span class="w"> </span><span class="o">/</span><span class="n">service_name</span><span class="w"> </span><span class="n">service_type</span><span class="w"> </span><span class="s">&quot;{field: value}&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="parameter-management">
+<h3>Parameter Management<a class="headerlink" href="#parameter-management" title="Link to this heading"></a></h3>
+<p>List parameters:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">ros2</span><span class="w"> </span><span class="n">param</span><span class="w"> </span><span class="n">list</span>
+</pre></div>
+</div>
+<p>Get parameter value:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">ros2</span><span class="w"> </span><span class="n">param</span><span class="w"> </span><span class="n">get</span><span class="w"> </span><span class="o">/</span><span class="n">node_name</span><span class="w"> </span><span class="n">param_name</span>
+</pre></div>
+</div>
+<p>Set parameter value:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">ros2</span><span class="w"> </span><span class="n">param</span><span class="w"> </span><span class="n">set</span><span class="w"> </span><span class="o">/</span><span class="n">node_name</span><span class="w"> </span><span class="n">param_name</span><span class="w"> </span><span class="n">value</span>
+</pre></div>
+</div>
+</section>
+<section id="node-introspection">
+<h3>Node Introspection<a class="headerlink" href="#node-introspection" title="Link to this heading"></a></h3>
+<p>List running nodes:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">ros2</span><span class="w"> </span><span class="n">node</span><span class="w"> </span><span class="n">list</span>
+</pre></div>
+</div>
+<p>View node information:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">ros2</span><span class="w"> </span><span class="n">node</span><span class="w"> </span><span class="n">info</span><span class="w"> </span><span class="o">/</span><span class="n">node_name</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="visualization">
+<h2>Visualization<a class="headerlink" href="#visualization" title="Link to this heading"></a></h2>
+<section id="starting-rviz">
+<h3>Starting RViz<a class="headerlink" href="#starting-rviz" title="Link to this heading"></a></h3>
+<p>Launch RViz visualization:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">rviz2</span>
+</pre></div>
+</div>
+<p>Load saved configuration:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">rviz2</span><span class="w"> </span><span class="o">-</span><span class="n">d</span><span class="w"> </span><span class="n">config</span><span class="p">.</span><span class="n">rviz</span>
+</pre></div>
+</div>
+</section>
+<section id="common-rviz-displays">
+<h3>Common RViz Displays<a class="headerlink" href="#common-rviz-displays" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>TF</strong>: Show coordinate frame transforms</p></li>
+<li><p><strong>Map</strong>: Display occupancy grid or point clouds</p></li>
+<li><p><strong>Path</strong>: Show planned paths</p></li>
+<li><p><strong>Marker</strong>: Visualize custom messages</p></li>
+<li><p><strong>Image</strong>: Display camera feeds</p></li>
+</ul>
+</section>
+</section>
+<section id="testing">
+<h2>Testing<a class="headerlink" href="#testing" title="Link to this heading"></a></h2>
+<section id="run-all-tests">
+<h3>Run All Tests<a class="headerlink" href="#run-all-tests" title="Link to this heading"></a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">colcon</span><span class="w"> </span><span class="n">test</span>
+</pre></div>
+</div>
+<p>Test specific package:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">colcon</span><span class="w"> </span><span class="n">test</span><span class="w"> </span><span class="o">--</span><span class="n">packages</span><span class="o">-</span><span class="n">select</span><span class="w"> </span><span class="n">control</span>
+</pre></div>
+</div>
+<p>View test results:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">colcon</span><span class="w"> </span><span class="n">test</span><span class="o">-</span><span class="n">result</span><span class="w"> </span><span class="o">--</span><span class="n">verbose</span>
+</pre></div>
+</div>
+</section>
+<section id="unit-testing">
+<h3>Unit Testing<a class="headerlink" href="#unit-testing" title="Link to this heading"></a></h3>
+<p>Create test in <code class="docutils literal notranslate"><span class="pre">test/</span></code> directory following ROS 2 conventions:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">colcon</span><span class="w"> </span><span class="n">build</span><span class="w"> </span><span class="o">--</span><span class="n">packages</span><span class="o">-</span><span class="n">select</span><span class="w"> </span><span class="o">&lt;</span><span class="n">package</span><span class="o">&gt;</span><span class="w"> </span><span class="o">--</span><span class="n">cmake</span><span class="o">-</span><span class="n">args</span><span class="w"> </span><span class="o">-</span><span class="n">DCMAKE_BUILD_TYPE</span><span class="o">=</span><span class="n">Debug</span>
+<span class="n">ctest</span><span class="w"> </span><span class="o">--</span><span class="n">output</span><span class="o">-</span><span class="n">on</span><span class="o">-</span><span class="n">failure</span>
+</pre></div>
+</div>
+</section>
+<section id="integration-testing">
+<h3>Integration Testing<a class="headerlink" href="#integration-testing" title="Link to this heading"></a></h3>
+<p>Test node interactions:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp"># Terminal 1: Launch system</span>
+<span class="n">ros2</span><span class="w"> </span><span class="n">launch</span><span class="w"> </span><span class="n">system_launch</span><span class="p">.</span><span class="n">py</span>
+
+<span class="cp"># Terminal 2: Run integration tests</span>
+<span class="n">colcon</span><span class="w"> </span><span class="n">test</span><span class="w"> </span><span class="o">--</span><span class="n">packages</span><span class="o">-</span><span class="n">select</span><span class="w"> </span><span class="o">&lt;</span><span class="n">package</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="common-commands-summary">
+<h2>Common Commands Summary<a class="headerlink" href="#common-commands-summary" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Task</p></th>
+<th class="head"><p>Command</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Start development environment
+Enter workspace
+Build all packages
+Build specific package
+Launch Wall-E
+Configure firmware
+Build firmware
+Flash ESP32
+Monitor topics
+List nodes
+Run tests</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">compose</span> <span class="pre">up</span> <span class="pre">-d</span></code>
+<code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">compose</span> <span class="pre">exec</span> <span class="pre">workspace</span> <span class="pre">bash</span></code>
+<code class="docutils literal notranslate"><span class="pre">colcon</span> <span class="pre">build</span></code>
+<code class="docutils literal notranslate"><span class="pre">colcon</span> <span class="pre">build</span> <span class="pre">--packages-select</span> <span class="pre">pkg</span></code>
+<code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">launch</span> <span class="pre">wall_e_description</span> <span class="pre">...</span></code>
+<code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">run</span> <span class="pre">micro_ros_setup</span> <span class="pre">config...</span></code>
+<code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">run</span> <span class="pre">micro_ros_setup</span> <span class="pre">build...</span></code>
+<code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">run</span> <span class="pre">micro_ros_setup</span> <span class="pre">flash...</span></code>
+<code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">topic</span> <span class="pre">echo</span> <span class="pre">/topic_name</span></code>
+<code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">node</span> <span class="pre">list</span></code>
+<code class="docutils literal notranslate"><span class="pre">colcon</span> <span class="pre">test</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="tips-and-tricks">
+<h2>Tips and Tricks<a class="headerlink" href="#tips-and-tricks" title="Link to this heading"></a></h2>
+<p><strong>Fast Rebuilds</strong>: Use <code class="docutils literal notranslate"><span class="pre">colcon</span> <span class="pre">build</span> <span class="pre">--parallel-workers</span> <span class="pre">N</span></code> to speed up builds on multi-core systems.</p>
+<p><strong>Incremental Builds</strong>: Only rebuild changed packages: <code class="docutils literal notranslate"><span class="pre">colcon</span> <span class="pre">build</span></code> (colcon tracks dependencies).</p>
+<p><strong>Clean Slate</strong>: Remove <code class="docutils literal notranslate"><span class="pre">build/</span></code>, <code class="docutils literal notranslate"><span class="pre">install/</span></code>, and <code class="docutils literal notranslate"><span class="pre">log/</span></code> directories for a clean rebuild.</p>
+<p><strong>Debugging Topics</strong>: Use <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">topic</span> <span class="pre">echo</span></code> with <code class="docutils literal notranslate"><span class="pre">--full-types</span></code> for detailed message information.</p>
+<p><strong>Memory Profiling</strong>: Run nodes with <code class="docutils literal notranslate"><span class="pre">-DCMAKE_BUILD_TYPE=Debug</span></code> and use valgrind or AddressSanitizer.</p>
+<p><strong>Parallel Testing</strong>: <code class="docutils literal notranslate"><span class="pre">colcon</span> <span class="pre">test</span> <span class="pre">--executor</span> <span class="pre">parallel</span></code> for faster test execution.</p>
+<p><strong>Logging</strong>: Control verbosity with <code class="docutils literal notranslate"><span class="pre">--ros-args</span> <span class="pre">--log-level</span> <span class="pre">DEBUG/INFO/WARN/ERROR</span></code>.</p>
+</section>
+<section id="related-documentation">
+<h2>Related Documentation<a class="headerlink" href="#related-documentation" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="../getting_started/index.html"><span class="doc">Getting Started</span></a> - Initial setup</p></li>
+<li><p><a class="reference internal" href="../firmware/esp32_controller.html"><span class="doc">ESP32 Controller</span></a> - Firmware details</p></li>
+<li><p><a class="reference internal" href="../variants/wall_e/index.html"><span class="doc">Wall-E Robot</span></a> - Wall-E development</p></li>
+<li><p><a class="reference internal" href="../variants/gas_robot/index.html"><span class="doc">Gas Robot Variant</span></a> - Gas Robot development</p></li>
+<li><p><a class="reference internal" href="../references/troubleshooting.html"><span class="doc">Troubleshooting</span></a> - Common issues</p></li>
+</ul>
+</section>
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h2>
+<p><strong>Build fails with missing packages:</strong></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">colcon</span><span class="w"> </span><span class="n">build</span><span class="w"> </span><span class="o">--</span><span class="n">symlink</span><span class="o">-</span><span class="n">install</span><span class="w"> </span><span class="o">--</span><span class="n">packages</span><span class="o">-</span><span class="n">up</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">regex</span><span class="w"> </span><span class="s">&quot;.*&quot;</span>
+</pre></div>
+</div>
+<p><strong>Firmware won’t compile:</strong></p>
+<p>Check firmware workspace exists: <code class="docutils literal notranslate"><span class="pre">ls</span> <span class="pre">firmware/PLATFORM</span> <span class="pre">firmware/APP</span></code></p>
+<p><strong>Serial port not accessible:</strong></p>
+<p>Add your user to <code class="docutils literal notranslate"><span class="pre">dialout</span></code> group on host: <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">usermod</span> <span class="pre">-a</span> <span class="pre">-G</span> <span class="pre">dialout</span> <span class="pre">$USER</span></code></p>
+<p><strong>ROS 2 nodes can’t communicate:</strong></p>
+<p>Verify <code class="docutils literal notranslate"><span class="pre">ROS_DOMAIN_ID</span></code> is the same across all terminals</p>
+<p>See <a class="reference internal" href="../references/troubleshooting.html"><span class="doc">Troubleshooting</span></a> for more solutions.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../getting_started/index.html" class="btn btn-neutral float-left" title="Getting Started" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../firmware/esp32_controller.html" class="btn btn-neutral float-right" title="ESP32 Controller" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Lydia Chheng.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

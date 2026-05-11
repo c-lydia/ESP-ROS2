@@ -1,0 +1,210 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ROS 2 Software Stacks &mdash; Wall-E 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #2980B9" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Wall-E
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Shared Core Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development/workflow_and_commands.html">Workflow and Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware/esp32_controller.html">ESP32 Controller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/architecture.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/communication_model.html">Communication Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/system_contract.html">System Contract</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../deployment/wifi_provisioning.html">WiFi Provisioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../references/index.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../references/troubleshooting.html">Troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Robot Variants</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../variants/wall_e/index.html">Wall-E Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../variants/gas_robot/index.html">Gas Robot Variant</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #2980B9" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Wall-E</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">ROS 2 Software Stacks</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/software/ros2_stacks/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ros-2-software-stacks">
+<h1>ROS 2 Software Stacks<a class="headerlink" href="#ros-2-software-stacks" title="Link to this heading"></a></h1>
+<p>Core ROS 2 packages and middleware infrastructure.</p>
+<div class="toctree-wrapper compound">
+</div>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>The ROS 2 software stacks provide the foundational packages and middleware that support both Wall-E and Gas Robot variants.</p>
+</section>
+<section id="shared-stacks">
+<h2>Shared Stacks<a class="headerlink" href="#shared-stacks" title="Link to this heading"></a></h2>
+<p>These ROS 2 packages are used across all robot variants:</p>
+<section id="custom-interfaces">
+<h3>Custom Interfaces<a class="headerlink" href="#custom-interfaces" title="Link to this heading"></a></h3>
+<p>Defines shared message types and service interfaces:</p>
+<ul class="simple">
+<li><p>Robot configuration messages</p></li>
+<li><p>Sensor data types</p></li>
+<li><p>Command interfaces</p></li>
+<li><p>Custom Gas Robot messages (for Gas Robot variant)</p></li>
+</ul>
+<p>Located in: <code class="docutils literal notranslate"><span class="pre">*/src/custom_interfaces/</span></code></p>
+</section>
+<section id="common-utilities">
+<h3>Common Utilities<a class="headerlink" href="#common-utilities" title="Link to this heading"></a></h3>
+<p>Shared utility packages:</p>
+<ul class="simple">
+<li><p>Communication helpers</p></li>
+<li><p>Logging and diagnostics</p></li>
+<li><p>Common algorithms</p></li>
+<li><p>Testing utilities</p></li>
+</ul>
+</section>
+</section>
+<section id="middleware-communication">
+<h2>Middleware &amp; Communication<a class="headerlink" href="#middleware-communication" title="Link to this heading"></a></h2>
+<section id="dds-middleware">
+<h3>DDS Middleware<a class="headerlink" href="#dds-middleware" title="Link to this heading"></a></h3>
+<p>ROS 2 uses Data Distribution Service (DDS) for publish/subscribe:</p>
+<ul class="simple">
+<li><p>Quality of Service (QoS) policies</p></li>
+<li><p>Multi-domain networking</p></li>
+<li><p>Security and encryption support</p></li>
+</ul>
+</section>
+<section id="micro-ros-integration">
+<h3>micro-ROS Integration<a class="headerlink" href="#micro-ros-integration" title="Link to this heading"></a></h3>
+<p>Connects firmware to ROS 2:</p>
+<ul class="simple">
+<li><p>Agent bridge for ESP32 communication</p></li>
+<li><p>Reliable UDP messaging</p></li>
+<li><p>Message serialization and deserialization</p></li>
+</ul>
+<p>See <a class="reference internal" href="../../hardware/communication_model.html"><span class="doc">Communication Model</span></a> for details.</p>
+</section>
+</section>
+<section id="building-ros-2-packages">
+<h2>Building ROS 2 Packages<a class="headerlink" href="#building-ros-2-packages" title="Link to this heading"></a></h2>
+<p>Build all packages:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span><span class="w"> </span><span class="n">micro_ros_ws</span>
+<span class="n">colcon</span><span class="w"> </span><span class="n">build</span>
+</pre></div>
+</div>
+<p>Build specific package:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">colcon</span><span class="w"> </span><span class="n">build</span><span class="w"> </span><span class="o">--</span><span class="n">packages</span><span class="o">-</span><span class="n">select</span><span class="w"> </span><span class="n">custom_interfaces</span>
+</pre></div>
+</div>
+<p>Build with tests:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">colcon</span><span class="w"> </span><span class="n">build</span><span class="w"> </span><span class="o">--</span><span class="n">packages</span><span class="o">-</span><span class="n">select</span><span class="w"> </span><span class="o">&lt;</span><span class="n">package</span><span class="o">&gt;</span><span class="w"> </span><span class="o">--</span><span class="n">cmake</span><span class="o">-</span><span class="n">args</span><span class="w"> </span><span class="o">-</span><span class="n">DCMAKE_BUILD_TYPE</span><span class="o">=</span><span class="n">Debug</span>
+</pre></div>
+</div>
+</section>
+<section id="testing">
+<h2>Testing<a class="headerlink" href="#testing" title="Link to this heading"></a></h2>
+<p>Run unit tests:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">colcon</span><span class="w"> </span><span class="n">test</span><span class="w"> </span><span class="o">--</span><span class="n">packages</span><span class="o">-</span><span class="n">select</span><span class="w"> </span><span class="n">custom_interfaces</span>
+</pre></div>
+</div>
+<p>View test results:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">colcon</span><span class="w"> </span><span class="n">test</span><span class="o">-</span><span class="n">result</span><span class="w"> </span><span class="o">--</span><span class="n">verbose</span>
+</pre></div>
+</div>
+</section>
+<section id="debugging">
+<h2>Debugging<a class="headerlink" href="#debugging" title="Link to this heading"></a></h2>
+<p>Enable verbose output:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">colcon</span><span class="w"> </span><span class="n">build</span><span class="w"> </span><span class="o">--</span><span class="n">packages</span><span class="o">-</span><span class="n">select</span><span class="w"> </span><span class="o">&lt;</span><span class="n">package</span><span class="o">&gt;</span><span class="w"> </span><span class="o">--</span><span class="n">event</span><span class="o">-</span><span class="n">handlers</span><span class="w"> </span><span class="n">console_direct</span><span class="o">+</span>
+</pre></div>
+</div>
+<p>Run with debugging:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">ros2</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="o">--</span><span class="n">prefix</span><span class="w"> </span><span class="err">&#39;</span><span class="n">gdb</span><span class="w"> </span><span class="o">-</span><span class="n">ex</span><span class="w"> </span><span class="n">run</span><span class="w"> </span><span class="o">--</span><span class="n">args</span><span class="err">&#39;</span><span class="w"> </span><span class="o">&lt;</span><span class="n">package</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="n">executable</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>See <a class="reference internal" href="../../development/workflow_and_commands.html"><span class="doc">Workflow and Commands</span></a> for advanced debugging techniques.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Lydia Chheng.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

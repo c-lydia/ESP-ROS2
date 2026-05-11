@@ -1,0 +1,247 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hardware Interfaces &mdash; Wall-E 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="State Estimation" href="state_estimation.html" />
+    <link rel="prev" title="Gas Robot Subsystems" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #2980B9" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            Wall-E
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Shared Core Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../getting_started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../development/workflow_and_commands.html">Workflow and Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../firmware/esp32_controller.html">ESP32 Controller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../hardware/architecture.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../hardware/communication_model.html">Communication Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../hardware/system_contract.html">System Contract</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../deployment/wifi_provisioning.html">WiFi Provisioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../references/index.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../references/troubleshooting.html">Troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Robot Variants</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../wall_e/index.html">Wall-E Robot</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Gas Robot Variant</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../setup.html">Gas Robot Setup</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Gas Robot Subsystems</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="index.html#system-flow">System Flow</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Hardware Interfaces</a></li>
+<li class="toctree-l4"><a class="reference internal" href="state_estimation.html">State Estimation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="perception.html">Perception</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mapping.html">Mapping</a></li>
+<li class="toctree-l4"><a class="reference internal" href="navigation.html">Navigation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="communication.html">Communication</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cv_pipeline.html">CV Pipeline</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#module-roles">Module Roles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#design-intent">Design Intent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#related-documentation">Related Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#getting-started-with-gas-robot">Getting Started with Gas Robot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#core-subsystems">Core Subsystems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#shared-platform-firmware">Shared Platform &amp; Firmware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#development-deployment">Development &amp; Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#related-documentation">Related Documentation</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #2980B9" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Wall-E</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Gas Robot Variant</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Gas Robot Subsystems</a></li>
+      <li class="breadcrumb-item active">Hardware Interfaces</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/variants/gas_robot/subsystems/hardware_interfaces.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="index.html" class="btn btn-neutral float-left" title="Gas Robot Subsystems" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="state_estimation.html" class="btn btn-neutral float-right" title="State Estimation" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="hardware-interfaces">
+<h1>Hardware Interfaces<a class="headerlink" href="#hardware-interfaces" title="Link to this heading"></a></h1>
+<p>Low-level drivers and interfaces for Gas Robot sensors and actuators.</p>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>The hardware interfaces layer provides abstraction for all physical hardware connected to Gas Robot, including gas sensors, motor controllers, and communication interfaces.</p>
+</section>
+<section id="supported-hardware">
+<h2>Supported Hardware<a class="headerlink" href="#supported-hardware" title="Link to this heading"></a></h2>
+<section id="gas-sensors">
+<h3>Gas Sensors<a class="headerlink" href="#gas-sensors" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Gas detection modules with analog/digital output</p></li>
+<li><p>I2C and SPI sensor interfaces</p></li>
+<li><p>Real-time data acquisition and filtering</p></li>
+</ul>
+</section>
+<section id="motor-control">
+<h3>Motor Control<a class="headerlink" href="#motor-control" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>PWM-based speed control</p></li>
+<li><p>Direction control via GPIO</p></li>
+<li><p>Encoder feedback for odometry</p></li>
+</ul>
+</section>
+<section id="communication-interfaces">
+<h3>Communication Interfaces<a class="headerlink" href="#communication-interfaces" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>I2C for sensor communication</p></li>
+<li><p>SPI for high-speed data transfer</p></li>
+<li><p>UART for serial communication</p></li>
+<li><p>USB for programming and debugging</p></li>
+</ul>
+</section>
+</section>
+<section id="sensor-drivers">
+<h2>Sensor Drivers<a class="headerlink" href="#sensor-drivers" title="Link to this heading"></a></h2>
+<section id="gas-sensor-driver">
+<h3>Gas Sensor Driver<a class="headerlink" href="#gas-sensor-driver" title="Link to this heading"></a></h3>
+<p>Reads from gas detection hardware and publishes calibrated values.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="nl">Topic</span><span class="p">:</span><span class="w"> </span><span class="o">/</span><span class="n">sensors</span><span class="o">/</span><span class="n">gas</span>
+<span class="nl">Type</span><span class="p">:</span><span class="w"> </span><span class="n">custom_interfaces</span><span class="o">/</span><span class="n">GasSensorData</span>
+<span class="nl">Rate</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="n">Hz</span>
+</pre></div>
+</div>
+</section>
+<section id="motor-driver">
+<h3>Motor Driver<a class="headerlink" href="#motor-driver" title="Link to this heading"></a></h3>
+<p>Controls motor speed and direction.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="nl">Service</span><span class="p">:</span><span class="w"> </span><span class="o">/</span><span class="n">motor</span><span class="o">/</span><span class="n">set_speed</span>
+<span class="nl">Topic</span><span class="p">:</span><span class="w"> </span><span class="o">/</span><span class="n">motor</span><span class="o">/</span><span class="n">feedback</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="adding-new-sensors">
+<h2>Adding New Sensors<a class="headerlink" href="#adding-new-sensors" title="Link to this heading"></a></h2>
+<p>To add a new sensor:</p>
+<ol class="arabic simple">
+<li><p>Create driver node in <code class="docutils literal notranslate"><span class="pre">hardware_interfaces/src/</span></code></p></li>
+<li><p>Define message types in <code class="docutils literal notranslate"><span class="pre">robot_interfaces/msg/</span></code></p></li>
+<li><p>Register topic in communication layer</p></li>
+<li><p>Add configuration in <code class="docutils literal notranslate"><span class="pre">hardware_interfaces/config/sensors.yaml</span></code></p></li>
+</ol>
+</section>
+<section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Link to this heading"></a></h2>
+<p>Hardware parameters are in <code class="docutils literal notranslate"><span class="pre">gas_robot_ws/src/hardware_interfaces/config/sensors.yaml</span></code>:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="nl">i2c_devices</span><span class="p">:</span>
+<span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="n">bus</span><span class="o">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">    </span><span class="nl">address</span><span class="p">:</span><span class="w"> </span><span class="mh">0x68</span>
+<span class="w">    </span><span class="nl">sensor</span><span class="p">:</span><span class="w"> </span><span class="n">gas_detector</span>
+
+<span class="nl">motor_pins</span><span class="p">:</span>
+<span class="w">  </span><span class="nl">left_pwm</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span>
+<span class="w">  </span><span class="nl">left_dir</span><span class="p">:</span><span class="w"> </span><span class="mi">13</span>
+<span class="w">  </span><span class="nl">right_pwm</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span>
+<span class="w">  </span><span class="nl">right_dir</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span>
+</pre></div>
+</div>
+</section>
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h2>
+<p><strong>Sensor not detected</strong>: Check I2C address and bus configuration.</p>
+<p><strong>Motor not responding</strong>: Verify GPIO pin configuration and PWM frequency.</p>
+<p><strong>Data corruption</strong>: Check cable shielding and power supply voltage.</p>
+<p>See <span class="xref std std-doc">../../references/troubleshooting</span> for common issues.</p>
+</section>
+<section id="related-documentation">
+<h2>Related Documentation<a class="headerlink" href="#related-documentation" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="communication.html"><span class="doc">Communication</span></a> - Inter-node messaging</p></li>
+<li><p><a class="reference internal" href="perception.html"><span class="doc">Perception</span></a> - Sensor data processing</p></li>
+<li><p><a class="reference internal" href="../index.html"><span class="doc">Gas Robot Variant</span></a> - Gas Robot variant overview</p></li>
+<li><p><span class="xref std std-doc">../../firmware/esp32_controller</span> - Firmware hardware integration</p></li>
+<li><p><span class="xref std std-doc">../../hardware/architecture</span> - Platform architecture</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Gas Robot Subsystems" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="state_estimation.html" class="btn btn-neutral float-right" title="State Estimation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Lydia Chheng.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,202 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gas Robot Variant &mdash; Wall-E 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=01f34227"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Gas Robot Setup" href="setup.html" />
+    <link rel="prev" title="Localization" href="../wall_e/subsystems/localization.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #2980B9" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Wall-E
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Shared Core Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development/workflow_and_commands.html">Workflow and Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../firmware/esp32_controller.html">ESP32 Controller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/architecture.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/communication_model.html">Communication Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../hardware/system_contract.html">System Contract</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../deployment/wifi_provisioning.html">WiFi Provisioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../references/index.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../references/troubleshooting.html">Troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Robot Variants</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../wall_e/index.html">Wall-E Robot</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Gas Robot Variant</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="setup.html">Gas Robot Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="subsystems/index.html">Gas Robot Subsystems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#getting-started-with-gas-robot">Getting Started with Gas Robot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#core-subsystems">Core Subsystems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#shared-platform-firmware">Shared Platform &amp; Firmware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#development-deployment">Development &amp; Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#related-documentation">Related Documentation</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #2980B9" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Wall-E</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Gas Robot Variant</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/variants/gas_robot/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
+        <a href="../wall_e/subsystems/localization.html" class="btn btn-neutral float-left" title="Localization" accesskey="p"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="setup.html" class="btn btn-neutral float-right" title="Gas Robot Setup" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+  </div>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="gas-robot-variant">
+<h1>Gas Robot Variant<a class="headerlink" href="#gas-robot-variant" title="Link to this heading"></a></h1>
+<p>Gas Robot is an advanced variant of the platform, featuring expanded capabilities for autonomous navigation, environmental perception, computer vision, and gas detection.</p>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Gas Robot Specific</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Gas Robot Setup</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="setup.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup.html#hardware-requirements">Hardware Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup.html#core-subsystems">Core Subsystems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup.html#configuration">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup.html#environment-variables">Environment Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup.html#building-and-testing">Building and Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup.html#troubleshooting">Troubleshooting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="subsystems/index.html">Gas Robot Subsystems</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="subsystems/index.html#system-flow">System Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="subsystems/index.html#module-roles">Module Roles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="subsystems/index.html#design-intent">Design Intent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="subsystems/index.html#related-documentation">Related Documentation</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<section id="getting-started-with-gas-robot">
+<h2>Getting Started with Gas Robot<a class="headerlink" href="#getting-started-with-gas-robot" title="Link to this heading"></a></h2>
+<p>See the <a class="reference internal" href="../../getting_started/index.html"><span class="doc">Getting Started</span></a> for initial setup, then proceed with <a class="reference internal" href="setup.html"><span class="doc">Gas Robot Setup</span></a> for Gas Robot-specific configuration.</p>
+</section>
+<section id="core-subsystems">
+<h2>Core Subsystems<a class="headerlink" href="#core-subsystems" title="Link to this heading"></a></h2>
+<p>Gas Robot includes advanced subsystems:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="subsystems/communication.html"><span class="doc">Communication</span></a> - Multi-layer communication architecture</p></li>
+<li><p><a class="reference internal" href="subsystems/hardware_interfaces.html"><span class="doc">Hardware Interfaces</span></a> - Sensor and actuator drivers</p></li>
+<li><p><a class="reference internal" href="subsystems/perception.html"><span class="doc">Perception</span></a> - Environmental sensor fusion</p></li>
+<li><p><a class="reference internal" href="subsystems/state_estimation.html"><span class="doc">State Estimation</span></a> - Accurate pose tracking</p></li>
+<li><p><a class="reference internal" href="subsystems/navigation.html"><span class="doc">Navigation</span></a> - Autonomous path planning and navigation</p></li>
+<li><p><a class="reference internal" href="subsystems/mapping.html"><span class="doc">Mapping</span></a> - SLAM and environmental mapping</p></li>
+<li><p><a class="reference internal" href="subsystems/cv_pipeline.html"><span class="doc">CV Pipeline</span></a> - Computer vision processing</p></li>
+</ul>
+</section>
+<section id="shared-platform-firmware">
+<h2>Shared Platform &amp; Firmware<a class="headerlink" href="#shared-platform-firmware" title="Link to this heading"></a></h2>
+<p>Gas Robot shares the core platform with Wall-E:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../hardware/architecture.html"><span class="doc">Architecture</span></a></p></li>
+<li><p><a class="reference internal" href="../../hardware/communication_model.html"><span class="doc">Communication Model</span></a></p></li>
+<li><p><a class="reference internal" href="../../firmware/esp32_controller.html"><span class="doc">ESP32 Controller</span></a></p></li>
+</ul>
+</section>
+<section id="development-deployment">
+<h2>Development &amp; Deployment<a class="headerlink" href="#development-deployment" title="Link to this heading"></a></h2>
+<p>For development workflows, see <a class="reference internal" href="../../development/workflow_and_commands.html"><span class="doc">Workflow and Commands</span></a>.</p>
+<p>For deployment information, see <a class="reference internal" href="../../deployment/wifi_provisioning.html"><span class="doc">WiFi Provisioning</span></a>.</p>
+</section>
+<section id="related-documentation">
+<h2>Related Documentation<a class="headerlink" href="#related-documentation" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="../wall_e/index.html"><span class="doc">Wall-E Robot</span></a> - Wall-E variant documentation</p></li>
+<li><p><a class="reference internal" href="../../getting_started/index.html"><span class="doc">Getting Started</span></a> - Getting started guide</p></li>
+<li><p><a class="reference internal" href="../../hardware/architecture.html"><span class="doc">Architecture</span></a> - System architecture</p></li>
+<li><p><a class="reference internal" href="../../firmware/esp32_controller.html"><span class="doc">ESP32 Controller</span></a> - Firmware documentation</p></li>
+<li><p><a class="reference internal" href="../../software/ros2_stacks/index.html"><span class="doc">ROS 2 Software Stacks</span></a> - ROS 2 software stacks</p></li>
+<li><p><a class="reference internal" href="../../references/index.html"><span class="doc">References</span></a> - References and resources</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../wall_e/subsystems/localization.html" class="btn btn-neutral float-left" title="Localization" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="setup.html" class="btn btn-neutral float-right" title="Gas Robot Setup" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Lydia Chheng.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Wall-E &mdash; Wall-E 0.1.0 documentation</title>
+  <title>Robotics Workspace &mdash; Wall-E 0.1.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
 
@@ -19,7 +19,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Getting Started" href="getting_started.html" /> 
+    <link rel="next" title="Getting Started" href="getting_started/index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -41,14 +41,22 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Shared Core Documentation</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="workflow_and_commands.html">Workflow and Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development/workflow_and_commands.html">Workflow and Commands</a></li>
 <li class="toctree-l1"><a class="reference internal" href="firmware/esp32_controller.html">ESP32 Controller</a></li>
-<li class="toctree-l1"><a class="reference internal" href="wifi_provisioning.html">WiFi Provisioning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="architecture.html">Architecture</a></li>
-<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hardware/architecture.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hardware/communication_model.html">Communication Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hardware/system_contract.html">System Contract</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deployment/wifi_provisioning.html">WiFi Provisioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references/index.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references/troubleshooting.html">Troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Robot Variants</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="variants/wall_e/index.html">Wall-E Robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="variants/gas_robot/index.html">Gas Robot Variant</a></li>
 </ul>
 
         </div>
@@ -65,37 +73,53 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Wall-E</li>
+      <li class="breadcrumb-item active">Robotics Workspace</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul><div class="rst-breadcrumbs-buttons" role="navigation" aria-label="Sequential page navigation">
-        <a href="getting_started.html" class="btn btn-neutral float-right" title="Getting Started" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="getting_started/index.html" class="btn btn-neutral float-right" title="Getting Started" accesskey="n">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
   </div>
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="wall-e">
-<h1>Wall-E<a class="headerlink" href="#wall-e" title="Link to this heading"></a></h1>
-<p>Welcome to Wall-E’s comprehensive documentation. This project provides an integrated development environment combining ESP32 firmware, FreeRTOS, and ROS 2 Humble for advanced embedded robotics applications.</p>
+  <section id="robotics-workspace">
+<h1>Robotics Workspace<a class="headerlink" href="#robotics-workspace" title="Link to this heading"></a></h1>
+<p>Welcome to the comprehensive documentation for multiple robot variants. This project provides an integrated development environment combining ESP32 firmware, FreeRTOS, and ROS 2 Humble for advanced embedded robotics applications.</p>
+<p>The published site is built automatically from the <code class="docutils literal notranslate"><span class="pre">docs/source</span></code> tree on pushes to <code class="docutils literal notranslate"><span class="pre">main</span></code>.</p>
 <div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<p class="caption" role="heading"><span class="caption-text">Shared Core Documentation</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="getting_started.html#quick-start-guide">Quick Start Guide</a></li>
-<li class="toctree-l2"><a class="reference internal" href="getting_started.html#initial-setup">Initial Setup</a></li>
-<li class="toctree-l2"><a class="reference internal" href="getting_started.html#building-the-esp32-firmware">Building the ESP32 Firmware</a></li>
-<li class="toctree-l2"><a class="reference internal" href="getting_started.html#next-steps">Next Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started/index.html">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="getting_started/index.html#system-requirements">System Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started/index.html#quick-start-5-minutes">Quick Start (5 minutes)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started/index.html#detailed-setup">Detailed Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started/index.html#esp32-firmware-setup">ESP32 Firmware Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started/index.html#docker-container-setup">Docker Container Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started/index.html#choosing-your-robot-variant">Choosing Your Robot Variant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started/index.html#workspace-structure">Workspace Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started/index.html#building-without-docker">Building Without Docker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started/index.html#common-issues-solutions">Common Issues &amp; Solutions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started/index.html#next-steps">Next Steps</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="workflow_and_commands.html">Workflow and Commands</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="workflow_and_commands.html#development-workflow">Development Workflow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="workflow_and_commands.html#workspace-commands">Workspace Commands</a></li>
-<li class="toctree-l2"><a class="reference internal" href="workflow_and_commands.html#firmware-commands">Firmware Commands</a></li>
-<li class="toctree-l2"><a class="reference internal" href="workflow_and_commands.html#useful-checks">Useful Checks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="workflow_and_commands.html#notes">Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development/workflow_and_commands.html">Workflow and Commands</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="development/workflow_and_commands.html#development-workflow-overview">Development Workflow Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development/workflow_and_commands.html#docker-environment">Docker Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development/workflow_and_commands.html#workspace-container-access">Workspace Container Access</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development/workflow_and_commands.html#ros-2-environment-setup">ROS 2 Environment Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development/workflow_and_commands.html#building-packages">Building Packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development/workflow_and_commands.html#launching-nodes-and-systems">Launching Nodes and Systems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development/workflow_and_commands.html#firmware-development">Firmware Development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development/workflow_and_commands.html#ros-2-development-tools">ROS 2 Development Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development/workflow_and_commands.html#visualization">Visualization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development/workflow_and_commands.html#testing">Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development/workflow_and_commands.html#common-commands-summary">Common Commands Summary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development/workflow_and_commands.html#tips-and-tricks">Tips and Tricks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development/workflow_and_commands.html#related-documentation">Related Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development/workflow_and_commands.html#troubleshooting">Troubleshooting</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="firmware/esp32_controller.html">ESP32 Controller</a><ul>
@@ -114,35 +138,107 @@
 <li class="toctree-l2"><a class="reference internal" href="firmware/esp32_controller.html#future-enhancements">Future Enhancements</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="wifi_provisioning.html">WiFi Provisioning</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="wifi_provisioning.html#quick-start">Quick Start</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wifi_provisioning.html#system-overview">System Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wifi_provisioning.html#how-it-works">How It Works</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wifi_provisioning.html#for-end-users">For End Users</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wifi_provisioning.html#for-developers">For Developers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wifi_provisioning.html#security-considerations">Security Considerations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wifi_provisioning.html#common-issues">Common Issues</a></li>
-<li class="toctree-l2"><a class="reference internal" href="wifi_provisioning.html#api-reference">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hardware/architecture.html">Architecture</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="hardware/architecture.html#system-overview">System Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware/architecture.html#high-level-system-diagram">High-Level System Diagram</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware/architecture.html#platform-layer">Platform Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware/architecture.html#subsystem-layer">Subsystem Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware/architecture.html#ros-2-stack-layer">ROS 2 Stack Layer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware/architecture.html#data-flow-architecture">Data Flow Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware/architecture.html#communication-model">Communication Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware/architecture.html#design-principles">Design Principles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware/architecture.html#extensibility">Extensibility</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware/architecture.html#references">References</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="architecture.html">Architecture</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="architecture.html#system-overview">System Overview</a></li>
-<li class="toctree-l2"><a class="reference internal" href="architecture.html#component-descriptions">Component Descriptions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="architecture.html#communication-flow">Communication Flow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="architecture.html#data-types">Data Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hardware/communication_model.html">Communication Model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="hardware/communication_model.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware/communication_model.html#communication-layers">Communication Layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware/communication_model.html#message-flow-examples">Message Flow Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware/communication_model.html#message-types">Message Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware/communication_model.html#quality-of-service-qos">Quality of Service (QoS)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware/communication_model.html#network-configuration">Network Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware/communication_model.html#wifi-provisioning">WiFi Provisioning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware/communication_model.html#debugging-communication">Debugging Communication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware/communication_model.html#performance-considerations">Performance Considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware/communication_model.html#related-documentation">Related Documentation</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#common-issues-and-solutions">Common Issues and Solutions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#using-debug-tools">Using Debug Tools</a></li>
-<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#getting-help">Getting Help</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hardware/system_contract.html">System Contract</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="hardware/system_contract.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware/system_contract.html#core-contract-principles">Core Contract Principles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware/system_contract.html#firmware-to-host-contract">Firmware-to-Host Contract</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware/system_contract.html#host-to-host-ros-2-contract">Host-to-Host ROS 2 Contract</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware/system_contract.html#coordinate-frames">Coordinate Frames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware/system_contract.html#service-contracts">Service Contracts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware/system_contract.html#action-contracts">Action Contracts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware/system_contract.html#gas-robot-extension">Gas Robot Extension</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware/system_contract.html#subsystem-contracts">Subsystem Contracts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware/system_contract.html#version-management">Version Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware/system_contract.html#error-handling">Error Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware/system_contract.html#monitoring-and-diagnostics">Monitoring and Diagnostics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware/system_contract.html#contract-compliance-testing">Contract Compliance Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hardware/system_contract.html#related-documentation">Related Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="deployment/wifi_provisioning.html">WiFi Provisioning</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="deployment/wifi_provisioning.html#quick-start">Quick Start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deployment/wifi_provisioning.html#system-overview">System Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deployment/wifi_provisioning.html#how-it-works">How It Works</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deployment/wifi_provisioning.html#for-end-users">For End Users</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deployment/wifi_provisioning.html#for-developers">For Developers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deployment/wifi_provisioning.html#security-considerations">Security Considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deployment/wifi_provisioning.html#common-issues">Common Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deployment/wifi_provisioning.html#api-reference">API Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="references/index.html">References</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="references/concepts.html">Concepts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="references/references.html">References</a></li>
+<li class="toctree-l2"><a class="reference internal" href="references/troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="references/index.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="references/index.html#quick-links-to-documentation">Quick Links to Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="references/troubleshooting.html">Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="references/troubleshooting.html#common-issues-and-solutions">Common Issues and Solutions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="references/troubleshooting.html#using-debug-tools">Using Debug Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="references/troubleshooting.html#getting-help">Getting Help</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Robot Variants</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="variants/wall_e/index.html">Wall-E Robot</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="variants/wall_e/subsystems/index.html">Wall-E Subsystems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="variants/wall_e/index.html#getting-started-with-wall-e">Getting Started with Wall-E</a></li>
+<li class="toctree-l2"><a class="reference internal" href="variants/wall_e/index.html#architecture-design">Architecture &amp; Design</a></li>
+<li class="toctree-l2"><a class="reference internal" href="variants/wall_e/index.html#development">Development</a></li>
+<li class="toctree-l2"><a class="reference internal" href="variants/wall_e/index.html#related-documentation">Related Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="variants/gas_robot/index.html">Gas Robot Variant</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="variants/gas_robot/setup.html">Gas Robot Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="variants/gas_robot/subsystems/index.html">Gas Robot Subsystems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="variants/gas_robot/index.html#getting-started-with-gas-robot">Getting Started with Gas Robot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="variants/gas_robot/index.html#core-subsystems">Core Subsystems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="variants/gas_robot/index.html#shared-platform-firmware">Shared Platform &amp; Firmware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="variants/gas_robot/index.html#development-deployment">Development &amp; Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="variants/gas_robot/index.html#related-documentation">Related Documentation</a></li>
 </ul>
 </li>
 </ul>
 </div>
 <section id="project-overview">
 <h2>Project Overview<a class="headerlink" href="#project-overview" title="Link to this heading"></a></h2>
-<p>Wall-E is a complete, production-ready workspace for developing intelligent embedded robot systems. It seamlessly integrates:</p>
+<p>This workspace provides a production-ready platform for developing intelligent embedded robot systems using multiple variants:</p>
+<ul class="simple">
+<li><p><strong>Wall-E</strong>: Original robot variant with full ROS 2 ecosystem and sensor integration</p></li>
+<li><p><strong>Gas Robot</strong>: Experimental variant for gas-related applications</p></li>
+</ul>
+<p>The project seamlessly integrates:</p>
 <ul class="simple">
 <li><p><strong>Modern Robotics</strong>: Full ROS 2 Humble support on host systems</p></li>
 <li><p><strong>Embedded Systems</strong>: FreeRTOS-based ESP32 controller firmware</p></li>
@@ -193,26 +289,25 @@
 </section>
 <section id="quick-start">
 <h2>Quick Start<a class="headerlink" href="#quick-start" title="Link to this heading"></a></h2>
-<p>To get started with Wall-E:</p>
+<p>To get started:</p>
 <ol class="arabic simple">
-<li><p>Clone the repository and navigate to the workspace</p></li>
-<li><p>Start the Docker containers: <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">compose</span> <span class="pre">up</span> <span class="pre">--build</span></code></p></li>
-<li><p>Build packages in the workspace container: <code class="docutils literal notranslate"><span class="pre">colcon</span> <span class="pre">build</span></code></p></li>
-<li><p>Build and flash the ESP32 firmware</p></li>
-<li><p>Monitor the micro-ROS agent and ESP32 communication</p></li>
+<li><p>Choose your robot variant: <a class="reference internal" href="variants/wall_e/index.html"><span class="doc">Wall-E Robot</span></a> or <a class="reference internal" href="variants/gas_robot/index.html"><span class="doc">Gas Robot Variant</span></a></p></li>
+<li><p>Follow the <a class="reference internal" href="getting_started/index.html"><span class="doc">Getting Started</span></a> guide for setup</p></li>
+<li><p>Refer to <a class="reference internal" href="development/workflow_and_commands.html"><span class="doc">Workflow and Commands</span></a> for development workflows</p></li>
+<li><p>See variant-specific documentation for customization</p></li>
 </ol>
 <p>For detailed instructions, see the <strong>Getting Started</strong> guide.</p>
 </section>
 <section id="system-architecture">
 <h2>System Architecture<a class="headerlink" href="#system-architecture" title="Link to this heading"></a></h2>
-<p>Wall-E’s architecture consists of:</p>
+<p>The shared platform architecture consists of:</p>
 <ul class="simple">
 <li><p><strong>Host System</strong>: ROS 2 Humble development environment with visualization tools</p></li>
 <li><p><strong>Middleware</strong>: micro-ROS agent for reliable UDP communication</p></li>
 <li><p><strong>Embedded Controller</strong>: FreeRTOS-based ESP32 with sensor interface</p></li>
 <li><p><strong>Documentation</strong>: Complete guides and API references</p></li>
 </ul>
-<p>For a detailed technical overview, see the <strong>Architecture</strong> documentation.</p>
+<p>Each robot variant may include additional subsystems. For a detailed technical overview, see the <strong>Architecture</strong> documentation.</p>
 </section>
 <section id="technical-stack">
 <h2>Technical Stack<a class="headerlink" href="#technical-stack" title="Link to this heading"></a></h2>
@@ -258,10 +353,11 @@
 <h2>Support &amp; Documentation<a class="headerlink" href="#support-documentation" title="Link to this heading"></a></h2>
 <p>This documentation provides:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="getting_started.html#getting-started"><span class="std std-ref">Getting Started Guide</span></a> - Setup and initial configuration</p></li>
+<li><p><a class="reference internal" href="getting_started/index.html#getting-started"><span class="std std-ref">Getting Started Guide</span></a> - Setup and initial configuration</p></li>
 <li><p><a class="reference internal" href="firmware/esp32_controller.html#esp32-controller"><span class="std std-ref">ESP32 Controller Documentation</span></a> - Hardware and firmware details</p></li>
-<li><p><a class="reference internal" href="architecture.html#architecture"><span class="std std-ref">System Architecture</span></a> - Design overview and data flow</p></li>
-<li><p><a class="reference internal" href="troubleshooting.html#troubleshooting"><span class="std std-ref">Troubleshooting Guide</span></a> - Solutions to common issues</p></li>
+<li><p><a class="reference internal" href="hardware/architecture.html#architecture"><span class="std std-ref">System Architecture</span></a> - Design overview and data flow</p></li>
+<li><p><a class="reference internal" href="references/troubleshooting.html#troubleshooting"><span class="std std-ref">Troubleshooting Guide</span></a> - Solutions to common issues</p></li>
+<li><p><a class="reference internal" href="references/references.html#references"><span class="std std-ref">References</span></a> - IEEE-formatted books and research papers</p></li>
 </ul>
 <p>For additional information, see the project’s GitHub repository.</p>
 </section>
@@ -271,7 +367,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="getting_started.html" class="btn btn-neutral float-right" title="Getting Started" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="getting_started/index.html" class="btn btn-neutral float-right" title="Getting Started" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

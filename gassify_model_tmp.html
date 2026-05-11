@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>gassify_model.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> or <div class="page"></div> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="gassify-robot-system-model">Gassify Robot System Model</h1>
+<p>This document defines a <strong>cleaned, consistent, and structured mathematical model</strong> of the Gassify robot system, covering kinematics, control, perception, estimation, and UI mapping.</p>
+<h2 id="coordinate-system-convention">Coordinate System Convention</h2>
+<p>All computations use a right-handed frame:</p>
+<ul>
+<li><strong>x-axis:</strong> forward</li>
+<li><strong>y-axis:</strong> left</li>
+<li><strong>z-axis:</strong> up</li>
+<li><strong>yaw ($\theta$):</strong> positive counter-clockwise</li>
+</ul>
+<p>Rotation about z-axis:</p>
+<p>$$
+R_z(\theta) =
+\begin{bmatrix}
+\cos\theta &amp; -\sin\theta &amp; 0 \
+\sin\theta &amp;  \cos\theta &amp; 0 \
+0          &amp;  0          &amp; 1
+\end{bmatrix}
+$$</p>
+<h2 id="tf-tree-structure">TF Tree Structure</h2>
+<pre class="hljs"><code><div>map
+└── odom
+    └── base_link
+        ├── imu_link
+        ├── servo_link
+        │   └── camera_link
+        ├── range_link
+        └── wheel_link
+</div></code></pre>
+<h3 id="frame-definitions">Frame definitions</h3>
+<table>
+<thead>
+<tr>
+<th>Frame</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>map</code></td>
+<td>Global reference frame (vision-corrected)</td>
+</tr>
+<tr>
+<td><code>odom</code></td>
+<td>Drift-prone dead-reckoning frame</td>
+</tr>
+<tr>
+<td><code>base_link</code></td>
+<td>Robot center frame (control reference)</td>
+</tr>
+<tr>
+<td><code>imu_link</code></td>
+<td>IMU measurement frame</td>
+</tr>
+<tr>
+<td><code>servo_link</code></td>
+<td>Servo pivot frame — fixed offset from <code>base_link</code>, rotates about z by $\phi$</td>
+</tr>
+<tr>
+<td><code>camera_link</code></td>
+<td>Camera optical frame — fixed offset from <code>servo_link</code></td>
+</tr>
+<tr>
+<td><code>range_link</code></td>
+<td>Distance sensor frame</td>
+</tr>
+</tbody>
+</table>
+<h2 id="servo-kinematics">Servo Kinematics</h2>
+<p>Let $\phi$ be the servo pan angle (positive counter-clockwise, same convention as $\theta$).</p>
+<p>The transform from <code>base_link</code> to <code>servo_link</code> is:</p>
+<p>$$
+T_{\text{base}}^{\text{servo}}(\phi) =
+\begin{bmatrix}
+R_z(\phi) &amp; \mathbf{t}_{bs} \
+\mathbf{0}^\top &amp; 1
+\end{bmatrix}
+$$</p>
+<p>where $\mathbf{t}_{bs} = [t_x,, t_y,, t_z]^\top$ is the fixed mounting offset of the servo pivot from <code>base_link</code>.</p>
+<p>The transform from <code>servo_link</code> to <code>camera_link</code> is fixed (mechanical mounting):</p>
+<p>$$
+T_{\text{servo}}^{\text{cam}} =
+\begin{bmatrix}
+R_{\text{mount}} &amp; \mathbf{t}_{sc} \
+\mathbf{0}^\top &amp; 1
+\end{bmatrix}
+$$</p>
+<p>The full camera transform in the world frame is:</p>
+<p>$$
+T_{\text{map}}^{\text{cam}} = T_{\text{map}}^{\text{odom}} \cdot T_{\text{odom}}^{\text{base}} \cdot T_{\text{base}}^{\text{servo}}(\phi) \cdot T_{\text{servo}}^{\text{cam}}
+$$</p>
+<h3 id="servo-control-p-controller">Servo Control (P controller)</h3>
+<h4 id="rate-limiter-applied-to-command">Rate limiter (applied to command)</h4>
+<p>$$
+\Delta\phi_{\max} = \dot{\phi}_{\max} \cdot dt
+$$</p>
+<p>$$
+\phi^<em>_{\text{lim}} = \phi^</em><em>{k-1} + \text{clip}!\left(\phi^<em>_k - \phi^</em></em>{k-1},; -\Delta\phi_{\max},; +\Delta\phi_{\max}\right)
+$$</p>
+<p>Hard-clip to physical servo range:</p>
+<p>$$
+\phi^<em>_{\text{lim}} = \text{clip}!\left(\phi^</em><em>{\text{lim}},; -\phi</em>{\max},; +\phi_{\max}\right)
+$$</p>
+<h4 id="p-controller">P controller</h4>
+<p>$$
+e_\phi = \phi^*_{\text{lim}} - \phi
+$$</p>
+<p>$$
+u_\phi = \text{clip}!\left(K_p^\phi \cdot e_\phi,; -u_{\phi,\max},; +u_{\phi,\max}\right)
+$$</p>
+<h4 id="closed-loop">Closed-loop</h4>
+<p>Servo mechanical plant modelled as first-order lag:</p>
+<p>$$
+G_\phi(s) = \frac{K_\phi}{\tau_\phi s + 1}
+$$</p>
+<p>Closed-loop time constant with P controller:</p>
+<p>$$
+\tau_{\phi,\text{cl}} = \frac{\tau_\phi}{1 + K_p^\phi K_\phi}
+$$</p>
+<p>Steady-state error to a step command:</p>
+<p>$$
+e_{\phi,\text{ss}} = \frac{1}{1 + K_p^\phi K_\phi} \cdot \phi^*
+$$</p>
+<p>Gain selection from measured $K_\phi$ and $\tau_\phi$:</p>
+<p>$$
+K_p^\phi = \frac{\omega_{\phi,\text{bw}} \cdot \tau_\phi - 1}{K_\phi}
+$$</p>
+<h4 id="parameter-table">Parameter table</h4>
+<table>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Meaning</th>
+<th>How to obtain</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\phi_{\max}$</td>
+<td>Physical servo limit [rad]</td>
+<td>Datasheet</td>
+</tr>
+<tr>
+<td>$\dot{\phi}_{\max}$</td>
+<td>Max slew rate [rad/s]</td>
+<td>Datasheet</td>
+</tr>
+<tr>
+<td>$\tau_\phi$</td>
+<td>Servo time constant [s]</td>
+<td>Step response</td>
+</tr>
+<tr>
+<td>$K_\phi$</td>
+<td>Servo DC gain [rad per unit cmd]</td>
+<td>Step response</td>
+</tr>
+<tr>
+<td>$K_p^\phi$</td>
+<td>P gain</td>
+<td>$\omega_{\phi,\text{bw}} \cdot \tau_\phi / K_\phi$</td>
+</tr>
+<tr>
+<td>$u_{\phi,\max}$</td>
+<td>Output saturation</td>
+<td>Servo driver range</td>
+</tr>
+</tbody>
+</table>
+<h2 id="differential-drive-kinematics">Differential Drive Kinematics</h2>
+<p>Let $v_r$, $v_l$ denote right/left wheel linear velocities and $L$ the <strong>full wheel separation</strong> (track width).</p>
+<h3 id="forward-model">Forward model</h3>
+<p>$$
+v = \frac{v_r + v_l}{2}, \qquad \omega = \frac{v_r - v_l}{L}
+$$</p>
+<h3 id="inverse-model">Inverse model</h3>
+<p>$$
+v_r = v + \frac{L}{2},\omega, \qquad v_l = v - \frac{L}{2},\omega
+$$</p>
+<h3 id="robot-motion-model">Robot motion model</h3>
+<p>$$
+\dot{x} = v\cos\theta, \qquad \dot{y} = v\sin\theta, \qquad \dot{\theta} = \omega
+$$</p>
+<h3 id="exact-arc-pose-integration">Exact arc pose integration</h3>
+<p>For $\omega \neq 0$:</p>
+<p>$$
+x' = x + \frac{v}{\omega}\bigl[\sin(\theta + \omega,dt) - \sin\theta\bigr]
+$$</p>
+<p>$$
+y' = y - \frac{v}{\omega}\bigl[\cos(\theta + \omega,dt) - \cos\theta\bigr]
+$$</p>
+<p>$$
+\theta' = \theta + \omega,dt
+$$</p>
+<p>For $\omega \approx 0$ (straight line):</p>
+<p>$$
+x' = x + v,dt\cos\theta, \qquad y' = y + v,dt\sin\theta, \qquad \theta' = \theta
+$$</p>
+<h2 id="actuator-dynamics">Actuator Dynamics</h2>
+<p>First-order motor lag model:</p>
+<p>$$
+\dot{v} = \frac{v_{\text{cmd}} - v}{\tau_v}, \qquad \dot{\omega} = \frac{\omega_{\text{cmd}} - \omega}{\tau_\omega}
+$$</p>
+<p>Discrete Euler integration:</p>
+<p>$$
+v_{k+1} = v_k + \frac{v_{\text{cmd}} - v_k}{\tau_v},dt, \qquad
+\omega_{k+1} = \omega_k + \frac{\omega_{\text{cmd}} - \omega_k}{\tau_\omega},dt
+$$</p>
+<h3 id="rate-limiting-applied-to-commands-not-plant-state">Rate limiting (applied to commands, not plant state)</h3>
+<p>$$
+\Delta v_{\max} = a_{\max},dt, \qquad \Delta\omega_{\max} = \alpha_{\max},dt
+$$</p>
+<p>$$
+v_{\text{cmd,lim}} = \text{clip}!\left(v_{\text{cmd}},; v_k - \Delta v_{\max},; v_k + \Delta v_{\max}\right)
+$$</p>
+<p>$$
+\omega_{\text{cmd,lim}} = \text{clip}!\left(\omega_{\text{cmd}},; \omega_k - \Delta\omega_{\max},; \omega_k + \Delta\omega_{\max}\right)
+$$</p>
+<p>The plant state then evolves under physics only — it is never clipped directly.</p>
+<h2 id="state-representation">State Representation</h2>
+<p>$$
+\mathbf{x} =
+\begin{bmatrix}
+x &amp; y &amp; \theta &amp; v &amp; \omega &amp; \mathbf{q} &amp; \phi
+\end{bmatrix}^\top
+$$</p>
+<p>where $\mathbf{q} = [q_w,, q_x,, q_y,, q_z]^\top$ is the orientation quaternion and $\phi \in [-\phi_{\max},, +\phi_{\max}]$ is the servo pan angle read from servo feedback each timestep.</p>
+<h3 id="theta--mathbfq-consistency">$\theta$ / $\mathbf{q}$ consistency</h3>
+<p>$\theta$ and $\mathbf{q}$ both encode orientation. On flat terrain $\theta = \text{yaw}(\mathbf{q})$. Consistency must be enforced at every update step:</p>
+<p>$$
+\theta = \arctan2!\bigl(2(q_w q_z + q_x q_y),; 1 - 2(q_y^2 + q_z^2)\bigr)
+$$</p>
+<p><strong>Rule:</strong> IMU updates $\mathbf{q}$ → extract $\theta$ from $\mathbf{q}$. Odometry updates $\theta$ → set $q_w = \cos(\theta/2)$, $q_z = \sin(\theta/2)$, $q_x = q_y = 0$. Never update $\theta$ and $\mathbf{q}$ independently.</p>
+<h2 id="imu-orientation-estimation-mahony-filter">IMU Orientation Estimation (Mahony Filter)</h2>
+<h3 id="gyroscope-model">Gyroscope model</h3>
+<p>$$
+\omega_m = \omega + b_g + n_g, \qquad \omega = \omega_m - b_g
+$$</p>
+<h3 id="gravity-estimate-from-quaternion">Gravity estimate from quaternion</h3>
+<p>$$
+\hat{g}_x = 2(q_x q_z - q_w q_y)
+$$</p>
+<p>$$
+\hat{g}_y = 2(q_w q_x + q_y q_z)
+$$</p>
+<p>$$
+\hat{g}_z = q_w^2 - q_x^2 - q_y^2 + q_z^2
+$$</p>
+<p>$$
+\hat{\mathbf{g}} = [\hat{g}_x,; \hat{g}_y,; \hat{g}_z]^\top
+$$</p>
+<h3 id="error-signal">Error signal</h3>
+<p>$$
+\mathbf{e} = \mathbf{a} \times \hat{\mathbf{g}}
+$$</p>
+<h3 id="pi-correction-and-bias-update">PI correction and bias update</h3>
+<p>$$
+\omega_c = \omega + K_p,\mathbf{e} + K_i \int \mathbf{e},dt
+$$</p>
+<p>$$
+\dot{b}_g = -K_i,\mathbf{e}, \qquad b_g \leftarrow b_g + \dot{b}_g,dt
+$$</p>
+<h3 id="quaternion-update">Quaternion update</h3>
+<p>$$
+\dot{\mathbf{q}} = \frac{1}{2},\mathbf{q} \otimes \omega_c
+$$</p>
+<p>$$
+\mathbf{q} \leftarrow \mathbf{q} + \dot{\mathbf{q}},dt, \qquad \mathbf{q} \leftarrow \frac{\mathbf{q}}{|\mathbf{q}|}
+$$</p>
+<h2 id="camera-based-pose-correction-aruco">Camera-Based Pose Correction (ArUco)</h2>
+<p>Measurement (in <code>camera_link</code> frame):</p>
+<p>$$
+z_{\text{cam}} = [\mathbf{p},, \mathbf{q}]
+$$</p>
+<p>Since the camera sits on a servo, the ArUco measurement must be back-projected through the full kinematic chain before correcting <code>base_link</code>. The marker pose in <code>base_link</code> is:</p>
+<p>$$
+T_{\text{base}}^{\text{marker}} = T_{\text{base}}^{\text{servo}}(\phi) \cdot T_{\text{servo}}^{\text{cam}} \cdot T_{\text{cam}}^{\text{marker}}
+$$</p>
+<blockquote>
+<p><strong>$\phi$ must be read from the servo at the same timestamp as the camera frame.</strong> A stale servo angle produces a wrong correction.</p>
+</blockquote>
+<p>The map-frame marker pose:</p>
+<p>$$
+T_{\text{map}}^{\text{marker}} = T_{\text{map}}^{\text{base}} \cdot T_{\text{base}}^{\text{marker}}
+$$</p>
+<p>Position error:</p>
+<p>$$
+\mathbf{e}<em>p = \mathbf{p}</em>{\text{cam}} - \mathbf{p}_{\text{odom}}
+$$</p>
+<p>Orientation error:</p>
+<p>$$
+\mathbf{q}<em>e = \mathbf{q}</em>{\text{cam}} \otimes \mathbf{q}_{\text{odom}}^{-1}
+$$</p>
+<p>Small-angle approximation (planar robot, yaw only):</p>
+<p>$$
+\delta\theta \approx 2,\text{vec}(\mathbf{q}_e)_z
+$$</p>
+<p>State update ($\alpha \in (0,1]$ is a scalar blending gain):</p>
+<p>$$
+\mathbf{x} \leftarrow \mathbf{x} + \alpha
+\begin{bmatrix} \mathbf{e}_p \ \delta\theta \end{bmatrix}
+$$</p>
+<h2 id="tf-consistency">TF Consistency</h2>
+<p>$$
+T_{\text{map}}^{\text{base}} = T_{\text{map}}^{\text{odom}} \cdot T_{\text{odom}}^{\text{base}}
+$$</p>
+<h3 id="camera-correction">Camera correction</h3>
+<p>To update the map→odom transform without causing a discontinuous jump in the odom frame:</p>
+<p>$$
+T_{\text{map}}^{\text{odom}} \leftarrow T_{\text{map}}^{\text{marker}} \cdot \left(T_{\text{odom}}^{\text{base}} \cdot T_{\text{base}}^{\text{servo}}(\phi) \cdot T_{\text{servo}}^{\text{cam}}\right)^{-1}
+$$</p>
+<p>This ensures $T_{\text{map}}^{\text{odom}} \cdot T_{\text{odom}}^{\text{base}} = T_{\text{cam}}^{\text{map}}$.</p>
+<h3 id="imu-orientation">IMU orientation</h3>
+<p>$$
+R_{\text{base}}^{\text{imu}} = R(\mathbf{q})
+$$</p>
+<h2 id="range-sensor-filtering">Range Sensor Filtering</h2>
+<p>Measurement:</p>
+<p>$$
+z = r + n
+$$</p>
+<p>Median filter over window $W$:</p>
+<p>$$
+\tilde{r} = \text{median}(W)
+$$</p>
+<p>Jump gate (reject if change exceeds threshold):</p>
+<p>$$
+|\tilde{r} - r_f| \leq \Delta_{\max}
+$$</p>
+<p>Exponential smoothing:</p>
+<p>$$
+r_f = \alpha,\tilde{r} + (1-\alpha),r_f
+$$</p>
+<h2 id="gas-field-mapping">Gas Field Mapping</h2>
+<p>Measurement model:</p>
+<p>$$
+z_g = C(x,y) + n
+$$</p>
+<p>Since the gas sensor sits on the camera which sits on the servo, the measurement location in the world frame is the camera origin projected through the full kinematic chain:</p>
+<p>$$
+\begin{bmatrix} x_{\text{cam}} \ y_{\text{cam}} \ z_{\text{cam}} \ 1 \end{bmatrix}
+= T_{\text{map}}^{\text{odom}} \cdot T_{\text{odom}}^{\text{base}} \cdot T_{\text{base}}^{\text{servo}}(\phi) \cdot T_{\text{servo}}^{\text{cam}} \cdot \begin{bmatrix} 0 \ 0 \ 0 \ 1 \end{bmatrix}
+$$</p>
+<p>Grid cell indices from world position (cell size $\Delta$):</p>
+<p>$$
+i = \left\lfloor \frac{x_{\text{cam}} - x_{\min}}{\Delta} \right\rfloor, \qquad
+j = \left\lfloor \frac{y_{\text{cam}} - y_{\min}}{\Delta} \right\rfloor
+$$</p>
+<p>Grid update:</p>
+<p>$$
+C_{i,j} \leftarrow (1-\alpha),C_{i,j} + \alpha,z_g
+$$</p>
+<p>Optional diffusion:</p>
+<p>$$
+\frac{\partial C}{\partial t} = D,\nabla^2 C
+$$</p>
+<h2 id="pure-pursuit-controller">Pure Pursuit Controller</h2>
+<p>Goal point $P_g = (x_g, y_g)$.</p>
+<p>Distance to goal:</p>
+<p>$$
+d = \sqrt{(x_g - x)^2 + (y_g - y)^2}
+$$</p>
+<p>Transform goal into robot body frame:</p>
+<p>$$
+x_L =  \cos\theta,(x_g - x) + \sin\theta,(y_g - y)
+$$</p>
+<p>$$
+y_L = -\sin\theta,(x_g - x) + \cos\theta,(y_g - y)
+$$</p>
+<p>Lookahead distance:</p>
+<p>$$
+L_d = \sqrt{x_L^2 + y_L^2}
+$$</p>
+<p>Curvature:</p>
+<p>$$
+\kappa = \frac{2,y_L}{L_d^2}
+$$</p>
+<p>Velocity commands:</p>
+<p>$$
+\omega = v,\kappa, \qquad v = \min(v_{\max},; k_v,d)
+$$</p>
+<p>Wheel conversion:</p>
+<p>$$
+v_r = v + \frac{L}{2},\omega, \qquad v_l = v - \frac{L}{2},\omega
+$$</p>
+<h2 id="cascaded-control-architecture">Cascaded Control Architecture</h2>
+<p>Three explicit levels:</p>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>Loop</th>
+<th>Input</th>
+<th>Output</th>
+<th>Controller</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Position</td>
+<td>$(x, y, \theta)$ error</td>
+<td>$v_{\text{cmd}},, \omega_{\text{cmd}}$</td>
+<td>P or pure pursuit</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Velocity</td>
+<td>$(v, \omega)$ error</td>
+<td>$u_v,, u_\omega$</td>
+<td>PI with saturation</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Actuator</td>
+<td>$u_v,, u_\omega$</td>
+<td>$v,, \omega$</td>
+<td>First-order lag</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Note on Level 1:</strong> pure pursuit and the P position controller are alternative implementations of the same level. Use pure pursuit for path following (waypoint sequences) and the P controller for point stabilisation (single goal). Do not run both simultaneously.</p>
+</blockquote>
+<h3 id="level-1--position-loop-p-controller">Level 1 — Position loop (P controller)</h3>
+<p>$$
+e_x = x_g - x, \qquad e_y = y_g - y
+$$</p>
+<p>$$
+d = \sqrt{e_x^2 + e_y^2}
+$$</p>
+<p>$$
+\theta_g = \arctan2(e_y,, e_x), \qquad e_\theta = \theta_g - \theta
+$$</p>
+<p>$$
+v_{\text{cmd}} = \text{clip}!\left(K_p^v,d,; v_{\max}\right)
+$$</p>
+<p>$$
+\omega_{\text{cmd}} = \text{clip}!\left(K_p^\theta,e_\theta,; \omega_{\max}\right)
+$$</p>
+<h3 id="level-2--velocity-loop-pi-controller">Level 2 — Velocity loop (PI controller)</h3>
+<p>$$
+e_v = v_{\text{cmd}} - v, \qquad e_\omega = \omega_{\text{cmd}} - \omega
+$$</p>
+<p>$$
+u_v = K_p^v,e_v + K_i^v \int e_v,dt
+$$</p>
+<p>$$
+u_\omega = K_p^\omega,e_\omega + K_i^\omega \int e_\omega,dt
+$$</p>
+<p>Integrator freeze anti-windup condition:</p>
+<p>$$
+\text{freeze} = \bigl(|u| \geq u_{\max}\bigr) ;\text{AND}; \bigl(\text{sign}(u) = \text{sign}(e)\bigr)
+$$</p>
+<p>When frozen, the integrator state is held: $\dot{x}_I = 0$.</p>
+<p>Output saturation:</p>
+<p>$$
+u_v = \text{clip}(u_v,; u_{\max}), \qquad u_\omega = \text{clip}(u_\omega,; u_{\max})
+$$</p>
+<h3 id="level-3--actuator-dynamics">Level 3 — Actuator dynamics</h3>
+<p>$$
+\dot{v} = \frac{u_v - v}{\tau_v}, \qquad \dot{\omega} = \frac{u_\omega - \omega}{\tau_\omega}
+$$</p>
+<h2 id="ui-projection-layer-visualisation-only">UI Projection Layer (Visualisation Only)</h2>
+<h3 id="normalisation">Normalisation</h3>
+<p>$$
+x_n = \frac{x - x_{\min}}{x_{\max} - x_{\min}}, \qquad
+y_n = \frac{y - y_{\min}}{y_{\max} - y_{\min}}
+$$</p>
+<h3 id="screen-mapping">Screen mapping</h3>
+<p>$$
+x_{\text{pix}} = x_n,W, \qquad y_{\text{pix}} = (1 - y_n),H
+$$</p>
+<h3 id="inverse-mapping">Inverse mapping</h3>
+<p>$$
+x = x_{\min} + x_{\text{pix}},\frac{x_{\max} - x_{\min}}{W}
+$$</p>
+<p>$$
+y = y_{\min} + (H - y_{\text{pix}}),\frac{y_{\max} - y_{\min}}{H}
+$$</p>
+<h3 id="waypoint-set">Waypoint set</h3>
+<p>$$
+\mathcal{W} = {(x_i,, y_i,, \text{label}_i)}
+$$</p>
+<h2 id="closed-loop-system-summary">Closed-Loop System Summary</h2>
+<p>Full state:</p>
+<p>$$
+\mathbf{x} = [x,; y,; \theta,; v,; \omega,; \mathbf{q},; \phi]^\top
+$$</p>
+<p>System update:</p>
+<p>$$
+\mathbf{x}<em>{k+1} = f!\left(\mathbf{x}<em>k,; u_k,; z</em>{\text{imu}},; z</em>{\text{cam}},; z_{\text{range}},; \phi_k\right)
+$$</p>
+<p>Control hierarchy:</p>
+<p>$$
+\text{Position} ;\rightarrow; \text{Velocity (PI)} ;\rightarrow; \text{Actuator dynamics} ;\rightarrow; \text{Saturation} ;\rightarrow; \text{Wheels}
+$$</p>
+<p>$$
+\text{Servo target} ;\rightarrow; \text{Rate limit} ;\rightarrow; \text{P control} ;\rightarrow; \text{Saturation} ;\rightarrow; \phi
+$$</p>
+<p>$$
+\boxed{\text{Nonlinear, stochastic, cascaded, sensor-fused mobile robot system}}
+$$</p>
+<h2 id="references">References</h2>
+<p>[1] G. Welch and G. Bishop, &quot;An Introduction to the Kalman Filter,&quot; University of North Carolina at Chapel Hill, Tech. Rep. TR 95-041, 2006.</p>
+<p>[2] R. Siegwart, I. R. Nourbakhsh, and D. Scaramuzza, <em>Introduction to Autonomous Mobile Robots</em>, 2nd ed. MIT Press, 2011.</p>
+<p>[3] S. Thrun, W. Burgard, and D. Fox, <em>Probabilistic Robotics</em>. MIT Press, 2005.</p>
+<p>[4] B. Siciliano and O. Khatib, Eds., <em>Springer Handbook of Robotics</em>, 2nd ed. Springer, 2016.</p>
+<p>[5] T. Madgwick, &quot;An efficient orientation filter for inertial and inertial/magnetic sensor arrays,&quot; Univ. Bristol, Tech. Rep., 2010.</p>
+<p>[6] R. Mahony, T. Hamel, and J.-M. Pflimlin, &quot;Nonlinear complementary filters on the special orthogonal group,&quot; <em>IEEE Trans. Autom. Control</em>, vol. 53, no. 5, pp. 1203–1218, 2008.</p>
+<p>[7] F. Chaumette and S. Hutchinson, &quot;Visual servo control. I. Basic approaches,&quot; <em>IEEE Robot. Autom. Mag.</em>, vol. 13, no. 4, pp. 82–90, 2006.</p>
+<p>[8] E. Olson, &quot;AprilTag: A robust and flexible visual fiducial system,&quot; in <em>Proc. ICRA</em>, 2011, pp. 3400–3407.</p>
+<p>[9] S. Garrido-Jurado et al., &quot;Automatic generation and detection of highly reliable fiducial markers under occlusion,&quot; <em>Pattern Recognition</em>, vol. 47, no. 6, pp. 2280–2292, 2014.</p>
+<p>[10] ROS 2 Design Team, &quot;REP-103: Standard Units of Measure and Coordinate Conventions,&quot; Open Robotics, 2010.</p>
+<p>[11] ROS 2 Design Team, &quot;REP-105: Coordinate Frames for Mobile Platforms,&quot; Open Robotics, 2010.</p>
+<p>[12] R. Coulter, &quot;Implementation of the Pure Pursuit Path Tracking Algorithm,&quot; CMU-RI-TR-92-01, 1992.</p>
+<p>[13] K. J. Åström and T. Hägglund, <em>PID Controllers: Theory, Design, and Tuning</em>, 2nd ed. ISA, 1995.</p>
+<p>[14] H. K. Khalil, <em>Nonlinear Systems</em>, 3rd ed. Prentice Hall, 2002.</p>
+<p>[15] J. J. Craig, <em>Introduction to Robotics: Mechanics and Control</em>, 4th ed. Pearson, 2017.</p>
+<p>[16] OpenCV Development Team, &quot;OpenCV: Open Source Computer Vision Library.&quot; https://opencv.org/</p>
+<p>[17] Open Robotics, &quot;tf2: ROS 2 Transform Library.&quot; https://docs.ros.org/</p>
+<p>[18] Open Robotics, &quot;micro-ROS: ROS 2 for Microcontrollers.&quot; https://micro.ros.org/</p>
+
+</body>
+</html>
