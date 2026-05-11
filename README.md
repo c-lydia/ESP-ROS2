@@ -1,4 +1,4 @@
-# Wall-E
+# ESP-ROS2
 
 ![License](https://img.shields.io/badge/license-Apache%202.0-blue)
 ![ROS2](https://img.shields.io/badge/ROS2-humble-22314E?logo=ros&logoColor=white)
@@ -11,18 +11,24 @@
 ![Arduino](https://img.shields.io/badge/Arduino-00979D?logo=arduino&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white)
 ![Docker Compose](https://img.shields.io/badge/Docker%20Compose-2496ED?logo=docker&logoColor=white)
+![NVIDIA GPU](https://img.shields.io/badge/NVIDIA-GPU-76B900?logo=nvidia&logoColor=white)
+![CUDA](https://img.shields.io/badge/CUDA-enabled-76B900?logo=nvidia&logoColor=white)
+![PyTorch](https://img.shields.io/badge/PyTorch-CUDA-EE4C2C?logo=pytorch&logoColor=white)
+![YOLO](https://img.shields.io/badge/YOLO-Ultralytics-111F68)
+![ONNX Runtime](https://img.shields.io/badge/ONNX_Runtime-GPU-005CED)
+![TensorRT](https://img.shields.io/badge/TensorRT-enabled-76B900?logo=nvidia&logoColor=white)
 ![KiCad](https://img.shields.io/badge/KiCad-314CB0?logo=kicad&logoColor=white)
 ![STEP](https://img.shields.io/badge/CAD-STEP%20%2F%20KiCad-orange)
 ![Docs](https://img.shields.io/badge/docs-RST-8CA1AF?logo=readthedocs&logoColor=white)
 ![venv](https://img.shields.io/badge/venv-enabled-4B8BBE?logo=python&logoColor=white)
-![Stars](https://img.shields.io/github/stars/c-lydia/wall_e?style=flat)
-![Forks](https://img.shields.io/github/forks/c-lydia/wall_e?style=flat)
-![Watchers](https://img.shields.io/github/watchers/c-lydia/wall_e?style=flat)
-![Release](https://img.shields.io/github/v/release/c-lydia/wall_e)
-![Issues](https://img.shields.io/github/issues/c-lydia/wall_e?color=yellow)
-![Visitors](https://visitor-badge.laobi.icu/badge?page_id=c-lydia.wall_e)
+![Stars](https://img.shields.io/github/stars/c-lydia/ESP-ROS2?style=flat)
+![Forks](https://img.shields.io/github/forks/c-lydia/ESP-ROS2?style=flat)
+![Watchers](https://img.shields.io/github/watchers/c-lydia/ESP-ROS2?style=flat)
+![Release](https://img.shields.io/github/v/release/c-lydia/ESP-ROS2)
+![Issues](https://img.shields.io/github/issues/c-lydia/ESP-ROS2?color=yellow)
+![Visitors](https://visitor-badge.laobi.icu/badge?page_id=c-lydia.ESP-ROS2)
 
-micro-ROS workspace for ESP32 (FreeRTOS + ESP-IDF) with ROS 2 Humble.
+micro-ROS workspace for ESP32 (FreeRTOS + ESP-IDF) with ROS 2 Humble, including both the Wall-E control stack and the Gassify gas-robot stack.
 
 For a user-focused setup and operation guide, see [user_manual.md](user_manual.md).
 
@@ -32,14 +38,27 @@ This repository includes:
 - micro-ROS firmware workspace: `firmware/mcu_ws`
 - Host ROS 2 workspace: `src`, `build`, `install`
 - micro-ROS agent container (UDP 9999)
+- Gas robot ROS 2 workspace: `gas_robot_ws/src`
+- Gassify system model: `gassify_model.md`
 
 ## Documentation Map
 
 - User guide: [user_manual.md](user_manual.md)
 - Concepts guide: [concepts.md](concepts.md)
 - Theoretical calculation summary: [notes.md](notes.md)
+- Gassify mathematical model: [gassify_model.md](gassify_model.md)
 - PCB and KiCad sources: [pcb/wall_e_pcb_v1.0](pcb/wall_e_pcb_v1.0)
 - Sphinx docs index: `docs/source/index.rst`
+
+## Gassify Stack Overview
+
+The Gassify part of this repository focuses on gas-robot modeling and robot description assets alongside the existing Wall-E stack.
+
+- ROS 2 package set location: `gas_robot_ws/src`
+- Robot description package: `gas_robot_ws/src/gas_robot_description`
+- URDF/Xacro model includes a dedicated gas sensor link (`gas_sensor_link`) in:
+  - `gas_robot_ws/src/gas_robot_description/gas_robot_description/src/description/gas_robot.urdf.xacro`
+- Full mathematical and control model reference: `gassify_model.md`
 
 The Sphinx site includes the same high-level concepts and firmware details in a published format.
 
@@ -49,6 +68,11 @@ The Sphinx site includes the same high-level concepts and firmware details in a 
 - Docker Compose
 - USB access for flashing (device usually `/dev/ttyUSB0`)
 
+Optional for CUDA/GPU workflows:
+
+- NVIDIA GPU driver on host
+- NVIDIA Container Toolkit on host (`nvidia-container-toolkit`)
+
 ## Quick Start
 
 From the repository root:
@@ -57,6 +81,42 @@ From the repository root:
 
 ``` bash
 docker compose up -d
+```
+
+GPU/CUDA-enabled start (keeps default pipeline unchanged when not used):
+
+``` bash
+docker compose -f docker-compose.yaml -f docker-compose.gpu.yaml up --build -d
+```
+
+GPU image includes an object-detection-ready Python stack in this mode:
+
+- CUDA-enabled PyTorch (`torch`, `torchvision`, `torchaudio`)
+- `ultralytics` (YOLO)
+- `opencv-python-headless`
+- `onnx` and `onnxruntime-gpu==1.18.1` (pinned)
+- `pycocotools`
+- `tensorrt==8.6.1` (pinned)
+
+To override TensorRT version, change `TENSORRT_PIP_SPEC` in `docker/docker-compose.gpu.yaml`.
+To override ONNX Runtime GPU version, change `ONNXRUNTIME_GPU_PIP_SPEC` in `docker/docker-compose.gpu.yaml`.
+
+Quick GPU check inside container:
+
+``` bash
+docker exec -it micro_ros_workspace bash -lc "nvidia-smi"
+```
+
+Quick Python GPU/object-detection check:
+
+``` bash
+docker exec -it micro_ros_workspace bash -lc "python3 -c 'import torch, ultralytics, cv2; print(torch.__version__); print(torch.cuda.is_available()); print(ultralytics.__version__); print(cv2.__version__)'"
+```
+
+Quick TensorRT check:
+
+``` bash
+docker exec -it micro_ros_workspace bash -lc "python3 -c 'import tensorrt as trt; print(trt.__version__)'"
 ```
 
 2. Enter workspace container
